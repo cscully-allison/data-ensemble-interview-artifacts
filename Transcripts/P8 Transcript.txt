@@ -1,0 +1,195 @@
+R1  0:01  
+Perfect. Okay, so I'm just gonna start off with kind of a simple question here. So what project do you work on that uses ensembles of performance data?
+
+P8  0:13  
+Um, so I work on the [Scientific Simulation Software] code development project. And in particular, I'm looking at scaling studies on AWS.
+
+R1  0:27  
+And can you describe your data ensemble for me sort of the ideal version of the data ensemble you work with?
+
+P8  0:40  
+Okay, if I understand the question correctly, yeah, so the ensembles that I'm looking at, these are, its performance data for you know, we take a particular problems of interest, some some physics problems, and we run it with [Scientific Simulation Software]. And what comes out of that is really timing data. Right. So, you know, we use Livermore's Caliper library, and it generates timing data. And so I ended up with this with, you know, a set of timing data for every run. And so, you know, we do an ensemble of runs, typically, you know, I don't know, five or 10 different runs, right. Really important, especially for the cloud. But, um, you know, so, so I ended up Yeah, I ended up with this, you know, ensemble of, say, 10, runs, you know, with timing, pretty, you know, granular timing information, right. So it can be, it can be quite a lot of timing data for each run. And, you know, and I want to be able to infer something about the collection of runs, right? And not just, you know, it might be nice to look at one individual, but really, this is this is really more about the ensemble than it is any single individual.
+
+R1  1:59  
+Right? Can you break out the break down that data, you describe me into, like, kind of its component parts?
+
+P8  2:08  
+I'm sure, you know, for any, any given, so a lot of the data is generated, you know, when a code developer or maybe, you know, a code developer at the prompting of a user goes in and says, I want to instrument this section of code, right. And so it's typically a lot of manual instrumentation, right? Somebody puts in, okay, I'm interested in this particular piece of code. And I want to tag information for this. And typically, what comes out is, you know, you have, you can get various things depending on what options you ask for when you run the code. But, you know, typically, it consists of something like a minimum time, a max time and an average time. And the reason that you get those because "all", I'll say "all," doesn't have to be but in general, you run [Scientific Simulation Software], right? It's uh, [Scientific Simulation Software] is MPI. And so, you know, you run it on many processors, right. So you have a lot of ranks there. And so you get, you know, every rank is going to give you a different time. And these are all, you know, collected and aggregated. And so what you get at these aggregate times, and so you do you get a minimum time for the section of code a max time for the section of code and an average time. And then there, there are other things you can get, you know, in, in the ensembles, one of the things that's, that's can be important, too, is variants and things like that. You know, so that can be an important attribute to get, but but that's, that is in general, you know, what we get out of that?
+
+R1  3:55  
+Okay, yeah. And for your analysis, which is the most important of that, those parts that you just told me to do?
+
+P8  4:05  
+Yeah, so in general, you know, I mean, you take these ensembles, and I mean, we can do you know, the timing data is, is is very general, right, you can do a whole lot of things with that, depending on what you're trying to, you know, get out of the ensemble, right all kinds of different things, but I typically am interested in at least up to this point, my primary interest has been how the code performs in different scaling regimes. And so really, the average time is kind of what I what I key in on most right now. And it's, it's a little more than that. It's not just the average time right. So bundled up in the ensemble or in each piece, you know, each piece of the ensemble, right? There's metadata associated with each of those pieces. And so usually what I'm really interested in seeing is something like average time divided by something that's in the metadata, right? So average time per, in this case cycle, or example or something like that, right? There's could be average time per unknown, for example, right? For total number of unknowns, and the problem that we're solving, so that that's usually it usually is average time, but it's not solely average time, it usually has some, you know, usually usually has another component that's buried in the metadata that you know, we're dividing out or something like that.
+
+R1  5:48  
+Right, cool. Okay, um, then we can move on to the drawing part. Now, if you're got your pencil, pencil and paper ready, or pen and paper ready, I do. All right, perfect. So I'm just going to ask you to start off by sketching out the entirety of the data that you just described, to me that is stored by this data set. And you're free to use any abstractions or metaphors you like to describe the data as you're drawing it out. And then if you could also just tell us what you're drawing as you're drawing it and sort of what you're thinking about as well.
+
+P8  6:26  
+Okay, so, so, yeah, the way I think about the staff that and this has been this has really been driven by the tools that I use, it's very hierarchical, right? So I ended up with this very tree like timing structure, right. And, and so so that's, that is that is very much what it looks like. So, you know, I get this this tree call tree, basically, we want to think about it like that, this call tree of timings, and maybe variances, too. So, I mean, you know, for each each, I guess, leaf is not the right word. But for each piece of the tree, you get, you get, you know, your min max average. So you have all of those. And, of course, you know, you also have the the whatever routine or whatever annotation, the code developer has added to the code, right, for that particular to describe to describe what's being timed basically. So, you know, function name, where you have a route routine name or something like that, and then you have your timing data, and you have that for every level in the tree basically.
+
+R1  7:58  
+Perfect, and can you describe to me exactly how you drew the tree? Where how it looks?
+
+P8  8:08  
+Yeah, I can, it's, it's, it's? Well, I mean, I say I can't, that's, I don't think I've ever thought about it quite like that. It's a kind of think, if I can, can relate this to something that the only thing I can think of is is the, you know, the particular tool that I use to generate the data, right, which is, which is [National Lab]'s [Programmatic Performance Analysis Software B] tool, and it generates this, this, it's not what you would think of, in when you think of tree, right? It's, it's not quite that. But it is this hierarchical grouping of elements, right, that, that starts with a straight line that goes all the way down from top to bottom, right. And then you have the hierarchy that comes off the side. I mean, you can collapse, you know, the hierarchies in various points. So that that's, that's really what I think of when I think of this data, and that sort of hierarchical description.
+
+R1  9:22  
+Okay, and you did say that you have some some, like, sort of numerical data that's associated right the time 
+
+P8  9:30  
+Yes, the timings.
+
+R1  9:31  
+ I was when you drew that out, do where are the timings located relative to like, say the individual parts of the tree?
+
+P8  9:39  
+Yeah, right. So so um, you know, for each you know, you get your, say you have your main function, right. So that's at the very top of the tree and you have a line that goes all the way down right from me. And off of that, you know, you have perpendicular lines. lines two, in my case to the right, right that our function names and they have timings out beside them, right and maybe you get a line from from one of those that drops down from one of those and then goes up to the right, and you get a name and some timings, right. And so you get this hierarchy that that steps down, basically. And so, you know, each one of those leaves may not be the best word, but, you know, has a function name and a set of time means, you know, min max average, maybe variance or something else out to the, to the side of it.
+
+R1  10:40  
+Gotcha. Perfect. Thanks, [P8]. All right, then I've got a couple of sort of task related questions for you to understand, like, what parts of the tree you might use are not tree, sorry, but what parts of the data set you might use for accomplishing certain things. And so, the first one is, like, let's say I'm running a scaling study, a strong scaling study where I'm just trying to relate how many MPI threads I allocate, you know, how that relates to the runtime of one of the functions in the tree? Which portions of this data what I use?
+
+P8  11:13  
+Gotcha. Okay, so So, are you talking just tree data? Because that that also includes metadata, for example, maybe from, you know, the individual runs in the ensemble, for example, right. So, you know, not only this, this, you know, something like cycles that I talked about earlier, right, where maybe what you're really interested in is time per cycle, right. But also certainly things like world size, right? For an MPI problem, number of number of processors, number of cores, or maybe number of nodes, right? If you want to do it, the way we do it at [National Lab], which is a node to node comparison, so so there's that metadata in there, but, but sure, I can.
+
+R1  12:02  
+Yeah. And I mean, yeah, it's I'm not just thinking about the tree. I mean, any parts of the data that you Okay,
+
+P8  12:11  
+gotcha, gotcha.
+
+R1  12:25  
+You and, yeah, I guess, is that it? Was that your answer for this question? Or?
+
+P8  12:31  
+Yes. And so I've drawn out what I, what I would use? And how I would how i What, what a plot of that would would look like. So. Awesome.
+
+R1  12:47  
+Yeah, just let me know when you're done and other okay. There's anything is going on in your head about that, too?
+
+P8  13:07  
+Okay,
+
+R1  13:09  
+all right. Perfect. And can you you, you mentioned that this would probably use metadata. Did you draw that on your representation there? Or did you omit it in your drawing,
+
+P8  13:25  
+you know, I actually did omit it? And I, you know, I don't think of the metadata really, as I guess, I guess I think of that is a separate piece from the actual timing, tree data, right? Those are kind of two separate things I get, I guess, to me, so the metadata is certainly part of the ensemble just like the timing data, but I kind of I guess, think of those two things as being two different things.
+
+R1  13:55  
+Yeah, I think that makes a lot of sense. All right. Um, so the next task question I have for you here is, if you want to compare, say, the runtime difference between your codebase run on one architecture, versus one run on another architecture, which portions of this data set would be most important for that? I'm sure you're very familiar with this one.
+
+Speaker 2  14:17  
+Yes, I am very familiar with this one. Um, so this is going to look very much like I mean, well, regardless of whether it's, it's, you know, this is going to look very much like the previous answer, actually identical, right? Regardless of whether it's strong scaling, weak screen, right, that that's all wrapped up in how you ran the ensemble, right. But But yeah, I mean, it'll it that is basically going to look exactly like the last, the last response, right? The average time maybe divided by number of cycles, right? And you'll have how many nodes or cores, whatever your interest added in there, and and, you know, strong scaling plot of that, which I drew for the last one.
+
+Speaker 1  15:08  
+Cool. Perfect. Thanks, [P8]. And then for my last of these, like, last of these tasks questions, let's say that we have a node or function in our program, which has very low exclusive time. So it itself is not taking a lot of time is not doing a lot of computation. But it has a very high inclusive time. So somewhere, there is something that has taken a lot of time. How would you what parts of the data would you use to find where the time is spent?
+
+P8  15:44  
+Oh, so that's a good question. And that that all comes down to the tree? Right, that that really does come all down to the tree. And, you know, we see that quite frequently. Um, but yeah, that that, that all comes down to the hierarchy. Okay. Yeah, that makes a lot of sense. Right, um, then I.
+
+Speaker 1  16:17  
+Okay, so to to kind of, you're familiar with the [Programmatic Profile Analysis Software A] object, right? Right, P8? Oh, yeah. Yeah. Okay, cool. Do you feel that there's like any aspect of this data that we're that you describe to me or that we're working with that you feel is not captured by by the [Programmatic Profile Analysis Software A]  object?
+
+Speaker 2  16:38  
+Mmm hmm. That's a good question. Um, and so part part of this is, is a little bit whether some, for some things, it's going to be hard for me to say, is this really captured by the [Programmatic Profile Analysis Software A]  object? Or is it just the case that I don't know how to get it out? So so, you know, by my Python skills are can be iffy, at best. So, you know, like I said, some of these things may, absolutely, it may be easy to get out of the object, and I just don't know how to do it. One of the things that I will say has been a challenge has been or can be metadata. I don't you know, and maybe all of the metadata really is wrapped up in the in the [Programmatic Profile Analysis Software A]  object. And maybe it's just, I just don't know, a good way to pull it out. But but getting metadata out of the [Programmatic Profile Analysis Software A]  object in a useful way sometimes has has been a challenge. I don't guess I guess when I really think about it. Almost everything that I need, with the exception of maybe some metadata to pull out of the [Programmatic Profile Analysis Software A]  object, which is really just average values over the ensemble is there. And my, I guess my bigger challenge has been constructing useful workflows from the Ticket object. And like I said that that is probably more to do with my lack of Python skills than it is anything to do with the Ticket object itself. But you know, I will say that, while probably not directly, answering your question as to what's not in the [Programmatic Profile Analysis Software A]  object, but it would be nice to see additional workflow pre canned workflows using the [Programmatic Profile Analysis Software A]  object, I think would be very useful.
+
+R1  19:14  
+And when you said that you're trying to extract metadata, extract metadata in a useful way. Can you elaborate a little bit more on like, what's, what's a useful extraction of metadata for you?
+
+Speaker 2  19:25  
+Yes. So for example, and this was early on, and whether this is still an issue or not, I, I don't know. But for example, being a and this is made a little difficult in Python, since it's not a typed language, but you know, when I pull out a number, I don't want it to be a string which it's it's something that it was just some issues that I run into where thicket, you know, tends to, I, At least, if I remember correctly think everything is a string, right, and pulling it out correctly has been a challenge. And again, that that could be, you know, my limited Python skills, but, and, you know, sometimes I can't remember but it seems like early on there were issues with, with all of the metadata even being there and or having to create a new metadata member that was some, some combination of previously existing metadata. You know, like, well, I like time per cycle, for example, that's not a really a good one, because it's not solely metadata. But but there were there were some there were some cases where it seems like we had to go through some particularly grueling work to get some metadata columns in there that were constructed from from existing metadata, but you know, weren't weren't themselves, you know, there to start with so.
+
+R1  21:17  
+Right. Yeah, if you no pressure, since it's okay, that you don't remember it now. But if you do recall, at some point in the future, what those particular columns were that you had to create early on? Please, like, email me or let me know or send along with your your image?
+
+P8  21:37  
+Yeah, I, I can do that. I suspect, I still have those notebooks where, you know, we went in and added specific metadata columns or whatever, I can look through those, that won't be a big deal. Cool.
+
+Speaker 1  21:53  
+Also, do you happen to have those notebooks on the rz? And? Yes, see? 
+
+P8  21:58  
+Yes. Yeah. Cool. I can give them to you. If you would, like,
+
+R1  22:01  
+yes, that would be kind of amazing. If I could look them over. I love that. Yes.
+
+P8  22:06  
+So long as you do not make fun of the code that is in them, I'm happy to get them to know.
+
+R1  22:13  
+I'm a researcher. My code is not great
+
+Speaker 2  22:16  
+Yeah, my Python is pretty, pretty awful. But it does show the kind of, at least for me, and and the kind of workflows that I, in particular want to do with ticket with which these are the scaling workflows, right? Weak scaling, strong scaling, throughput studies, right? 
+
+P8  22:40  
+That would be amazing. 
+
+Speaker 2  22:43  
+If they were, by default, available in [Programmatic Profile Analysis Software]  where, you know, okay, I want to do it, you know, here's my ensemble show, show me these guys. Right, show me a strong scaling. And me not have to do anything. And so yeah, I. So that's, that's what you're going to see. And, and comparison between ensembles is important, too, I will say that. So that's also in there, where I'm looking at, say, maybe a [National Lab Computing System] ensemble, and an AWS ensemble, and I want to do a strong scalings comparison between those two. So that's, that is all in there. And I'm happy to share those with you.
+
+R1  23:27  
+Oh, fantastic. Thank you so much, Darrell.
+
+R2  23:31  
+Yeah, this is this is really cool. I just wanted to follow up with not not the ones that you don't remember. But when you first started talking, you mentioned that sometimes there's metadata that you would expect to be there. That wasn't I was wondering if you happen to remember any of those
+
+P8  23:49  
+be? Yes. So I was I was trying to think, what what did we do with them? So you know, the metadata is all it all comes from the code and, you know, there are all of these annotations that you can, you know, add to write out your metadata, you know, MPI comm world size. There was something though I was I'm trying to think, Oh, I think it was memory usage. That wasn't there to begin with, but something that we added now. That's one of the things that that is a column, you know, that has to be added on the code side versus something that can be inferred from the data, the stare, I say that and you know, you might actually could get a rough estimate from the metadata that's already there, if you had well,
+
+R2  24:43  
+So is this a memory usage per?
+
+Speaker 2  24:47  
+So yeah, so memory usage per rank? And I, like I said, I think you could infer you could get least get an average because I think what is in the metadata is total memory usage, right and given the column world size and total memory usage, right? I could get an average per rank, how accurate that is, you know, it's probably not right not not as not as good as, say, going into the code and saying, "Hey, add this to the metadata, right?" Because you know, for example, rank zero, is almost always going to be slightly higher, or maybe consistently, then all the other ranks depending on what's going on, you know, MPI wise, and all kinds of things. So, but that was one that that for sure, was missing, that we needed. . . And was not-- And like I said, it might have been the case that we could have gotten an average, if total was there, and I can't remember if total was there, but I, when I go back and look through my notebooks, I certainly should have a better idea of, of what we were thinking this has been some time ago. But you know, the the thing with the metadata is, it's very hard to predict what you're going to want to look at, you know, so when you when you go through the code, you just kind of throw a bunch of stuff in there, here. Here's, here are all the things that I think might be interesting, right? Start Time, stop time, cluster name, architecture, you know, all of these kinds of things that you're like, Okay, well, when I go to sit down and analyze this data, these are the things that I might actually be interested in. But it never fails. When you do that, that you're gonna come across something that well, why didn't I put that in there? Right? Or can I infer that from what I did put in there? And sometimes, yes, sometimes no. So but when I go back and look through the notebooks, and I'll do that, this evening, I should be able to pin down a few things that we specifically either needed, or we had to infer from what was already there. Right?
+
+R2  26:55  
+Well, yeah, this is super helpful.
+
+R1  26:59  
+Yeah, and just just to make sure that we're on the same page with this can, can you tell me like what your own, in your own words sort of what you think about as being meta data very broadly, generally?
+
+Speaker 2  27:10  
+Yeah. So I consider made meta data to be I guess, sort of what I would call the basic characteristics of the problem. So these are things like, like I said, architecture may be system name that you ran on a os may be, but then those are all kind of. They're useful for things like plots and useful for organizing your data, but maybe not very useful for analysis, you know, things that are more interesting for analysis is total memory usage or memory usage per MPI rank, or total number of dofs [degrees of freedom] or or number of dofs per MPI rank, you know, number of elements per MPI rank, or zones, you know, maybe, maybe things like, you know, material composition, that that's really not what I would consider metadata, I guess that that's really something different. You know, total, total execution time, for example, not not broken down, you know, in the tree, but just total overall execution time, I could see that being metadata. That thing, things like that. And I could probably sit here and think of several more, but you know, and I, and the [Scientific Simulation Software] does put a whole slew of things in there, you know, you could get things for example, like, number of iterations for a particular, you know, algorithm or what kind of hydro you did you know, what kind of radiation transporter you did all these kinds of different things, right, that could get wrapped up in, in, in the metadata. Yeah.
+
+R1  29:16  
+And, um, you mentioned that the material like composition, is that is that something that's specified at runtime? of the program?
+
+Speaker 2  29:26  
+Usually, yeah, right. You know, usually when you create and this is why it's not really meta data, that that kind of thing that's more of a you know, you create your mesh and when you create your when you define the problem, right, you create the mesh, you know, you set up your materials zones, and then you set up your boundary and all that right. So that's more of [unintelligible] that is kind of defined when you when you create the problem you you define all of that,
+
+R1  29:53  
+right. Perfect, um, yeah, can't unless you have Any questions that we have just one more little drawing for you? All right, cool. So this one should be pretty simple. I've got very simple dataset for you to draw out. Okay? So I'm gonna ask you to imagine a profile of a single program. And the profile, the profile has three functions. They're called A, B and C. And then it function A the HMO Time Timer associated with them, function A took 30 seconds, function B took five seconds, and function C took 100 seconds.
+
+P8  30:37  
+Okay. All right.
+
+R1  30:38  
+And then finally, function A calls both B and C. Okay. Okay, so now with all that information, I'm just gonna ask you to draw out the data set. And tell me what it looks like to if you could please.
+
+P8  30:53  
+Okay, yes. So let me let me draw here.
+
+And, and no relation between B and C? No.
+
+R1  31:08  
+Okay. I mean, there's some siblings, technically, by default, yes.
+
+P8  31:12  
+Siblings, right. Yeah. Yeah. Okay. So this is, this is pretty straightforward, then. So A is on top, and out to the right of a 30 seconds. Straight line that comes down. And at the bottom of that line, there is a perpendicular line to the right. That is C at 100. And with 100 seconds off to the right, and then in the middle, between A and C, there's another line coming perpendicular out to the right. That is B and five seconds.
+
+R1  31:43  
+Perfect. All right. Cool, then I think that that is pretty much everything. Thank you so much, again, for participating in helping us. Yeah, no problem is research. And me and Kate are going to hang out for a second after this, just to chat. So you're, you're good to go whenever you like. And if I could just get you to take a picture and email me those email or send however, those drawings that you did, I would really appreciate it.
+
+P8  32:16  
+Yep, I can do that. I appreciate it.
+
+R2  32:18  
+Thanks so much.
+
+R1  32:20  
+Thank you. Bye, bye.
+
+Transcribed by https://otter.ai

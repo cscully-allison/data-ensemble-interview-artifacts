@@ -95,3 +95,76 @@ Who has tablets?
 
 **Can you show me what an atypical dataset one looks like.** 
 **PUT CONNECT FROM IPAD WITH TABLET CASE IN EMAIL**
+
+
+### Participant 6, O -
+
+- Multiprofile Stats Profile
+- Deep questions
+	- Design of the Thicket Datastructure
+	- What does this say about the design of datastructures like this
+- Related work:
+	- Datastructures like this
+	- Software Engineering?
+		- Algortihms
+		- Data structure expertise
+- "Digesting" the data structure of the HUD
+- Design the thing scenario style - possibly
+- O goes from datastructure to the graphs she wants implicitly
+- Everyone stores metadata in very different ways.
+	- It's not "the data"
+	- O recognizes that there is information that is not captured which is crucial to the job
+- One thing we have to worry about.
+	- Katy presented data in paragraphs
+	- O: here we concieve of the data as being the data in the Thicket object
+	- She was interested in the organization of the object
+- We have to have a very high level of sophistication in HPC
+- I don't think that someone who did not already know about the project could conduct these
+- The positionality is very important to these ones
+- There is clearly a lot of reductions going in peoples head that they are not vocalizing
+	- Sometimes those reductions are happening where they shouldn't
+- Catchy Titles
+	- The ghost of metadata present
+	- The spectre  of metadata 
+	- The dark matter of data: Metadata
+	- The aether of data
+	- The platonic realm of data:
+	- Here there be Metadata dragons
+- The Thicket diagram is underpowered
+	- Take a note that she means this 
+	- Get those old diagrams from everyone
+- An emergent metadata theme is really emerging
+- Related work on ensembles and metadata
+
+![[Pasted image 20230523133538.png]]
+![[Pasted image 20230523142118.png]]
+![[Pasted image 20230523135406.png]]
+
+## Emerging Themes
+
+A strong theme related to metadata is beginning to emerge. Although some participants (P3) have identified metadata and placed it in the data structure or in their mental model of the data, the overall observed theme seems to obfuscate it. It is often ignored outright, and when it is not, it is referred to as a sort of ideal. A realm where relevant information can be plucked ad hoc to modify and contextualize the data without signficant thought given to its limitations and its interaction with the data. This was especially prevalent with P6 but also P1 and P2 eschewed making significant refrences to metadata. P5 also? I'll have to see.
+
+Before this can be declared a full theme however this has to hold up to our coding. I'm unsure if it will or not.
+
+
+## P7
+- Patterns emerging that the task based questions
+	- They want to go past what data they use but they think 
+- P7 did not draw a single indented tree and saw the graphs
+- Concerns about Dyad being too much 
+- There is an inherent ordering to node over profile
+- Only O has been the only one to mention scalar data
+- Data abstractions
+	- Assertions about network
+	- Data abstraction eicitation needs a series of asserts
+		- Is this field a always a number?
+		- What is the range of this field?
+	- **The idea of data abstraction assertions could be something we propose at the end of the paper**
+		- With each assert there is a multiple-choice answer
+		- We would propose this at a high level as perscriptive advice
+		- **Yagoda Best Paper**
+- Ask Katy anonymize the transcripts
+	- If she wants to
+	- NBD if not
+- Run asking Mchela by Ian
+- Is this a latitudinal study? :p
