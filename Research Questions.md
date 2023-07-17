@@ -1,6 +1,5 @@
 
-
-Possible Research Questions:
+### Initial questions
 
 From Kate:
 -   What factors lead to remembering dimensions/aspects of the data?
@@ -14,3 +13,11 @@ Connor:
 
 From Katy:
 -  Does this research relate to dimensionality reduction or can it inform DR practices in the HPC space?
+
+### Emergent Questions
+
+- How do people conceive of Metadata?
+	- Generally?
+	- In relation to the main Dataset?
+- What are the weaknesses/boundaries in the Thicket Data structure's ability to capture performance ensemble data?
+- What portions of an ensemble dataset are more relevant/less relevant to analysis/general use of the data?
