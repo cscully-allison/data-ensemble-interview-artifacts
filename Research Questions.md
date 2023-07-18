@@ -21,3 +21,4 @@ From Katy:
 	- In relation to the main Dataset?
 - What are the weaknesses/boundaries in the Thicket Data structure's ability to capture performance ensemble data?
 - What portions of an ensemble dataset are more relevant/less relevant to analysis/general use of the data?
+- How diverse are the understandings of the dataset structure even among a group working on a data structure?
