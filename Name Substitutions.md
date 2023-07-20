@@ -11,6 +11,4 @@
 Authors -> A1 - A5
 Participants -> P1 - P10
 
-Questions:
-What is Per Flow in P7?
 
