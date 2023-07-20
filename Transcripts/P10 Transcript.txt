@@ -184,7 +184,7 @@ Speaker 3  16:42
 Yeah, like, sometimes for surprises when the setup function takes a ridiculous amount of time. Whatever reason at all.
 
 Speaker 2  16:53  
-You're like, why? Yeah. It's probably just weirdness on the LC right? Yeah, um, so you briefly touched on the metadata. And you mentioned that you can kind of like filter on it, how does it fit into this model, like visually, do you have a visual representation of what it would look like or,
+You're like, why? Yeah. It's probably just weirdness on the [Lab computer] right? Yeah, um, so you briefly touched on the metadata. And you mentioned that you can kind of like filter on it, how does it fit into this model, like visually, do you have a visual representation of what it would look like or,
 
 Speaker 3  17:16  
 And how it fits me visually, so well. Visually, it fits in that you can well slice through your whole data set by grouping it by different metadata flags. So specifically, I'm grouping it by the different test cases. So I see the three different test cases lined up for a specific number of threads. And of course, I could do the same thing the other way around. So see the number of threads lined up for a specific test case. And that way, I can compare them visually by some metadata flag. And well then, of course, you have this extra kind of information in spot where it shows you all the information for a specific run that you're selecting in the Chart
@@ -193,7 +193,7 @@ Speaker 2  18:04
 All right. Um, so I guess, kind of shifting over to a broader question. Now, is there any aspect of this data right here the data that you work with, that you feel is not captured by the [Programmatic Performance Analysis] object?
 
 Speaker 3  18:18  
-And to be honest I haven't really worked with ticket myself too much or at all yet. Oh, that's fine. I was gonna look into it. We already
+And to be honest I haven't really worked with [Programmatic Performance Analysis Software] myself too much or at all yet. Oh, that's fine. I was gonna look into it. We already
 
 Speaker 2  18:30  
 You're fine. And it's fine. I don't think
@@ -267,16 +267,16 @@ Speaker 3  25:35
 I hope this was somewhat readable. And then you have your additional things for B, and C, somewhere in here. I'm shortcutting this to [Performance Measurement Tool] enum, because I'm lazy. That's right. And I'm sure turning this float to int.
 
 Speaker 3  25:54  
-And yeah, you have to see in there as well. And then, so depending on your measurement configuration, the user would go in and instruct [Performance Measurement Tool] to record a profile. And kinda goes ahead, does time measurements for all the region annotations that the code goes through, it aggregates it over time inside the program it so that you essentially, in the end, know the total time for each of the four, that expecting your A, B and C and whatever other region and our default kind of regression testing suite, it would then go ahead and compute inclusive times for all the regions. So you will get well, this case, you want 35, 5 and 100 here. It looks for that. And it would then go and aggregate this across MPI ranks in case you're having an MPI program. So the thing that you're getting out in the end is like minimum, maximum, average and total time per region across MPI ranks. So, that's your final metric. So assume that we have like 20 ranks here, then we get like average time per rank. Which may be something like, well, this is probably still like 135. But this might be like five 4.5, and so on, then you have like a max, and this might be six or so. Alright. So once you have that you can run this experiment for different numbers of ranks, obviously, you're getting separate data sets for each of these experiments. And then you can load them into [Perfomance Vis Tool] or [Programmatic Performance Analysis Software] and use whatever favorite way you want to compare all of these profiles. Sort of what you were looking for?
+And yeah, you have to see in there as well. And then, so depending on your measurement configuration, the user would go in and instruct [Performance Measurement Tool] to record a profile. And kinda goes ahead, does time measurements for all the region annotations that the code goes through, it aggregates it over time inside the program it so that you essentially, in the end, know the total time for each of the four, that expecting your A, B and C and whatever other region and our default kind of regression testing suite, it would then go ahead and compute inclusive times for all the regions. So you will get well, this case, you want 35, 5 and 100 here. It looks for that. And it would then go and aggregate this across MPI ranks in case you're having an MPI program. So the thing that you're getting out in the end is like minimum, maximum, average and total time per region across MPI ranks. So, that's your final metric. So assume that we have like 20 ranks here, then we get like average time per rank. Which may be something like, well, this is probably still like 135. But this might be like five 4.5, and so on, then you have like a max, and this might be six or so. Alright. So once you have that you can run this experiment for different numbers of ranks, obviously, you're getting separate data sets for each of these experiments. And then you can load them into [Performance Vis Tool] or [Programmatic Performance Analysis Software] and use whatever favorite way you want to compare all of these profiles. Sort of what you were looking for?
 
 Unknown Speaker  28:12  
-Yeah, yeah. So so before I stick it into [Perfomance Vis Tool] or [Programmatic Performance Analysis Software], like, am I looking at a directory full of what?
+Yeah, yeah. So so before I stick it into [Performance Vis Tool] or [Programmatic Performance Analysis Software], like, am I looking at a directory full of what?
 
 Speaker 3  28:21  
 You're looking at a directory full of [Performance Measurement Tool] files. So essentially, the profiling data that comes out for each of the individual runs.
 
 Unknown Speaker  28:30  
-Okay, and let's say I'm like, the, the competitor at a national lab, and I want to use the [Performance Measurement Tool]  files to make my own tool that is neither  [Perfomance Vis Tool] or [Programmatic Performance Analysis Software], like how would I? How would I read these files?
+Okay, and let's say I'm like, the, the competitor at a national lab, and I want to use the [Performance Measurement Tool]  files to make my own tool that is neither  [Performance Vis Tool] or [Programmatic Performance Analysis Software], like how would I? How would I read these files?
 
 Speaker 3  28:48  
 Well, we do have a bunch of different readers. So there's the [Performance Measurement Tool Reader]  program, which just means an individual can actually read multiple files. And we have a Python reader, which can give you essentially this data back out, you can convert it into JSON, and something fell into JSON also, if you want to read or implement your own thing. So yeah, there's various ways in text form and look at it.
