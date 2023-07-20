@@ -1,0 +1,229 @@
+Researcher 2  
+Okay, yes, but otherwise, I'm just, I'm just observing. So. Okay, thanks.
+
+Researcher 1  
+Um, so yeah, cool, well, then I'm just gonna go over sort of verbally some of the things that were in that document that I sent to you just so that you know, what the, what the research we're doing is all about and sort of what your rights are as a participant in this research.
+
+Participant 2  
+Okay, sounds good.
+
+Researcher 1  
+Up here, okay. And before I begin, I really do just want to thank you for agreeing to be a part of the study. I know your time is valuable, especially as you get very close to graduating and masters stuff. So I appreciate it a lot [P2]. Thank you. No problem. So first, I'm gonna talk about the purpose of this study. It's just to explore how professional data users and tool developers, you know, like yourself, think about ensembles of data and like what aspects of the data are important to them and which are not. And this information we're hoping is going to enable us to design and build better visualization tools for analysis. Now, this study is done as a one on one interview. And like [R2] said, she's just here to take notes and may occasionally time chime in. And each session should take approximately 30 minutes. Now, you're going to be asked, I'm gonna ask you like a series of prompts regarding how you think about your performance data or the performance data you work with. And I'm also going to ask you to draw this data. And I just want to emphasize here that there are no right or wrong answers. So just speak from the heart, you know, it's very much opinion based, so we're happy to hear your opinion. Finally, we're going to make a an audio and video recording of this interview. And we're going to keep a copy of the drawings that you produce as well. And I'm going to anonymize and transcribe the the audio recording from this, and only the research staff is going to have access to this original. And most finally, you may choose to leave or end the interview at any time. And I want you to note this decision will not affect your relationship with us, the interview team or anyone else associated with us.
+
+Participant 2  
+Okay, sounds good. One quick question I have is that, that I'm drawing on an iPad do when I draw do I need to share my screen with you or just send it to you when it's done? And
+
+Researcher 1  
+If you have a if you can share your screen so that I can see it that way as you do it? Are you on your iPad right now? Or?
+
+Participant 2  
+I'm not on my iPad, I could probably turn off my video so you weren't looking up at me but like I can swap my iPad and and do it that way and share my screen when it's ready. Do you want me to
+
+Researcher 1  
+That that might work best we did work. . . The iPad on the. . . it was kind of hard to see the iPad last time we ran this so through just the webcam, but maybe
+
+do you think it would be take a long time for you to figure out how to do that or just kind of swap over to the
+
+Speaker 3  
+Nah. Just log out of this. I mean already has been downloaded and I'm sharing my screen before through my iPad with a professor so I think we'll be okay. Give me like less than two minutes and I'll be right back. Okay,
+
+Researcher 1  
+that sounds good to me. Thank you [P2]. Let's do it.
+
+Participant 2  
+cool. Well, that that should work. Hopefully slightly better. 
+
+Researcher 2  
+Yeah, I mean, I guess we're a little learn. 
+
+Researcher 1  
+Yeah, exactly.
+
+I love that. It's just like two for two people with tablets. Now. Tablets are just like I guess everyone wants a tablet these days.
+
+Researcher 2  
+Yeah, maybe
+
+Researcher 1  
+"Everyone" you know what I mean
+
+Speaker 1  
+I like the people who are gonna want to talk to you about your performance ensemble. Yes.
+
+Researcher 1  
+Yes, exactly. I mean, I have tablets for days but I don't expect anyone else to be able to because I just because I like to draw something like Yeah, right. Yeah, that's my hobby
+
+Researcher 2  
+But I think like a lot of people now it makes more sense. 
+
+Participant 2  
+Okay, can can you hear me? Yep. Sounds good.
+
+Researcher 1  
+Oh, I'm sorry. I need give you permission to share screens because there There you go. Okay, so now you should be able to share your screen whenever whenever we get to it if you'd like.
+
+So, first I just want to ask and get get your your consent that you're good with everything that I told you and that you would like to participate in the study. 
+
+Participant 2  
+Yeah, everything. Everything you stated at the beginning is sounds sounds good to me and I look forward to participate in the study.
+
+Researcher 1  
+Perfect Thank you [P2]. Alright, so now I'm just gonna start off with a fairly high level question. So what what project do you work on, that uses ensembles of data.
+
+Speaker 3  
+So the project that I particularly work on is the is called Thicket, which is in collaboration with Lawrence Livermore National Lab. And we just take ensembles of data and load them into pandas data frames, and then using those pandas data data frame, perform analysis on that data.
+{Data described by storage - pandas data frame}
+
+Researcher 1  
+Perfect. And then if I could get you to describe real quickly, sort of in your data ensemble in general, like what the data looks like?
+
+Speaker 3  
+Um, so I mean, there's kind of two parts, there's one part where, when it's well before. . . do you mean, like, when it's like, what the Caliper files are once it's actually loaded into a Thicket with that with our like, what we kind of look at?
+{Data differences between different tools.}
+
+Researcher 1  
+Um, I think all is totally fine. Okay, you want to talk about if you want to talk about all that, that'd be great. 
+
+Participant 2  
+Yeah, I don't I'll describe some of the cali stuff. I'm not like super familiar with it. But the .cali file is kind of the initial kind of way the data is formatted. So in the form, the kind of the format, like, the way I would describe it, is best term is kind of messy, right? Obviously, there's kind of a set layout to it. But when, you know, in the original kind of construction, for the most part, it's kind of messy in my opinion. But that's what kind of Thicket comes in when you read in the Caliper file. And then it kind of with the Thicket Caliper reader reads in the data and kind of parses through the information that we want. So it gets the performance data and metadata. And then puts those in the in their respective dataframes. So like, for example, the performance data, so time, frontend latency, all go into what we call performance data frame, or perf, data DF. And then the metadata goes into another data frame, called the metadata. So things like when a job was ran, what system it was ran on, the compiler, compiler optimizations. And so with the, you know, they're putting the pandas data frame, so it's kind of in a tabular kind of format, so much easier to read for a user and be able to perform kind of operations on.
+{Data is messy.}
+{Data is messy despite having a 'set layout.'}
+{Description of how data is transformed.}
+{Metadata is mentioned.}
+{Performance data separate from Metadata - separate data frames}
+{Data column given as example for the data}
+{Data entries for Metadata given by examples.}
+{Pandas denoted as Tabular data format.}
+{Pandas explained as easier to use.}
+{Pandas explained as easier to read.}
+
+Researcher 1  
+Okay, um, then. So I get you to kind of, can I get you to list out the parts, the main parts of this data in order of importance to you, or in order of like, kind of what you think might be most important.
+
+Speaker 3  
+So for, for me, in particular, since so I see the performance data as the most important piece of the ensemble data, just because most of the work that I do is on the performance side. So the stats functions, statistical functions that I've developed for the Thicket project, primarily perform operations on the performance data, so you know, time, front and latency like I had mentioned earlier. So that's one of the reasons I see it as a an important since I do most of my work on it. The other reason is, is that I think, you know, with what we're kind of working towards on the project, performance data kind of provides insights into your data. More, so I think then possibly metadata does because you can, you know, perform correlations, perform time series analysis and things like that. So you can kind of get a much better insight, in my opinion, using the performance data rather than the metadata.
+{Performance data is most important.}
+{The data he works on directly is the most important - GREAT QUOTE}
+{Performance data is what provides insights.}
+{After performance, metadata for the kinds of analysis you can do.}
+{Second most important also connected to work participant is doing.}
+
+Researcher 1  
+Okay, and now, I think that's all of my startup questions, so we can move on to the drawing if you'd like to share your screen for me.
+
+Okay, cool, perfect. All right. So now, just sure things are right here. Could I get you to sketch out sort of the entirety of the data that's, that's stored by this dataset?
+
+Participant 2  
+Yeah, so.
+
+So if I have like an initial what I'll call is like .cali, or at least how I, how I have it broken up is that you have this kind of initial file. So I'll kind of make a workflow right where it's stored with. . . or store with I'll say performance data plus meta data. And so, you know, you take this, and it's kind of broken up into two things, right. So once you know comes down, one part is going to be the metadata table where metadata table, and then the other part would be the perform performance data, so it's kind of split in a sense there. And that's how I kind of view it. Obviously, they kind of affect each other, like, in some kind of formats, because, you know, certain metadata like compilier optimization, things like that will directly affect the values in the performance data table. But for the most part, that's not what I think of like when I'm first kind of working with the data is I see them as to kind of separate entities. And so within the performance data table, you have like, what we call when you try to generalize it, like where it's broken up on the top is always say, performance counters. And then, you know, for performance counters, the tim, frontend latency. And then, you know, kind of values for those. And then what we call kind of like nodes, which I kinda view, like nodes is just kind of a broad term, but not really a broad term. But when I think nodes, I would think, like more like application, so there's like, an app here, the app here, and then when you run these applications, you know, you get, say, like for these two applications, there's ya know time for them. And frontend latency values as well. Right. And then for the metadata. It's kind of same kind of format, right? Where you still have a table kind of format as we have here. But it's kind of, well, it's basically the same thing, but it's broken up into kind of profiles. So your profiles data that you load into your multiple datasets that you have for, you know, for each profile, you have the metadata columns up here. And so you'd have like compiler, Clang, compiler, optimization, you know, -03, same. And so that's kind of, that's kind of how it's broken up and kind of the workflow to where it's kind of separated. The other portion that I haven't directly kind of talked about, which I mean, I kind of have indirectly mentioned it, but not like in the format of this interview, or gone in depth into it. But from the performance data of the last part of the workflow is the stats frame, stats table, you know, to keep with table idea. So this is kind of the same kind of format as the performance table. More so than the metadata table. But this essentially just stores values for, you know, calculated statistics. Right, so you have your calculate statistics, so time, median, front end, latency, median as well. And then again, you'd have the node kind of format of the app, as well. So yeah, that's kind of how the workflows broken up into [hard to decipher], like the data is kind of stored and kind of moved around.
+{Shape of data includes workflow to get the data.}
+{Ellipses used to show more data after structure is set.}
+{Having a structure like a table allows use of ellipses.}
+{Draws both performance and metadata table.}
+{Suggests linkage between performance and metadata verbally.}
+{Mentions nodes but thinks of them as applications, influenced by RajaPerf.}
+{The danger of the odd-ball example RajaPerf where they don't understand the data structure.}
+{Stats frame is brought up late, for the first time, wasn't in the previous.}
+{Drawing the data leads to more parts than previous discussed.}
+{Dropped data - There's no function call graph here though the participant later understands the concept.}
+
+
+Researcher 1  
+And the medians, what what are they aggregated? Over?
+
+Participant 2  
+Oh, yeah. So one here to make this make more sense, so. So you have one, so you have one application that you've ran? You ran it multiple times over? Right? And my apologies for not putting this but you have profile one profile, two, right. So yeah, multiple kind of profiles, you know, say "n" number, where n is the number of runs that we decided to do. So we decided to run do 10 runs, it'd be 10 profiles for that one for this one app right here. That would be loaded into there'll be 10 values for that specific node, we then aggregate here this value. On, you know, app down here for the time median, we aggregate. You know, say you only have two profiles loaded in. Right, we have two profiles loaded in, we add those two together and then divide by you know, two to Get the kind of median down here. So 20 plus 25 divided by two, right? To get kind of this median value, so you're using however many profiles that you load in some ensembles and data to end up, aggregating them into a single value here in the stats table.
+{Stats table aggregates over profiles.}
+{This might be the most detailed description of the stats table, but only gained by profiling.}
+
+Researcher 1  
+Perfect, I love how clean this is, it's, it's very, it's very easy to understand, especially in sort of a workflow structure. Alright, so then I guess I'm going to just move on to I have another thing for you to draw, it's going to be just a very simple example data set that I'm gonna give you. Oh, no, I'm sorry, I forgot. There's one more thing I need to do. This is why we have notes. Yeah, if I can, if I can ask you kind of where what what parts of the data set are relevant when we're performing specific tasks, like analytic tasks? So the first one is like if I am an analys. . . an analyst, and I'm, I want to see how, you know, if I have like an increasing number of CPUs, and I want to see how that relates to the runtime of a single function, what portions of the data would I use in your drawing here?
+
+Speaker 3  
+I would use, I would kind of combine them, right, I would look at so I will use the metadata and the performance data. Because you know, in the metadata, this is where we're kind of, you're kind of mapping the like, the information that you use to kind of run the job. So like, when we go back to like compile or compiler optimization, we get that kind of information, but then the output for the performance data has these kind of values that were kind of used, when kind of generating the data, right. So when you run with both what was again, it was number of nodes or number of cores, you would have that stored in the metadata. But you would have that information in the metadata, and then it would go, like the actual outputs, and the metadata. So like, the way I would look at it is that I would use some kind of conjunction to map well, there would be 10 profiles. So well, I guess I actually, maybe I'll use all three in the sense of that. You could you in in a sense, have the metadata, where you would have the information, you have the performance data, I would then aggregate all those values. Because I mean, depending on what you could do, I think all three are kind of important to each other. And they're kind of related. But the performance data, if you would want to maybe show like clusters of data would make sense, you could do like clustering, I guess for the values you had on the metadata table for the number of cores, the number of nodes that you run, but then you could also aggregate those values into the stats table as well. And then also run kind of the same analysis, but only have kind of one point to show for that. So like performance data table, multiple profiles, you can look at, like, say, a box plot. So kind of a variation. In the stats table, you could do something more like along the lines of, you know, creating like a bar plot. So a single value, and they can all kind of work in conjunction.
+{Task 1 requires both metadata and performance data.}
+{Performance data is mapped to metadata.}
+{Works in their work (stats table) into question that doesn't need it.}
+
+
+Researcher 1  
+Perfect. All right, then. So I've got one more little task related question like this. So if I want to compare the runtime differences between say, a code base that was run on your AWS and a code base that was run on Livermore computing, what portions of the data would be most important for that?
+
+Speaker 3  
+I would say that performance performance data table, like the way our workflow works is and the way I envision is that when you load in Can I ammend my picture real quick? Sorry, I just realized something. Yeah, of course.
+{Task 2 is just performance data but when talking through process, amends.}
+
+
+Speaker 3  
+Okay, so the way that it works, where we, you have an initial kind of like idea of meaning up here with the performance data, and then you kind of bring it down to a thicket and think it has like the different kind of what I would call attributes, essentially, the performance data and the metadata. Like when we compare or perform analysis, normally, the data isn't loaded into like, you don't load in say, if you if you have data from say AWS or data from say, quartz on LC, right? We load those, like the way I work with it, you load to I would load two Thickets in sort of two Thickets, and then use both of their performance tables to kind of do you know, analysis across the, you know, against each other. Yeah, so, you know, two performance data tables is what I would envision using for the multiple runs for each, you know, say a data set one data set for AWS and and say another data set for data that was ran on quartz on llnl lc systems.
+{Task 2 is done with two ensemble objects.}
+{Ensemble of ensembles.}
+
+
+Researcher 1  
+Perfect, thank you. All right. And now Now we can get to the final drawing here. Yeah, scroll down. Thank you. So I'm going to ask you to just imagine a very simple dataset. It's a profile of a program with three functions. And we're going to call those functions A, B, and C. And function A took 30 seconds to run run, function B, took five seconds, and function C took 100 seconds. Can you draw this dataset for me?
+
+Participant 2  
+Yes. doesn't know how to name so far? And then you said, Can you name the apps? Again, for me real quick, are they it was
+
+Researcher 1  
+a, b, and c.
+
+Speaker 3  
+A,B and C apps? Okay. And then he had how many seconds 30? B had five. And then C had
+
+Researcher 2  
+100 100. Okay.
+
+Participant 2  
+And then so A, B, and C are the apps and then there's . . . you said there are profiles or wait A, B, and C or profiles, right? 
+{Initially draws table/list just to keep track of the values.}
+
+Researcher 1  
+Yeah, this whole dataset is a profile of, of a code base.
+
+Participant 2  
+Okay, so Wow, I would view it or the way I think about it in terms of like, profiles. So I would really just look at it how like we work with it, when they get or the way I imagine it, like when you say profiles, right? I mean, there's a couple different ways of imagining it, right, where you have profile index, and then you have A, B, C, and then I want to have out here another index called node, and this would be like the code base, or whatever you want to, say call it code base. So for this code base, you'd have these three profiles that you ran, and then you'd have 35 and 100, for those values. And so So yeah, so these would be you know, I view kind of profiles as number of runs, essentially, more so like I know, we, you know, people calling profiles, but I see it more as like when a dataset that's the number of runs or number of simulations. And then for those number of runs or number of simulations, you have different timings, and then you can kind of, you know, aggregate those later on into a single value with median, mean, and things like that. But I don't think that's the only way you can envision it, depending on how you I think this drawing is, like, I mean, it's how I envisioned it, mainly with the data set that we work with, but I'm trying to make sure I didn't. But this is sort of what you mean, though, right? I mean, if you can, if you can answer this question, when you say profile profiles, or like, do you envision profiles or a number of runs as well? Are you is this a question you can't answer? Because of the study?
+{Participant casts the individual functions as profiles to think about them as profiles.}
+{Participant casts question into structure they work with.}
+
+Researcher 1  
+well, the, the, the whole, I envision the whole, the A, B and C as being functions in one particular profile. So like a would call B, B would call C, kind of thing. And then then we're profiling the runtime so if the individual functions.
+
+Participant 2  
+so a we call C, C,  would call or B,
+
+and C would call and B, would call C.  okay and then the individual values personal code base 35, 10s the time for it. Okay.
+
+And then you said there was the functions can you explain it one more time to me,
+{Participant clarifies what A, B, C are.}
+
+Researcher 1  
+A is a function B is a function and C is a function if you couldn't like A could be main B could be do something, C could be print something.
+
+Participant 2  
+Okay, so if we have these now make sense. So there's couple different ways I do this now. So you have A if I would call that we call it And then I'm gonna name some of these just to help "Main". Right. So "Main" has, ironically 30 seconds. But okay, so let's say, you know, you're you know, irrespective of time, if you have A, and then say, you have B is another function, and maybe down here, you'd have another function called C, right? In which the needs, you have other kinds of values off B, and C, you know, like, maybe it's B underscore, you know, app, C underscore, like different apps, that that are different functions. But I would view it as, these types of different kinds of things, where they're, like, kind of directly affecting each other, but they're not the same. Like they're, they all affect main, right? So a calls b, and b calls c, then you know, C the way envision it C's affecting A, since B calls it, right. So in a way that A been affected by C, right? So I kind of see that in this kinda tree kind of format. If I were to put it in like, terms of the data that we look at, I don't, I would view it as kind of like, where you'd have again
+
+way we loaded in or the way we loaded in as functions because the type is you still would have been loaded as node but you wouldn't have them. Like there'll be zero profiles for them, right? So you'd have 35, 100 You would you need a run for each of these processes here or these functions you would need to do runs for them so right now there's just a single profile in here like one profile for this and so if you'd want more profiles, I would need to run a one like A multiple times B multiple times and C multiple times
+{Participant hesistant regarding exclusive time.}
+{Participant draws tree but casts it as what is affecting what}
+{Participant draws indented tree.}
+
+
+Researcher 1  
+perfect, very comprehensive like it Okay, yeah, I think that's it that I had for questions here. Did you have any questions for us trees as we close this out?
+
+Participant 2  
+Ah, I don't think so. I think that from my side yeah, it's good. Hopefully this helps I don't know if this last one this last drawn out much but actually helped a lot.
+
+Researcher 1  
+It's really really interesting. A Yeah, no, I think it is. It's super helpful, honestly. And the last thing yep, me and [R2] probably gonna hang out here to debrief real quick. So you're free to go whenever you like. Oh,
+
+Participant 2  
+yes, yeah. Thank you so much for being the study. I gotta figure out how to Okay. Okay, so I'm gonna ask your week.
+
+Researcher 2  
+You can stop recording now. Thank you. Recording so much better than let's stop recording.
+
+Transcribed by https://otter.ai
