@@ -1,46 +1,46 @@
-R1  0:00  
+A1  0:00  
 Cool. Okay, cool. All right, I'm recording. And now we can start off. And I'll just start off with sort of a basic question here. So what project? Do you/did you work on that uses ensembles of data?
 
 P6  0:15  
-Let's see [Scientific Simulation Software A] and [Scientific Simulation Software B].
+Let's see [SimulationAPI] and [PhysicsAPI].
 
-R1  0:22  
+A1  0:22  
 Okay. And also, I guess, ensembles of performance data as well. Right? Okay, perfect. And if I could get you to choose one of those that's like most fresh in your mind, and explain, describe at like a high level, the data ensemble, one of those data ensembles.
 
 P6  0:43  
-Okay, so [Scientific Simulation Software B] the most recent thing we did. And so I guess [P8] is gonna tell you the same thing. But basically, the study of performance on different machines, some of them internal, at [National Lab], and some of them at AWS. Essentially, some of the questions were, how much noise do we see in those different runs? Is there are the runs on AWS more noisy? And then also comparing the performance? So if you have essentially comparable hardware, you know, on pram, and then in the clouds, do you get the same performance? So that included basically lots of repeat runs to do attempt to tackle the noise question and runs at different scales to to attempt to see the difference in performance.
+Okay, so [PhysicsAPI] the most recent thing we did. And so I guess [P8] is gonna tell you the same thing. But basically, the study of performance on different machines, some of them internal, at [Lab], and some of them at AWS. Essentially, some of the questions were, how much noise do we see in those different runs? Is there are the runs on AWS more noisy? And then also comparing the performance? So if you have essentially comparable hardware, you know, on pram, and then in the clouds, do you get the same performance? So that included basically lots of repeat runs to do attempt to tackle the noise question and runs at different scales to to attempt to see the difference in performance.
 
-R1  1:55  
+A1  1:55  
 Okay, perfect. And can go maybe just a little bit more granular on the data, kind of to help me understand the the shape of it a little bit more.
 
 P6  2:12  
 Alright, so it's a multiphysics run, which means there are several computation phases in there. It's a time time stepping algorithm. So you compute different properties. And you know, compute it again, until you converge essentially. So within each time step, you have different regions where you're computing and different a couple of communication calls. Some of them are a halo exchange. So you're essentially finding out what's, what information is coming in from your logical neighboring processes. And some of them are reductions. So think in terms of what's my error currently, how far from convergence? Am I type a question from each process, and then you gather all that information to figure out what the overall error is, and you need to iterate more.
 
-R1  3:18  
+A1  3:18  
 And to solve the problem that you are working on, which aspect of that data feels like most important toward getting getting at that?
 
 P6  3:31  
 Are you talking about the application data? Or what are you asking?
 
-R1  3:35  
+A1  3:35  
 The, the measured data
 
 P6  3:38  
 that measure data, right? So right, so we differentiated. Essentially, fairly quickly, we kind of grouped computation by type where computation was one type, and we had an expectation of low noise there, always throughout actually, we ignored it. And then the communication part was where we were focusing on because that's, that's where we were seeing the noise.
 
-R1  3:38  
+A1  3:38  
 All right, perfect, then, that's pretty much my question questions, my verbal questions. But if you'd like, you can now pull out that pencil and piece of paper, and I'm gonna ask you to start sketching. And if I could get you to, is it possible? Would you be able to point your camera down toward the paper? If not, I understand you can. Oh, yeah. Yeah, pretty good. All right. Um, maybe if you can just try and hug the bottom half of the paper, if possible.
 
 P6  4:51  
 All right. Sure. All right. It was like a test. I don't know.
 
-R1  4:57  
+A1  4:57  
 I know, right? Like we're like we're monitoring. Alright. So, if I could just have you sketch out the entirety of the data stored by this data set that you just described, like, say the measured data set. And you can use any abstractions or metaphors you like to describe the data and how it relates how the parts relate to each other, the process of collection, anything like that.
 
 P6  5:25  
 Okay, so.
 
-R1  6:01  
+A1  6:01  
 That part is like an interview, but could you speak speak aloud as you're going through it? And let me know that?
 
 P6  6:06  
@@ -50,13 +50,13 @@ So communication time actually goes up with scale, right. And so I essentially s
 
 noise bars or error bars, right. And then on AWS, I think I was basically seeing a much slower time and much bigger, like 10 times bigger. I don't know how to really draw this correctly. Error Bars, right. There. bars were were much, much bigger on the network side where they weren't comparable on the communication.
 
-R1  9:47  
+A1  9:47  
 Interesting. So that seems intuitive.
 
 P6  9:51  
 Right? And so those were sort of the conclusions from from that study is that the interconnect is slower, but that's half the problem. The other half of the problem is the huge noise. Since this is a BSD application, all synchronous. So because it goes in lockstep, you know you've got one process that that's, I don't know if you can see any more. That's all the way up here. That's how long it takes them to communicate. Everybody waits for that one. Right. And so not only the median was much higher, but also, you were always waiting for the slowest one, right? It's like the guys that are finishing the processes that are finishing sooner. Doesn't matter. They're just going to sit and wait. Yeah. And so overall, I guess your your time, communicating went up dramatically, basically. Does that make sense?
 
-R1  10:52  
+A1  10:52  
 Yes. Yeah, absolutely. It makes sense.
 
 P6  10:55  
@@ -66,101 +66,101 @@ And we haven't converged on that. What we're trying to do? Well, the way that th
 
 the claim for multiphysics applications has always been that you need a faster interconnect, otherwise, they do not scale. Right. And so that's kind of where I want to zero and further, it's like, well, at which point, can we you know, at which point, does this really impact their scaling? You know, are we talking about being able to do it if the interconnect is two times slower, but not being able to do it when it's 10? times slower? What what is the real you know, how fast is, you know, obviously, everybody wants the fastest, but, what can you get away with? And so I guess, when you go and add these two the overall picture is like the overall scaling, right? And so basically, the problem is that at bigger scales, when you have this kind of noise, and essentially, you're writing at the top of this, this takes over your scaling properties of the overall overall time.
 
-R1  12:22  
+A1  12:22  
 Yeah, really dominates. Yep. Cool. All right, I've got some sort of task dependent questions, then that you might, you know, use this data model to answer. And to start off, I just, I'm curious ended this may kind of seem controversial, because I think you talked about a lot. But if you want to relate, like say how changing the number of MPI threads relates to the runtime of an overall program, what part of the data would you use? What portions of it?
 
 P6  13:00  
 Again, sorry,
 
-R1  13:01  
+A1  13:01  
 so it's fine, it's fine. So like, if you're doing say, a scaling study, and you you increase the number of MPI threads, and you want to see how that relates to the runtime of the overall program? What portions of the data would you use? 
 
 P6  13:17  
 So obviously, you start by looking at the whole thing, right? The entire entirety of the runtime. And then, you know, you start throwing away things that may be irrelevant like IO, you can you can drop IO at different rates, so maybe you shouldn't really consider it as part of your just pure performance study and right. And then from there, so there's actually a lot of questions that that you may be trying to tackle was that one of them? So I described the strong scaling study, that you're when you're looking at the overall time, right, you are, you're essentially looking for the point of diminishing returns, where adding more resources does not, does not provide sufficient benefit. And that's, you know, there's a fudge factor in there, right? If it speeds it up a little, maybe you still want to do it. But you know, it's no longer cutting it in half than me, you know, maybe it's not as efficient, but you may still want to do it, it just kind of depends on what depends on your constraints that you're working with how quickly you need the answers, but obviously, at some point that essentially bottoms out and adding more resources because these two curves when you add them, right, they don't, they don't decrease together, right. So at some point, you do need definitely need to cut it off. And then that point of diminishing returns is different. Dramatically different on CPUs and GPUs, because on the GPU, so the communication for the number of nodes doesn't matter if you've got GPUs or CPUs attached, right? That's, that's what it's going to look like, for the computation, the, the computation on the GPUs is going to be 10 times faster. So then adding a very small computation time to the same communication time is going to be is going to make your point, no returns, you know, on on a smaller scale here than on the CPUs
 
-R1  15:30  
+A1  15:30  
 All right. Next Next question. So, and again might seem trivial with with the way you set it up, but if I want to compare the runtime differences between a code base that was run on one architecture, versus one that was run on another architecture, can you show me which portions of the data would be most useful for
 
 P6  15:49  
 that? Alright, so, this should stay the same? Yep. This would look dramatically different. Right.
 
-R1  15:57  
+A1  15:57  
 Okay. Yeah, that makes sense. And then finally, if I want to say that I identify a function that has very low exclusive time, so it itself doesn't take a lot of time, but high inclusive time? Where would you find out? Or like, where in the data? Would you find out where that time is spent? So under it's taking a lot of time, probably.
 
 P6  16:25  
 So right, so then it has siblings? Or children, I suppose. No, hold on. Yeah. So siblings or children? Right. And so I guess that's, that's your two options? What you're asking?
 
-R1  16:39  
+A1  16:39  
 Okay. Yeah, I mean, like, like, if if I identify that that main only takes five seconds to run, but it has this, like inclusive time of like, 1000 seconds, then, like, I mean, that the not only takes five, but I mean, it's only doing five seconds of computation inside of it, right? But then in total, it's like 1000 seconds, because of the like, the inclusive time is 1000 seconds.
 
 P6  17:04  
 All right, so So then it's not it's outside of it, of its of the actual function, it's inside the functions it calls, right. So. So okay, so the overall time is important, because you want to be able to add up regions and reason about well, the overall problem. And then now let's say there's two parts to it. So you want to reason about the relative cost of those two parts. But usually, you're probably looking at exclusive time, because it's the exclusive time that tells you how much you're spending in this function specifically, and whether you should be looking at its implementation. Right? Because the fact that the time is elsewhere, just basically means that you have to go look elsewhere of what to optimize. Right?
 
-R2  17:57  
+A5  17:57  
 And you said something about siblings and children? What did you mean there?
 
 P6  18:02  
 Oh, in the tree in a call tree? So if you have a function? Oh, I guess. Okay, so siblings, then I guess, don't don't make sense in this. Not sure how I ended up on siblings. But yeah, the children are where your time is spent.
 
-R1  18:24  
+A1  18:24  
 All right, um, then, too. So that's, that's pretty much the end of my task related questions. And so I just, I just have a few more. And I'm gonna ask you for one more drawing at the end. But so we talked a lot about data, where does metadata fit into this model that you drew out?
 
 P6  18:44  
 Which data
 
-R1  18:45  
+A1  18:45  
 of the data they drew? Yeah, where does metadata fit into that? Like, how does it
 
 P6  18:49  
 Oh, right. So so the number of processes comes from the metadata? What comes from the metadata is which of the runs were on machine one, right. And then essentially, what you're doing is you're grabbing, you're grabbing all of the runs on machine one at this scale, and at this scale, right? So you're, you're grabbing, you're looking for machine one and this number of processors, right to to form a little group that you are now averaging and computing you error bars on. Right, and then you grab another one, right? And then you do the same thing for machine two. So I guess, you're only using two pieces of your metadata here. You could be you know, your data set, you could you could further you know, if you see a big spread, right, then you can start looking at your time steps, the timestamps and be like, oh, you know, early in the day, this was not a huge variance, but Late in the day runs, everybody in their brother was on the machine and the variance went up. Right? So you can, you can start looking at the time these runs occurred. In some cases, you could have recorded what allocation you got. So maybe for some of these runs, you got a pretty tight allocation. So I guess that that would that would appear on the communication charts. But if you got for some other ones, you got an allocation where the nodes are close. And for some of the runs, you got them across the system that could that could well, you know, result in the difference whether you're at the top or the bottom of the error bars. We can get that information on [Lab computer]. AWS does not give us that information, which upsets me. Because I do not know what I get in my allocation or how far things are or what is it right, I do not know anything about the allocation. So so that's sort of one of the, you know, [Lab computer], the labs have long figured out that that piece of information is important. And AWS is like what what are you talking about? Right? They don't know. So yep.
 
-R1  21:23  
-Then, okay, I'm gonna ask very explicitly, so how does this this model that you wrote out the, you know, the graphs and everything relate to the [Programmatic Performance Analysis Data Structure] that we've been working on?
+A1  21:23  
+Then, okay, I'm gonna ask very explicitly, so how does this this model that you wrote out the, you know, the graphs and everything relate to the [EnsembleAPI Object] that we've been working on?
 
 P6  21:36  
 Right, so each data point in here is basically so this is one run rate. And then the error bars? Well, no, that's not a one run, it's an average of the runs. And the error bars are also the average for the different runs right? For so So here, I, I basically filtered my graph. And so this is a subset of nodes. And this is another subset of nodes. Does that answer your question? So basically, I start with, you know, let's say there were 10 runs at this scale. And so I'm grabbing the computation time out of that, and the communication time out of that. And then, so the 10 runs over your 10 profiles at that scale. And then the computation of the average, in the error bars that that data would end up essentially in the stats frame. Right? Right. So for this plot, I am no longer looking, I start with the individual runs. But for this plot, I'm no longer looking at the individual run. So I'm looking at the data and the stats frame.
 
-R2  22:51  
-So I'm not quite as familiar with the [Programmatic Performance Analysis Software] object as [R1] is, can we very quickly go over that?
+A5  22:51  
+So I'm not quite as familiar with the [EnsembleAPI] object as [A1] is, can we very quickly go over that?
 
 P6  22:59  
-Yes, so the [Programmatic Performance Analysis Software] objects, I'm gonna attempt to explain without drawing, you can get if you want. We have pictures for that. And I don't want to have to draw basically, we have a call tree. The that is the call tree should be the same or similar across the sets of runs. So we have a single representation of the call tree. And then for each node in the tree, we are basically recording the the multitude of runs, and the multitude of runs can be all of the runs for this picture. Right. And then you can filter. So when I was describing and now I'm gonna grab all of the ones for machine one at this scale. That's a filtering operation on that on the entirety of that data. And then I can compute on it, I can, so let's say I have 10 runs, I can compute the average and whatnot and be provided a storage facility that's essentially an order reduction mechanism, right where you you had 10 times in this function, but now you have a single average, a single variance, what have you, right? But it's also associated with that same call tree was the same function. I don't know that I lose you.
+Yes, so the [EnsembleAPI] objects, I'm gonna attempt to explain without drawing, you can get if you want. We have pictures for that. And I don't want to have to draw basically, we have a call tree. The that is the call tree should be the same or similar across the sets of runs. So we have a single representation of the call tree. And then for each node in the tree, we are basically recording the the multitude of runs, and the multitude of runs can be all of the runs for this picture. Right. And then you can filter. So when I was describing and now I'm gonna grab all of the ones for machine one at this scale. That's a filtering operation on that on the entirety of that data. And then I can compute on it, I can, so let's say I have 10 runs, I can compute the average and whatnot and be provided a storage facility that's essentially an order reduction mechanism, right where you you had 10 times in this function, but now you have a single average, a single variance, what have you, right? But it's also associated with that same call tree was the same function. I don't know that I lose you.
 
-R1  24:48  
-I follow but I know maybe [R2]?
+A1  24:48  
+I follow but I know maybe [A5]?
 
-R2  24:50  
+A5  24:50  
 Yeah, I think I got it. Okay, and the storage facility that you're talking about, this is the what is what do you mean by storage facility?
 
 P6  25:01  
 So we have a data frame that stores the runs, the individual runs, right and the order reduction, and its affiliated. So the 10 runs, will be, you'll have entries for each of the functions right in the goal tree. The order reduction mechanism is essentially the same call tree. But now a different table that doesn't have 10 runs Instead, lets me add columns of you know, variance mean, blah, blah, blah. Okay, so it's one entry per node in a cult tree, as opposed to n.
 
-R2  25:44  
+A5  25:44  
 Okay, and what about the metadata,
 
 P6  25:48  
 right, and the metadata is per run. So there's a correspondence between the table that has all of the runs recorded. And so for each of the 10, or whatever runs, you have an entry in your metadata that records all of the all the things you know about that run.
 
-R2  26:10  
+A5  26:10  
 Okay. Yep. Cool. Thanks.
 
-R1  26:13  
-All right. And then then my last speaking question like this is just do you feel like there's any aspect of the data that's not captured by [Programmatic Performance Analysis Data Structure]?
+A1  26:13  
+All right. And then then my last speaking question like this is just do you feel like there's any aspect of the data that's not captured by [EnsembleAPI Object]?
 
 P6  26:36  
 So some things are easier to reason about than others. So when we're talking about averages and error bars, it lends itself very naturally. It is harder to think about rates this way.
 
-R1  26:56  
+A1  26:56  
 Can sorry, can you explain for me what you mean by rates, like error rates or
 
-R2  27:03  
+A5  27:03  
 so for example, so I guess I was trying to describe CPU versus GPU. And I basically kept saying, This stays the same. This, you would have, you would have your computation much lower for the GPU, right. Which then means that the communication happens a lot more frequently. And I know that, and I can reason about it, but it is, I do not yet know how to represent that in ticket, the frequency of something occurring, right. So technically, I should be able to, just by that knowledge, right, I could divide this time by 10. Knowing that that's what happens, right? And then the total time would be less, right. But what I'm interested in as the person, you know, how frequently the communication happens, and the proportion of time it's taking. And actually, I liked that it would be the same. It wouldn't be the same notionally, except if you are communicating 10 times as often in the amount of data hasn't changed, right, the rest, the rest has not changed. You're creating more contention. And I don't yet know how to think about it in those terms. So it's sort of like, you know, I will measure the communication time, just like I did on the CPUs, and I will get fairly similar graphs, they will probably go up a little because of the contention. But it's going to be difficult for me to draw that conclusion, just from the data. It's only because I know that's right. So I don't know, that that's clearly. I guess that's what I don't know, it's like you would have that data, right. But arriving at that conclusion, it's not clear to me that we have the means to arrive at that conclusion just from the data or you still need the human that understands that there is more traffic on the network, of course it's slower. Right. Those are the things that I don't yet know how to the data is there but it doesn't. The fact that the time goes up doesn't relate that that fact to the frequency or the amount of traffic on the network.
 
 Unknown Speaker  30:02  
-[R2 and P6 discuss research projects they are engaged in]
+[A5 and P6 discuss research projects they are engaged in]
 
-R1  30:11  
-All right. Cool, then. Yeah, I think I think that pretty much gives a good good overview of [Programmatic Performance Analysis Data Structure], I'm just gonna ask. Okay,
+A1  30:11  
+All right. Cool, then. Yeah, I think I think that pretty much gives a good good overview of [EnsembleAPI Object], I'm just gonna ask. Okay,
 
 Unknown Speaker  31:04  
 I had one more question before we leave this, which is that you said you can get allocation data from [Lab computer]? Like, how do you put that in the second object? Because that sounds really complicated on its own?
@@ -168,100 +168,100 @@ I had one more question before we leave this, which is that you said you can get
 P6  31:18  
 So I am trying to work on it. It's not yet working. So okay, so good question. So okay, so what I know at the runtime, each node knows its rank, which is a logical value, right has nothing to do with the notes. So I know the logical value of the rank and I am trying to so that I can, what I'm trying to do is, is put that as an attribute on, on the communication calls. Which, which is a little dangerous, because essentially, it's like in the halo exchange, right, you are sending, you're not sending. One process is sending messages to one set, and other processes send each another set. So there's a lot of data that's, that's happening. And also they are sending different amount of data to different processes. And so And also, it's, if you were to measure each send individually, that's going to be a ton of data. So step one, I'm trying to at least record who's sending to who and how much the measuring part is probably not feasible, because you'd have to like, insert more barriers to properly measure it right, which complete completely perturbs things. These are asynchronous asynchronous calls, right. So that's a challenge to measure. But at the very least, I am trying to record which logical process pairs are communicating and how much data they're sending, then I can dump out into the metadata. On [Lab computer], I can dump out the the list of notes that were allocated to me. And presumably, I should be able to figure out and this is going to be different on all the machines. So I haven't gotten there yet. But I should be able to figure out a mapping from the actual node IDs to the logical MPI ranks. And I should be able to on a per machine basis, figure out how many hops things are away in the actual network. So we are mostly factories, so use,
 
-R2  34:07  
+A5  34:07  
 okay, so you're not going to record what's on the non application nodes. Like other people's runs,
 
 P6  34:16  
 I cannot do that. from the application perspective, I would have to be looking at it from the system perspective. That is not possible. But this this has, there's been some studies that [Lab computer] has done like that, but you know, they are not. . . That's pretty involved to be able to track that many things. So, okay, this is not this is not done routinely. How about that? Okay.
 
-R2  34:56  
+A5  34:56  
 Okay, so the logical list or the not the physical List of node IDs you said goes into the metadata. Where does the where does the communication profile go? The part where you're just gonna record? Who's sending to who? And how much data? Like, where does that exist? So
 
 P6  35:15  
 that would be that would be become an attribute on the communication node in the call graph.
 
 Unknown Speaker  35:26  
-Okay, and then. So wait, these profiles in the beginning, you were talking about them per run. But now it sounds like you have them for rank house. So both of them exist in the [Programmatic Performance Analysis Data Structure] object separately,
+Okay, and then. So wait, these profiles in the beginning, you were talking about them per run. But now it sounds like you have them for rank house. So both of them exist in the [EnsembleAPI Object] object separately,
 
 P6  35:46  
-so So what we put in the [Programmatic Performance Analysis Data Structure] is up to us. Right? I don't think we have attempted to combine both yet. So actually, what's happening is the way we're doing this right now, and we may change it in the future, if we find the need to, basically, [Performance Measurement] tracks, a profile per rank. And then it's doing a reduction step to combine all of that information, and essentially, what ends up so we can specify what it does was the data when it combines it. So for this metadata, who sends to who, I want that appended right, I want the full list for the times. To save time, most of the time, we essentially indicate that I would like to know the min, max and average. And so as it essentially collapses it down to these three values where instead of keeping 1000s of values, right, however many ranks you have.
+so So what we put in the [EnsembleAPI Object] is up to us. Right? I don't think we have attempted to combine both yet. So actually, what's happening is the way we're doing this right now, and we may change it in the future, if we find the need to, basically, [MeasurementAPI] tracks, a profile per rank. And then it's doing a reduction step to combine all of that information, and essentially, what ends up so we can specify what it does was the data when it combines it. So for this metadata, who sends to who, I want that appended right, I want the full list for the times. To save time, most of the time, we essentially indicate that I would like to know the min, max and average. And so as it essentially collapses it down to these three values where instead of keeping 1000s of values, right, however many ranks you have.
 
 Unknown Speaker  36:57  
-Okay, so then, min max and average then become the main [Programmatic Performance Analysis Data Structure] dataframe data, and not the statistics frame data,
+Okay, so then, min max and average then become the main [EnsembleAPI Object] dataframe data, and not the statistics frame data,
 
 P6  37:08  
 right? Because that is per run. So now we're talking about per run, I have a min max and average, and those are three columns per run. But then I have 10 runs or 100, runs or whatever. And so the statistics, the stats table, would then do min max and average over the 100 runs or whatever, however many you have in the main data structure.
 
-R2  37:35  
+A5  37:35  
 Okay, cool. I think I got it now.
 
 P6  37:38  
-Yep. So there's, there's different averages, right? You're averaging different things at different steps. But yeah, so with [Performance Measurement], we can essentially request, what data gets output? If you really need the correct data, you can, we would be able to read that into a ticket. But I don't think we've tried to read in multiple of these into the get, right, because that's essentially an additional dimension on my data.
+Yep. So there's, there's different averages, right? You're averaging different things at different steps. But yeah, so with [MeasurementAPI], we can essentially request, what data gets output? If you really need the correct data, you can, we would be able to read that into a ticket. But I don't think we've tried to read in multiple of these into the get, right, because that's essentially an additional dimension on my data.
 
-R1  38:13  
-All right, cool. Well, if [R2] doesn't have any more questions, then we'll move on to our great, our last thing, I'm just going to have to draw a very simple dataset for me. And if you'd like you can do it above the things you drew, or on a new page are so smart. So I are going to ask you to imagine a simple profile that has three function calls. And they're just named A, B, and C, and A calls B, and C. So b, and c are the children of A. And then each of those functions has a time associated with it. A took 30 seconds, B took five seconds, and C took 100 seconds. And if I could just get you to draw that out, and feel free to ask me for any, any of it as you go along.
+A1  38:13  
+All right, cool. Well, if [A5] doesn't have any more questions, then we'll move on to our great, our last thing, I'm just going to have to draw a very simple dataset for me. And if you'd like you can do it above the things you drew, or on a new page are so smart. So I are going to ask you to imagine a simple profile that has three function calls. And they're just named A, B, and C, and A calls B, and C. So b, and c are the children of A. And then each of those functions has a time associated with it. A took 30 seconds, B took five seconds, and C took 100 seconds. And if I could just get you to draw that out, and feel free to ask me for any, any of it as you go along.
 
 P6  39:11  
 Can you repeat the times?
 
-R1  39:12  
+A1  39:12  
 Yeah, no problem. A was 30 seconds. B is five seconds. And C is 100 seconds. Okay. Okay. And, yeah, is that that you're drawing? So that's the exclusive time right? Yep. Okay. Great. That's it, but it's a very simple data set. So that would that would make sense.
 
 P6  39:43  
 What are you trying to get at here?
 
-R1  39:46  
+A1  39:46  
 Ah, I guess I can tell you is okay. But it's, it's a control.
 
 Unknown Speaker  39:50  
 Don't tell anybody anybody talked about? Yeah, trying not to, not to introduce a bias.
 
-R1  40:00  
+A1  40:00  
 To introduce a bias. Yeah. So this is a control question so that we understand how people will draw out things that we know exactly what the data representation is. Because think it's very broad, abstract, there's a lot of parts to it. And so we want to be like, so we want to be able to say like, Oh, yes, people generally drew the tree as a, as a tree or as an indented tree. Right. But if like, you know, it's not the same as the way they drew, say, the tree in the before question, then it will be. It has information for us. It's telling about, like, you know, how people are thinking about the more complex data versus the very fundamental data? Yeah, I knows.
 
 P6  40:50  
 So, yeah, before you threw in the numbers, right, I would have drawn it as a tree tree.
 
-R1  40:57  
+A1  40:57  
 Okay. Yeah. I mean, which is that's, it's all good tho.
 
-R2  41:00  
+A5  41:00  
 Wait. What's a tree tree?
 
 P6  41:02  
 Oh, like this.
 
-R1  41:05  
+A1  41:05  
 Node link? Oh, yeah, like that. That makes sense.
 
 P6  41:10  
 Right. But then once once you're throwing in data, it's easier to think about it this way. Because then I can be like, Oh, this is exclusive. I can compute inclusive, right, I can start reasoning about it easier. Where, you know, this is becoming very disorganized for any sort of thing like that. Yeah.
 
-R1  41:32  
+A1  41:32  
 Yeah. Especially for the looking at the numbers, for sure. All right, um, then I guess that just about, does it? And yeah, if you don't, yeah, thank you, [P6]. If you want to make questions for us, 
 
 P6  41:52  
 Did I pass?
 
-R1  41:53  
+A1  41:53  
 see, look, this is why I have to say up front.
 
 P6  41:58  
 Anybody believe you out there? Like?
 
-R1  42:00  
+A1  42:00  
 Everyone, everyone asked, Did I pass? What grade did I get?
 
 P6  42:06  
 We're trained test takers too real?
 
-R1  42:10  
+A1  42:10  
 I know. I know. It's same for me. I'm exactly the same, like, give me a grade.
 
 P6  42:16  
 No, and then I'll go ahead.
 
-R2  42:18  
+A5  42:18  
 So I was wondering, like, is there? Is it that we're all trained test takers? Or is it that like, there's something about this that makes us all worry, we're gonna get it wrong? Like, there's something special to this? And probably other things we do?
 
 P6  42:36  
@@ -273,16 +273,16 @@ we have to convince everybody that we're the vis people here and you guys are th
 P6  43:15  
 So your goal is to just get? Well, I mean, that depends on what you're trying to get. Right. So if you're trying to get a gut reaction, I don't know if that gives you more information versus somebody's thought about it. More. I don't know, what are you going for? Right?
 
-R1  43:37  
-Well, [R2] raised a good point about this, relative to another question we had like that, where ideally, any interface or visualization we want to build should be pretty easy to pick up. So ideally, I think a gut reaction of how people think about the data could be helpful, very much helpful, but I
+A1  43:37  
+Well, [A5] raised a good point about this, relative to another question we had like that, where ideally, any interface or visualization we want to build should be pretty easy to pick up. So ideally, I think a gut reaction of how people think about the data could be helpful, very much helpful, but I
 
-R2  43:59  
+A5  43:59  
 mean, I think thinking for a second is or two is not. Not uncommon in this kind of analysis, either. It's just like, probably nobody day to day wants to be like, let me stop and think real hard for 10 minutes before I click the next thing. That might be too far.
 
 P6  44:18  
 Anyway, nobody has the time for that. Oh, yeah. need to worry about it.
 
-R1  44:23  
+A1  44:23  
 Well, that just means they don't use it. It Right. Yes. thing that would require that anyway. All right. Cool. Yeah.
 
 Transcribed by https://otter.ai
