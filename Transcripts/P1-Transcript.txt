@@ -1,87 +1,87 @@
-Participant  
+P1  
 That's a piece of paper. Would it be better if I use like a tablet? Because what does this need to be like scanned or anything like that?
 
-Researcher 1  
+A1  
 Um, yeah, ideally, a tablet would be great, honestly. And then you could just send me the picture as you make it be awesome. Okay.
 
-Participant  
+P1  
 Yeah. All right. Um,
 
-Researcher 1  
-so then let me see, what was I gonna say? Oh, yeah. So to start off, I just want to thank you a lot, [P1], for agreeing to participate in this, I know, it's a fair chunk of time. And it means a lot to me that I can get, you know, some feedback from you for with all your expertise. So, I'm gonna start by explaining sort of the purpose of this study what we're going to do and some of your rights as a as a participant this study. So first off, the purpose of this study is to explore how professional data users and tool developers think about ensembles of data. And what aspects of said data are important. You're not kind of user, I think you're a developer. And this information will help us design better visualizations and tools for analysts. Ideally, the study itself is a one on one interview. As [R2] said, she's here to just kind of take notes and be carefully. Each session will be approximately 30 minutes to like an hour. And I'm going to ask you a series of prompts regarding how you think about the performance data you work with. And I will also ask you to draw this data for us as well. Okay. We'll make an audio and video recording of this focus of this interview, too, and keep a copy of the drawings produced from this interview as well. And these, these interview contents will be anonymized and transcribed the the audio part of this interview, and only the research staff will have access to the original recordings. And I just want to let you know that that you're here entirely voluntarily, and you may choose choose to leave or in the interview every anytime. And this decision will not affect your relationship with the interview team or anyone else that's related to us. Cool. All right. Then, can I ask if I have your verbal consent to continue? Yes, you do. All right. Great. Thank you, [P1].
+A1  
+so then let me see, what was I gonna say? Oh, yeah. So to start off, I just want to thank you a lot, [P1], for agreeing to participate in this, I know, it's a fair chunk of time. And it means a lot to me that I can get, you know, some feedback from you for with all your expertise. So, I'm gonna start by explaining sort of the purpose of this study what we're going to do and some of your rights as a as a participant this study. So first off, the purpose of this study is to explore how professional data users and tool developers think about ensembles of data. And what aspects of said data are important. You're not kind of user, I think you're a developer. And this information will help us design better visualizations and tools for analysts. Ideally, the study itself is a one on one interview. As [A5] said, she's here to just kind of take notes and be carefully. Each session will be approximately 30 minutes to like an hour. And I'm going to ask you a series of prompts regarding how you think about the performance data you work with. And I will also ask you to draw this data for us as well. Okay. We'll make an audio and video recording of this focus of this interview, too, and keep a copy of the drawings produced from this interview as well. And these, these interview contents will be anonymized and transcribed the the audio part of this interview, and only the research staff will have access to the original recordings. And I just want to let you know that that you're here entirely voluntarily, and you may choose choose to leave or in the interview every anytime. And this decision will not affect your relationship with the interview team or anyone else that's related to us. Cool. All right. Then, can I ask if I have your verbal consent to continue? Yes, you do. All right. Great. Thank you, [P1].
 
-Participant  
+P1  
 What's the question about so Do you know how or like, Well, they'd be like you said it'd be multiple of these. You know, how many?
 
-Researcher 1  
+A1  
 no, no multiple questions. I'm just asking him. Oh, okay. Yeah, this is the only interview for you. Okay. You have no obligation besides this little chunk of time right
 
-Participant  
+P1  
 Okay. Yes. Thank you. Okay, good.
 
-Researcher 1  
+A1  
 All right. Um, so I'm gonna start off with kind of a simple question, which are, what project do you work on that uses ensemble data?
 
-Participant  
-Okay, so yeah, I guess, [Programmatic Performance Analysis Software] is really the only? Well, it's my only project right now. At [National Lab] so. And, you know, it's kind of like, cyclical, I guess, because that is the ensemble itself. So I guess I work on the project, that is the ensemble data. So like, when I develop stuff, I test with the ensemble, of course, because that's inherent to the development so.
+P1  
+Okay, so yeah, I guess, [EnsembleAPI] is really the only? Well, it's my only project right now. At [Lab] so. And, you know, it's kind of like, cyclical, I guess, because that is the ensemble itself. So I guess I work on the project, that is the ensemble data. So like, when I develop stuff, I test with the ensemble, of course, because that's inherent to the development so.
 
-Researcher 1  
-And could you just describe, at a high level, what [Programmatic Performance Analysis Software] is exactly as a project in your own words?
+A1  
+And could you just describe, at a high level, what [EnsembleAPI] is exactly as a project in your own words?
 
-Participant  
-Okay. Yeah. So [Programmatic Performance Analysis Software] is a tool for ensembling performance data. Purposely multiple profiles of data as in comparison to hatchet, where it may be only or usually is only one profile? So the emphasis of [Programmatic Performance Analysis Software] is the bringing multiple different data sources together in a coherent way.
+P1  
+Okay. Yeah. So [EnsembleAPI] is a tool for ensembling performance data. Purposely multiple profiles of data as in comparison to hatchet, where it may be only or usually is only one profile? So the emphasis of [EnsembleAPI] is the bringing multiple different data sources together in a coherent way.
 
-Researcher 1  
+A1  
 All right. So then now if I could get us to move over to the data real quick, can you can you describe what the ensemble data looks like? What it's like, you know, the, that you work with?
 
-Participant  
+P1  
 Yeah, so the data I work with, it's sort of arbitrary as a developer, because a lot of times I don't really care about like, the specifics, but it is most of the time, like performance data of, say like physics run or like, well, Marbl's like one example or like some [BenchmarkSuite] run where you have like time as a column, maybe exclusive time, inclusive time. And then different like ... Well, hatchet nodes is functions so different. For each different of the functions that you run the algorithms that you run, you have those different times and you might have GPU metrics throughput. All sorts of different performance metrics is it's a majority of the data I work with.
 
-Researcher 1  
+A1  
 All right, and following up from that, could you list sort of the main parts of this data and order them? And like, how important they are to you?
 
-Participant  
+P1  
 Okay, yeah, I think if I understand this correctly, the main part or the most important part of the data that I work with is probably the nodes. Because that's a very, like, throughout all the different kinds of data that I work with, there's always nodes. So having the functions, there's kind of an expectation for me when I'm working with the data. And then the second, probably second biggest part of, of when I'm like doing the ensemble is is going to be the column. So like the metrics that I'm expecting, whether, you know, like I said, the columns themselves are kind of arbitrary. But the metrics themselves is another dimension of that, that I'm adjacent to the nodes that I'm expecting to see when I'm working with the data. And then third, probably the profiles. That's the data itself, but it's kind of less important because we have that represented as like an inner index. So it's kind of like, subsequent to the nodes, I guess, in the visualization in my head. So that's where I kind of like, put things even though thinking about is kind of counterintuitive, because without the profiles, you wouldn't have any data. So.
 
-Researcher 1  
+A1  
 Okay. So you already kind of touched on, like, why you order them this way, because these are the ones you interact with more closely, right? Is that the impression I got? Correct?
 
-Participant  
+P1  
 Yeah, I order it because that's kind of like the when I'm developing the significance of what what I'm interacting with the most, it's probably in that order.
 
-Researcher 1  
+A1  
 All right. Um, well, now we can get to the fun interactive part, if I could get you to pull up your tablet or pull up the drawing program for you. And just like, draw the data set that you describe for me. And as you're drawing it, I mean, feel free to use any abstractions or metaphors you like to describe this data too?
 
 Would it be possible, [P1], for you to show me as you're drawing? And like the via the camera angle? The  camera? Is not no, no big deal. I'm just,
 
-Participant  
+P1  
 I guess it depends on how low my camera goes. To. Yeah, I don't know if that even if I unblur it . Would that be a good enough angle? Maybe? Maybe.
 
 I'll unblur and see if that works? I don't know. I don't know if that's zoomed in enough, though. It's kind of just all white. Probably.
 
-Researcher 1  
+A1  
 It is all white. Yeah. But did you did you already draw some things? Because? 
 
-Participant  
+P1  
 Well, yeah, I started. 
 
-Researcher 1  
+A1  
 That's fine. If you will just tell me. Just describe to me kind of what you're drawing as you're drawing it and and what your thought processes? That'd be fine.
 
-Participant  
+P1  
 Yeah. So I started on a well, I'm starting on a table now. Can you repeat the question again? Because I want to make sure I'm thinking about the so it was what we just talked about, right?
 
-Researcher 1  
+A1  
 Yeah. So it's the dataset that you just described to me, but just drawing it, you know, like, kind of the relationships between the items that you described, and then you can use any abstractions or metaphors. It doesn't have to be like a literal, you know, drawing of the data.
 
-Participant  
-Does it matter in the way I think about it, because I think about it in a [Programmatic Performance Analysis Software] way versus like, a [Performance Measurement Tool] way or like, it's, I get to choose in what way I want to look at it. 
+P1  
+Does it matter in the way I think about it, because I think about it in a [EnsembleAPI] way versus like, a [MeasurementAPI] way or like, it's, I get to choose in what way I want to look at it. 
 
-Researcher 1  
+A1  
 Yeah, absolutely. You get to choose however you want to think about it. 
 
-Participant  
-Yeah, so I'm just doing a performance data table, kind of because that's the way I think about when I read in a data set, and I'm working with a data set. That's how I see it. So Yeah, I'm doing the performance data. So I have a table with nodes on the left side as the outermost row index. And then we always have, or we typically in [Programmatic Performance Analysis Software], you can do just one profile, but we usually always have an inner index. So I'm also gonna do that which you have different profiles. So I'm gonna add those into the row, inner index. Profile 1, Profile 2.
+P1  
+Yeah, so I'm just doing a performance data table, kind of because that's the way I think about when I read in a data set, and I'm working with a data set. That's how I see it. So Yeah, I'm doing the performance data. So I have a table with nodes on the left side as the outermost row index. And then we always have, or we typically in [EnsembleAPI], you can do just one profile, but we usually always have an inner index. So I'm also gonna do that which you have different profiles. So I'm gonna add those into the row, inner index. Profile 1, Profile 2.
 
 And then along the top, like I described metrics. Like time exclusive, throughput
 
@@ -89,138 +89,138 @@ cache misses, I don't know, whatever. Right? You want? And then yeah, just etc. 
 
 Yeah, that's the data itself. Like I said, I don't really I don't really think about exact numbers. Ever, because it's, it's always sort of arbitrary what the actual numbers are because I'm never really doing a lot of performance analysis. I'm, more developing the tool, so.
 
-Researcher 1  
+A1  
 And you mentioned the profiles, how does that fit into this thing you just drew? 
 
-Participant  
+P1  
 Yeah, so the profiles are represented as a subset of the nodes. So when I say inner index, it's like, you have one node, but that that one node may exist in several different
 
 several of the different ensembles that you've used. So as long as that that [DatasetAPI] node has the same ID across those different datasets, for that given node, you're gonna have all those profiles listed as a as a sub sub index of that. So that's how I kind of have I have the profiles as an inner index to my nodes, rather than the other way around.
 
-Researcher 1  
+A1  
 Okay, yeah, that makes sense. All right, then I've got just a couple of sort of task. Just some, just some questions about like, you know, how how this data might relate to things that you would want to do with it. And my first question is that if I was if I want to say see how the changing number of MPI threads, you know, the across multiple runs, relates to the runtime of a single function, what portions of the data what I use in your drawing there.
 
-Participant  
+P1  
 Okay, so can you repeat that again? 
 
-Researcher 1  
+A1  
 Yeah, yeah, no problem. So if I, if I have a lot of profiles that are changing the number of MPI run threads that they use, or say, like the number of CPUs that they use, how would I be able to correlate that to or relate that to, like the runtime?
 
-Participant  
+P1  
 Okay, yeah. So typically, if you had, so here, I have profile one and two, but you could do as many as you want, but your profiles would be those different runs. So if you had MPI run with two, MPI run with four, MPI run with eight. In this case, let's just say two and four, because I have two profiles here. Your profile one would be corresponding to the data set from the run with two CPUs and then profile two correspond to the run with four CPUs, and then you'd see in your times, well, you should see that the time for profile one is gonna be higher than the time for profile two, because it had more CPUs. So that's how you kind of break it down. And then the more profiles you have, you just be able to visualize more of that. Those patterns happening as you have no more to more data points to kind of extrapolate?
 
-Researcher 1  
+A1  
 Perfect. I've got one more question along these lines. So if I wanted to compare the runtime differences between, like, a single program run on two different architectures, which would be the most important parts for that
 
-Participant  
+P1  
 single program run on two different architectures.
 
-Researcher 1  
+A1  
 Yeah. So like, you know, AWS and [Lab computer].
 
-Participant  
+P1  
 Yeah. So that's, that's not in this table. But kind of how we're doing that now. Is we're using. . . Well, I know you kind of you heard of the columnar join that we've talked about, but like, so instead of, in the previous case, where you're talking about different different mounts of CPUs, we tend to look at different architectures in a columnar going horizontally, you could do the same thing. So you could have, if you just have one profile for AWS and one profile for [Lab computer], you could do what I just talked about. But if you have, say, if you have two CPU four CPU for AWS, and then a two CPU four CPU for [Lab computer], then you're kind of in trouble. Because how do you kind of extend, you know, if you've said everything vertically, you kind of, you're getting things mixed up. So so we keep our different CPUs in the vertical direction. But then we would take the columns from if you visualize the data from AWS, and we did our two, two CPU four CPU from AWS, and we have our table from there, and then you have you kind of duplicate this, this sort of visualization, this ensemble for [Lab computer], then you can take the columns from [Lab computer], and kind of add them horizontally to the end of AWS ensemble. And you sort of get different an expansion in two different dimensions since you're expanding and the CPU dimension and the architecture dimension. So it's kind of corresponding to how that how that relationship works.
 
-Researcher 1  
+A1  
 Could I get you to maybe draw just a quick example of what that would look like? Thank you, that that final project product or whatever.
 
-Participant  
+P1  
 So if I could duplicate this
 
-Researcher 1  
+A1  
 the joys of digital drawing so much.
 
-Participant  
+P1  
 I need my tablet. Okay, yeah, this work? Nice. Yeah, so I kind of, I literally just copy paste that same data frame twice. But now, visually, I can kind of delete the indexes from the second one. Since we don't need since we can just match those up with some sort of like join like a SQL join. And thing since our for the nodes and and profiles that match up. And then bring those columns over to the first one. And, and sort of weld them together. However, you want to look at that. And then along the top, you get a new kind of column header for AWS and, and Livermore computing machines. So yeah. And I skipped over how they are joined together, but I don't know if that's important or not.
 
-Researcher 1  
+A1  
 Yeah, research is based around data. I think the implementation details are It's okay.
 
-Participant  
+P1  
 Yeah, so, I'm not an artist, but I think you'll probably get the idea.
 
-Researcher 1  
+A1  
 No, that's totally fine. And it's great. Yeah, can you? Oh, look, I can see things. Ah ha! Yes. That makes a lot of sense. Yeah.
 
-Participant  
+P1  
 So while the glare is not there, but yes.
 
-Researcher 1  
+A1  
 All right, then. Actually, you know, I've just got like one last question for you. It's just another drawing question. This one's gonna be a little bit simpler. I'm just gonna give you a quick scenario to draw out or a little very simple dataset to draw. Okay? So let's imagine that you have a profile of a very simple program, right? And that profile has three functions. A, we'll call them A, B and C. And function A, took 30 seconds to run, function B took five seconds, and function C, took 100 seconds. Okay? If I could get you to just draw this very simple data set for me, it's very simple profile data set.
 
-Participant  
+P1  
 You said 35? And 100. Yep. 35 and one hundred. Sure.
 
-So yeah, this is a while this is definitely something that could be well, if I were to recommend, just don't ask me why I'd use I'd probably tell them to attach it because it's only one profile. But you could also do this in [Programmatic Performance Analysis Software], but the representation is kind of arbitrary at that point. So functions are still well, functions become nodes in our world. But they go on the left side.
+So yeah, this is a while this is definitely something that could be well, if I were to recommend, just don't ask me why I'd use I'd probably tell them to attach it because it's only one profile. But you could also do this in [EnsembleAPI], but the representation is kind of arbitrary at that point. So functions are still well, functions become nodes in our world. But they go on the left side.
 
-And then, so does it matter whether I look at this through [Programmatic Performance Analysis Software] lens or [DatasetAPI] lens, or yeah, so. . .
+And then, so does it matter whether I look at this through [EnsembleAPI] lens or [DatasetAPI] lens, or yeah, so. . .
 
-Researcher 1  
+A1  
 Whatever most comfortable with? It doesn't even have to be through those lenses. I mean, whatever kind of makes the most sense for you.
 
-Participant  
-Yeah, well, the difference is really just whether you have an inner index of a profile or not. So I'll just go ahead and do that [Programmatic Performance Analysis Software] example where you would have this profile "one." But it doesn't really signify anything because there's no other profiles, so it's not a big deal. And then, your one column would be time. And that's where you'd have your 35 and 100. Time seconds
+P1  
+Yeah, well, the difference is really just whether you have an inner index of a profile or not. So I'll just go ahead and do that [EnsembleAPI] example where you would have this profile "one." But it doesn't really signify anything because there's no other profiles, so it's not a big deal. And then, your one column would be time. And that's where you'd have your 35 and 100. Time seconds
 
-Researcher 2  
+A5  
 Yep. Very simple.
 
-Researcher 1  
+A1  
 Hold that up to the camera. Once again, whenever you're done.
 
-Participant  
+P1  
 Yes, I'm trying to make it pretty. You're fine. That's not completely ugly.
 
-Researcher 1  
+A1  
 No, please do take your time.
 
-Participant  
+P1  
 Yeah, sure. Yeah, that's I think that's reasonable. Oh, can I have my let's see if it focus. On the left, I just called that "profile one dot Cali." Because that's how you think about it kind of. And then once you have that representation, it's becomes a frame a frame of data. Perfect. But yeah, doesn't seem like it's not becoming blurry. So
 
-Researcher 1  
+A1  
 no, it's good enough. I can definitely read it. So okay, cool. All right. Well, that was actually the the last question I have. For this little interview. Are you able to export that image and just just send it along to me or email? Yes.
 
-Participant  
+P1  
 Yes, I can do that. Perfect.
 
-Researcher 1  
+A1  
 Alright, and then I just want to ask if you have any questions for me, now that we're at the end
 
-Participant  
+P1  
 Ah, did I do good?
 
-Researcher 1  
+A1  
 A plus 100 out of 100 110
 
-Participant  
+P1  
 Awesome. I'm happy so I'm not I've never done one of these before. So it's like there's a purpose I not supposed to know the questions beforehand because I feel like I should have studied
 
-Researcher 1  
+A1  
 No
 
 Yeah, I mean, it's like it's perfectly fine that you don't know the questions beforehand. It it's more to gauge your own intuitive your own internal understanding of the data. So yeah, yeah, nothing to study up on it. And don't worry, there really are no right or wrong answers.
 
-Participant  
+P1  
 Yeah, it's like I want to give the right answer but I kind of appreciate like the doing it off the spot because like, it's like brain brain tickling like mind games you know trying to think on the spot.
 
-Researcher 2  
+A5  
 Well, I think one of the thing is is if we want to make the tool easy to use, it should be something people don't have to study for. Yes.
 
-Participant  
+P1  
 Yeah. Good point.
 
-Researcher 1  
-Well, then, if you don't have any anything else, [P1], we can let you go and [R2] and I will hang out for a second just to debrief. 
+A1  
+Well, then, if you don't have any anything else, [P1], we can let you go and [A5] and I will hang out for a second just to debrief. 
 
-Researcher 2  
+A5  
 Oh, thank you so much.
 
-Participant  
+P1  
 Hope I helped. I. Absolutely. Yeah. Thank you. Thanks. Bye, bye. All right. All right.
 
-Researcher 2  
+A5  
 I could not follow along during parts of that because I think this is so one of the big do you want to stop recording?
 
-Researcher 1  
+A1  
 Oh, thanks.
 
 Transcribed by https://otter.ai
