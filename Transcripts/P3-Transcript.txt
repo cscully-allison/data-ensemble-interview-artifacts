@@ -74,7 +74,7 @@ A1
 Okay, and can you describe that project in just a little bit more detail?
 
 Participant 3  
-Yes. So we're the part of the project just to build a performance data license tool. And this tool is based and coded in Python. And we allow multi runs, multi run performance data, which is basically multiple profiles to be stored into an object. And then that object has different components, like tables and call graph. And through that we allow exploratory data analysis of the performance data. 
+Yes. So we're the part of the project just to build a performance data science tool. And this tool is based and coded in Python. And we allow multi runs, multi run performance data, which is basically multiple profiles to be stored into an object. And then that object has different components, like tables and call graph. And through that we allow exploratory data analysis of the performance data. 
 
 A1  
 Okay, thank you. And can you describe this data ensemble for me? More more detailed the data.
