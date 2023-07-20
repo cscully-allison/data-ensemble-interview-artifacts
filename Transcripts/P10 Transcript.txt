@@ -2,7 +2,7 @@ R2  0:17
 [Unrelated Conversation between R1 and R2]
 
 R1  1:10  
-Um, all right, cool. Um, yeah. Lunch after this. So might as well just dive in. If that's all good for you, Stephanie. And Kate. All right. Cool. Then. Mynotes? Yeah, yeah, yeah. All right. Cool. So yeah, I sent you last week, the consent document and everything. I'm not sure if you've had a chance to read over that or not, it's totally fine. I just want you to know that there for your reference at any point in the future, I'm going to be going over the main points with you right now about what this interview is all about, basically. Yeah. All right. So um, first, thank you so much for agreeing to meet with me, I appreciate them a lot. And I know it's a little bit onerous, and can be kind of like, an hour out of your day. You're very busy. So I'm just gonna tell you the purpose of this study start off with that. It's to explore how professional data users and tool developers like yourselves think about ensembles of data, specifically, performance data. And this information we hope will help us design just better visualizations and tools for analysis, like thicket hopefully, it's the structure of it's going to be just a one on one interview between you and me. But [R2] is here to help me take notes and may occasionally chime in with some follow up questions. I'm going to ask you a series of prompts regarding how you think about the performance data that you work with. And I'm also going to ask you to draw this data for us. And I want to emphasize two things. One, there's no right or wrong answers. And to the drawing doesn't have to be good. It can be all scratches and scribbles, I just, we just want to get insight into the way that your brain thinks about these things. All right. And then additionally, we'll be making also making an audio and video recording of this interview. And I'm going to keep a copy of the slides. And then these, the recording will be anonymized and transcribed. I'm gonna send you a copy that you can look over and make sure that you know, there's any you can let me know if there's anything you want to exclude or, or additional notes that you want to drop in on that. And then only the research staff will have access to the recordings, so you don't have to worry about you can choose to leave her in the interview whenever you like, and this won't affect your relationship with us and research staff or obviously anyone else associated with this. Cool. All right. Um, and I believe I'm already recording. We'll read things laughing down there. Yep. Cool. Yeah, that's yeah, that's fine. 
+Um, all right, cool. Um, yeah. Lunch after this. So might as well just dive in. If that's all good for you, [P10]. And [R2]. All right. Cool. Then. My notes? Yeah, yeah, yeah. All right. Cool. So yeah, I sent you last week, the consent document and everything. I'm not sure if you've had a chance to read over that or not, it's totally fine. I just want you to know that there for your reference at any point in the future, I'm going to be going over the main points with you right now about what this interview is all about, basically. Yeah. All right. So um, first, thank you so much for agreeing to meet with me, I appreciate them a lot. And I know it's a little bit onerous, and can be kind of like, an hour out of your day. You're very busy. So I'm just gonna tell you the purpose of this study start off with that. It's to explore how professional data users and tool developers like yourselves think about ensembles of data, specifically, performance data. And this information we hope will help us design just better visualizations and tools for analysis, like [Programmatic Performance Analysis Software] hopefully, it's the structure of it's going to be just a one on one interview between you and me. But [R2] is here to help me take notes and may occasionally chime in with some follow up questions. I'm going to ask you a series of prompts regarding how you think about the performance data that you work with. And I'm also going to ask you to draw this data for us. And I want to emphasize two things. One, there's no right or wrong answers. And to the drawing doesn't have to be good. It can be all scratches and scribbles, I just, we just want to get insight into the way that your brain thinks about these things. All right. And then additionally, we'll be making also making an audio and video recording of this interview. And I'm going to keep a copy of the slides. And then these, the recording will be anonymized and transcribed. I'm gonna send you a copy that you can look over and make sure that you know, there's any you can let me know if there's anything you want to exclude or, or additional notes that you want to drop in on that. And then only the research staff will have access to the recordings, so you don't have to worry about you can choose to leave her in the interview whenever you like, and this won't affect your relationship with us and research staff or obviously anyone else associated with this. Cool. All right. Um, and I believe I'm already recording. We'll read things laughing down there. Yep. Cool. Yeah, that's yeah, that's fine. 
 
 [R1 and P10 Discuss the weird setup for this meeting]
 
@@ -15,25 +15,25 @@ Speaker 3  4:40
 And do you have a specific one that's most recent in your mind or that you'd like to talk about? Because we're gonna ask you some more questions about this specific data that you're working with? And you just need to
 
 P10  4:53  
-So it's with the Raja performance. 
+So it's with the [BenchmarkSuite]. 
 
 R1  4:56  
 Okay, cool. Perfect. Um, can you describe that that project for me a little bit more detail.
 
 Speaker 1  5:05  
-So, Raja performance suite is an open source collection or suite of loop based kernels that are talking about big HPC simulation codes. Use the Raja performance suite as a [unintelligible]
+So, [BenchmarkSuite] is an open source collection or suite of loop based kernels that are talking about big HPC simulation codes. Use the [BenchmarkSuite] as a [unintelligible]
 
 R1  5:26  
 [unintelligable]
 
 Speaker 1  5:26  
-it is used as a complement to the Raja code base to understand the performance of our Raja kernels. That is what the raja suite is used for.
+it is used as a complement to the [BenchmarkSuite] code base to understand the performance of our [BenchmarkSuite] kernels. That is what the [BenchmarkSuite] suite is used for.
 
 Speaker 3  5:43  
-Alright, um, can you please describe a typical data ensemble that would come out of the Raja performance suite? What looks like any characteristics of that data? Great.
+Alright, um, can you please describe a typical data ensemble that would come out of the [BenchmarkSuite]? What looks like any characteristics of that data? Great.
 
 Speaker 1  5:54  
-So out of the Raja performance suite, we're wanting to run the kernels across different variants. And then the variants will be run across different architectures such as GPU. We might be running it with different versions of Raja, and understanding the performance of Raja. You could be using different compilers in the Raja performance suite and understanding compiler benefits or performance benefits. Let's see. And then I guess within that as well, we have different tunings that exists within the variants that might change the performance as well.
+So out of the [BenchmarkSuite], we're wanting to run the kernels across different variants. And then the variants will be run across different architectures such as GPU. We might be running it with different versions of [BenchmarkSuite], and understanding the performance of [BenchmarkSuite]. You could be using different compilers in the [BenchmarkSuite] and understanding compiler benefits or performance benefits. Let's see. And then I guess within that as well, we have different tunings that exists within the variants that might change the performance as well.
 
 Unknown Speaker  6:39  
 Um, can you define variant and tuning for me? 
@@ -84,7 +84,8 @@ Speaker 1  11:36
 There's others block x, for all the different tunings, just as examples, and then from this, I guess the performance data that we are getting from this would be you know, time and the region's time for kernel. Exclusive. Right, we are seeing performance data like what does he do bytes per rep. Flops per rep, which have been manually counted from my understanding. And then you know, you've got your standard, other metrics that we can collect on the CPU.
 
 P10  12:29  
-Let's see see that CPU metrics. We've also got GPU metrics through Caliper instances and video. I think he might have maybe AMD, I think [R10] told me that's done. And then if we've got all the metadata also in here, right, so we've talked about compiler versions. I've talked about the Raja version. Architecture and thinking of. . . architecture. Architecture fields as well. 
+Let's see see that CPU metrics. We've also got GPU metrics through [Performance Software] instances and video. I think he might have maybe AMD, I think [R10] told me that's done. And then if we've got all the metadata also in here, right, so we've talked about compiler versions. I've talked about the [BenchmarkSuite] version. Architecture and thinking of. . . architecture. Architecture fields as well. 
+
 
 R1  13:33  
 Awesome. 
@@ -96,7 +97,8 @@ R1  13:45
 Cool. And is this something that you're proud of the dataset? Okay, good. Fantastic. Then I'm going to ask you sort of task specific questions that you're going to use this drawing for that, where I'm just going to kind of query about how you'll use this data to do something. So first and foremost, let's imagine that we're doing a strong sale scaling study. And we're just looking at like to see how the number of MPI threads relates to the runtime of a single function. What what portions of the data what I use here to determine that to figure that out?
 
 Speaker 1  14:29  
-[unintelligible] too,  so I guess that would be another field in the metadata is the number of ranks down here. So assuming we had that I would take this one as well as the the this time per kernel metric and plot those two, and I guess the other. . . let's see. . . as you're doing it per a, for a kernel at a time? Okay, so I guess if we did as you know, a single graph here, right with the ranks and the time, then each of the lines that go like this can be a different variant and tuning
+[unintelligible] too, so I guess that would be another field in the metadata is the number of ranks down here. So assuming we had that I would take this one as well as the the this time per kernel metric and plot those two, and I guess the other. . . let's see. . . as you're doing it per a, for a kernel at a time? Okay, so I guess if we did as you know, a single graph here, right with the ranks and the time, then each of the lines that go like this can be a different variant and tuning
+
 
 Speaker 3  15:15  
 Is the graph is per anything or products? 
@@ -146,7 +148,8 @@ R2  19:34
 I see, okay, and then so we're on the first piece of paper do you get the tree from?
 
 Speaker 1  19:49  
-So let's see. So we have the variance and tunings, we have the performance data, the metadata, so another metric here would be I guess we'll just call this the graph. With the node relationship, relationships, there's yet another piece of the of the data that's being collected by Raja perf. Would be, the graph.
+So let's see. So we have the variance and tunings, we have the performance data, the metadata, so another metric here would be I guess we'll just call this the graph. With the node relationship, relationships, there's yet another piece of the of the data that's being collected by [BenchmarkSuite]. Would be, the graph.
+
 
 Speaker 3  20:19  
 Is the graph under performance data, or. . ?
@@ -164,7 +167,8 @@ Speaker 3  21:02
 Okay, so I see you, I don't I don't need to ask you about the metadata, you have a good grasp on that. Is there any aspect of the data that you don't think is properly captured by the [Programmatic Performance Analysis Software] objects?
 
 Speaker 1  21:33  
-So I think the piece that we're working through right now is how to capture how I guess where to properly put what caliber calls these attributes into our [Programmatic Performance Analysis Software] object. So from the Raja perf standpoint, I think the attributes that we've been thinking about is the tuning is one of them, maybe the variant as another. Um, and then I think the other one that we've been talking about is the preference which gets into obviously another project of compiler. And I don't know, I don't fully have a grasp on what the definition that Caliper has for attributes. But the idea being that we have the tuning and the variant captured within our [Programmatic Performance Analysis Software]  object. Right now, we've been capturing the metadata, or the variant into the metadata. But I think there's this further to this further, more fine grained specification that we're trying to get after where we're putting tuning also into the metadata. So that we can then filter or, you know, basically create sub-[Programmatic Performance Analysis Data Structures]  that are based on the variant and the tuning together. Because obviously, right now, we just have the variants as the factor that we're kind of filtering on. But we have many tunings within the variant that we're trying to tease out
+So I think the piece that we're working through right now is how to capture how I guess where to properly put what [Performance Measurement] calls these attributes into our [Programmatic Performance Analysis Software] object. So from the [BenchmarkSuite] standpoint, I think the attributes that we've been thinking about is the tuning is one of them, maybe the variant as another. Um, and then I think the other one that we've been talking about is the preference which gets into obviously another project of compiler. And I don't know, I don't fully have a grasp on what the definition that [Performance Software] has for attributes. But the idea being that we have the tuning and the variant captured within our [Programmatic Performance Analysis Software]  object. Right now, we've been capturing the metadata, or the variant into the metadata. But I think there's this further to this further, more fine grained specification that we're trying to get after where we're putting tuning also into the metadata. So that we can then filter or, you know, basically create sub-[Programmatic Performance Analysis Data Structures]  that are based on the variant and the tuning together. Because obviously, right now, we just have the variants as the factor that we're kind of filtering on. But we have many tunings within the variant that we're trying to tease out
+
 
 Speaker 3  23:14  
 But does it already kind of exist in the metadata, is that correct? Or the [. . ]. or do you think captured at all? By the [Programmatic Performance Analysis Software] object?
@@ -179,13 +183,15 @@ P10  24:03
  So the tuning right now is, is in our data, it's actually stored right now on our graph.
 
 Speaker 1  24:11  
-Nodes, I guess, graph, um, I don't know I use, I guess it's stored in the graph nodes. So actually, the tuning the different tunings under the particular variants are stored as individual nodes. So they're independent, we get, you know, reporting of all of this performance data per node. But then it's all embedded together. And based on the set of kernels that we're running in Raja perf are the type of kernel that we're running in Raja perf. You might have tuning or sorry, you might have default tuning and some, not in others, you might get the library that's being run, but not in others. So it's very, I guess we haven't yet figured out or uncovered, which tunings exist for what types of kernels?
+Nodes, I guess, graph, um, I don't know I use, I guess it's stored in the graph nodes. So actually, the tuning the different tunings under the particular variants are stored as individual nodes. So they're independent, we get, you know, reporting of all of this performance data per node. But then it's all embedded together. And based on the set of kernels that we're running in [BenchmarkSuite] are the type of kernel that we're running in [BenchmarkSuite]. You might have tuning or sorry, you might have default tuning and some, not in others, you might get the library that's being run, but not in others. So it's very, I guess we haven't yet figured out or uncovered, which tunings exist for what types of kernels?
+
 
 Speaker 3  25:14  
 Is that programmatic at all? Is the tuning something that exists in the program? Or is it just something that has to be annotated specifically by the user?
 
 Speaker 1  25:26  
-So that's still unclear to me? I don't know. So Raja perf is the different kernels and Raja perf are being contributed by various people within the code teams. And I'm not sure if it's on the code, the person who is contributing the kernel to implement the different tunings, or if they just implement, you know, one version of their kernel. And then one of the maintainers of the Raja perf team is what implements the different tunings. Im not understood, I'm not sure yet how those two interplay. So I don't know that piece. Any further questions about this?
+So that's still unclear to me? I don't know. So [BenchmarkSuite] is the different kernels and [BenchmarkSuite] are being contributed by various people within the code teams. And I'm not sure if it's on the code, the person who is contributing the kernel to implement the different tunings, or if they just implement, you know, one version of their kernel. And then one of the maintainers of the [BenchmarkSuite] team is what implements the different tunings. Im not understood, I'm not sure yet how those two interplay. So I don't know that piece. Any further questions about this?
+
 
 R2  26:11  
 Um, so it sounds like part of the problem might be that the cross products right now are not very discoverable. Is that?
