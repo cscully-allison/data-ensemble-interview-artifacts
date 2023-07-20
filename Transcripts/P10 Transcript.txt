@@ -86,6 +86,7 @@ There's others block x, for all the different tunings, just as examples, and the
 P10  12:29  
 Let's see see that CPU metrics. We've also got GPU metrics through [Performance Software] instances and video. I think he might have maybe AMD, I think [R10] told me that's done. And then if we've got all the metadata also in here, right, so we've talked about compiler versions. I've talked about the [BenchmarkSuite] version. Architecture and thinking of. . . architecture. Architecture fields as well. 
 
+
 R1  13:33  
 Awesome. 
 
@@ -97,6 +98,7 @@ Cool. And is this something that you're proud of the dataset? Okay, good. Fantas
 
 Speaker 1  14:29  
 [unintelligible] too, so I guess that would be another field in the metadata is the number of ranks down here. So assuming we had that I would take this one as well as the the this time per kernel metric and plot those two, and I guess the other. . . let's see. . . as you're doing it per a, for a kernel at a time? Okay, so I guess if we did as you know, a single graph here, right with the ranks and the time, then each of the lines that go like this can be a different variant and tuning
+
 
 Speaker 3  15:15  
 Is the graph is per anything or products? 
@@ -148,6 +150,7 @@ I see, okay, and then so we're on the first piece of paper do you get the tree f
 Speaker 1  19:49  
 So let's see. So we have the variance and tunings, we have the performance data, the metadata, so another metric here would be I guess we'll just call this the graph. With the node relationship, relationships, there's yet another piece of the of the data that's being collected by [BenchmarkSuite]. Would be, the graph.
 
+
 Speaker 3  20:19  
 Is the graph under performance data, or. . ?
 
@@ -166,6 +169,7 @@ Okay, so I see you, I don't I don't need to ask you about the metadata, you have
 Speaker 1  21:33  
 So I think the piece that we're working through right now is how to capture how I guess where to properly put what [Performance Measurement] calls these attributes into our [Programmatic Performance Analysis Software] object. So from the [BenchmarkSuite] standpoint, I think the attributes that we've been thinking about is the tuning is one of them, maybe the variant as another. Um, and then I think the other one that we've been talking about is the preference which gets into obviously another project of compiler. And I don't know, I don't fully have a grasp on what the definition that [Performance Software] has for attributes. But the idea being that we have the tuning and the variant captured within our [Programmatic Performance Analysis Software]  object. Right now, we've been capturing the metadata, or the variant into the metadata. But I think there's this further to this further, more fine grained specification that we're trying to get after where we're putting tuning also into the metadata. So that we can then filter or, you know, basically create sub-[Programmatic Performance Analysis Data Structures]  that are based on the variant and the tuning together. Because obviously, right now, we just have the variants as the factor that we're kind of filtering on. But we have many tunings within the variant that we're trying to tease out
 
+
 Speaker 3  23:14  
 But does it already kind of exist in the metadata, is that correct? Or the [. . ]. or do you think captured at all? By the [Programmatic Performance Analysis Software] object?
 
@@ -181,11 +185,13 @@ P10  24:03
 Speaker 1  24:11  
 Nodes, I guess, graph, um, I don't know I use, I guess it's stored in the graph nodes. So actually, the tuning the different tunings under the particular variants are stored as individual nodes. So they're independent, we get, you know, reporting of all of this performance data per node. But then it's all embedded together. And based on the set of kernels that we're running in [BenchmarkSuite] are the type of kernel that we're running in [BenchmarkSuite]. You might have tuning or sorry, you might have default tuning and some, not in others, you might get the library that's being run, but not in others. So it's very, I guess we haven't yet figured out or uncovered, which tunings exist for what types of kernels?
 
+
 Speaker 3  25:14  
 Is that programmatic at all? Is the tuning something that exists in the program? Or is it just something that has to be annotated specifically by the user?
 
 Speaker 1  25:26  
 So that's still unclear to me? I don't know. So [BenchmarkSuite] is the different kernels and [BenchmarkSuite] are being contributed by various people within the code teams. And I'm not sure if it's on the code, the person who is contributing the kernel to implement the different tunings, or if they just implement, you know, one version of their kernel. And then one of the maintainers of the [BenchmarkSuite] team is what implements the different tunings. Im not understood, I'm not sure yet how those two interplay. So I don't know that piece. Any further questions about this?
+
 
 R2  26:11  
 Um, so it sounds like part of the problem might be that the cross products right now are not very discoverable. Is that?

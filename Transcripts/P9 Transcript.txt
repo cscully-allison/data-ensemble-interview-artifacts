@@ -1,4 +1,3 @@
-
 R1  0:00  
 All right. Okay, now, let me dive into the first question here. So what project do you work on that uses ensembles? Or have you worked on it uses ensembles data performance data.
 
@@ -273,11 +272,13 @@ And yeah, you have to see in there as well. And then, so depending on your measu
 Unknown Speaker  28:12  
 Yeah, yeah. So so before I stick it into [Performance Vis Tool] or [Programmatic Performance Analysis Software], like, am I looking at a directory full of what?
 
+
 Speaker 3  28:21  
 You're looking at a directory full of [Performance Measurement Tool] files. So essentially, the profiling data that comes out for each of the individual runs.
 
 Unknown Speaker  28:30  
 Okay, and let's say I'm like, the, the competitor at a national lab, and I want to use the [Performance Measurement Tool]  files to make my own tool that is neither  [Performance Vis Tool] or [Programmatic Performance Analysis Software], like how would I? How would I read these files?
+
 
 Speaker 3  28:48  
 Well, we do have a bunch of different readers. So there's the [Performance Measurement Tool Reader]  program, which just means an individual can actually read multiple files. And we have a Python reader, which can give you essentially this data back out, you can convert it into JSON, and something fell into JSON also, if you want to read or implement your own thing. So yeah, there's various ways in text form and look at it.
