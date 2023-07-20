@@ -29,7 +29,7 @@ Participant 3
 Yep. Sounds good. 
 
 Researcher 1  
-Cool. All right. So first, I want to start you off, start off by thanking you a lot, [P3], for agreeing to participate in this research, it really means a lot to us. And, you know, I appreciate that your time is very valuable. So thank you so much. So the purpose of this study is just sort of to explore how professional data users and tool developers think about ensembles of data, what aspects of said data are important. And you know what you're not this information will help us design better visualizations and tools for analysts, you know, kind of like we're doing with Thicket right now. This study, it's just a one on one interview, mainly and then like [R2] said, she's here to take notes and occasionally time chime in. And overall, we expect that's probably just gonna take about 30 minutes. I'm going to ask you a series of prompts regarding how you think about the performance data that you work with and I will also ask you to draw this data. And by the way, did you or do you have a tablet or a Okay, cool. Nice. Last time, I should mention, we were able to get a screenshare to work. Do you have Skype on your -- or sorry, zoom -- on your tablet there?
+Cool. All right. So first, I want to start you off, start off by thanking you a lot, [P3], for agreeing to participate in this research, it really means a lot to us. And, you know, I appreciate that your time is very valuable. So thank you so much. So the purpose of this study is just sort of to explore how professional data users and tool developers think about ensembles of data, what aspects of said data are important. And you know what you're not this information will help us design better visualizations and tools for analysts, you know, kind of like we're doing with [Programmatic Performance Analysis Software] right now. This study, it's just a one on one interview, mainly and then like [R2] said, she's here to take notes and occasionally time chime in. And overall, we expect that's probably just gonna take about 30 minutes. I'm going to ask you a series of prompts regarding how you think about the performance data that you work with and I will also ask you to draw this data. And by the way, did you or do you have a tablet or a Okay, cool. Nice. Last time, I should mention, we were able to get a screenshare to work. Do you have Skype on your -- or sorry, zoom -- on your tablet there?
 
 Participant 3  
 I do yeah.
@@ -68,7 +68,7 @@ Researcher 1
 Thank you [P3]. Okay, so let me start off with a kind of a basic demographic question here is, so what what project do you work on that uses ensembles of data?
 
 Participant 3  
-I work on a project called Thicket, which is sorry, which is in collaboration with the Lawrence Livermore National Lab? And essentially, we have an ensemble of performance data. 
+I work on a project called [Programmatic Performance Analysis Software], which is sorry, which is in collaboration with the [National Lab]? And essentially, we have an ensemble of performance data. 
 
 Researcher 1  
 Okay, and can you describe that project in just a little bit more detail?
@@ -86,7 +86,7 @@ Researcher 1
 Yeah, absolutely kind of anything that you think is important to help me understand the data.
 
 Participant 3  
-Okay. So, like I said, that data is stored in what we call a Thicket object. And it has three components. So the first one is the performance data, this is stored in a multi index form. And the two indexes, the two indices we use are, is the are the nodes, which are the basically the function calls that happened when a when a program is run. And the second one is a profile hash. So essentially, we're distinguishing each profile that we're reading into that object with a hash with a unique hash for each profile. And then there's a second component, which is the metadata. That's a just simple table. And it's going to the first table, which is the performance data table with with that profile hash that we just talked about. So it's like a foreign key for for that table. And within that metadata table, we have information like, who who ran the program, how long, how long the program ran, when the launch date was, all that kind of information. So not strictly performance data, but kind of more information about the execution of the program for each of the profile. And the third component is the aggregate statistics statistics table. And this is connected to the first table that we talked about, which is the performance data with respect to the nodes, which again is the list of function calls. And for the aggregates, statistics table, it's essentially an empty table, where we can take in the columns from the performance data table, and perform statistics calculations on them and store them into the aggregate statistics table. And one thing that's important to note is that the statistics and the performance data table they also have a call graph component to it. So they have a tree component to it. And these two represent the nodes and the relationship between the nodes. 
+Okay. So, like I said, that data is stored in what we call a [Programmatic Performance Analysis Software] object. And it has three components. So the first one is the performance data, this is stored in a multi index form. And the two indexes, the two indices we use are, is the are the nodes, which are the basically the function calls that happened when a when a program is run. And the second one is a profile hash. So essentially, we're distinguishing each profile that we're reading into that object with a hash with a unique hash for each profile. And then there's a second component, which is the metadata. That's a just simple table. And it's going to the first table, which is the performance data table with with that profile hash that we just talked about. So it's like a foreign key for for that table. And within that metadata table, we have information like, who who ran the program, how long, how long the program ran, when the launch date was, all that kind of information. So not strictly performance data, but kind of more information about the execution of the program for each of the profile. And the third component is the aggregate statistics statistics table. And this is connected to the first table that we talked about, which is the performance data with respect to the nodes, which again is the list of function calls. And for the aggregates, statistics table, it's essentially an empty table, where we can take in the columns from the performance data table, and perform statistics calculations on them and store them into the aggregate statistics table. And one thing that's important to note is that the statistics and the performance data table they also have a call graph component to it. So they have a tree component to it. And these two represent the nodes and the relationship between the nodes. 
 
 Researcher 1  
 Perfect, all right. And you did you present these in a very particular way, starting with data and then moving over to metadata and stats. Is there any particular reason that you chose to order in that way and then to the tree last?
@@ -136,11 +136,11 @@ Okay, so essentially, this is what I just mentioned, which is performance data. 
 
 node and this will be empty and again this will relate back to performance data with the nodes. And, again highlighting the index for this table and essentially there is a component like I said, which is shared by these two tables. Which is the call graph or call tree and we can assume that "Base CUDA" -- it's not good -- we can just assume for this case that "Base CUDA" is the main parent and then can have multiple other nodes as children notes
 
-sorry, okay, let me label this. And again, this is shared by the performance data table and the statistics table. So, this is how initially, the data structures inside the Thicket will look like the thicket object would look like. And for the for the statistics table, you can additionally do things like calculate
+sorry, okay, let me label this. And again, this is shared by the performance data table and the statistics table. So, this is how initially, the data structures inside the [Programmatic Performance Analysis Software] will look like the [Programmatic Performance Analysis Software] object would look like. And for the for the statistics table, you can additionally do things like calculate
 
 calculate the mean, or calculate the median of certain values. So, let's say problem size of the from the performance data, and then you can append it back to the table. So, you can do
 
-mean size. So, this is basically a kind of an overview of the different data structures and Thicket
+mean size. So, this is basically a kind of an overview of the different data structures and [Programmatic Performance Analysis Software]
 
 Researcher 1  
 Perfect, I love the different colors. Thank you.
@@ -161,7 +161,7 @@ Participant 3
 Yes.
 
 Researcher 1  
- Okay. So how about if I want Want to compare the runtime differences between a code base run on like LC and a code base run on AWS?
+ Okay. So how about if I want Want to compare the runtime differences between a code base run on like [Lab computer] and a code base run on AWS?
 
 Participant 3  
 I think it would still be the performance data table. I know that part of my team members or like coworkers, they're working on something that allows for that comparison. I'm not completely sure. But I think it's called a columnar join. So use parts of the performance data table to kind of make that differences and compare it within the performance data table. 
@@ -170,7 +170,7 @@ Researcher 1
 Gotcha. All right. And last question I have along these lines is if I want to find out which function called another function, what portion of the data would be most important for that?
 
 Participant 3  
-I think the call tree would be quite helpful, I know that we've developed a kind of a, we already have this Tree Structure and we have a very basic implementation of queries. So this this tool is actually an extension to Hatchet, which is another performance analysis tool. And so we've implemented just a small part of the query. So you should be able to see kind of what are the children of the some of the function calls? And I think that's how you can find out okay, which functions are being called within member functions? 
+I think the call tree would be quite helpful, I know that we've developed a kind of a, we already have this Tree Structure and we have a very basic implementation of queries. So this this tool is actually an extension to [DatasetAPI], which is another performance analysis tool. And so we've implemented just a small part of the query. So you should be able to see kind of what are the children of the some of the function calls? And I think that's how you can find out okay, which functions are being called within member functions? 
 
 Researcher 1  
 Cool. Perfect. Thank you, [P3].
@@ -222,7 +222,7 @@ Researcher 1
 And do you have any questions for me before we close this out today?
 
 Participant 3  
-Umm, not really just that, amm I supposed to send this to you?
+Umm, not really just that, am I supposed to send this to you?
 
 Researcher 1  
 Yes. If you would, please send that to me via email. That'd be great. Or slack, whichever you prefer.

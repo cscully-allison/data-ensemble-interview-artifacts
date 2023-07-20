@@ -1,0 +1,21 @@
+Thicket --> [Programmatic Performance Analysis Software]
+Caliper --> [Performance Measurement]
+Livermore --> [National Lab]
+Hatchet --> [DatasetAPI]
+Raja/Raja Perf --> [BenchmarkSuite]
+LC/Quartz/Livermore Computing --> [Lab computer]
+
+Kate's Suggestions
+Caliper -> [MeasurementAPI]
+Hatchet -> [DatasetAPI]
+Thicket -> [EnsembleAPI]
+RajaPerf -> [BenchmarkSuite]
+
+
+In P5 and P7 and P8, we mention [Programmatic Performance Analysis Software A] and [Programmatic Performance Analysis Software B]. What are these?
+
+In P6, we mention [Scientific Simulation Software A] and [Scientific Simulation Software B]. What are these? 
+
+What is Per Flow / Perfetto in P7?
+
+In P10, what is [Performance Vis Tool]?
