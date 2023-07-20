@@ -10,3 +10,8 @@ Caliper -> [MeasurementAPI]
 Hatchet -> [DatasetAPI]
 Thicket -> [EnsembleAPI]
 RajaPerf -> [BenchmarkSuite]
+
+
+In P5, we mention [Programmatic Performance Analysis Software A] and [Programmatic Performance Analysis Software B]. What are these?
+
+In P6, we mention [Scientific Simulation Software A] and [Scientific Simulation Software B]. What are these? 
