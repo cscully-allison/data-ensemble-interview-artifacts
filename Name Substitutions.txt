@@ -1,0 +1,12 @@
+Thicket --> [Programmatic Performance Analysis Software]
+Caliper --> [Performance Measurement]
+Livermore --> [National Lab]
+Hatchet --> [DatasetAPI]
+Raja/Raja Perf --> [BenchmarkSuite]
+LC/Quartz/Livermore Computing --> [Lab computer]
+
+Kate's Suggestions
+Caliper -> [MeasurementAPI]
+Hatchet -> [DatasetAPI]
+Thicket -> [EnsembleAPI]
+RajaPerf -> [BenchmarkSuite]
