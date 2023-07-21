@@ -1,0 +1,188 @@
+A1  0:02  
+Awesome, great. Okay, so I'm just gonna start off with just asking you a few straightforward questions, [unintelligible]. So to begin with, what project do you work on that uses ensembles of performance data.
+
+P5  0:24  
+So, I'm working on a project, which is a cooperation between the [University] and [Lab]. And me specifically, I try to basically come up with compiler suggestions for the [PhysicsAPI] team at [Lab] where we have, yeah, basically multiple runs also same application with the same set of input variables. And this binary has been compiled with different compilers. And then I try to come up with some analysis and scoring mechanism [unintelligible], to make a prediction for which compiler, the [PhysicsAPI] team should use
+{Ensembles here are input variables and compilers.}
+
+A1  1:07  
+Okay. As part of that, would you describe yourself as more of a tool developer or like a data user?
+
+P5  1:17  
+Right now, actually, kind of it's really similar to me right now, because like [EnsembleAPI] itself was really new. And there's too many features that need to be developed, like tested and like, be like, I'm what also very first users that actually tries to make an analysis for that. So it kind of like intervenes a lot for me personally. But I think, like, for my role, specifically, I should be ready to go with secret itself and then only use that most tool user. So yes, right, run out some of those. Does that make sense?
+{Early EnsembleAPI users.}
+
+A1  1:54  
+And just for the record, the project that you're talking about is [EnsembleAPI]. Yeah. Okay. All right, then you just described a dataset to me that sort of the the compilers, the comparison compilers, right? Could you list out the main parts of that dataset, to me in order of importance to you, like which parts are most important?
+
+P5  2:24  
+So right now, we only have information about the runtime or specific regions that are annotated with [MeasurementAPI], because we only have like a black box where the mouse provides us with some executable, but we don't have any further insights into that. So we can only take what they give us, basically, we don't have a free choice of tools for that. So right now, the binaries that we have, is only capable of recording like timestamps, or like, time it took for specific annotated region. So that's all I'm working with right now. But in the future, and we are trying right now to make come up with like, future ideas for the [PhysicsAPI] team, what kind of features I should embed into the binary, more related to performance counters, so that we can get more not only like make a suggestion for the compiler, but also get more insights into why a specific compiler is preferred and in some way and why is the runtime [unintelligible] for example, because less cache misses or like all these available PAPI performance counters, if we can find some more knowledge
+{Data is limited by what tools/collaborators give them.}
+{Desire to get more data --- similar to elephants paper.}
+
+A1  3:35  
+and just to clarify, what's the main parts that you hit on? Is it just you sounded like you indicated you had one part is just the time measurements? Or was there any others that I made miss?
+
+P5  3:50  
+[Overlapping dialogue]
+
+A1  3:53  
+okay, perfect. So now that that pretty much concludes my questions, we can move on to the sketching. So could I get you to would it be possible for you to point your camera down at a piece of paper that you have? And also it's probably it's probably gonna cause problems Yes. So yeah, thank you
+
+perfect down just a little bit more so that I can see the top of the paper 
+
+P5  4:35  
+Oh, my webcam, my webcam right onto the bottom of my microphone right here.
+
+A1  4:51  
+Yeah, yes, from from that second from that second circle down should be told him and I mean, I guess if you don't mind, we can use a couple of different pieces of paper. So for the first question, I'm just gonna have you sketch out the entirety of the data that's stored by this dataset that you described. Like, all the all the bits of it sort of what you think it looks like, you know, use any abstractions or metaphors, you'd like to describe this data and how it may be related to each other.
+
+P5  5:26  
+So basically, we have to kind of like use, like, one of them is like a simple table of the dataset. And helpful, but like, we have information about the regional center, so let's say it's a node, then we have. Yeah, so I'm trying to kind of like get into the gist of like, the data frame and stats frames that we have available. If we compare different runs of an application, we have the same name for the node or the annotated region. And then we have like, profiles. So there's just a column a header table, and then we have our metrics like. Yeah. Min. Max. And mean. I can also send you a picture of all of that afterwards, if you want. Yes.
+{Data frame is present.}
+{Stats frame is present.}
+{These are tables.}
+{Nodes are functions here.}
+{Has multi-index for the data table but seems conjoined with stats table?}
+{Or just these metrics are even more vague.}
+
+
+Just yeah, basically, the column header. And then for example, we have, let's say, we have a main entry point to the application. And then we have five runs, like, let's say, two runs, we have like profile, let's say PID one and PID two. They have different measurements. For so we have, for example, two runs, and they are kind of like measure the main node the main entry point. And then we have this kind of data. And we also have for main set, okay, for the first dataset . . . is it ok if I put another one below?
+{Draws out the index but not the metrics.}
+
+A1  7:10  
+Yes, absolutely, totally fine. I mean, whatever you need to put down to express it in its entirety from from your perspective.
+
+P5  7:18  
+Yeah, because this is only like measurements for the matrix. So in this case, we only have the time measurements. But if we were to extend this on like performance counters, then we will add to each profile, and to each node specifically, like the measurements of the counters, like if it's a cache, cache miss, or whatever, and we have a really long, we have a lot of entries into the columns. And so if we had like another note below that, "init" for anything related to initialization we have, again, because this is the same application, two profiles for that from from so I have to repeat that I profile ID one is related to one execution of this application. And PID two, is the profile of another execution. And each of these executions, we measure the same application. So we have the nodes again. So that's why we have several profiles for each node. And the great thing about like how [[EnsembleAPI]] and [[DatasetAPI]] and altogether works together, is that now we can also look into dependencies between these annotated regions. Well, in a way where we have like the main entry point, let's say we have an int value here. And now, like main is obviously the main entry point, we can see as a hierarchy of the call graph in a way that we know that after main has been called "init," the init functions, as after what is called afterwards, we have annotated regio-- metrics, respectively to each node in within the tree. That makes sense. So there's value from for example, profile, one and two. So you have like the three views. So I think that's like the main use onto the data set. Makes sense?
+{Counters as columns.}
+{Regions/ndoes have dependencies between hem.}
+{Tree is present.}
+{Metadata isn't drawn or explicitly discussed.}
+
+A1  9:19  
+Yeah, and when you say annotated, how exactly are they annotated? 
+
+P5  9:24  
+Oh, yeah, this is really arbitrary. So especially for [unintelligible] I have right now because I only work with [MeasurementAPI] data. So it was in [MeasurementAPI], you really have to tell like, I start the region and end the region, and I give it a name. And that's all done by the user. So even if we have some annotated regions that are like, Okay, I'm calculating some [unintelligible] conditions in some application. Then it's only like an arbitrary name because this name has been chosen by the user that kind of defines the region. And me, I have to like read the name and come up with some idea about Why this region has been called like that. And if it is of specific importance to me. So yeah, this is not something that's really automatic, but more up to the user that actually finds these regions. Right. And if I may add to that, like, I'd say, this is the raw dataset, this first part, but what we can also do is like, we can aggregate it into a "stats frame" into a statistical data frame, where we are-- and this is more interesting for the tree view, I think, in many ways, and because we can aggregate of all the profiles that we have available for each node, so that we can get like a mean of all our metrics, for example, and then combined from profile runs, which might be many in many cases, and like not really good to handle. And we also want to make different measurements, with different runs. Because of course, conditions in HPC can vary a lot, depending on node placement, or noisy neighbors, or whatever. It's also a good idea to have multiple rounds in order to model anything, basically, this also helps us in a way that we can take, like 10 rounds, and then we would have two profiles, we would generate a stats frame for that have like an aggregated or statistical relevant view on the data that we have.
+{Explains importance of stats frame to deal with system variability.}
+{Explains how regions/nodes are somewhat up to the user.}
+{Size is expressed as blanks with assumption examples are enough.}
+
+Can you draw how that that stats frame maybe related to this table that you just drew for me? Or a tree or whatever? I mean, how it relates to any of it Yeah.
+{Draws stats frame.}
+
+This is more like an intermediate view onto the data. I'm really bad with drawing and let's try to come up as we go.
+{I wonder what this means.}
+
+A1  12:06  
+No, please. The quality of the drawing does not matter at all, whatever you can do. I encourage crooked lines and lumpy circles.
+
+P5  12:17  
+Yes. And we are missing a metric. . . that's not a measurement, that's a profile. So we're gonna have like a metric column. And then we can say for example, okay, let's take the mean, again, but aggregated over the PIDs and make some arrows. We have some metrics, tho node. And let's say we define them. So we have some functions that allow us to calculate some statistic. So let's say we are interested in the mean of the mean. But we have similar amount. We have mean, one and mean, two, so for each profile that we take those means put into like some statistical function that say we want to take the mean again. So we take Yeah, mean one and mean two enter there. And then we present into another data frame, where now we have a statistical view onto our, like, raw data set. And then this helps to this really helps with visualization, again, was a tree. Right, but I feel like so if you're wanting to have this kind of chart, I can also like, afterwards, make it new and send you a picture of that.
+{Explains calculation of stats frame.}
+{Draws how tables are related in deriving one from the other.}
+{Notes visualization is a tree... not sure what that refers to.}
+
+Unknown Speaker  13:58  
+Yeah, absolutely. If you want to do that, I would love both actually, whatever. So that you feel like you express yourself sufficient.
+
+P5  14:04  
+Yeah.
+
+A1  14:08  
+Alright, cool. So then I have a couple of quick questions for you then about kind of tasks that you might undertake with with this data with this data set. So if if say, this dataset that you drew has, like the the number of nodes that that each like profile was run on, and that changed per profile. So you have like two and then four and then eight, you're basically doing like a scaling study. What portions of the data would you use for for coming up with that analysis?
+
+P5  14:43  
+Well, that's actually a challenge I already had. Because for one scenario, for example, I'd like to do kind of like a strong scaling study, strong scaling scenario. So the challenge there was and still is that when we try to measure, take measurements with only one node, we have annotations that do not occur when we have like two nodes. Because a lot of MPI communication is missing, though, we even have completely missing regionals because obviously, like you don't need an all reduce with only one MPI rank. So these nodes are then missing. And so there's actually our challenge. And I think there are some bugs but we are working on that because we have to, like merge the tree you get like when you create your ensemble dataset, where you simply put in all the data, or the profiles, and also [MeasurementAPI] files in my, my work specifically. Put it all in there. And then afterwards, you can query on your whole dataset in where, in a way, where you can be like, Okay, let's give me please all the "group by"s of MPI ranks, so that I would retrieve like sub-[EnsembleAPI Object]. Only like one example of a [EnsembleAPI Object], but you can get more [EnsembleAPI Object] out of them, by creating sub-[EnsembleAPI Object], because of group by clauses really are similar to databases, then again, if I so for me specifically, for example, when I try to get to speedup diagram for an all-reduce, which is interesting to see how this function specifically scales with the number of processes, I had to challenge that, like, okay, for one note, we don't have with measurement. But what to do with this case? If so it's more like a programmatic difference, because suddenly, all of a sudden your functions fail, because you can't retrieve this node. So it has some challenges, too. Was that to your question?
+{Regional comparison in scaling study is hard because they are not directly comparable.}
+{Need to work out bugs in creating Ensemble object for this case.}
+{There is an inherent group-by of MPI ranks.}
+{Talks about whole API for this without making table use explicit.}
+
+A1  16:56  
+Yeah, no, I think that they address my question, you hit on a lot of points that that I think are relevant. So the next question I have is that if I want to compute the runtime differences between a code base run on one architecture versus one run on another architecture, can you show me which portions of this data would be most helpful for that?
+
+P5  17:19  
+So I would say, though, there are two things that I think like, of course, the runtime itself was really interesting. So right now my favorite favorite metric, I say, because like I guess, so it's really easy to understand what you want to optimize for, because you're obviously looking for the lowest runtime. And if you're simply compare some architectures, you will still favor like the architecture, which gives you the lowest runtime so nothing changes in the way you can see it here. But changes a lot when you try to get more insights into why specific system is quick or slow as another one, then again, I would fall back to like getting more insights out of the performance counters. But of course, they are completely different. If we compare like, Intel top-down metrics with AMD metrics, Performance Counters, then we have to, then we would have like different counters, and some counters are not available on AMD architectures, and some not available on Intel, for example, you would get at this point, I'd say so I've not worked with that kind of data so far, but I would say is that I would say that then you have a lot of columns that are that a lot of roles where no values are. So you get a new whole lot of new challenges. But then again, it's probably a good idea to I think PAPI also does it in some way where you try to match these counters in ways that they may might express the same thing where you combine your counters, but still it will be a lot of work to make them comparable.
+{Difficulty of direct comparison across architectures gives you tables with holes.}
+
+A1  19:16  
+Perfect. All right. Thank you. I've got one more question like this. So um suppose that you have a function with very low exclusive time. So it the function itself is not taking a lot of time, but very high inclusive time. So that means that all of you know it's it's children or something may be taking a lot of time, how would you find out where that time is spent?
+
+Unknown Speaker  19:41  
+[Unitelligible Overlapping Speech]
+
+P5  19:49  
+So, I mean, if we look into so, to me personally the data frame is not really useful. It's more like it transportation layer to compute a visual view onto what's going on. So my first step would probably be to look into the tree side by side with, on one side, you have exclusive time. And on the other [. . .], you will have exclusive time. So that you actually come up with like, there is a difference, I think that would help me. Because the data frame itself was only like a storage container for data. And it's hard to really read, because there's so much going on. So it's even harder to see like, if there's even behaviors that you are interested in, it's only obviously obvious that some parts take more time. And some take a lot of time. And you don't really get the view behind that. That's completely missing, I'd say. So yeah, I would probably go with the tree side-by-side, and go from there somewhere.
+{Task 3 is a tree problem, should look at the tree.}
+
+A1  21:02  
+Cool, perfect. Thanks for this. Alright, and I've got one last thing I'm gonna need you to draw here for it, don't worry, it's not very complicated. I'm just gonna give you a very basic dataset. So I want you to imagine a profile of a sim simple program with three functions, right? The functions are just named a, b, and c. And function A took 30 seconds, then you can write this down for you like, yeah, function B took five seconds. And function T C took 100 seconds. Could I get you to draw this dataset for however you like, using whatever abstractions or metaphors you like?
+
+P5  21:55  
+How exactly do you mean draw. Because like the dataset is-- basically, the data frames available as well. And that AB might be some annotated region in [MeasurementAPI]. And this is just like a metric, presumably, like it's only one run, was it aggregated in a way? So is it like only one profiles, one execution of this run? Or is it like the average of multiple?
+
+A1  22:24  
+No, it's just just only execution of this run? It was just the only one. And I mean, you did just describe this, the way you wrote it out there. I mean, that would be a valid drawing of it, if you are comfortable with that, or if you want to try something else. I mean,
+
+P5  22:44  
+to be honest, like this is the bare minimum that we have from any measurements, like we don't have any association between them. So they can do what ever I mean, if you look at the [MeasurementAPI], and no, not even done, like, I have never seen a tree where you don't have like one main entry point application, obviously. But there might be other relation, if this is like the whole application. And that maybe as an entry point, but I'm unsure like what you can get out of that. And anyway,
+{Strong inclination that there has to be a tree within a dataset.}
+
+A1  23:17  
+okay, well, how about how about I do say that, A calls both B and C, we have a relation there. Yeah. So
+
+P5  23:25  
+that would make more sense to me. You have A at the top, and then you have like some relation. Let's see. So then we go again, into the tree view. And all of a sudden, like, I mean, a is 30 seconds. And this probably has to be exclusive times. So B let's say B is like the child too. So these are only leaf nodes in our tree. And that's when this is exclusive time. We have five seconds. then C is like the main contributor to the runtime. And A besides doing besides calling B and C, which took like five and 100 seconds took 30 seconds for us. So that's what I would do.
+{Figures out inclusive vs. exclusive based on data.}
+{Draws an indented tree.}
+
+A1  24:19  
+Right? And I that that looks like a great drawing to me of it. So like I said, it's a very simple dataset so so don't sweat there wasn't there's no trick here. It's not it doesn't have been overly complex. All right. And then that Oh, I have one actually one more question. To go back to your your prior, your prior drawing and your ensemble data set. Where does the metadata fit into this dataset? 
+
+P5  24:52  
+Um, well right now it's kind of, detached in ways, the metadata is only really used to like. . . you can look into the metadata. And then you can query by it. So if you, for example, were to group by which I do a lot, for example, I'm interested in like the number of MPI ranks that are used within a specific profile. Then in the background data is used to find all the nodes I'm asking for and the profiles, which was some specific metadata. But honestly, like, right now, I'm only using it to query for stuff, which I know its there but I'm not really using it to explore the application in a way that I know you could use metadata for. For me, it's only like, we have basically only like nodes to access and row ID of, where the node is, this is all we have in the data frame itself, we need some metadata in order to make good selection of specific nodes that we are interested in. That's the only way I'm using metadata right now. That's the big task actually, to look into that, because so this might also be really specific to [PhysicsAPI] and that it is a black box. But we get a lot of meta metadata. But it's really like, it's really hard to get an understanding out of that. Because there are some physical functions that change and some parameters. And it's really difficult to get meaning out of that. And then you only look into like, more familiar, familiar, familiar stuff, like the compiler and optimization flags, like for the compiler, and things like that.
+{Metadata is separate.}
+{Metadata is not used for as much.}
+{Does group-by a lot but still thinks of metadata as not used as much.}
+{Metadata used for selection into data.}
+{Meaning of Metadata unclear for their particular project.}
+{Use only the familiar metadata.}
+{This person uses a ton of metadata but still discounts it.}
+
+A1  26:54  
+All right. Perfect. And I have one final question for you. Is there any aspect of this data of the like, you know, data set that you don't feel like is captured by the [EnsembleAPI Object]  object?
+
+P5  27:16  
+Right now it's doing everything I'm asking it for. But so yeah, actually, I one thing, and that's might not be, it's more like a feature that more would be more comfortable for me to use. Because I know you have you call some you create some [EnsembleAPI Object] object, you put in a lot of your profiles into there, and then you've got it. But right now, I'm having like a lot of steps where I use this data to make some analysis on and all the time you like, have to handle the different [EnsembleAPI Object]  and the different objects and all your calculations again, by yourself. And they kind of get lost in a way. Because you do some analysis for let's say, Clang, and one analysis for Intel, then you name your various variables, like, Okay, this is for Intel, this is for clang. But like after 20 notebook cells, you really get lost with what's going on where and, like, what I'm missing is like, not a [EnsembleAPI Object] object, but like a container, where you can add all your analysis to in a ways that this is also carrying some metadata for you to allow to, like, get back some specific analysis that you're done, like, two weeks prior that way. I don't know if that makes sense. What I'm trying to say but like, you do a lot of analysis, you have a lot of [EnsembleAPI Object]  objects, objects, but they are independent of each other. And at some point, I try, I'm kind of getting lost after wilds, and then
+{They separate their experiments into different EnsembleAPI objects.}
+{They use similar scripts but get lost in notebook cells.}
+{They have a hard time keeping track of their ensemble objects.}
+{Ensemble problems all the way down.}
+
+A1  29:01  
+that makes a lot of sense to me, actually. And just to make sure that understanding it sounds like you're kind of describing a history. Is that a history of the analysis?
+
+P5  29:12  
+Yeah, that's so Yeah, maybe? Yeah, yes.
+
+A1  29:19  
+Yeah. Okay. Cool. Perfect. There. Is there nothing else that you have that you think isn't captured by the Ticket object? That's basically your main.
+
+P5  29:30  
+Yeah. Okay. So that's that. I think it's all in there.
+
+A1  29:37  
+All right. Then in that case, that's that's my whole interview for you. Thank you so much, once again for offering to do this with us, [P5], we really appreciate it. Yeah, no worries.
+
+P5  29:48  
+If you have anything on your mind afterwards. We see in meetings so that you know, if I can, I'm really interested in like, making this really good tool on the end.
+
+A1  30:01  
+Yeah, thanks. Thanks for me as well. You're well and yeah and if you Yeah, you can scan in those those pictures you sent me and send me those and that's those are totally adequate but if you also want to spend some time and refine them and also send me those refinements as well, I would be happy to have those. Yeah, sure. No problem. Okay. Awesome. Thank you, [P5]. And if you don't have any questions for us, then me and [A5] are just gonna hang out for a sec to debrief and then in your otherwise free to go.
+
+P5  30:34  
+Okay. Well, I wish you all a good weekend.
+
+Transcribed by https://otter.ai
