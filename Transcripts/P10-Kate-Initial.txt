@@ -1,0 +1,255 @@
+A5  0:17  
+[Unrelated Conversation between A1 and A5]
+
+A1  1:10  
+Um, all right, cool. Um, yeah. Lunch after this. So might as well just dive in. If that's all good for you, [P10]. And [A5]. All right. Cool. Then. My notes? Yeah, yeah, yeah. All right. Cool. So yeah, I sent you last week, the consent document and everything. I'm not sure if you've had a chance to read over that or not, it's totally fine. I just want you to know that there for your reference at any point in the future, I'm going to be going over the main points with you right now about what this interview is all about, basically. Yeah. All right. So um, first, thank you so much for agreeing to meet with me, I appreciate them a lot. And I know it's a little bit onerous, and can be kind of like, an hour out of your day. You're very busy. So I'm just gonna tell you the purpose of this study start off with that. It's to explore how professional data users and tool developers like yourselves think about ensembles of data, specifically, performance data. And this information we hope will help us design just better visualizations and tools for analysis, like [EnsembleAPI] hopefully, it's the structure of it's going to be just a one on one interview between you and me. But [A5] is here to help me take notes and may occasionally chime in with some follow up questions. I'm going to ask you a series of prompts regarding how you think about the performance data that you work with. And I'm also going to ask you to draw this data for us. And I want to emphasize two things. One, there's no right or wrong answers. And to the drawing doesn't have to be good. It can be all scratches and scribbles, I just, we just want to get insight into the way that your brain thinks about these things. All right. And then additionally, we'll be making also making an audio and video recording of this interview. And I'm going to keep a copy of the slides. And then these, the recording will be anonymized and transcribed. I'm gonna send you a copy that you can look over and make sure that you know, there's any you can let me know if there's anything you want to exclude or, or additional notes that you want to drop in on that. And then only the research staff will have access to the recordings, so you don't have to worry about you can choose to leave her in the interview whenever you like, and this won't affect your relationship with us and research staff or obviously anyone else associated with this. Cool. All right. Um, and I believe I'm already recording. We'll read things laughing down there. Yep. Cool. Yeah, that's yeah, that's fine. 
+
+[A1 and P10 Discuss the weird setup for this meeting]
+
+ So I'm just gonna start off with a simple question. What project do you or did you work on that uses ensembles up performed?
+
+Speaker 1  4:28  
+I'm involved in PAVE. [unintelligible] that's a bunch of different use cases.
+
+Speaker 3  4:40  
+And do you have a specific one that's most recent in your mind or that you'd like to talk about? Because we're gonna ask you some more questions about this specific data that you're working with? And you just need to
+
+P10  4:53  
+So it's with the [BenchmarkSuite]. 
+{Data ensemble is based on data use case.}
+
+A1  4:56  
+Okay, cool. Perfect. Um, can you describe that that project for me a little bit more detail.
+
+Speaker 1  5:05  
+So, [BenchmarkSuite] is an open source collection or suite of loop based kernels that are talking about big HPC simulation codes. Use the [BenchmarkSuite] as a [unintelligible]
+
+A1  5:26  
+[unintelligable]
+
+Speaker 1  5:26  
+it is used as a complement to the [BenchmarkSuite] code base to understand the performance of our [BenchmarkSuite] kernels. That is what the [BenchmarkSuite] suite is used for.
+
+Speaker 3  5:43  
+Alright, um, can you please describe a typical data ensemble that would come out of the [BenchmarkSuite]? What looks like any characteristics of that data? Great.
+
+Speaker 1  5:54  
+So out of the [BenchmarkSuite], we're wanting to run the kernels across different variants. And then the variants will be run across different architectures such as GPU. We might be running it with different versions of [BenchmarkSuite], and understanding the performance of [BenchmarkSuite]. You could be using different compilers in the [BenchmarkSuite] and understanding compiler benefits or performance benefits. Let's see. And then I guess within that as well, we have different tunings that exists within the variants that might change the performance as well.
+{Runs are done across variants.}
+{Runs are done across architectures.}
+{Multidimensional IVs.}
+{Runs are done across compilers.}
+{Runs are done across tunings.}
+
+Unknown Speaker  6:39  
+Um, can you define variant and tuning for me? 
+
+P10  6:42  
+Um, so how I think about variant tuning is just a different implementation of the kernel. And so, so the variant we have defined as like sequential, open MP, we have CUDA. And so that's kind of the, I guess, the abstraction layer, I guess, maybe it's the target architecture, where we're running the variant is the way to think about it. And then within each variants, you have different tunings that you can run. And the tuning is really defining how the kernel has been compiled, if you will. So you might have a tuning that's default. So that's our base kernel implementation, we might have a tuning that is called a library. And so that's using maybe a particular tuning within the or maybe a specific variant, sorry, those are all overused terms. The library is a specific implementation of the kernel that is being used. But it's just a way for us to define what how the kernel has been implemented to understand you know, what optimizations we might have put into that kernel.
+{Runs are done across code implementations / target arches}
+{Runs are done across compilation options.}
+
+Speaker 3  7:54  
+A lot of parts that data discussed here. Are there any that are more important to you, that you think are more important than other parts of the data?
+
+P10  8:09  
+So I think we're really interested in the tunings. I think the, you know, the variant helps us identify one kind of level of specificity. But it's really the tunings that we're after to understand how they're performing. And really, it's the combination of the variant and the tuning that we're after. So that's really helping us understand, you know, where were we running, it's giving us an idea of where we are running, and then what optimizations we might have done to the kernel.
+{Can name a specific dimension that's most important.}
+{On retrospect, it's a combination of dimensions that's the most important.}
+
+Speaker 3  8:44  
+It for my first part of like, talk questions are over and now you are gonna draw. Yeah, please use crayons. That's why I bring in crayons. Yeah, pretty, I use some of them for notes, but mostly, they're brand new. Yeah. Um, so what I'm going to have you do is see if you can sketch out a like the entirety of the dataset that you just described to me. And using any sort of metaphors or abstractions you like, just to give me a good idea of sort of what what it looks like what are the main parts of it
+
+Unknown Speaker  9:31  
+[unintelligible]
+
+Speaker 3  9:31  
+Mean? Whatever you think is is important to describe the dataset so
+
+P10  9:46  
+So we have our variance. Your camera guys do this remotely. With great difficulty So statuses are doing very well
+
+A5  10:07  
+don't forget the blur if there's a blur oh my god is it I can't I can't tell you that are my connections bad?
+
+A1  10:15  
+No it's probably really yeah there's a yeah probably yeah I got some color on the background there we go looks nice now play apply thanks so you'll see darker which was brighter. You see okay
+
+P10  10:33  
+our color is probably better right
+
+okay
+
+so from a variant standpoint we've got CUDA, we've got sequential, we have open MP, sequential, open MP, base CUDA HIP. Under these tunings, we have options like library
+{Lists dimensions with options as a column.}
+{Metadata is referenced.}
+
+A1  11:10  
+Yeah. Cool. Thank you. Can you see okay, at all?
+
+That's coming up. focus a little bit. Yes.
+
+A5  11:27  
+I was muted. Yeah. All right. It took a little while for the light balance, but it's good now. Okay, good.
+
+Speaker 1  11:36  
+There's others block x, for all the different tunings, just as examples, and then from this, I guess the performance data that we are getting from this would be you know, time and the region's time for kernel. Exclusive. Right, we are seeing performance data like what does he do bytes per rep. Flops per rep, which have been manually counted from my understanding. And then you know, you've got your standard, other metrics that we can collect on the CPU.
+{Performance data is included.}
+{Lists dimensions of performance data/columns.}
+{Large data defined by possibilities, not structure.}
+
+P10  12:29  
+Let's see see that CPU metrics. We've also got GPU metrics through [Performance Software] instances and video. I think he might have maybe AMD, I think [P10] told me that's done. And then if we've got all the metadata also in here, right, so we've talked about compiler versions. I've talked about the [BenchmarkSuite] version. Architecture and thinking of. . . architecture. Architecture fields as well. 
+{Metadata is included, lists as possible values.}
+{Variants/tunings not part of the metadata?}
+
+A1  13:33  
+Awesome. 
+
+A5  13:34  
+Okay, sorry, I missed that. What's the last header there at the bottom of the data? Oh, metadata. Okay, thanks.
+
+A1  13:45  
+Cool. And is this something that you're proud of the dataset? Okay, good. Fantastic. Then I'm going to ask you sort of task specific questions that you're going to use this drawing for that, where I'm just going to kind of query about how you'll use this data to do something. So first and foremost, let's imagine that we're doing a strong sale scaling study. And we're just looking at like to see how the number of MPI threads relates to the runtime of a single function. What what portions of the data what I use here to determine that to figure that out?
+
+Speaker 1  14:29  
+[unintelligible] too, so I guess that would be another field in the metadata is the number of ranks down here. So assuming we had that I would take this one as well as the the this time per kernel metric and plot those two, and I guess the other. . . let's see. . . as you're doing it per a, for a kernel at a time? Okay, so I guess if we did as you know, a single graph here, right with the ranks and the time, then each of the lines that go like this can be a different variant and tuning
+{Task 1 includes addition to the metadata.}
+{Task 1 ends up with a line plot.}
+{Task 1 multi-line plot for variants/tunings.}
+
+
+Speaker 3  15:15  
+Is the graph is per anything or products? 
+
+P10  15:25  
+[unintelligible response] 
+
+A1  15:28  
+All right. Next next little task. And there's lots of paper here too, if you do want to expand, you don't have to. But if I want to compare the runtime differences between a code base run on one architecture versus one run on another architecture, what parts of the data would I use?
+
+P10  15:52  
+Speedup. So let's do this first single kernel. So I'm going to need the CPU time, got our GPU time. And then I suppose we could do this as a still do this based on problem size now. 
+{Task 2 explanation includes dropping the kernel dimension.}
+{Task 2 is another line plot.}
+{Task 2 requires growing metadata.}
+
+A1  16:24  
+The evergrowing metadatas
+
+P10  16:25  
+I think?  So I put the problem size down here. And then basically have a, you know, a [unintelligible]. Let's see. I do it for a single kernel. Let's see. And I guess in terms of the. . . lets see what I do a single variant, and tuning? I guess you could make this multiple variants and turnings as well.
+
+This is a variant tuning.
+{Task 2 dropping a dimension.}
+
+A1  17:09  
+All right. Next one, let's do so if I have a function with a very low exclusive time, but a very high inclusive time. So that means that you know, obviously there's there's functions under it, they're taking all the time and eat itself is not doing a lot of work. What parts of the data what I used to find where all of that time is.
+
+P10  17:43  
+So you're saying that your kernel here, oops, your kernel has a high? No, this has a low? Exclusive.
+
+A1  17:53  
+Low? Yeah. Low exclusive, high inclusive? No, it's. Yeah. I always have to make sure I'm asking the question right. Yeah. So it itself is not doing a lot of work. But there's a lot of work happening somewhere in it. 
+
+P10  18:14  
+This is much. Yes. Yes, exactly. This is yes. All right. Now, as you're saying, what would I use to get to understand what is contributing to this high inclusive time?
+
+A1  18:29  
+Yes, exactly. Yeah.
+
+Speaker 1  18:32  
+Okay, so let's start with the Tree. And, you know, use the query language to get at this to filter my tree. Um, and then I guess I would then plot on the tree the exclusive time for all of the, the node that has the high inclusive as well as all of its children nodes, to understand which one has the dominant runtime.
+{Tree appears for Task 3.}
+{Plot on the tree.}
+
+A1  19:02  
+Conceptually, what would you use the query language to filter out?
+
+Speaker 1  19:06  
+So if I knew which node had so I guess, you know, first step, I would still be printing the tree probably. And once I had identified what node, let me just assume one node has the high inclusive time I would use that query language with the kernel being the root node, and then just grab everything underneath it to the down to the leaf nodes. 
+{Task 3 includes looking at the tree.}
+{Task 3 then involves query language.}
+
+A5  19:34  
+I see, okay, and then so we're on the first piece of paper do you get the tree from?
+
+Speaker 1  19:49  
+So let's see. So we have the variance and tunings, we have the performance data, the metadata, so another metric here would be I guess we'll just call this the graph. With the node relationship, relationships, there's yet another piece of the of the data that's being collected by [BenchmarkSuite]. Would be, the graph.
+{Network/graph is added to the data to explain Task 3.}
+
+
+Speaker 3  20:19  
+Is the graph under performance data, or. . ?
+
+Speaker 1  20:23  
+I guess I would call it different, right. So the well, yeah, so the performance data is per kernel. Right? So. And then the graph is obviously all of its all aware of all kernels. Not the performance data, but it's just aware of, you know, who do I Who did I call next, who called me?
+{Tree/graph is separate from performance data.}
+
+A1  20:54  
+Any further questions along those lines [A5]?
+
+A5  20:57  
+Okay, thanks.
+
+Speaker 3  21:02  
+Okay, so I see you, I don't I don't need to ask you about the metadata, you have a good grasp on that. Is there any aspect of the data that you don't think is properly captured by the [EnsembleAPI] objects?
+
+Speaker 1  21:33  
+So I think the piece that we're working through right now is how to capture how I guess where to properly put what [MeasurementAPI] calls these attributes into our [EnsembleAPI] object. So from the [BenchmarkSuite] standpoint, I think the attributes that we've been thinking about is the tuning is one of them, maybe the variant as another. Um, and then I think the other one that we've been talking about is the preference which gets into obviously another project of compiler. And I don't know, I don't fully have a grasp on what the definition that [Performance Software] has for attributes. But the idea being that we have the tuning and the variant captured within our [EnsembleAPI]  object. Right now, we've been capturing the metadata, or the variant into the metadata. But I think there's this further to this further, more fine grained specification that we're trying to get after where we're putting tuning also into the metadata. So that we can then filter or, you know, basically create sub-[Programmatic Performance Analysis Data Structures]  that are based on the variant and the tuning together. Because obviously, right now, we just have the variants as the factor that we're kind of filtering on. But we have many tunings within the variant that we're trying to tease out
+{EnsembleAPI object could be more granular.}
+
+
+Speaker 3  23:14  
+But does it already kind of exist in the metadata, is that correct? Or the [. . ]. or do you think captured at all? By the [EnsembleAPI] object?
+
+Speaker 1  23:28  
+Well, we do right now. Well, right. Right, right now is. So we do have a notion, so we are capturing the variant? I think that's already implemented. So the variant is already in the attribute, or sorry, the variant is already in the metadata. The piece that we don't have yet to tuned or pieced out is the tuning related kernels. 
+
+A1  23:57  
+Where does that exist in the raw dataset?
+
+P10  24:03  
+ So the tuning right now is, is in our data, it's actually stored right now on our graph.
+{Call tree is being used for one of the attributes.}
+
+Speaker 1  24:11  
+Nodes, I guess, graph, um, I don't know I use, I guess it's stored in the graph nodes. So actually, the tuning the different tunings under the particular variants are stored as individual nodes. So they're independent, we get, you know, reporting of all of this performance data per node. But then it's all embedded together. And based on the set of kernels that we're running in [BenchmarkSuite] are the type of kernel that we're running in [BenchmarkSuite]. You might have tuning or sorry, you might have default tuning and some, not in others, you might get the library that's being run, but not in others. So it's very, I guess we haven't yet figured out or uncovered, which tunings exist for what types of kernels?
+{Different uses of the call tree.}
+
+
+Speaker 3  25:14  
+Is that programmatic at all? Is the tuning something that exists in the program? Or is it just something that has to be annotated specifically by the user?
+
+Speaker 1  25:26  
+So that's still unclear to me? I don't know. So [BenchmarkSuite] is the different kernels and [BenchmarkSuite] are being contributed by various people within the code teams. And I'm not sure if it's on the code, the person who is contributing the kernel to implement the different tunings, or if they just implement, you know, one version of their kernel. And then one of the maintainers of the [BenchmarkSuite] team is what implements the different tunings. Im not understood, I'm not sure yet how those two interplay. So I don't know that piece. Any further questions about this?
+{Context is not captured by ensemble API.}
+
+
+A5  26:11  
+Um, so it sounds like part of the problem might be that the cross products right now are not very discoverable. Is that?
+
+Speaker 1  26:20  
+The combination? So yes, we have, it's easy to be able to select or parameterize across the variants. And then right now you basically get all all available tunings for that variant, but it is not the same set of tunings for each variant. And so we really do need, we need the unique, you know, combinations, that is the cross product of those two. 
+{Difficulty when cross-product is not full.}
+
+A5  26:46  
+Okay.
+
+A1  26:52  
+All right, then I got one last little drawing for you, then. In that case, and then pretty much should be good. If it's good, I appreciate you using the crabs is great. So yeah, I'm just going to give you a very basic data set, and I'm just gonna ask you to draw it for me. So I'm gonna give you like a very the profile, a very simple program with three functions and their functions. The functions are A, B, and C, A calls B and C. And then they do have timing associated with them. One function A took 30 seconds, function B took five seconds. And function C took 100 seconds. Yeah. Excellent. Yeah. And then if you could just draw that dataset. That's all.
+
+P10  28:00  
+I guess I'm gonna let you read the whole thing. 
+{Control task is a balanced node-link plus a separate table.}
+
+A1  28:03  
+No, it's fine, actually. Yeah. I mean, it's such a simple data set that it can be drawn as part of the process. And this is you're good with this as a drawing of that describes the dataset dataset for you. Okay, cool. Perfect. All right. I think that's pretty much it. Anything else?
+
+A5  28:24  
+Nope. Thanks so much, [P10]. 
+
+A1  28:26  
+Yeah, thank you, [P10]. All right. Um yeah, yeah, we're coming back for a second and then we'll we'll go yes.
+
+Transcribed by https://otter.ai
