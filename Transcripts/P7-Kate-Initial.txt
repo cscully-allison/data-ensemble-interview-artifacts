@@ -1,0 +1,313 @@
+A1  0:04  
+Okay, I think it's great. Okay, so I'm gonna start off with sort of a simple question, what project do you work with that uses ensembles of data.
+
+P7  0:14  
+So there's two projects. One is, of course, as you know [EnsembleAPI], developing, like tooling to automatically analyze ensembles. But the other one I'm working on is [Data Movement Tool], which is a data movement tool. It is one of many data movement tools for foundational workflows. And then in [Data Movement Tool's] case it's kind of following the in-situ/in-transit paradigm where you're doing kind of on the fly, [unintelligible] see if your producer and consumer at the same time, and you send data just on the fly as the consumer requested. And of course, it's available for producer. But that is a bit unique in that we are . . . In two ways: first of all, it is unique in how we're using files as our data abstraction, most consistent in transit tools use in memory data representations, or we're using files instead for the portability and program [. . .] Essentially, speed of development. I don't remember the word. Yeah, I don't I don't remember the term general term of the top of my head but essentially that. And the other benefit of [Data Movement Tool] is meant to be disaggregation, which would get from being built on top of flux. Okay. Yeah, so in that respect, the terms of like on total data analysis, a lot of what we're doing is running workflows. Currently very simple pipelines, like one producer, one consumer, maybe a couple of those pairs run at the same time. So like that. And we're trying to measure, like, get a sense of, alright, how much time we spend in these different layers and software? How much like, what's our latency and benefit during the actual communication, stuff like that?
+{Mentions EnsembleAPI}
+{Talks in detail about new project that will need ensemble data}
+{Talks about data representation}
+
+A1  1:57  
+So the the ensemble data that you're describing as part of that project? Is that what's produced out of those measurements? Yes, yes,
+
+P7  2:08  
+we're still very early in performance measurement. Part of that. But yeah.
+
+A1  2:16  
+So then, I guess you can choose whichever dataset you'd like the other ones that you're working with; [EnsembleAPI] or these [Data Management Tool] datasets. But can I get you to break, break it down into like, parts to describe that data ensemble in better detail?
+
+P7  2:32  
+Yeah, so you're drawing this discussion right. Now?
+
+A1  2:36  
+I'm gonna have you drawing a sec. But yeah,
+
+you're totally fine. Yeah.
+
+P7  2:40  
+Um, so. So rendering a few layers. At the most coarse grained, we're doing this basic. Just more resubmit job, run through flux, we start a timer, stop it after the job's completes that stuff. Once we get to the actual more once we start diving deeper. Currently, we're using a bunch of manual timings for different code regions. We also have annotations for a tool called peripheral aspects of the idea there. It's similar to like [MeasurementAPI], in that you annotate certain functions, and it attracts timing. So a lot of what we're dealing with is just to be added as a few layers, so to say, all right, like the opening close calls, three intercept time, that normal time, the actual producer code, yeah, consumer code going deeper, we time the actual send and receive functions that you've DCX stuff like that's what time these different layers, the software, and then I'll currently with per flow are mostly getting traces out of that. So performance over time, as opposed to profiles. And we just collect that data into what we do those runs multiple times. And right now, we're just doing basic averaging. But we will be looking into more complex analysis in the future.
+{Discusses ensemble in terms of new use case.}
+{Right now, dataset is just one value---time.}
+{Eventually will do time per region.}
+{Focus is on their part -- the collection}
+{Averaging as reductions.}
+{Ensemble to them is more based on the number or runs than the width of the data}
+
+A1  4:10  
+so the ensemble aspect is just multiple trials,
+
+P7  4:13  
+Yes, multiple trials
+
+A5  4:17  
+Might be more useful to go with the [EnsembleAPI] use case in this case, then,
+
+Unknown Speaker  4:21  
+yeah. If you don't mind describing the [EnsembleAPI] data broadly. Yeah.
+
+Unknown Speaker  4:27  
+So with  [EnsembleAPI Object], the general premise is you'll have a collection of profiles presenting different runs of a piece of software. And those runs can be differentiated by almost any parameter, problem size compiler. Again, any parameter really. And the idea of [EnsembleAPI]  is, of course, you load everything up into a single Python based data model, which consists of a graph or "call tree" or "call graph," whichever one your tool is actually collecting. And then they're each node, then you also get your graph. You also have a unique identifier for each profile, profile ID, if you will. And then there's three data frames constructed using the nodes in the graph and the profile IDs as the indicies different, like combinations of those things, depending on the data frame. So you have performance data where you have which is indexed on both your profile ID and your nodes, that contains your actual metrics, the data, so time memory usage, stuff like that. There's the metadata frame, which is only indexed on profile ID. And that just contains information again, like compiler, problem size, the things that can differentiate the runs. And then there is also a statistics frame, which is the stores the results of many aggregate statistics operations on performance data. And that is also indexed on the nodes. So the idea is load this data from all the trials into one big performance model and analyze it. And
+{Common metadata columns references as 'differentiator'}
+{Ensemble is collection of profiles. Uses the term 'runs' too.}
+{Call tree/graph is spoken.}
+{Shape of data based on collection tool.}
+{Each run has an ID}
+{Data frames based on nodes in graph and profile IDs as indices}
+{Performance data is mentioned}
+{Performance data has 'actual metrics' or actual data}
+{Metadata is mentioned}
+{Indices of tables matter.}
+{Metadata differentiates the runs.}
+{Statistics frame is mentioned}
+{Statistics frame aggregates... but what is aggregates is unclear.}
+
+A1  6:05  
+for that, the can you can order the like importance of that that data in terms of importance are those parts of the data in terms of importance?
+
+P7  6:15  
+Yeah, so the most important is definitely the performance data. That's your actual stuff, you have to analyze. In terms of the statistics, and metadata. They're important, depends what you want. So if you really want to get a sense of how things change within parameters, your performance data, or your metadata are probably a bit more important. If you're more interested in just how things perform on average, or, again, on statistical operations based on performance data, then your statistics will be more important than that data just depends on what you want to analyze.
+{Performance data is most important.}
+{Performance data is the 'actual data.}
+{Metadata may be important depending on what you want}
+{Stats may be important depending on what you want.}
+{Metadata good for how things change with parameters.}
+{Stats good for how things performa on average.}
+
+Unknown Speaker  6:47  
+That's pretty much my question asking part, so now we can move on to the fun drawing. And let me see if I can I should be able to get this to work so that [A5] can also see the drawing is just coming up.
+
+A5  7:05  
+Yeah, I can I can see it. Okay. Thank
+
+A1  7:09  
+you. Wait, wait. Why is it going the wrong way? There we go. Stupid reverse. All right.
+
+Yes, if I could just get you to
+
+Unknown Speaker  7:21  
+sketch out the entirety of the dataset that you just described. Yeah. So and you can use any metaphors or abstractions you like, you know, there's no need to relate. And whatever you perceive
+
+A1  7:32  
+the standard. Of course, please take your time. And if I get you to think aloud as you start to figure picture for that.
+
+P7  7:44  
+So that is because both of them are Wi Fi does not like Google, right now. 
+
+A1  7:56  
+Yeah, that's what you're saying. For you?
+
+P7  8:20  
+Yeah, so you start with multiple profiles of these profiles, which consists of a call graph. So let's say. . . let me get the excess paper out of the way?
+{Draws the Call Graph}
+{Multitude data first drawn as a stack}
+
+Unknown Speaker  8:36  
+Yeah, of course, it's a very scratchy pen too. It doesn't work as well with all those papers. Yeah.
+
+Unknown Speaker  8:45  
+So it's bending. Totally fine. Well, this simplified version is there's something like this, this case to call graphs, arrows all over the place. And you'd have your metrics your performance data in other words then you'd have some set of metadata. Just say I don't know. Compiler and problem size
+{Draws tables.}
+{Draws a few rows of example data.}
+{Draws example columns.}
+{Uses ellipses for 'and so on'}
+
+A1  9:27  
+Are those example metadata?
+
+P7  9:28  
+Yeah, those are examples. Exactly what it is depends on the application. And then all of this is a profile. Profile one. Then you'd have more, profile two. 
+{Actual columns are dependent on application.}
+
+A1  9:54  
+Can you see that well enough, [A5] to move.
+
+Yeah, I got the gist of it. So this is just like a stack of things going on, stacked on top of each other.
+
+Unknown Speaker  10:04  
+You just have multiple profiles. Okay, exactly how many? It's up to, It's just based on how many runs you did. So this is the raw data, if you will. That's all one thing. And then the idea with [EnsembleAPI] is it goes into another model. So in this model, we've got our call graph 
+{Difference between raw data and tool's model.}
+
+P7  10:36  
+I just skipped C, I just realized.
+
+A1  10:45  
+Oh, well, that's fine, but world skips C sometimes.
+
+P7  10:47  
+Up here, we've got a table. So it's realizing probably gonna run out of space at this, at this rate public. Finally, that's why there's extra pieces of paper for Yeah, I'm in just this way. Alright, profile ID. Let's say I have cache misses. This section is performance data,  is spelled very poorly, whatever you'd have, for example: name quickly write some examples out here on [unintelligible] , one, two. And more out here. Then time, I'm not going to include units here just for the sake of conciseness. But these would of course have units on them.
+{Data needs units.}
+
+Unknown Speaker  12:25  
+Again, this is all synthetic, this is the second piece of their data model. We can just do it this way. Then down here.
+{This is _their_ data model.}
+
+P7  12:37  
+We 'd have main. . .statistics here, then the last table is our metadata table. Where we'd have profile ID and compiler. So for this one, I have two profiles in the original data. So I will say two here. And it could be 1200, 1200 and clang, gcc. And that's the last part of this, is the general, all of this, is the [EnsembleAPI Object]. Yeah, so the thought is your performance data set, it's indexed on both your nodes from the call graph and the profile IDs. I'll even even double line here to separate the index and the rest of it, don't know why I drew an arrow there. Your your metadata is only indexing the profile IDs and your statistics essentially aggregates over the profile IDs, aggregates the performance data over the profile IDs to give you, well, statistical output. And so, exactly what goes into this structure depends on what raw data you pass in.
+{Importance of indices for describing the data.}
+{Kate note: indices is probably a very CS-y way of doing it, I wonder if other data scientists are familiar.}
+{Stats table aggregates over profiles.}
+{Metadata indexes on profile IDs.}
+{Structure dependent on raw data.}
+
+Unknown Speaker  14:52  
+I like connecting it to the [Data Movement Tool] example, as a more practical example. Say the raw data represents all the data we have, for a particular run or a particular consumer in our workflow, we could then run that workflow multiple times, maybe slightly different parameters, get all these profiles for that one consumer, and then pass on this data model and analyze it that way. Using things like one thing that we I'm honestly, currently intending to use, is the query language to strip off all the application specific stuff and just focus on our [Data Movement Tool]. 
+{Raw data is all the data they have.}
+{You get multiple profiles for varying parameters of a workflow}
+{Plans to filter out 'application specific' stuff to do work.}
+
+Unknown Speaker  15:31  
+Perfect, all right. I've got some task dependent questions for you based on that. So first, here I have is, so if I want to, like as part of my analysis relate, say, a changing number of CPUs, I have like an increasing number of CPUs. And I want to relate that to how the runtime is affected, overall, runtimes affected what what parts of the data that you describe here is most important for
+
+Unknown Speaker  16:00  
+that. Yeah. So essentially, problems are essentially problem scale in terms of the system size, like MPI ranks to be a good proxy for that. Versus you said, time, so a lot of that data you care about, start with start off with performance data. So you'd have in this case, in fact, you probably have another index. So besides these two are the third we're gonna be . . . no, number of MPI ranks not just each rank, my bad, that's slightly confusing. So yeah the number of ranks in that case would be part of the metadata. And the timing would be, of course, the performance data. So if you're just wanting exactly what would be useful, but depends on what you're wanting to do, if you're wanting to get kind of a statistical view of how the system changes over time, or something like that, say you want to do like a, like fit to a normal distribution or something, then statistics will be useful to you, you calculate mean, and calculate standard deviation, all that data, using your, in this case, like number of MPI ranks column in the metadata table as you're aggregating factor. And then that would allow you to get a result in the statistics table, which you can then visualize as needed, just as a bell curve, essentially. If so, that would be if you want to more statistical if you wanted it in other ways mean, some of the things that were useful is of course, plotting. So have your, your MPI ranks on the x axis time on the right. If you just had one run at each MPI rank, each MPI scale, you'd probably just do a line plot. Otherwise, Box and Whisker is a common one that I've seen for also, I've seen them, the line plots with like shaded region on either side, indicate kind of how it varies between runs, if they just depends on what you want to do with it.
+{MPI Ranks is a proxy for system size.}
+{Task 1 requires performance data.}
+{Confusion on each rank versus number of ranks.}
+{Task 1 needs the metadata}
+{Suggests more in depth mode that might use statistics table to aggregate over metadata groups.}
+{Suggests various ways to do Task 1 that may require different data.}
+
+Unknown Speaker  18:08  
+Alright, so next one is. So if I want to compare the runtime differences between a code base one on one system versus another system, which parts of this would be most helpful?
+
+Unknown Speaker  18:22  
+So, I mean, the answer is, I mean, really, the answer to a lot of this is either it depends or all of it, right? If you think of the last one, it started with the metadata and performance data, then you go down to the statistics as needed. And the answer for like, multi system thing would be kind of the same, you'd have two systems, they'd be differentiated by, again, this metadata stuff. And through the profile ID, it links back to performance data. So then you can use that metadata to help you decide, like reduce or do statistical calculations or visualize and that type of stuff. In a way [EnsembleAPI Object] is almost just like a, it's really almost as like a graph database to be honest. And because it allows a lot of flexibility. And so exactly, what you want to do depends a lot on the specifics of the past. The specific data that you have stuff like that,
+{Task 2 is similar to Task 1}
+{Task 2 depends on 'all of it' (no call tree though?)}
+{EnsembleAPI like a graph database.}
+
+A1  19:20  
+Can you clarify for me, what you mean by graph database?
+
+Unknown Speaker  19:24  
+Yeah. So the, the elders write this down on the classic example, I know it was near for j. So this implementation depends a lot on the specific tool you're looking at. But in general, it is a database that uses a graph as its core kind of conceptual design. So you'll have usually you'll have, at a high level appears to be a massive graph, network, directed or undirected, fully connected and not connected doesn't matter. In general, you'll have your nodes or vertices in the graph. Have some set of attributes, your edges is also some other set of attributes. And then you can also have really more traditional relational tables attached to that. So this type structure in the graph database, your call graph be your main database object, or your main structure. And then you would have essentially performance data being attributes on each of those nodes, with the profile ID and node columns kind of mapping to other tables, another piece of information.
+{Likens EnsembleAPI to a graph with node/edge attributes and relational tables attached.}
+{Call graph is the dominant structure in this description.}
+{Tables are attributes of call graph in this case.}
+{This is not how it works.}
+
+Unknown Speaker  20:38  
+Could you could sketch that out for me real quick, what that might look like. You don't have to go into detail just very hight level. Yeah, yeah,
+
+P7  20:48  
+there's a little hard to map it one, one, because, yeah, the multi indexing is a bit different from what you'd normally do in a graph database. In general, normally, in a graph database, you'd have. . . main here, I'm just going to say we have a single profile to get rid of the profile ID to main, and it would have say, time 50, cache misses, 3,  that's one node. Then another node with a short list of misses, number seven, and then you'll usually have some type of label here. So in this case, the edge label is a directed edge label these nine like calls. It's gonna be, it's gonna make up some values here. 
+{Multi-index does not match graph database.}
+{Drops the entire profile dimension to explain things.}
+{Dropping dimensions to explain size.}
+{Dimensions implied but unclear.}
+
+A1  22:00  
+No need to list all the metrics there, I think, 
+
+P7  22:02  
+Yeah, that's true. I just thought that, at this point, the rest of it just kind of follows. And then again, the edge labels.
+
+Unknown Speaker  22:24  
+So this is kind of the high level view a bit more low level, you'll get into like how it's actually organized in memory, and on disk and stuff like that. And that varies from tool to tool that can be very different depending on what we're looking at. Some go as far as literally just using SQL on the back end. Others, like Neo4J have their own custom thing.
+{Difference between high level model and how it's actually organized}
+
+A1  22:50  
+Where does metadata fit in this model here?
+
+Unknown Speaker  22:53  
+So it can, this part of it is a little tool by tool dependence. But yeah, so oftentimes, if the tool supports it, you will along with this graph stuff, you'll also have a more relational style component. So you'd have your graph component, and over here, you would have, I'm not gonna write the entire thing out, but you'll have something kinda like our metadata and statistics table here. So profile ID, on to its associated data. And then, like a relational database, this key would map to something else. So this is where it gets tricky with the nodes, because the performance data is a little hard to wrap your head around with the traditional graph database model. I know there are ways to do it, but I don't, I'm not that familiar with graph databases. That's exactly that's how it works.
+{Model is tool dependent.}
+{Graph database + extra tables.}
+{Performance data doesn't totally match traditional graph databases.}
+{Discussion has come full circle.}
+
+P7  23:56  
+But you might have, this column might map to -- I don't know why I wrote "perf data" there. Node, that would be nodes. Say "A", your metrics. And then at the end, you might have your ID, your profile ID.
+{The fuzzy parts of the model are wrong.}
+
+Unknown Speaker  24:26  
+And so this will, there's some I don't know how relational databases do this exactly but this kind of maps to this, yeah. [draws arrow from profile id column in metadata table to other table]. This part is almost like a is more like a relational, would be SQL kind of thing, and this will be the graph. The real important graph DB components, which again is more like I think it's actually spelled like this or whatever.
+{Tables have relations between them.}
+
+A1  25:08  
+Then I've got one more task related question, you can do it on either of these, if you want, is, if I just want to find out or if suppose that you have a function with a very low exclusive time. So it's not doing a lot of processing, but a very high inclusive time, how what part of the data would be would you use to find where all of the time was taking place? Yeah, I mean, you can do either one. Practice. Okay.
+
+Unknown Speaker  25:39  
+Yeah, so low exclusive, the high inclusive? How do you find where that is?
+
+A1  25:44  
+Yes, we're all that time to be expected.
+
+Unknown Speaker  25:48  
+So it's mostly going to be up here the call graph and performance data, the metadata statistics mean? Well, statistics isn't going to help you really at all this task unless you want just unless you want to average before doing this, in which case, you'd essentially reduce the performance data to statistics and use the call graph and statistics, but it's going to assuming you don't want to do the reduction, it would be called on performance data. And essentially, the way you go about it, that's a little trickier. Because there's a lot of way. There's like, programmatically, you'd probably first to identify the node that you're considering. And then you'd pretty much just have to do a walk traversal of that subtree or sub graph. It's a graph, prevent cycles, and then you just find, more or less, we can just order the nodes based on your exclusive time. That will be programmatically. Visually, there'll be tools, I mean, you made the tree visualizer, that would be a good example of how to do that visually, have some visual cue to point that out.
+{Task 3 needs both call graph and performance data.}
+{Task 3 requires graph traversal.}
+{Task depends a bit on program or visually.}
+
+A1  27:01  
+Perfect. Now, one last question here. So is there any aspect of the data that you feel like is is not effectively captured by the [EnsembleAPI] object, you know, something that may exist in the raw data that [EnsembleAPI] doesn't, doesn't have or maybe some aspect to anything?
+
+Unknown Speaker  27:25  
+Two things. One is, one is one that needs to be captured, especially for analysis. But it's kind of kind of out of the scope of [Programatic Performance Analysis Software A] and [[DatasetAPI]]. And that's traces, time series. They're extremely important, especially once you start getting to more state of the art applications, which are a lot of those, again, have to do with the workflow type model, which is very time series dependent. The other This isn't to say that is something [Programatic Performance Analysis Software A] and doesn't capture, but it's a bit of a gripe, I've had [Programatic Performance Analysis Software A] and for a while. We haven't seen it yet, because we've been getting very, very tiny datasets when it comes to ensembles. But speed. Pandas is notoriously slow for a lot of data. Because pure Python. This model is going to struggle once we start getting into even moderately sized data sets, I mean, I've seen this with [Programatic Performance Analysis Software B]. If you have a big data set, let's say 500, MPI ranks with a real good data, it takes five minutes to load it took [the] query language like 20 minutes to execute. It gets prohibitive very quickly. So speed is something I feel is really important for these tools, and must be desirable, eventually be really important for these tools. For now, for the time being, having [Programatic Performance Analysis Software B] and [Programatic Performance Analysis Software A] just provide that programmatic aspect is really helpful. So you don't have to deal with the point and click stupidity of other tools. 
+{EnsembleAPI does not handle temporal data.}
+{EnsembleAPI needs to scale.}
+
+P7  29:05  
+[P7 discusses the weaknesses of alternative Performance Analysis Software]
+
+To me, I'll actually just say, Alright, here's my data. I can do these operations. If I if I can't do something, grab a data frame. It's pandas that's really helpful. Being able to actually explore the data without the hassle of [Alternative Performance Analysis Software]. But I do think the current choice of tooling will eventually become a problem. We'll have to do that again. That's why a lot of these tools also use like databases on the back end and stuff something much faster.
+{Pandas provides flexibility.}
+
+A1  30:12  
+Yes,
+
+Unknown Speaker  30:13  
+oh yes. Even if you don't deal with the graph as a database, all of this is like this is literally a relational database. These are just the statistics about data forms. It's a relational database. I don't care what we're call, it's a relational database. It's SQL essentially.
+{EnsembleAPI is a relational database.}
+
+Unknown Speaker  30:31  
+Cool. So then I'm gonna have you just draw something for me now had to cap off this interview. That's cool for you. It's like, get you to grab another. Now this one is very simple dataset. So don't worry, it doesn't have to be complicated. But I'm going to ask you to imagine a profile that has three function calls a, b, and c. And then a calls B, and C. And then associated with each of those function calls is sometimes some runtimes. For a, it's going to be used five seconds, I believe, in 30 seconds. 30 seconds. For B, it's five seconds.
+
+A1  31:21  
+And for C it is 100 seconds. Yes, yes, there actually is a time and then just draw it. And I mean, if that's
+
+Unknown Speaker  31:35  
+drawings like to, I mean, let me know. If this is the drawing you're comfortable with, that's fine. But if you want to draw in any other sort of way. 
+
+P7  31:47  
+Yeah. I mean, he does these times. 
+{Draws a balanced NLD with numbers in the nodes.}
+
+A1  31:50  
+Just that graph, just those times. Cool, awesome. Thank you. All right. And that pretty much concludes it.
+
+I have one more question. Sorry. Um, so I just wanted to go back to Dask because you. . . not Dask Sorry. I was thinking of Dask when you talked about scalable pandas. [Data Movement Software]. I want to go back to [Data Movement Software]. Which is that you described how you could load [Data Movement Software Data] into the [EnsembleAPI] object. But in the beginning, it sounded more like the plan was for [Data Movement Software] to have its own data format. I wasn't sure about the like, what is the performance plan for? I mean, I guess you I guess [Data Movement Software] is moving files. And that's its job, but for collecting performance about [Data Movement Software]. What are you planning to use and why?
+
+Unknown Speaker  33:01  
+So in terms of performance collection you mean, data collection? So there's right now we're mostly doing manual timing, which is not what we want. Long term. Of course, there's two tools we're looking at right now. For more automated stuff. In the short term, you're looking at a tool called per flow aspect. This is a new tool, led by [Person A] and [Person B]. It's a patch of the flux project. It's admittedly very similar to [MeasurementAPI] in concept, just with a slightly different interface. [Person A] will definitely be better to ask about this, because I don't really get it all that much personally, especially since we're dealing a C code, and it's a bit of a mess for C code because it requires you to build a compiler plugin. In terms of the other tool that we're looking at is [MeasurementAPI].
+{There are multiple ensemble tools.}
+
+A5  33:57  
+Okay, and then and then. So do you think that the analysis portion of this once it's would go into [EnsembleAPI]? Or do you think it's going to require something different,
+
+Unknown Speaker  34:11  
+so part of it will definitely want to [[EnsembleAPI] and [DatasetAPI]] that will be there'll be a part of it that goes in there, there's also going to be a part that will have to be trace base. So first I should clarify about Per Flow and [MeasurementAPI], of course, by default produces profiles, there is an experimental trace stuff in [MeasurementAPI] nowadays, but it's still pretty new. Per Flow is almost completely traces for the time being, and it dumps it out to a chrome trace format file that you can then load with, what the tool they recommend is Perfetto. So there will then be a component of tracing because we're moving data, you know, they we need to know when does the trend like when we produce the data, when do we request the consumption? How long have we spent waiting? How long do we just take for the day to be transferred stuff like that and we can do that to an-- We can do that somewhat with profiles with [MeasurementAPI], especially given [Data Movement Software] architecture, that architecture makes actually makes it much easier to do that than other designs would. But at some point, we will almost certainly have to go to tracing. Look at trace data. 
+{Need another tool for temporal support.}
+
+A1  35:21  
+Okay, cool. Thanks. 
+
+P7  35:26  
+Yeah, of course.
+
+A1  35:27  
+Okay. All right. Then if you don't have any questions for us, even then that's pretty much at the end. Could I get you to send me this by the way that you are?
+
+Unknown Speaker  35:36  
+We'll get you the actual drawing. That is not the actual one. This is the actual one.
+
+A1  35:43  
+Oh, awesome. Thank you. Yeah, yeah, just send that along to me. I would love to have that for reference in relation to this as well. And yeah, if you don't have any more questions, then you're you're good to go meet him just hang out
+
+Yes, and to see scaly our sense of all that. This listen. Yeah, there is
+
+it and send it to crash to spam. Alright you have access to it now.
+
+Okay, great. So yeah, I'll be able to grab it. And if anything goes wrong, I'll just let you know [later]. Alright, cool, then I think you're free to go and do so much.
+
+Transcribed by https://otter.ai
