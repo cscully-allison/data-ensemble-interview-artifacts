@@ -1,0 +1,365 @@
+A1  0:00  
+All right. Okay, now, let me dive into the first question here. So what project do you work on that uses ensembles? Or have you worked on it uses ensembles data performance data.
+
+P9  0:15  
+Okay, so it's mostly the [MeasurementAPI] project, which is our profiling library. And it actually has its own performance analysis suite where we test how well it's well. Yeah. How well we've implemented it. So we're basically running through a few different test cases, every test the speed of the annotation instrumentation library,
+{They analyze their own tool with ensembles.}
+
+A1  0:37  
+okay. When you say it has its own performance analysis, what you mean, it's analyzing itself.
+
+P9  0:43  
+Um, kinda so there's always the weird little thing that you actually the only program that you can't really analyze with your own performance tool, is your own performance tool.  But you kind of have like a high level way to actually get at least like the basic Yeah, performance data for executing a whole series of things.
+
+A1  1:05  
+Okay. And what's what dataset? Do you most commonly work with that that is like an unsolved?
+
+P9  1:12  
+And well, so I think what we're doing is, we have kind of a performance regression test that's well running sort of irregularly. So right now I'm triggering it manually, okay. And it runs through a few different test cases. So specifically, there's one test case where we're testing the [MeasurementAPI] instrumentation calls without any measurements. And then two measurement configurations. One is aggregation, which would basically give you a, well, a profile that you normally get out of applications that we look at where we aggregating things, [unintelligible] over time, and one is a trace. So we're recording every beginning and reaching event. Okay, so these are the three test cases. And then we're testing that gun across a bunch of numbers of threads actually, sort of get only like single process runs, because we're looking only at the local [MeasurementAPI] instrumentation time, but over different numbers of threads. So it's like, like not too ensemble-y, I would say, with only like two dimensions. But
+{Describes an ensemble of testing regimes.}
+{One regime has on number of threads.}
+{One regime is non-measurement.}
+{One regime is a profile.}
+{Two dimensions is not too ensemble-y.}
+
+
+A1  2:25  
+yeah, I mean, there's still that ensemble aspect to it. Right? Yeah, it's across a slew of outputs, right here. You got several outputs that come out of it. Right. Yeah. All right. And so um, can you describe, maybe not so much the trace art, but the other aspects of your data and a little bit more detail, kind of break it down into parts for me? Like the main critical parts?
+
+P9  2:52  
+The main critical parts in what sense,
+
+A1  2:55  
+like, let me see. Like the way that you would maybe. You know, yeah, I can think about this. So what was the was the was the first part you mentioned? Again, let me contextualize this a little bit more. What was the first part you mentioned of the of the ensemble of data you're collecting?
+
+P9  3:21  
+ For these others? These three different test cases? 
+
+A1  3:22  
+Or three different test cases? Okay, started seven cases. So for the first test case, yeah. What does the data look like that comes out of that? Exactly?
+
+P9  3:31  
+Well, it's essentially just a total time we spent in a benchmark of our instrumentation library. Okay. So it's relatively simple. So actually, that's one of the issues that you have when you're analyzing a profiling tool, because you can't really dive into much detail. So we're only looking at like, total time for the benchmark.
+{Total time per benchmark.}
+
+A1  3:50  
+Okay, that's so that's a, there's not a more that you're looking at in just a little time. Okay. And then for the second test case, though, you said that you were looking at a little bit more?
+
+P9  4:02  
+Not in terms of the performance data that comes out for our specific analysis. And this is just the thing that benchmark does now. So that would be more detailed measurement in this case.
+
+A1  4:15  
+Okay, and what are the details that come out of that, that that measurement or like, what detailed things are you measuring? 
+
+P9  4:23  
+So, technically, it's still just the total time in the benchmark, except the benchmark is now measure time in a lot of different function annotations. Okay. So the first one, which is the Yeah, run a bunch of functions instrumentations. The second test case is run a bunch of function implementations while you're measuring time and aggregating all the data internally, and the third one was the tracing part video will run all the annotations and record the trace. But for our performance analysis study, we are only recording the total time that benchmark. So that's Yeah.
+{Time per function annotations per benchmark.}
+
+A1  5:02  
+Okay. But you are going across a lot of different functions, at least that you're, you're looking at at all times.
+
+P9  5:12  
+Right? Inside the benchmark. That's what a benchmark does. So it runs the builds kind of a annotation tree is in our case, like 200 functions wide and 20 functions deep. And yeah, that's essentially the benchmark,
+{Gives dimensions of call tree.}
+
+A1  5:31  
+An annotation tree. I'm not sure I've ever heard that term before. What?
+
+P9  5:35  
+Technically just to be the region hierarchy that it would have if you just instrument normal code. Okay, and be able to get an artificial one for the benchmark.
+
+A1  5:45  
+I see. So it's like the is calling context tree? 
+
+P9  5:50  
+Yes, yes.
+
+A1  5:52  
+ Gotcha. All right. Cool. Um, then. Things are now of course,
+
+A5  6:04  
+What's the ensemble part of this? I'm still a little lost on that.
+
+P9  6:10  
+So I think the ensemble part of this is that we're recording this thing for, well, looking at our benchmark for three different test cases and a bunch of different threads. So yeah, it's only like two dimensions. In this case, it's over three, if you consider that we're doing this over a period of time. So we're looking at data in the past and tell us developing now.
+{Ensemble is over time.}
+{Ensemble is over cases.}
+{Assumes two dimension when there are more.}
+
+A1  6:33  
+Okay. So the overtime is the thing that sort of,
+
+A5  6:38  
+yeah, that's sort of, but there's also over threats, right, over time over threads, and then three experiments. Yeah, cool.
+
+A1  6:48  
+Right. So I think, I think I got a good idea of sort of the way you're thinking about your data to a certain extent, but I would like to, if I could get you to start, like drawing out for me a little bit, what it looks like
+
+P9  7:07  
+So I'm usually using [DataExplorationGUI] to look at them. So if that helps, I can just share that on the screen.
+
+Speaker 2  7:13  
+Now I want you to go on, I can maybe do the [DataExplorationGUI]  afterwards but I want to see your drawing first. Alright, so um, so yeah, I would just like you to kind of sketch out that goal ensemble data set that you describe to me, and you can use any metaphors or abstractions, you would like to show how they interrelate, what parts are present, what data is present in there.
+
+P9  7:39  
+Okay, so, I mean, for the most part, it looks like your general performance regression tests like so the main thing that we're looking at is performance over time, where time is essentially the different program versions and how we're developing it over. So we have our nice little diagram that we have, like, run time.
+{Draws outcome plot of performance over time.}
+
+Unknown Speaker  8:04  
+[A1 struggles with the webcam location]
+
+P9  8:07  
+so we have like runtime in our benchmark, and then he returned a different program versions like I don't know. Yeah. It's time of run essentially. Though, so these are all the instances of this benchmark won't be random. And then will you get your own little curve, which looks like sort of this and hopefully more like this? And that's like this.
+{Draws per-benchmark plots?}
+
+A1  8:34  
+Right? You want it to be going down? Yes.
+
+P9  8:39  
+And that would be like one test case. So maybe that's like the instrumentation alone. And with one thread then you have the whole thing again, for 9 am profiling test cases or time profiling test case. And one thread and well again for the other dimensions that we have with the ensemble, right. So essentially, you get this whole thing nine times.
+{Ensemble is a repetition.}
+
+A1  9:25  
+Okay. So this is okay. So over here, we have time profiling,
+
+P9  9:30  
+what can you what is? So these are basically the test cases, right? These
+
+A1  9:33  
+are the test cases, okay? Yes. Okay, so you have nine test cases, what you're saying,
+
+P9  9:41  
+right, okay. And each of them has data collected over time. Okay.
+
+Speaker 2  9:47  
+You said that, but you said initially that there were three tests, but with nine test cases, is that correct? 
+
+P9  9:55  
+Or three test cases and three different numbers of threads.
+{Multiplying across dimensions to get total.}
+
+A1  9:59  
+Oh, Okay, gotcha. All right. So you're varying the threads varying the test cases, that's okay. And then that you get nine of these days Saturday. Okay. Okay, that makes sense, right? Is there anything? All right. Um, so I guess like, I'm gonna ask you some some test task dependent questions about like things that you might want to do with an ensemble performance data. And if you could just point point out to me kind of, in this picture, or you can even amend the picture, if you'd like to just the parts of the data that you're going to use to perform these tasks. Yeah, so I mean, like, the parts of the visualization or of the what you've showed me here, and
+
+P9  10:44  
+but it's, of course, this thing. And one thing that's pretty useful is we have like the details, exact amount of times. So for each of the test cases, we have our metadata annotations here, which shows well just, a bunch of things like well, okay, of course, the time it was recorded, all the metadata, like the number of threads that we use, the test case name, and other stuff, like compilers, and whatnot. And also, basically the global performance metric that we're interested in, ultimately, which is like, time for instrumentation call, and also, the total runtime after benchmark again. And you can look at this in more detail, if you just like hover over this thing, and have your little extra box essentially, is part where you have like, time per call, or no, total time. And all that sort of stuff, my compiler, and we're only using it on one compiler and one system for now. But that possibly be an extension to run it on more of those things and compare more data. Right? Yeah. It's good to have actual, like, detailed data, because the differences can be rather subtle. And you want to know what's going on there, essentially. Right. So let's make it five and 20. It's not the numbers, obviously. But
+{Metadata is mentioned.}
+{Metadata examples.}
+{Metadata is global.}
+{Explains plots in language of tool -- hovering over extra box.}
+{Detailed data useful for subtle differences.}
+
+A1  12:27  
+right, which is fine. Examples are good. Okay. So then my first like, little task dependent question I have for you is if you are doing like, a strong scaling study, which I think it kind of sounds like best one of the test cases you run a little bit for since you're very good across threads. Yeah. And then you're just trying to to analyze how the runtime of a single function changes over those, those thread changes? Which part of the data here would you use? Which parts?
+
+P9  13:01  
+And in that case, so usually, I'm varying the number of threads just separately, so I get three different displays, essentially, each for a different number of threads. And then I really kind of do it manually, like, does this scale nicely or not? But I don't really well, it's not really a visualization that I have specifically set up for me to do it properly.
+{Different plots for different numbers of threads to keep timing data.}
+{Timing data is implied into this question where it's not.}
+
+A1  13:31  
+Yeah, and I mean, that's, that's totally okay. But so, So are you saying that you really would, would you use any of this here? Or when you say you do it manually, what does that look like? Exactly?
+
+P9  13:44  
+Well, essentially, you just look at the time at once, right? For a specific test case and a bit of time with full strength in this case, and the time was thirty six threads, which are our three different thread levels and then comparing So yeah, and then it's just like,
+
+Speaker 2  14:03  
+yes. Now, It's significantly complicated, at least to estimate,
+
+P9  14:09  
+right, right. 
+
+All right.
+
+A1  14:11  
+So Okay, next one is I if you say, want to compare the runtime differences between a code base run on one architecture versus another think like one of those run AWS first ones for I'll see what parts of the data would you use for that?
+
+P9  14:27  
+Um, but essentially the same parts, except we will probably have another field in here for the architecture. And then we'll install we could just switch things around like a good group by mail architecture or system in this case, and then compare them side by side.
+{Task 2 and Task 1 are essentially the same.}
+{Tasks are done with group-bys.}
+{Side-by-side comparison.}
+
+A1  14:50  
+And last one, let's see. So if we want to find out or know, like, let's suppose that we you've identified that there's a function that has a A What is it a low exclusive time? Right. So it's not doing a lot itself, but highly inclusive time. How do you find where all of that time is being observed in this dataset here?
+
+P9  15:11  
+Yeah, I mean, so technically, since we're only looking at total time for the benchmark, we only have essentially been function tree, right? I mean, technically, there are more, in fact. So there's like a little setup function and whatnot. So we do actually click in here and down to our actual benchmark function that I'm interested in. And so you had it, but you can't distinguish between inclusive and exclusive times.
+{Again talking about clicking/operations to achieve right data.}
+{Call tree is mention.}
+
+A1  15:39  
+And when you say you click in there, like, what does that
+
+P9  15:43  
+in [DataExplorationGUI], I mean, you can click this your first load of thing, it shows you your top region entry, like many. And if you click in there, you can basically go down to any specific hierarchy level, or Yeah, that's the level that you're interested in.
+{Mental model is highly tied to a tool.}
+
+A1  16:01  
+And that's, and that's us, that's just one profile at a time, you were only able to look at the one profile. Well,
+
+P9  16:09  
+you're down only one profile at a time. So it changes the whole view. So you essentially see the time and region for all the different runs over time. Okay. Right. I wasn't sure if you have used spot before,
+
+Speaker 2  16:25  
+a little bit, but I just want to make sure that I understand what you're saying. But yeah, so you're talking about the stack to stack area. 
+
+P9  16:32  
+Exactly, 
+
+A1  16:33  
+Yes. functionality. Yeah. Gotcha. All right, cool. But do you ever also look at the flame graph, just curiosity, the one thats below it.
+
+P9  16:42  
+Yeah, like, sometimes for surprises when the setup function takes a ridiculous amount of time. Whatever reason at all.
+
+Speaker 2  16:53  
+You're like, why? Yeah. It's probably just weirdness on the [Lab computer] right? Yeah, um, so you briefly touched on the metadata. And you mentioned that you can kind of like filter on it, how does it fit into this model, like visually, do you have a visual representation of what it would look like or,
+
+P9  17:16  
+And how it fits me visually, so well. Visually, it fits in that you can well slice through your whole data set by grouping it by different metadata flags. So specifically, I'm grouping it by the different test cases. So I see the three different test cases lined up for a specific number of threads. And of course, I could do the same thing the other way around. So see the number of threads lined up for a specific test case. And that way, I can compare them visually by some metadata flag. And well then, of course, you have this extra kind of information in spot where it shows you all the information for a specific run that you're selecting in the Chart
+{Metadata used for slicing.}
+{Metadata used for grouping.}
+{Metadata is extra information.}
+
+Speaker 2  18:04  
+All right. Um, so I guess, kind of shifting over to a broader question. Now, is there any aspect of this data right here the data that you work with, that you feel is not captured by the [[EnsembleAPI]] object?
+
+P9  18:18  
+And to be honest I haven't really worked with [EnsembleAPI] myself too much or at all yet. Oh, that's fine. I was gonna look into it. We already
+{Not as familiar with the EnsembleAPI.}
+
+Speaker 2  18:30  
+You're fine. And it's fine. I don't think
+
+P9  18:35  
+so. Yeah, I would say that [DataExplorationGUI] is kind of the base case and I hope that if I can reproduce these kinds of analysis was thinking I should be in a good spot.
+{EnsembleAPI should support DataExplorationGUI operations.}
+
+A1  18:44  
+Okay, cool. That's a pretty much the most that you're you're doing right
+
+P9  18:47  
+right. I mean, it's I think pretty simple and straightforward case compared to what other teams are doing that sake but
+
+A5  20:09  
+[A digression occurs where everyone discusses a related tool]
+
+Though, I have one more thing. Please. Well, I was gonna wait till after this question.
+
+Speaker 2  21:44  
+Okay. Okay. So after this questions, any I'm gonna have to draw something and then maybe maybe even more, but so this one's just, it's just gonna be a very simple dataset, I just want to draw for me, imagine a profile that has three function calls in it, right? A, B, and C, and the function and a takes 10 seconds, B takes five seconds, wherever it takes 30 seconds, B takes five seconds, and c takes 100 seconds. And then a called B and C. Can you draw that for me? Okay, very easy for any of the specifics. Yeah. 
+
+P9  22:23  
+Can you repeat the time again?
+
+A1  22:25  
+Yeah, absolutely. So A is 30 seconds. Okay, D is five seconds. Okay, and C is 100 seconds.
+
+P9  22:33  
+So you say, A equals B, and C Yeah.
+
+A1  22:37  
+And you can use any abstractions and metaphors you liked as before, or visualizations or whatever.
+
+P9  22:43  
+Now I can use my favorite little [MeasurementAPI] tree print out, essentially, which is not really very graphic, but so you have your function. And your time. And in this case, I believe these are exclusive times, because otherwise it wouldn't really add up.
+{Depiction is based on MeasurementAPI.}
+{Indented tree not really graphic.}
+
+A1  23:02  
+Yeah absolutely, all exclusive times.
+
+P9  23:06  
+That case "A" you will, what was it?
+
+Unknown Speaker  23:09  
+It was 30 seconds. 
+
+P9  23:11  
+Okay, be that we have A calls B and C, you said 
+
+A1  23:19  
+Perfect. And then B is at five seconds.
+
+P9  23:23  
+C was 100 100 seconds. Exactly. Okay. That's how [MeasurementAPI] would look.
+
+A1  23:29  
+ Cool. That's great. Looks like a good visualization of that data. All right.
+
+Unknown Speaker  23:35  
+So my question was, so far, we've been talking about performance ensembles, from the point of view of you measuring the performance of  [MeasurementAPI] itself. Now, let's, let's switch gears to what a  [MeasurementAPI] user might think. And so let's say I'm trying to do one of these scaling studies, and I'm the  [MeasurementAPI] user. What is the how would you describe the structure of the data that I would get out of  [MeasurementAPI] so that I could do that I could do my own study with? Does that make sense?
+
+P9  24:11  
+Well, [MeasurementAPI] to some extent, I mean, kind of can produce a whole range of data sets, right? So it can go from simple profiles like this one to full on. Region traces and sampling traces important by
+{MeasurementAPI can output several structures.}
+
+A5  24:26  
+Lets just say we are using profiles. Alright. So I'm with just profile data and  [MeasurementAPI] I want to do sort of my own scaling study and I might want to look, I might want to drill down into regions when I. . . What would I collect with  [MeasurementAPI] and what would be like the structure of the data that [MeasurementAPI] gives me.
+
+P9  24:50  
+Okay, so, what you would like with  [MeasurementAPI], so if you're instrumenting your code, so well should [unintelligible] you're usually using  [MeasurementAPI] to, well, instrument specific code regions in the code. So you can go in manually annotate their program with like begin and mark or function marker. So they will do that, and uh [MeasurementAPI]-mark begin let's just use the A out there. And this goes on for a while. Then you have your [MeasurementAPI] mark end
+
+P9  25:35  
+I hope this was somewhat readable. And then you have your additional things for B, and C, somewhere in here. I'm shortcutting this to [MeasurementAPI] enum, because I'm lazy. That's right. And I'm sure turning this float to int.
+
+P9  25:54  
+And yeah, you have to see in there as well. And then, so depending on your measurement configuration, the user would go in and instruct [MeasurementAPI] to record a profile. And kinda goes ahead, does time measurements for all the region annotations that the code goes through, it aggregates it over time inside the program it so that you essentially, in the end, know the total time for each of the four, that expecting your A, B and C and whatever other region and our default kind of regression testing suite, it would then go ahead and compute inclusive times for all the regions. So you will get well, this case, you want 35, 5 and 100 here. It looks for that. And it would then go and aggregate this across MPI ranks in case you're having an MPI program. So the thing that you're getting out in the end is like minimum, maximum, average and total time per region across MPI ranks. So, that's your final metric. So assume that we have like 20 ranks here, then we get like average time per rank. Which may be something like, well, this is probably still like 135. But this might be like five 4.5, and so on, then you have like a max, and this might be six or so. Alright. So once you have that you can run this experiment for different numbers of ranks, obviously, you're getting separate data sets for each of these experiments. And then you can load them into [DataExplorationGUI] or [EnsembleAPI] and use whatever favorite way you want to compare all of these profiles. Sort of what you were looking for?
+{Profiles aggregate over time.}
+{There is a reduction across MPI ranks.}
+{Each experiment has separate data.}
+{Load them into another tool.}
+
+Unknown Speaker  28:12  
+Yeah, yeah. So so before I stick it into [DataExplorationGUI] or [EnsembleAPI], like, am I looking at a directory full of what?
+
+
+P9  28:21  
+You're looking at a directory full of [MeasurementAPI] files. So essentially, the profiling data that comes out for each of the individual runs.
+{Data itself is files.}
+
+Unknown Speaker  28:30  
+Okay, and let's say I'm like, the, the competitor at a national lab, and I want to use the [MeasurementAPI]  files to make my own tool that is neither  [DataExplorationGUI] or [EnsembleAPI], like how would I? How would I read these files?
+
+
+P9  28:48  
+Well, we do have a bunch of different readers. So there's the [MeasurementAPI Reader]  program, which just means an individual can actually read multiple files. And we have a Python reader, which can give you essentially this data back out, you can convert it into JSON, and something fell into JSON also, if you want to read or implement your own thing. So yeah, there's various ways in text form and look at it.
+{Data structure doesn't matter because you have readers.}
+
+A5  29:15  
+Okay, so in text format, is it like a giant CSV? Or is it like there's some JSON structure to it? Or, like, how do I get how do I get the the region hierarchy out and stuff like that?
+
+P9  29:33  
+So we can get it through to kind of a Reader Library, which will give you the region essentially as a list of strings. So if you have like your C function, you would have "a comma c" as your hierarchy with that particular entry, and then all the times attached to it. Okay, then you can also come up with two different formats in JSON or just print it in a human readable text form.
+{Actual data is in lists of strings to parse to human readable.}
+
+Unknown Speaker  29:58  
+Okay, so then that row there with the ABC and then all of the data next to it. That's pretty much what the [MeasurementAPI] data is,
+
+P9  30:07  
+is Yeah. So essentially, you have three different records as this path. And then each of the metrics inside the record.
+
+A5  30:19  
+Okay, then like, where is the metadata stored
+
+P9  30:24  
+Separately to that in the file. And you can also access the metadata through the Python reader, or we also put it in the JSON files if you then.
+{Metadata is available through reader too.}
+
+A5  30:38  
+All right, cool. I just wanted to make sure that I was on the same page with all of that. All right, great. This is this is really helpful. Ended up being helpful for multiple projects, in fact,
+
+Speaker 2  30:49  
+yeah, exactly. Yeah. Yeah, a couple of projects. All right. Cool. That's, I believe all the questions. I have. [A5], do you have any more questions or no.
+
+A5  31:03  
+ I'm good.
+
+A1  31:04  
+ All right. Cool. Well, then that'll do it. We got you in and out in 30 minutes. So awesome. Didn't even take the whole full hour. Okay, um, and then yeah, if you don't have any other questions or anything for us, [P9], we can let you go and me and A5 will just hang out to chat for a minute afterwards. 
+
+A5  31:28  
+I think I'm good. So you're, oh, ye
+
+Transcribed by https://otter.ai
