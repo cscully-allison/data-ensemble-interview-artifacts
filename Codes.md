@@ -18,6 +18,10 @@ These codes have something to do with the mental model of the data. This
 probably needs to be split or at least made hierarchical at some point, but
 for now let's put everything here.
 
+
+### What is an ensemble?
+
+
 ### Pieces of the EnsembleAPI were forgotten.
   - For each participant and each EnsembleAPI piece, list when, if ever, the
     participant alluded to the piece and how. 
