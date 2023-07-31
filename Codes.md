@@ -35,10 +35,16 @@ something appeared in one but was later forgotten.
   - P1
     - Performance data: 
       - Spoken
+      - Drawn as a table
     - Call tree: 
       - Spoken* - acknowledges DatasetAPI nodes, but claims EnsembleAPI is different. Nodes appear to be used in a different way than as a tree
       - Not Drawn
       - Would consider this not totally included
+    - Metadata
+      - Only implied through indices when spoken/drawn
+      - Alluded to during tasks
+    - Stats
+      - Never
 
 
 ### Influences on importance
@@ -61,6 +67,7 @@ something appeared in one but was later forgotten.
 ### Influences on model
 
   #### Data model is tool-dependent
+   - P1: "Does it matter in the way I think about it, because I think about it in a [EnsembleAPI] way versus like, a [MeasurementAPI] way or like, it's, I get to choose in what way I want to look at it."
 
   #### Data sourcing is part of the model
    - P1: "[PhysicsCode]'s like one example or like some [BenchmarkSuite] run where you have like time as a column, maybe exclusive time, inclusive time."
@@ -70,6 +77,7 @@ something appeared in one but was later forgotten.
   #### Data is described based on how it is stored
 
   #### Data is described based on how it is accessed
+   - P1: "Yeah, so I'm just doing a performance data table, kind of because that's the way I think about when I read in a data set, and I'm working with a data set."
 
   #### Data is described based on how it is used
 
@@ -104,6 +112,15 @@ These codes have something to do with metadata.
 ## Drawing
 
   ### Scale is implied
+
+  ### Indicators of scale
+
+    #### Uses ellipses to indicate more rows
+      - P1
+
+    #### Uses etc to indicate more columns
+      - P1
+
 
   ### Dimensions are added by stacking.
 
