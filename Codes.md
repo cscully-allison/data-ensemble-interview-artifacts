@@ -23,6 +23,15 @@ for now let's put everything here.
   - Multiple profiles 
     - P1: "Purposely multiple profiles of data as in comparison to [DatasetAPI], where it may be only or usually is only one profile?"
     - P3: "we allow multi runs, multi run performance data, which is basically multiple profiles to be stored into an object."
+  - Examples of different things to collect
+    - P4: "for the performance data, we are basically dealing with different programs, executions, and there's different these programs are instrumented and they typically collect different performance counters, these might be exposed to the CPU, these can be software counters that are kind of made up just for the purpose of a special investigation into some performance question"
+      - Also: "And typically the applications we are working with, and they will be implemented this way, they do have a few parameters of themselves."
+      - "And we are working on different architectures and platforms. And this leads to these counters being expressed differently."
+  - Hazy / Flexible
+    - P4: "I tend to be very flexible and fuzzy in the definition there, because my experience has just said, it doesn't even make too much sense to constrain it so so much."
+    - P4: "So there's a few different structures to data, but I think this is two things that I've commonly seen."
+  - Multidim
+    - P4: "But it's basically a multi dimensional space of, of parameters to care about."
 
 
 ### Pieces of the EnsembleAPI were forgotten.
@@ -73,10 +82,26 @@ something appeared in one but was later forgotten.
     - Stats:
       - Spoken
       - Drawn
+  - P4:
+    - Performance data:
+      - Speaks common performance fields
+      - Drawn
+    - Call tree:
+      - Spoken to some extent "But there's also the relationship of these annotated regions."
+      - Drawn
+    - Metadata:
+      - Speaks metadata fields
+      - "I think the key is that there needs to be some common core, because like, the example would be structured about something that has some commonality, and then you will do perturbations to the input parameters or the execution environment like this, there's really no limit to what you could consider that."
+      - "So the context includes things like the compiler, libraries, build dependencies, the actual hardware that things are being run on."
+      - Drawn kind of as the data sourcing?
+    - Stats:
+      - Not Spoken
+      - Not Drawn
 
 ### Ensemble data structure pieces are linked structurally
 
   - P1, P2 (drawing, speaking), P3 (drawing, speaking)
+  - P4: "we're nesting multiple contexts into each other"
 
 
 ### Ensemble data structure pieces are linked meaningfully
@@ -85,10 +110,11 @@ something appeared in one but was later forgotten.
 
 ### Influences on importance
 
-  #### Presence
+  #### Presence / Commonality
 
     - P1: "throughout all the different kinds of data that I work with, there's always nodes"
     - P1: "the metrics themselves is another dimension of that, that I'm adjacent to the nodes that I'm expecting to see when I'm working with the data"
+    - P4: "It's just that like, time to solution is something that is very often captured."
 
   #### Indexing power
 
@@ -104,6 +130,8 @@ something appeared in one but was later forgotten.
   #### What leads to insight
 
     - P2: "I think, you know, with what we're kind of working towards on the project, performance data kind of provides insights into your data. More, so I think then possibly metadata does because you can, you know, perform correlations, perform time series analysis and things like that. So you can kind of get a much better insight, in my opinion, using the performance data rather than the metadata."
+    - P4: "I think it boils down to the question that you're investigating what is important, and that basically informs us the granularity I was mentioning, but also the parameters that you are capturing."
+    - P4: "If you want to optimize for energy to solution, then you have to look for for different metrics, and even some things that we are not currently capturing. But it really depends on the objectives that you want to take into account."
 
   #### Feature maturity
 
@@ -111,11 +139,20 @@ something appeared in one but was later forgotten.
 
 
 ### Participants dropped or reduced dimensions of the data.
-  - P2 describes how the Stats table is in some sense for this purpose.
+  
+  - by accident
+  - on purpose
+    - P2 describes how the Stats table is in some sense for this purpose
+    - P4 "But like, in principle, there's a full spectrum of aggregated data that is kind of profiling a region and just preserving some characteristics that are kind of accumulated over time."
+    - P4 "So like this happens on multiple rings, or in multiple processes. So there might be multiple values attached to that. And then for each of the processes, we might be capturing multiple fields of data. And sometimes this data could have a hierarchy of itself. But for most of the data that we are working with, we don't really capture that hierarchy, it's kind of condensed into something that is relatively flat."
+    - P4 "So, I mean, I think that the data is hierarchical, is often an artifact, how we are designing systems, and they just tend to be hierarchical, because it's manageable."
+    - P4: "So we are using this collapse view because we can still kind of for for a particular call, say like we added a second cog function, we can look at the stack, and then we can aggregate around that, but like, we're doing this mostly because we have to, because we can't afford to, to store like this at the exact granularity that we have in most cases."
 
 ### Multi-dimensional aspect of ensembles is hard.
+  
   - P1: "if you have two CPU four CPU for AWS, and then a two CPU four CPU for LC, then you're kind of in trouble. Because how do you kind of extend, you know, if you've said everything vertically, you kind of, you're getting things mixed up."
   - P2 uses duplication of [EnsembleAPI] objects for Task 2
+  - P4: "Also, because it becomes a little bit easier with some of the tooling that we are developing to automate things if there is not additional hierarchy to take care of, because like, each level of hierarchy might be sort of a convention that one has sent to accommodate. So flattening the data, in many cases make things a lot easier to work with."
 
 
 
@@ -132,8 +169,15 @@ something appeared in one but was later forgotten.
 
    - P1: "[PhysicsCode]'s like one example or like some [BenchmarkSuite] run where you have like time as a column, maybe exclusive time, inclusive time."
    - P2: Draws the initial sourcing from [MeasurementAPI]
+   - P4 speaks extensively on all the collection factors of the model, starting with "I mean, it's kind of"
+   - P4 "So in that sense, if we are looking at studying performance, for compute optimization, for example, then we will typically try to construct an ensemble that has varying parameters, and would construct the instrumentation so that we are not capturing things that are subject to resource to too much noise or to share resources."
+   - P4: "but there's actually a lot of thought that should go into the measurement process to begin with."
+   - P4: "And then there's a part of the actual metrics that the instrumentation is gathering. And this is typically constrained by the architectures to an extent. So there's a relationship between the instrumentation and execution environment."
+   - P4: Draws the data sourcing
 
   #### Data's relation to the domain is part of the model
+   - P4 speaks extensively on all the collection factors of the model, starting with "I mean, it's kind of"
+   - P4 draws the domain, speaks extensively about the application and ties to it throughout
 
   #### Data is described based on how it is stored
 
@@ -143,8 +187,13 @@ something appeared in one but was later forgotten.
   #### Data is described based on how it is accessed
 
     - P1: "Yeah, so I'm just doing a performance data table, kind of because that's the way I think about when I read in a data set, and I'm working with a data set."
+    - P4: "for example, they have an instrumentation solution that looks particularly at higher libraries, not so much CPU counters, and we ran into similar analysts problem there because we are dealing with multi dimensional data. And then we have to slice and cut through the data to get like a view that allows for fair comparisons."
 
   #### Data is described based on how it is used
+
+    - P4: "So we would like if we want to do comparative studies to inform maybe the choice of a library or compiler, we would look at multiple measurements of that. And also multiple measurements across different of these input parameters, for example, to see how the behavior and others is changing, in particular, how the performance might improve or degrade, according to that."
+    - P4: "for example, they have an instrumentation solution that looks particularly at higher libraries, not so much CPU counters, and we ran into similar analysts problem there because we are dealing with multi dimensional data. And then we have to slice and cut through the data to get like a view that allows for fair comparisons."
+    - P4: "So in that sense, if we are looking at studying performance, for compute optimization, for example, then we will typically try to construct an ensemble that has varying parameters, and would construct the instrumentation so that we are not capturing things that are subject to resource to too much noise or to share resources."
 
   #### Exact data is not important
 
@@ -163,9 +212,11 @@ These codes have something to do with metadata.
 
   - P2: "Because you know, in the metadata, this is where we're kind of, you're kind of mapping the like, the information that you use to kind of run the job."
   - P3: "not strictly performance data, but kind of more information about the execution of the program for each of the profile."
+  - P4: "So the context includes things like the compiler, libraries, build dependencies, the actual hardware that things are being run on."
 
 		
 ### Metadata is hazy.
+
 
 
 ### Metadata is not data.
@@ -176,6 +227,7 @@ These codes have something to do with metadata.
   - P1: "And then third, probably the profiles. That's the data itself"
   - P1: "without the profiles, you wouldn't have any data."
   - P2: "But you would have that information in the metadata, and then it would go, like the actual outputs, and the metadata."
+  - P4: "there's a part of the actual metrics that the instrumentation is gathering"
 
 
 ### Metadata not explicitly stated but implied
@@ -277,3 +329,6 @@ These codes have something to do with metadata.
     - P3: "performance data is acts as sort of the main table, if you look at it from a relational database management system, our relational database management model"
 
 
+  ### Desire for context
+
+    - P4: "I think there's this care the assumptions that you have to do in how you are setting up the measurements for your sample."
