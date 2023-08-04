@@ -32,6 +32,7 @@ for now let's put everything here.
     - P4: "So there's a few different structures to data, but I think this is two things that I've commonly seen."
   - Multidim
     - P4: "But it's basically a multi dimensional space of, of parameters to care about."
+    - P4: "I think it makes sense to look what is kind of distributed across the MPI ranks. And typically, we have some application domains. So this might be a volume or space."
 
 
 ### Pieces of the EnsembleAPI were forgotten.
@@ -267,15 +268,22 @@ These codes have something to do with metadata.
   ### requires perf data and metadata
   
     - P2
+    - P4 (implied through language)
 
   ### misses metadata
 
     - P3
 
+  ### tries to facet the data more
+
+    - P4
+
 
   ## Task 2 
 
   ### requires perf data and metadata
+
+    - P4 (implied thorugh language)
 
   ### requires perf data on multiple objects
 
@@ -290,7 +298,7 @@ These codes have something to do with metadata.
 
   ### requires the call tree
 
-    - P3
+    - P3, P4
 
 
   ## ABC Tree
@@ -298,6 +306,7 @@ These codes have something to do with metadata.
   ### draws some form of tree
 
     - P2 (on clarification)
+    - P4
   
   ### draws a table
 
