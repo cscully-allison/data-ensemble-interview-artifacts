@@ -145,10 +145,9 @@ something appeared in one but was later forgotten.
 ### Influences on importance
 
   #### Presence / Commonality
-
-    - P1: "throughout all the different kinds of data that I work with, there's always nodes"
-    - P1: "the metrics themselves is another dimension of that, that I'm adjacent to the nodes that I'm expecting to see when I'm working with the data"
-    - P4: "It's just that like, time to solution is something that is very often captured."
+- P1: "throughout all the different kinds of data that I work with, there's always nodes"
+- P1: "the metrics themselves is another dimension of that, that I'm adjacent to the nodes that I'm expecting to see when I'm working with the data"
+- P4: "It's just that like, time to solution is something that is very often captured."
 
   #### Indexing power
 
@@ -243,19 +242,19 @@ something appeared in one but was later forgotten.
 
 #### Data is described based on how it is stored
 
-    - P2: "we just take ensembles of data and load them into pandas data frames, and then using those pandas data data frame, perform analysis on that data."
-    - P3: "Do you want to know the kind of the structure of the data the way it's stored?"
+- P2: "we just take ensembles of data and load them into pandas data frames, and then using those pandas data data frame, perform analysis on that data."
+- P3: "Do you want to know the kind of the structure of the data the way it's stored?"
 
 #### Data is described based on how it is accessed
 
-    - P1: "Yeah, so I'm just doing a performance data table, kind of because that's the way I think about when I read in a data set, and I'm working with a data set."
-    - P4: "for example, they have an instrumentation solution that looks particularly at higher libraries, not so much CPU counters, and we ran into similar analysts problem there because we are dealing with multi dimensional data. And then we have to slice and cut through the data to get like a view that allows for fair comparisons."
+- P1: "Yeah, so I'm just doing a performance data table, kind of because that's the way I think about when I read in a data set, and I'm working with a data set."
+- P4: "for example, they have an instrumentation solution that looks particularly at higher libraries, not so much CPU counters, and we ran into similar analysts problem there because we are dealing with multi dimensional data. And then we have to slice and cut through the data to get like a view that allows for fair comparisons."
 
 #### Data is described based on how it is used
 
-    - P4: "So we would like if we want to do comparative studies to inform maybe the choice of a library or compiler, we would look at multiple measurements of that. And also multiple measurements across different of these input parameters, for example, to see how the behavior and others is changing, in particular, how the performance might improve or degrade, according to that."
-    - P4: "for example, they have an instrumentation solution that looks particularly at higher libraries, not so much CPU counters, and we ran into similar analysts problem there because we are dealing with multi dimensional data. And then we have to slice and cut through the data to get like a view that allows for fair comparisons."
-    - P4: "So in that sense, if we are looking at studying performance, for compute optimization, for example, then we will typically try to construct an ensemble that has varying parameters, and would construct the instrumentation so that we are not capturing things that are subject to resource to too much noise or to share resources."
+- P4: "So we would like if we want to do comparative studies to inform maybe the choice of a library or compiler, we would look at multiple measurements of that. And also multiple measurements across different of these input parameters, for example, to see how the behavior and others is changing, in particular, how the performance might improve or degrade, according to that."
+- P4: "for example, they have an instrumentation solution that looks particularly at higher libraries, not so much CPU counters, and we ran into similar analysts problem there because we are dealing with multi dimensional data. And then we have to slice and cut through the data to get like a view that allows for fair comparisons."
+- P4: "So in that sense, if we are looking at studying performance, for compute optimization, for example, then we will typically try to construct an ensemble that has varying parameters, and would construct the instrumentation so that we are not capturing things that are subject to resource to too much noise or to share resources."
 
   #### Exact data is not important
 
@@ -370,17 +369,18 @@ These codes have something to do with metadata.
 
 #### Uses ellipses to indicate more rows
 
-    - P1, P2
+- P1, P2
 
 #### Uses etc to indicate more columns
 
-    - P1
+- P1
+- 
 ### Dimensions are added by stacking.
 
 ### Dimensions are added by overplotting.
 
 ### Dimensions are added by duplciation.
-    - P1 describing Task 2 across architectures
+- P1 describing Task 2 across architectures
 
 ### Concretizing the Data Model when Drawing
 
@@ -397,10 +397,10 @@ These codes have something to do with metadata.
   ## Task 1 
 
   ### requires perf data and metadata
-  
-    - P2
-    - P4 (implied through language)
-    - P5 (implied by 'scaling study') but not explicit... more focused on tree
+
+- P2
+- P4 (implied through language)
+- P5 (implied by 'scaling study') but not explicit... more focused on tree
 
   ### misses metadata
 
@@ -460,10 +460,10 @@ These codes have something to do with metadata.
 
   ### Dangers of test dataset ([BenchmarkSuite])
 
-    - does not seem to understand nodes are functions instead of applications
-      - P1, P2
-        - P2 "ut when I think nodes, I would think, like more like application, so there's like, an app here, the app here, and then when you run these applications, you know, you get, say, like for these two applications, there's ya know time for them."
-      - P3 exhibits this to some extent though they are aware of the call tree
+- does not seem to understand nodes are functions instead of applications
+	- P1, P2
+		- P2 "ut when I think nodes, I would think, like more like application, so there's like, an app here, the app here, and then when you run these applications, you know, you get, say, like for these two applications, there's ya know time for them."
+	- P3 exhibits this to some extent though they are aware of the call tree
 
   ### Describing indices / database terms
   
