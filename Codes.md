@@ -59,6 +59,46 @@ something appeared in one but was later forgotten.
     - Stats
       - Not initially spoken, comes up glancingly in importance question
       - Drawn
+  - P3
+	  - Performance Data:
+		  - Spoken
+		  - Drawn
+	  - Call Tree:
+		  - Spoken
+		  - Drawn
+	  - Metadata:
+		  - Spoken
+		  - Drawn
+	  - Stats:
+		  - Spoken 
+		  - Drawn
+  - P4
+	  - Performance Data:
+		  - Spoken
+		  - Drawn
+	  - Call Tree:
+		  - Not Spoken
+		  - Drawn
+	  - Metadata:
+		  - Spoken (as runtime context)
+		  - Drawn
+	  - Stats:
+		  - Touched on as "aggregated data"
+		  - Not Drawn
+  - P5
+	  - Performance Data:
+		  - Spoken
+		  - Drawn
+	  - Call Tree:
+		  - Brief mention of "nodes" but otherwise not Spoken of Until Drawing
+		  - Drawn
+	  - Metadata:
+		  - Not Spoken of until prompted by A1
+		  - Not Drawn
+	  - Stats:
+		  - Spoken 
+		  - Drawn
+  
 
 
 ### The Data Hierarchy
