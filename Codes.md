@@ -60,14 +60,28 @@ something appeared in one but was later forgotten.
       - Not initially spoken, comes up glancingly in importance question
       - Drawn
 
+
+### The Data Hierarchy
+
+#### Measured data/metrics/dependent variables is most important
+- P2: "performance data as the most important piece of the ensemble data, just because most of the work that I do is on the performance side"
+- P3: "performance data is acts as sort of the main table"
+- P7: "Yeah, so the most important is definitely the performance data."
+
 ### Ensemble data structure pieces are linked structurally
 
-  - P1, P2
+  - P1: 
+  - P2: Two parts share a similar structure "So \[the stats table] is kind of the same kind of format as the performance table."
+  - P3: "And it's going to the first table, which is the performance data table with with that profile hash that we just talked about. So it's like a foreign key for for that table."
+  - P3: ".You can see the relationship between these is through the profiles the profile hash."
+  - P7: "So you have performance data where you have which is indexed on both your profile ID and your nodes, that contains your actual metrics, the data, so time memory usage, stuff like that. There's the metadata frame, which is only indexed on profile ID."
 
 
 ### Ensemble data structure pieces are linked meaningfully
   -  P1 ". Your profile one would be corresponding to the data set from the run with two CPUs and then profile two correspond to the run with four CPUs, and then you'd see in your times, well, you should see that the time for profile one is gonna be higher than the time for profile two, because it had more CPUs"
-  - P2 "Obviously, they kind of affect each other, like, in some kind of formats, because, you know, certain metadata like compilier optimization, things like that will directly affect the values in the performance data table."
+  - P2 "Obviously, they kind of affect each other, like, in some kind of formats, because, you know, certain metadata like compilier optimization, things like that will directly affect the values 
+  - in the performance data table."
+  - P5: ". . .the data frame is not really useful. It's more like it transportation layer to compute a visual view onto what's going on."
 
 ### Influences on importance
 
@@ -84,10 +98,13 @@ something appeared in one but was later forgotten.
 
     - P1: "Yeah, I order it because that's kind of like the when I'm developing the significance of what what I'm interacting with the most, it's probably in that order."
     - P2: "I see the performance data as the most important piece of the ensemble data, just because most of the work that I do is on the performance side."
-    - P3: "And personally, I've worked mainl-b jy with metadata table. So that's why it took precedence compared to the statistics table. So I'm guessing if somebody from my team has worked on the statistics table, more would probably introduce the performance data, and then how the aggregate statistics table is connected to that"
+    - P3: "And personally, I've worked mainly with metadata table. So that's why it took precedence compared to the statistics table. So I'm guessing if somebody from my team has worked on the statistics table, more would probably introduce the performance data, and then how the aggregate statistics table is connected to that"
 
   #### What leads to insight
     - P2: "I think, you know, with what we're kind of working towards on the project, performance data kind of provides insights into your data. More, so I think then possibly metadata does because you can, you know, perform correlations, perform time series analysis and things like that. So you can kind of get a much better insight, in my opinion, using the performance data rather than the metadata."
+    - P7: "Yeah, so the most important is definitely the performance data. That's your actual stuff, you have to analyze."
+    - P8: "the timing data is, is is very general, right, you can do a whole lot of things with that, depending on what you're trying to, you know, get out of the ensemble, right all kinds of different things,"
+    - P10: "But it's really the tunings that we're after to understand how they're performing."
 
 
 ### Participants dropped or reduced dimensions of the data.
@@ -101,7 +118,7 @@ something appeared in one but was later forgotten.
 
 ### Influences on model
 
-  #### Data model is tool-dependent
+#### Data model is tool-dependent
 
    - P1: "Does it matter in the way I think about it, because I think about it in a [EnsembleAPI] way versus like, a [MeasurementAPI] way or like, it's, I get to choose in what way I want to look at it."
    - P1: "And then, so does it matter whether I look at this through [EnsembleAPI] lens or [DatasetAPI] lens, or yeah, so. . ."
@@ -111,31 +128,30 @@ something appeared in one but was later forgotten.
    - P5 (Implying data will come from an annotation-based tool like [MeasurementAPI]) ". . .now we can also look into dependencies between these **annotated regions**."
    - P8 - "Okay, so, so, yeah, the way I think about the staff that and this has been this has really been driven by the tools that I use, it's very hierarchical, right?"
 
-  #### Data sourcing is part of the model
+#### Data sourcing is part of the model
 
    - P1: "[PhysicsCode]'s like one example or like some [BenchmarkSuite] run where you have like time as a column, maybe exclusive time, inclusive time."
    - P2: Draws the initial sourcing from [MeasurementAPI]
 
-  #### Data's relation to the domain is part of the model
+#### Data's relation to the domain is part of the model
 
-  #### Data is described based on how it is stored
+#### Data is described based on how it is stored
 
     - P2: "we just take ensembles of data and load them into pandas data frames, and then using those pandas data data frame, perform analysis on that data."
 
-  #### Data is described based on how it is accessed
+#### Data is described based on how it is accessed
 
     - P1: "Yeah, so I'm just doing a performance data table, kind of because that's the way I think about when I read in a data set, and I'm working with a data set."
 
-  #### Data is described based on how it is used
+#### Data is described based on how it is used
 
-  #### Exact data is not important
+#### Exact data is not important
 
     - P1: "so the data I work with, it's sort of arbitrary as a developer"
     - P1: "the columns themselves are kind of arbitrary"
     - P1: "And then third, probably the profiles. That's the data itself, but it's kind of less important because we have that represented as like an inner index. So it's kind of like, subsequent to the nodes, I guess, in the visualization in my head. So that's where I kind of like, put things even though thinking about is kind of counterintuitive, because without the profiles, you wouldn't have any data."
 
-
-Analysis Task Influences Mental Model or Awareness of Parts
+#### Analysis Task Influences Mental Model or Awareness of Parts
 - P1: (In reference to architecture comparison task): "So that's, that's not in this table"
 - P2: (In reference to architecture comparison task) "Can I ammend my picture real quick? Sorry, I just realized something."
 - 
@@ -212,10 +228,8 @@ These codes have something to do with metadata.
   - P1 alludes to knowledge about profiles but not where it lives: " Your profile one would be corresponding to the data set from the run with two CPUs and then profile two correspond to the run with four CPUs"
   - P2 does Task 1 with metadata explicity but in Task 2 does architectuer as separate [EnsembleAPI] objects rather than metadata
 
-### Metadata as an analysis question repository
-
-
-
+### Metadata as a reminder for analysis
+- P8 
 
 
 ## Drawing
@@ -250,8 +264,6 @@ These codes have something to do with metadata.
 
 #### Using example Data
 - P7 -
-
-
 ## Controls
 
   ## Task 1 
@@ -299,14 +311,19 @@ These codes have something to do with metadata.
       - P1, P2
         - P2 "ut when I think nodes, I would think, like more like application, so there's like, an app here, the app here, and then when you run these applications, you know, you get, say, like for these two applications, there's ya know time for them."
 
-Drawing Anxiety
-- P1 - "Yeah, so, I'm not an artist, but I think you'll probably get the idea"
-- P3 - "Yeah, my handwriting is not the best, but this helps"
-- P4 - "Okay, yeah, this is kind of tricky. It has potential to get very messy."
-- P5 - "I'm really bad with drawing and let's try to come up as we go"
+Drawing Anxiety/Test Anxiety
+- P1: "Yeah, so, I'm not an artist, but I think you'll probably get the idea", "Did I do good?"
+- P3: "Yeah, my handwriting is not the best, but this helps"
+- P4: "Okay, yeah, this is kind of tricky. It has potential to get very messy."
+- P5: "I'm really bad with drawing and let's try to come up as we go"
+- P6: "Did I pass?"
 
-Visualizing and Identifying patterns in ensemble data
-- P1 - " And then the more profiles you have, you just be able to visualize more of that. Those patterns happening as you have no more to more data points to kind of extrapolate?"
-- 
+### Visualizing and Identifying patterns in ensemble data
+- P1: " And then the more profiles you have, you just be able to visualize more of that. Those patterns happening as you have no more to more data points to kind of extrapolate?"
+#### Appropriate Visualizations for Ensemble Data
+- P2: "So like performance data table, multiple profiles, you can look at, like, say, a box plot. So kind of a variation."
+- P6 Frames their discussion of the data solely with visualizations; using line charts and error bars. Their model is primarily based around analysis and visualizations.
+- P7: "Box and Whisker is a common one that I've seen for also, I've seen them, the line plots with like shaded region on either side, indicate kind of how it varies between runs, if they just depends on what you want to do with it."
+- P7: "If so, that would be if you want to more statistical if you wanted it in other ways mean, some of the things that were useful is of course, plotting. So have your, your MPI ranks on the x axis time on the right. If you just had one run at each MPI rank, each MPI scale, you'd probably just do a line plot"
 
 
