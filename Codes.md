@@ -27,6 +27,7 @@ for now let's put everything here.
     - P6: "included basically lots of repeat runs"
     - P7: "we just collect that data into what we do those runs multiple times."
     - P7: "So the idea is load this data from all the trials into one big performance model and analyze it."
+    - P8: "And what comes out of that is really timing data. Right. So, you know, we use [Lab]'s [MeasurementAPI] library, and it generates timing data. And so I ended up with this with, you know, a set of timing data for every run. And so, you know, we do an ensemble of runs, typically, you know, I don't know, five or 10 different runs, right."
   - Examples of different things to collect
     - P4: "for the performance data, we are basically dealing with different programs, executions, and there's different these programs are instrumented and they typically collect different performance counters, these might be exposed to the CPU, these can be software counters that are kind of made up just for the purpose of a special investigation into some performance question"
       - Also: "And typically the applications we are working with, and they will be implemented this way, they do have a few parameters of themselves."
@@ -35,6 +36,7 @@ for now let's put everything here.
     - P6 explains in terms of the questions about systems and noise
     - P7 "So a lot of what we're dealing with is just to be added as a few layers, so to say, all right, like the opening close calls, three intercept time, that normal time, the actual producer code, yeah, consumer code going deeper, we time the actual send and receive functions that you've DCX stuff like that's what time these different layers, the software"
     - P7 "So you have performance data where you have which is indexed on both your profile ID and your nodes, that contains your actual metrics, the data, so time memory usage, stuff like that. There's the metadata frame, which is only indexed on profile ID. And that just contains information again, like compiler, problem size, the things that can differentiate the runs. And then there is also a statistics frame, which is the stores the results of many aggregate statistics operations on performance data. And that is also indexed on the nodes."
+    - P8 "And typically, what comes out is, you know, you have, you can get various things depending on what options you ask for when you run the code. But, you know, typically, it consists of something like a minimum time, a max time and an average time."
   - Hazy / Flexible
     - P4: "I tend to be very flexible and fuzzy in the definition there, because my experience has just said, it doesn't even make too much sense to constrain it so so much."
     - P4: "So there's a few different structures to data, but I think this is two things that I've commonly seen."
@@ -44,6 +46,9 @@ for now let's put everything here.
     - P4: "I think it makes sense to look what is kind of distributed across the MPI ranks. And typically, we have some application domains. So this might be a volume or space."
   - Outcome not the data
     - P6 draws outcome plots
+    - P8 "And, you know, and I want to be able to infer something about the collection of runs, right? And not just, you know, it might be nice to look at one individual, but really, this is this is really more about the ensemble than it is any single individual."
+  - Supports multiple studies
+    - P8 "Yeah, my Python is pretty, pretty awful. But it does show the kind of, at least for me, and and the kind of workflows that I, in particular want to do with [EnsembleAPI] with which these are the scaling workflows, right? Weak scaling, strong scaling, throughput studies, right? "
 
 
 ### Pieces of the EnsembleAPI were forgotten.
@@ -147,6 +152,19 @@ something appeared in one but was later forgotten.
       - Spoken
     - Stats
       - Spoken
+  - P8
+    - Perf
+      - Spoken/alluded to with timing data
+      - Drawn as hanging off the tree
+    - Call tree
+      - Spoken/alluded to with code regions BUT not as a tree
+      - Drawn very clearly tree first
+    - Metadata
+      - Spoken/alluded to "And then there, there are other things you can get, you know, in, in the ensembles, one of the things that's, that's can be important, too, is variants and things like that. You know, so that can be an important attribute to get, but but that's, that is in general, you know, what we get out of that?"
+      - During importance question: "There's metadata associated with each of those pieces."
+      - Not Drawn
+    - Stats
+      - Never
 
 
 #### Describing application instead of performance data
@@ -240,6 +258,8 @@ P10: testing variations in condititions for running BenchmarkSuite (e.g. archite
   - P6: "right, and the metadata is per run. So there's a correspondence between the table that has all of the runs recorded. And so for each of the 10, or whatever runs, you have an entry in your metadata that records all of the all the things you know about that run."
   - P7: "And then there's three data frames constructed using the nodes in the graph and the profile IDs as the indicies different, like combinations of those things, depending on the data frame."
   - P7 describing a graph database
+  - P8 "it's very hierarchical, right?"
+  - P8 "it is this hierarchical grouping of elements, right, that, that starts with a straight line that goes all the way down from top to bottom, right. And then you have the hierarchy that comes off the side. I mean, you can collapse, you know, the hierarchies in various points. So that that's, that's really what I think of when I think of this data, and that sort of hierarchical description."
 
 
 ### Ensemble data structure pieces are linked meaningfully
@@ -266,6 +286,7 @@ P10: testing variations in condititions for running BenchmarkSuite (e.g. archite
     - P1: "Yeah, I order it because that's kind of like the when I'm developing the significance of what what I'm interacting with the most, it's probably in that order."
     - P2: "I see the performance data as the most important piece of the ensemble data, just because most of the work that I do is on the performance side."
     - P3: "personally, I've worked mainly with metadata table. So that's why it took precedence compared to the statistics table."
+    - P8: "Yeah, so in general, you know, I mean, you take these ensembles, and I mean, we can do you know, the timing data is, is is very general, right, you can do a whole lot of things with that, depending on what you're trying to, you know, get out of the ensemble, right all kinds of different things, but I typically am interested in at least up to this point, my primary interest has been how the code performs in different scaling regimes."
 
   #### What leads to insight
 
@@ -305,6 +326,10 @@ P10: testing variations in condititions for running BenchmarkSuite (e.g. archite
     - P6: "Yep. So there's, there's different averages, right? You're averaging different things at different steps. But yeah, so with [MeasurementAPI], we can essentially request, what data gets output? If you really need the correct data, you can, we would be able to read that into a [EnsembleAPI object]. But I don't think we've tried to read in multiple of these into the get, right, because that's essentially an additional dimension on my data."
     - P7: "And right now, we're just doing basic averaging."
     - P7: "here's a little hard to map it one, one, because, yeah, the multi indexing is a bit different from what you'd normally do in a graph database. In general, normally, in a graph database, you'd have. . . main here, I'm just going to say we have a single profile to get rid of the profile ID to main"
+    - P8: "And so, you know, you run it on many processors, right. So you have a lot of ranks there. And so you get, you know, every rank is going to give you a different time. And these are all, you know, collected and aggregated. And so what you get at these aggregate times, and so you do you get a minimum time for the section of code a max time for the section of code and an average time."
+    - P8 calculates dataset-level things like timing/cycle and memory/rank.
+  - unclear if on purpose
+    - P8 draws a single call tree already collapsed across all profiles (similar to DatasetAPI)
   - retrieving dimensions/detail
     - P6 discusses needed to drill down for root cause
   - perhaps the point is to do the reductions
@@ -357,6 +382,8 @@ P10: testing variations in condititions for running BenchmarkSuite (e.g. archite
    - P8 - "Okay, so, so, yeah, the way I think about the staff that and this has been this has really been driven by the tools that I use, it's very hierarchical, right?"
    - P7 - 'their data model' "Again, this is all synthetic, this is the second piece of their data model. We can just do it this way. Then down here."
    - P7 "So this implementation depends a lot on the specific tool you're looking at."
+   - P8 "Yeah, I can, it's, it's, it's? Well, I mean, I say I can't, that's, I don't think I've ever thought about it quite like that. It's a kind of think, if I can, can relate this to something that the only thing I can think of is is the, you know, the particular tool that I use to generate the data, right, which is, which is [Lab]'s [[DatasetAPI]] tool, and it generates this, this, it's not what you would think of, in when you think of tree, right?"
+   - P8 draws something that looks lke output of [DatasetAPI] 
 
 #### Data sourcing is part of the model
 
@@ -368,6 +395,7 @@ P10: testing variations in condititions for running BenchmarkSuite (e.g. archite
    - P4: "And then there's a part of the actual metrics that the instrumentation is gathering. And this is typically constrained by the architectures to an extent. So there's a relationship between the instrumentation and execution environment."
    - P4: Draws the data sourcing
    - P5: Includes [MeasurementAPI] in a flow chart in the drawing
+   - P7: Draws individual profiles separately as a stack
 
   #### Data's relation to the domain is part of the model
    - P4 speaks extensively on all the collection factors of the model, starting with "I mean, it's kind of"
@@ -493,13 +521,17 @@ These codes have something to do with metadata.
   - P6: "you have an entry in your metadata that records all of the all the things you know about that run."
   - P6: "So what we put in the [EnsembleAPI Object] is up to us."
   - P7: "There's the metadata frame, which is only indexed on profile ID. And that just contains information again, like compiler, problem size, the things that can differentiate the runs."
+  - P8: "And so usually what I'm really interested in seeing is something like average time divided by something that's in the metadata, right? So average time per, in this case cycle, or example or something like that, right? There's could be average time per unknown, for example, right? For total number of unknowns, and the problem that we're solving, so that that's usually it usually is average time, but it's not solely average time, it usually has some, you know, usually usually has another component that's buried in the metadata that you know, we're dividing out or something like that."
+  - P8 "So I consider made meta data to be I guess, sort of what I would call the basic characteristics of the problem. So these are things like, like I said, architecture may be system name that you ran on a os may be, but then those are all kind of. They're useful for things like plots and useful for organizing your data, but maybe not very useful for analysis"
 
 		
 ### Metadata is hazy.
 
   - P5 "this might also be really specific to [PhysicsAPI] and that it is a black box. But we get a lot of meta metadata. But it's really like, it's really hard to get an understanding out of that."
   - P6 when trying to figure out how to store allocation information as a list
+  - P8 "I don't think of the metadata really , as I guess, I guess I think of that is a separate piece from the actual timing, tree data, right? Those are kind of two separate things I get, I guess, to me, so the metadata is certainly part of the ensemble just like the timing data, but I kind of I guess, think of those two things as being two different things."
 
+  - P8 "One of the things that I will say has been a challenge has been or can be metadata. I don't you know, and maybe all of the metadata really is wrapped up in the in the [EnsembleAPI] object. And maybe it's just, I just don't know, a good way to pull it out. But but getting metadata out of the [EnsembleAPI]  object in a useful way sometimes has has been a challenge. I don't guess I guess when I really think about it."
 
 ### Metadata is not (the) data.
 
@@ -514,6 +546,7 @@ These codes have something to do with metadata.
   - P4: "there's a part of the actual metrics that the instrumentation is gathering"
   - P5: "Then in the background data is used to find all the nodes I'm asking for and the profiles, which was some specific metadata. But honestly, like, right now, I'm only using it to query for stuff, which I know its there but I'm not really using it to explore the application in a way that I know you could use metadata for."
   - P7: "Yeah, so the most important is definitely the performance data. That's your actual stuff, you have to analyze. "
+  - P8 "And I, you know, I don't think of the metadata really, as I guess, I guess I think of that is a separate piece from the actual timing, tree data, right? Those are kind of two separate things I get, I guess, to me, so the metadata is certainly part of the ensemble just like the timing data, but I kind of I guess, think of those two things as being two different things."
 
 
 ### Metadata not explicitly stated but implied
@@ -522,24 +555,34 @@ These codes have something to do with metadata.
   - P2 does Task 1 with metadata explicity but in Task 2 does architectuer as separate [EnsembleAPI] objects rather than metadata
 
 ### Metadata as a reminder for analysis
-- P8 
+
+- P8 "But you know, the the thing with the metadata is, it's very hard to predict what you're going to want to look at, you know, so when you when you go through the code, you just kind of throw a bunch of stuff in there, here. Here's, here are all the things that I think might be interesting, right?"
+  - Also: "kay, well, when I go to sit down and analyze this data, these are the things that I might actually be interested in. But it never fails. When you do that, that you're gonna come across something that well, why didn't I put that in there? Right? Or can I infer that from what I did put in there? And sometimes, yes, sometimes no."
 
 
 ### Metadata is not really used (even if it is)
 
   - P5 "Then in the background data is used to find all the nodes I'm asking for and the profiles, which was some specific metadata. But honestly, like, right now, I'm only using it to query for stuff, which I know its there but I'm not really using it to explore the application in a way that I know you could use metadata for."
   - P5 "For me, it's only like, we have basically only like nodes to access and row ID of, where the node is, this is all we have in the data frame itself, we need some metadata in order to make good selection of specific nodes that we are interested in. That's the only way I'm using metadata right now. "
+  - P8 "Yeah. So I consider made meta data to be I guess, sort of what I would call the basic characteristics of the problem. So these are things like, like I said, architecture may be system name that you ran on a os may be, but then those are all kind of. They're useful for things like plots and useful for organizing your data, but maybe not very useful for analysis, you know, things that are more interesting for analysis is total memory usage or memory usage per MPI rank, or total number of dofs [degrees of freedom] or or number of dofs per MPI rank, you know, number of elements per MPI rank, or zones, you know, maybe, maybe things like, you know, material composition, that that's really not what I would consider metadata, I guess that that's really something different. You know, total, total execution time, for example, not not broken down, you know, in the tree, but just total overall execution time, I could see that being metadata. That thing, things like that."
 
 
 ### Metadata can be used for further drilling down
 
 - P6 suggests looking into timestamsp and allocations
+- P8 "And so usually what I'm really interested in seeing is something like average time divided by something that's in the metadata, right? So average time per, in this case cycle, or example or something like that, right? There's could be average time per unknown, for example, right? For total number of unknowns, and the problem that we're solving, so that that's usually it usually is average time, but it's not solely average time, it usually has some, you know, usually usually has another component that's buried in the metadata that you know, we're dividing out or something like that."
 
-### Metadata for grouping
+### Metadata for grouping / operations
 
 - P7 "those runs can be differentiated by almost any parameter, problem size compiler."
 - P7 "There's the metadata frame, which is only indexed on profile ID. And that just contains information again, like compiler, problem size, the things that can differentiate the runs."
+- P8 "And so usually what I'm really interested in seeing is something like average time divided by something that's in the metadata, right? So average time per, in this case cycle, or example or something like that, right? There's could be average time per unknown, for example, right? For total number of unknowns, and the problem that we're solving, so that that's usually it usually is average time, but it's not solely average time, it usually has some, you know, usually usually has another component that's buried in the metadata that you know, we're dividing out or something like that."
 
+### Metadata requires derivation too
+
+- P8 "sometimes I can't remember but it seems like early on there were issues with, with all of the metadata even being there and or having to create a new metadata member that was some, some combination of previously existing metadata. You know, like, well, I like time per cycle, for example, that's not a really a good one, because it's not solely metadata. But but there were there were some there were some cases where it seems like we had to go through some particularly grueling work to get some metadata columns in there that were constructed from from existing metadata, but you know, weren't weren't themselves, you know, there to start with so."
+
+### Williams Metadata codes
 
 - Definition of metadata:
     * P8: “I consider made meta data to be I guess, sort of what I would call the basic characteristics of the problem."
@@ -602,6 +645,7 @@ Can’t recollect the exact columns that cause the issue
 #### Uses ellipses to indicate more rows
 
 - P1, P2, P7
+- P8 (more columns)
 
 #### Uses etc to indicate more columns
 
@@ -641,6 +685,7 @@ Can’t recollect the exact columns that cause the issue
 - P5 (implied by 'scaling study') but not explicit... more focused on tree
 - P6 (implied through chart)
 - P7
+- P8 (metadata stated, perf data implied), also draws a plot of the results 
 
   ### misses metadata
 
@@ -685,6 +730,7 @@ Can’t recollect the exact columns that cause the issue
     - P4 (implied thorugh language)
     - P6 (implied through language/similar chart)
     - P7
+    - P8 (also notes similarities with Task 1)
 
   ### requires perf data on multiple objects
 
@@ -714,7 +760,7 @@ Can’t recollect the exact columns that cause the issue
   ### requires the call tree
 
 
-    - P3, P4, P5, P6
+    - P3, P4, P5, P6, P8
 	
 ### If I want to find out which function called another function, what portion of the data would be most important for that? 
 
@@ -729,6 +775,7 @@ Can’t recollect the exact columns that cause the issue
     - P5
     - P6
     - P7
+    - P8
   
   ### draws a table
 
@@ -770,6 +817,7 @@ Can’t recollect the exact columns that cause the issue
   ### Balanced node-link diagrams are trees, accept no substitutions
 
     - P6 until needing to add data
+    - P8 "the particular tool that I use to generate the data, right, which is, which is [Lab]'s [[DatasetAPI]] tool, and it generates this, this, it's not what you would think of, in when you think of tree, right?"
 
   ### Dangers of test dataset ([BenchmarkSuite])
 
@@ -807,6 +855,7 @@ Drawing Anxiety/Test Anxiety
     - P4: "I think there's this care the assumptions that you have to do in how you are setting up the measurements for your sample."
     - P6: "so for example, so I guess I was trying to describe CPU versus GPU. And I basically kept saying, This stays the same. This, you would have, you would have your computation much lower for the GPU, right. Which then means that the communication happens a lot more frequently. And I know that, and I can reason about it, but it is, I do not yet know how to represent that in ticket, the frequency of something occurring, right. So technically, I should be able to, just by that knowledge, right, I could divide this time by 10. Knowing that that's what happens, right? And then the total time would be less, right. But what I'm interested in as the person, you know, how frequently the communication happens, and the proportion of time it's taking. And actually, I liked that it would be the same. It wouldn't be the same notionally, except if you are communicating 10 times as often in the amount of data hasn't changed, right, the rest, the rest has not changed. You're creating more contention. And I don't yet know how to think about it in those terms."
     - P6: "So it's sort of like, you know, I will measure the communication time, just like I did on the CPUs, and I will get fairly similar graphs, they will probably go up a little because of the contention. But it's going to be difficult for me to draw that conclusion, just from the data. It's only because I know that's right. So I don't know, that that's clearly. I guess that's what I don't know, it's like you would have that data, right. But arriving at that conclusion, it's not clear to me that we have the means to arrive at that conclusion just from the data or you still need the human that understands that there is more traffic on the network, of course it's slower. "
+    - P8: "Because you know, for example, rank zero, is almost always going to be slightly higher, or maybe consistently, then all the other ranks depending on what's going on, you know, MPI wise, and all kinds of things. So, but that was one that that for sure, was missing, that we needed. . ."
 
 
 ## Performance
@@ -850,3 +899,7 @@ Drawing Anxiety/Test Anxiety
     - Has difficulty describing the tree, “So, you know, function name, where you have a routine name or something like that, and then you have your timing data, and you have that for every level in the tree basically...I don’t think I’ve ever thought about it quite like that.”
     - In low exclusive/high inclusive question, P8 refers to the tree but also calls it a hierarchy
         * “Right, that that really does come all down to the tree. And, you know, we see that quite frequently. Um, but yeah, that that, that all comes down to the hierarchy.”
+
+### Retrieving data
+
+- P8 " Um, and so part part of this is, is a little bit whether some, for some things, it's going to be hard for me to say, is this really captured by the [EnsembleAPI]  object? Or is it just the case that I don't know how to get it out?"
