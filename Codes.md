@@ -20,20 +20,25 @@ for now let's put everything here.
 
 
 ### What is an ensemble?
-  - Multiple profiles 
+  - Multiple profiles / runs
     - P1: "Purposely multiple profiles of data as in comparison to [DatasetAPI], where it may be only or usually is only one profile?"
     - P3: "we allow multi runs, multi run performance data, which is basically multiple profiles to be stored into an object."
     - P5: "It's also a good idea to have multiple rounds in order to model anything, basically, this also helps us in a way that we can take, like 10 rounds, and then we would have two profiles, we would generate a stats frame for that have like an aggregated or statistical relevant view on the data that we have."
     - P6: "included basically lots of repeat runs"
+    - P7: "we just collect that data into what we do those runs multiple times."
+    - P7: "So the idea is load this data from all the trials into one big performance model and analyze it."
   - Examples of different things to collect
     - P4: "for the performance data, we are basically dealing with different programs, executions, and there's different these programs are instrumented and they typically collect different performance counters, these might be exposed to the CPU, these can be software counters that are kind of made up just for the purpose of a special investigation into some performance question"
       - Also: "And typically the applications we are working with, and they will be implemented this way, they do have a few parameters of themselves."
       - "And we are working on different architectures and platforms. And this leads to these counters being expressed differently."
     - P5 also lists possible data to collect
     - P6 explains in terms of the questions about systems and noise
+    - P7 "So a lot of what we're dealing with is just to be added as a few layers, so to say, all right, like the opening close calls, three intercept time, that normal time, the actual producer code, yeah, consumer code going deeper, we time the actual send and receive functions that you've DCX stuff like that's what time these different layers, the software"
+    - P7 "So you have performance data where you have which is indexed on both your profile ID and your nodes, that contains your actual metrics, the data, so time memory usage, stuff like that. There's the metadata frame, which is only indexed on profile ID. And that just contains information again, like compiler, problem size, the things that can differentiate the runs. And then there is also a statistics frame, which is the stores the results of many aggregate statistics operations on performance data. And that is also indexed on the nodes."
   - Hazy / Flexible
     - P4: "I tend to be very flexible and fuzzy in the definition there, because my experience has just said, it doesn't even make too much sense to constrain it so so much."
     - P4: "So there's a few different structures to data, but I think this is two things that I've commonly seen."
+    - P7: "nd because it allows a lot of flexibility. And so exactly, what you want to do depends a lot on the specifics of the past. The specific data that you have stuff like that,"
   - Multidim
     - P4: "But it's basically a multi dimensional space of, of parameters to care about."
     - P4: "I think it makes sense to look what is kind of distributed across the MPI ranks. And typically, we have some application domains. So this might be a volume or space."
@@ -132,6 +137,16 @@ something appeared in one but was later forgotten.
     - Stats:
       - Drawn/implied (variance)
       - Spoken later on prompting
+  - P7
+    - Performance data
+      - Spoken
+    - Call tree
+      - Spoken
+      - Drawn
+    - Metadata
+      - Spoken
+    - Stats
+      - Spoken
 
 
 #### Describing application instead of performance data
@@ -156,6 +171,8 @@ something appeared in one but was later forgotten.
   - P3: ".You can see the relationship between these is through the profiles the profile hash."
   - P7: "So you have performance data where you have which is indexed on both your profile ID and your nodes, that contains your actual metrics, the data, so time memory usage, stuff like that. There's the metadata frame, which is only indexed on profile ID."
   - P6: "right, and the metadata is per run. So there's a correspondence between the table that has all of the runs recorded. And so for each of the 10, or whatever runs, you have an entry in your metadata that records all of the all the things you know about that run."
+  - P7: "And then there's three data frames constructed using the nodes in the graph and the profile IDs as the indicies different, like combinations of those things, depending on the data frame."
+  - P7 describing a graph database
 
 
 ### Ensemble data structure pieces are linked meaningfully
@@ -191,6 +208,7 @@ something appeared in one but was later forgotten.
     - P7: "Yeah, so the most important is definitely the performance data. That's your actual stuff, you have to analyze."
     - P8: "the timing data is, is is very general, right, you can do a whole lot of things with that, depending on what you're trying to, you know, get out of the ensemble, right all kinds of different things,"
     - P10: "But it's really the tunings that we're after to understand how they're performing."
+    - P7: "In terms of the statistics, and metadata. They're important, depends what you want. So if you really want to get a sense of how things change within parameters, your performance data, or your metadata are probably a bit more important. If you're more interested in just how things perform on average, or, again, on statistical operations based on performance data, then your statistics will be more important than that data just depends on what you want to analyze."
 
   #### Feature maturity
 
@@ -205,7 +223,8 @@ something appeared in one but was later forgotten.
   
   - by accident
     - P6 "Right, so each data point in here is basically so this is one run rate. And then the error bars? Well, no, that's not a one run, it's an average of the runs. And the error bars are also the average for the different runs right?"
-  - on purpose
+    - P7 "Yeah. So essentially, problems are essentially problem scale in terms of the system size, like MPI ranks to be a good proxy for that. Versus you said, time, so a lot of that data you care about, start with start off with performance data. So you'd have in this case, in fact, you probably have another index. So besides these two are the third we're gonna be . . . no, number of MPI ranks not just each rank, my bad, that's slightly confusing."
+  - on purpose (TODO: Disambiguate -- part of process or laziness etc)
     - P2 describes how the Stats table is in some sense for this purpose
     - P4 "But like, in principle, there's a full spectrum of aggregated data that is kind of profiling a region and just preserving some characteristics that are kind of accumulated over time."
     - P4 "So like this happens on multiple rings, or in multiple processes. So there might be multiple values attached to that. And then for each of the processes, we might be capturing multiple fields of data. And sometimes this data could have a hierarchy of itself. But for most of the data that we are working with, we don't really capture that hierarchy, it's kind of condensed into something that is relatively flat."
@@ -217,6 +236,8 @@ something appeared in one but was later forgotten.
     - P6: "So obviously, you start by looking at the whole thing, right? The entire entirety of the runtime. And then, you know, you start throwing away things that may be irrelevant like IO, you can you can drop IO at different rates, so maybe you shouldn't really consider it as part of your just pure performance study and right."
     - P6: "basically, [MeasurementAPI] tracks, a profile per rank. And then it's doing a reduction step to combine all of that information, and essentially, what ends up so we can specify what it does was the data when it combines it. So for this metadata, who sends to who, I want that appended right, I want the full list for the times. To save time, most of the time, we essentially indicate that I would like to know the min, max and average. And so as it essentially collapses it down to these three values where instead of keeping 1000s of values, right, however many ranks you have."
     - P6: "Yep. So there's, there's different averages, right? You're averaging different things at different steps. But yeah, so with [MeasurementAPI], we can essentially request, what data gets output? If you really need the correct data, you can, we would be able to read that into a [EnsembleAPI object]. But I don't think we've tried to read in multiple of these into the get, right, because that's essentially an additional dimension on my data."
+    - P7: "And right now, we're just doing basic averaging."
+    - P7: "here's a little hard to map it one, one, because, yeah, the multi indexing is a bit different from what you'd normally do in a graph database. In general, normally, in a graph database, you'd have. . . main here, I'm just going to say we have a single profile to get rid of the profile ID to main"
   - retrieving dimensions/detail
     - P6 discusses needed to drill down for root cause
   - perhaps the point is to do the reductions
@@ -233,13 +254,14 @@ something appeared in one but was later forgotten.
   - P6 has difficulties adding allocation information
     - "So there's a lot of data that's, that's happening. And also they are sending different amount of data to different processes. And so And also, it's, if you were to measure each send individually, that's going to be a ton of data. So step one, I'm trying to at least record who's sending to who and how much the measuring part is probably not feasible, because you'd have to like, insert more barriers to properly measure it right, which complete completely perturbs things. These are asynchronous asynchronous calls, right. So that's a challenge to measure. But at the very least, I am trying to record which logical process pairs are communicating and how much data they're sending, then I can dump out into the metadata."
   - P6 adds attributes to the call tree nodes separate from the performance table
-
-
+  - P7 pretty much trying to do all graph database stuff "So this is where it gets tricky with the nodes, because the performance data is a little hard to wrap your head around with the traditional graph database model. I know there are ways to do it, but I don't, I'm not that familiar with graph databases. That's exactly that's how it works."
+  - P7 gets fuzzy parts of the model wrong "But you might have, this column might map to -- I don't know why I wrote "perf data" there. Node, that would be nodes. Say "A", your metrics. And then at the end, you might have your ID, your profile ID."
 
 ### Tension with the casting of the data
   
   - P4 is anti-tree, P5 is pro-tree
   - P5 "the data frame itself was only like a storage container for data. And it's hard to really read, because there's so much going on. So it's even harder to see like, if there's even behaviors that you are interested in, it's only obviously obvious that some parts take more time. And some take a lot of time. And you don't really get the view behind that."
+  - P7 on what's missing "And that's traces, time series. They're extremely important, especially once you start getting to more state of the art applications, which are a lot of those, again, have to do with the workflow type model, which is very time series dependent."
 
 
 ### Differences between ensemble makes things hard
@@ -266,6 +288,8 @@ something appeared in one but was later forgotten.
    - P2 talks about [MeasurementAPI] format as messay while pandas format is easier to read/work with, see block starting with "Yeah, I don't I'll describe"
    - P5 (Implying data will come from an annotation-based tool like [MeasurementAPI]) ". . .now we can also look into dependencies between these **annotated regions**."
    - P8 - "Okay, so, so, yeah, the way I think about the staff that and this has been this has really been driven by the tools that I use, it's very hierarchical, right?"
+   - P7 - 'their data model' "Again, this is all synthetic, this is the second piece of their data model. We can just do it this way. Then down here."
+   - P7 "So this implementation depends a lot on the specific tool you're looking at."
 
 #### Data sourcing is part of the model
 
@@ -281,11 +305,13 @@ something appeared in one but was later forgotten.
   #### Data's relation to the domain is part of the model
    - P4 speaks extensively on all the collection factors of the model, starting with "I mean, it's kind of"
    - P4 draws the domain, speaks extensively about the application and ties to it throughout
+   - P7 "Yeah, those are examples. Exactly what it is depends on the application."
 
 #### Data is described based on how it is stored
 
 - P2: "we just take ensembles of data and load them into pandas data frames, and then using those pandas data data frame, perform analysis on that data."
 - P3: "Do you want to know the kind of the structure of the data the way it's stored?"
+- P7: "So this is kind of the high level view a bit more low level, you'll get into like how it's actually organized in memory, and on disk and stuff like that."
 
 #### Data is described based on how it is accessed
 
@@ -305,6 +331,12 @@ something appeared in one but was later forgotten.
     - P1: "so the data I work with, it's sort of arbitrary as a developer"
     - P1: "the columns themselves are kind of arbitrary"
     - P1: "And then third, probably the profiles. That's the data itself, but it's kind of less important because we have that represented as like an inner index. So it's kind of like, subsequent to the nodes, I guess, in the visualization in my head. So that's where I kind of like, put things even though thinking about is kind of counterintuitive, because without the profiles, you wouldn't have any data."
+    - P7: "Again, any parameter really."
+
+
+  #### Data's relation to participant's problem
+
+    - P7 "I like connecting it to the [Data Movement Tool] example, as a more practical example. Say the raw data represents all the data we have, for a particular run or a particular consumer in our workflow, we could then run that workflow multiple times, maybe slightly different parameters, get all these profiles for that one consumer, and then pass on this data model and analyze it that way. Using things like one thing that we I'm honestly, currently intending to use, is the query language to strip off all the application specific stuff and just focus on our [Data Movement Tool]."
 
 #### Analysis Task Influences Mental Model or Awareness of Parts
 - P1: (In reference to architecture comparison task): "So that's, that's not in this table"
@@ -370,6 +402,7 @@ These codes have something to do with metadata.
   - P6: It's what you can form groups by "So you're, you're grabbing, you're looking for machine one and this number of processors, right to to form a little group that you are now averaging and computing you error bars on. Right, and then you grab another one, right? And then you do the same thing for machine two."
   - P6: "you have an entry in your metadata that records all of the all the things you know about that run."
   - P6: "So what we put in the [EnsembleAPI Object] is up to us."
+  - P7: "There's the metadata frame, which is only indexed on profile ID. And that just contains information again, like compiler, problem size, the things that can differentiate the runs."
 
 		
 ### Metadata is hazy.
@@ -383,13 +416,14 @@ These codes have something to do with metadata.
   - P5 on being asked where it is: "Um, well right now it's kind of, detached in ways"
 
 
-### Profiles are the real data.
+### Profiles are the real data. (Proposal: Merge with 'Metadata is not the data')
 
   - P1: "And then third, probably the profiles. That's the data itself"
   - P1: "without the profiles, you wouldn't have any data."
   - P2: "But you would have that information in the metadata, and then it would go, like the actual outputs, and the metadata."
   - P4: "there's a part of the actual metrics that the instrumentation is gathering"
   - P5: "Then in the background data is used to find all the nodes I'm asking for and the profiles, which was some specific metadata. But honestly, like, right now, I'm only using it to query for stuff, which I know its there but I'm not really using it to explore the application in a way that I know you could use metadata for."
+  - P7: "Yeah, so the most important is definitely the performance data. That's your actual stuff, you have to analyze. "
 
 
 ### Metadata not explicitly stated but implied
@@ -411,6 +445,11 @@ These codes have something to do with metadata.
 
 - P6 suggests looking into timestamsp and allocations
 
+### Metadata for grouping
+
+- P7 "those runs can be differentiated by almost any parameter, problem size compiler."
+- P7 "There's the metadata frame, which is only indexed on profile ID. And that just contains information again, like compiler, problem size, the things that can differentiate the runs."
+
 
 ## Drawing
 
@@ -422,13 +461,15 @@ These codes have something to do with metadata.
 
 #### Uses ellipses to indicate more rows
 
-- P1, P2
+- P1, P2, P7
 
 #### Uses etc to indicate more columns
 
 - P1
 - 
 ### Dimensions are added by stacking.
+
+- P7 draws stack 
 
 ### Dimensions are added by overplotting.
 
@@ -459,6 +500,7 @@ These codes have something to do with metadata.
 - P4 (implied through language)
 - P5 (implied by 'scaling study') but not explicit... more focused on tree
 - P6 (implied through chart)
+- P7
 
   ### misses metadata
 
@@ -476,6 +518,7 @@ These codes have something to do with metadata.
 
     - P4 (implied thorugh language)
     - P6 (implied through language/similar chart)
+    - P7
 
   ### requires perf data on multiple objects
 
@@ -501,6 +544,7 @@ These codes have something to do with metadata.
     - P4
     - P5
     - P6
+    - P7
   
   ### draws a table
 
@@ -533,6 +577,8 @@ These codes have something to do with metadata.
     - P3: "And it's going to the first table, which is the performance data table with with that profile hash that we just talked about. So it's like a foreign key for for that table."
     - P3: "performance data is acts as sort of the main table, if you look at it from a relational database management system, our relational database management model"
     - P5 uses the term 'view' but not in a vis way.
+    - P7 talks about indexing extensively
+    - P7 "In a way [EnsembleAPI Object] is almost just like a, it's really almost as like a graph database to be honest."
 
 Drawing Anxiety/Test Anxiety
 - P1: "Yeah, so, I'm not an artist, but I think you'll probably get the idea", "Did I do good?"
