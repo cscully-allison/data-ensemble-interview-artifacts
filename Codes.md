@@ -24,17 +24,21 @@ for now let's put everything here.
     - P1: "Purposely multiple profiles of data as in comparison to [DatasetAPI], where it may be only or usually is only one profile?"
     - P3: "we allow multi runs, multi run performance data, which is basically multiple profiles to be stored into an object."
     - P5: "It's also a good idea to have multiple rounds in order to model anything, basically, this also helps us in a way that we can take, like 10 rounds, and then we would have two profiles, we would generate a stats frame for that have like an aggregated or statistical relevant view on the data that we have."
+    - P6: "included basically lots of repeat runs"
   - Examples of different things to collect
     - P4: "for the performance data, we are basically dealing with different programs, executions, and there's different these programs are instrumented and they typically collect different performance counters, these might be exposed to the CPU, these can be software counters that are kind of made up just for the purpose of a special investigation into some performance question"
       - Also: "And typically the applications we are working with, and they will be implemented this way, they do have a few parameters of themselves."
       - "And we are working on different architectures and platforms. And this leads to these counters being expressed differently."
     - P5 also lists possible data to collect
+    - P6 explains in terms of the questions about systems and noise
   - Hazy / Flexible
     - P4: "I tend to be very flexible and fuzzy in the definition there, because my experience has just said, it doesn't even make too much sense to constrain it so so much."
     - P4: "So there's a few different structures to data, but I think this is two things that I've commonly seen."
   - Multidim
     - P4: "But it's basically a multi dimensional space of, of parameters to care about."
     - P4: "I think it makes sense to look what is kind of distributed across the MPI ranks. And typically, we have some application domains. So this might be a volume or space."
+  - Outcome not the data
+    - P6 draws outcome plots
 
 
 ### Pieces of the EnsembleAPI were forgotten.
@@ -114,6 +118,25 @@ something appeared in one but was later forgotten.
    - Stats:
      - Not spoken
      - Drawn
+  - P6:
+    - Performance data:
+      - Spoken/implied
+      - Drawn/implied (axes)
+    - Call tree:
+      - Spoken/implied ("phases", communication calls)
+      - Spoken in more detail on prompting
+    - Meta data:
+      - Spoken/implied (architectures, scales)
+      - Drawn/implied (axes)
+      - On direct ask, did not get into metadata
+    - Stats:
+      - Drawn/implied (variance)
+      - Spoken later on prompting
+
+
+#### Describing application instead of performance data
+  
+  - P6
 
 ## What pieces of the data do people recall initially?
 
@@ -199,7 +222,7 @@ P10: testing variations in condititions for running BenchmarkSuite (e.g. archite
   - P3: "And it's going to the first table, which is the performance data table with with that profile hash that we just talked about. So it's like a foreign key for for that table."
   - P3: ".You can see the relationship between these is through the profiles the profile hash."
   - P7: "So you have performance data where you have which is indexed on both your profile ID and your nodes, that contains your actual metrics, the data, so time memory usage, stuff like that. There's the metadata frame, which is only indexed on profile ID."
-
+  - P6: "right, and the metadata is per run. So there's a correspondence between the table that has all of the runs recorded. And so for each of the 10, or whatever runs, you have an entry in your metadata that records all of the all the things you know about that run."
 
 
 ### Ensemble data structure pieces are linked meaningfully
@@ -248,6 +271,7 @@ P10: testing variations in condititions for running BenchmarkSuite (e.g. archite
 ### Participants dropped or reduced dimensions of the data.
   
   - by accident
+    - P6 "Right, so each data point in here is basically so this is one run rate. And then the error bars? Well, no, that's not a one run, it's an average of the runs. And the error bars are also the average for the different runs right?"
   - on purpose
     - P2 describes how the Stats table is in some sense for this purpose
     - P4 "But like, in principle, there's a full spectrum of aggregated data that is kind of profiling a region and just preserving some characteristics that are kind of accumulated over time."
@@ -255,6 +279,15 @@ P10: testing variations in condititions for running BenchmarkSuite (e.g. archite
     - P4 "So, I mean, I think that the data is hierarchical, is often an artifact, how we are designing systems, and they just tend to be hierarchical, because it's manageable."
     - P4: "So we are using this collapse view because we can still kind of for for a particular call, say like we added a second cog function, we can look at the stack, and then we can aggregate around that, but like, we're doing this mostly because we have to, because we can't afford to, to store like this at the exact granularity that we have in most cases."
     - P5 talking about the stats table.
+    - P6 groups comm versus comp "Essentially, fairly quickly, we kind of grouped computation by type where computation was one type"
+    - P6 averages/variances across equivalent runs (noise)
+    - P6: "So obviously, you start by looking at the whole thing, right? The entire entirety of the runtime. And then, you know, you start throwing away things that may be irrelevant like IO, you can you can drop IO at different rates, so maybe you shouldn't really consider it as part of your just pure performance study and right."
+    - P6: "basically, [MeasurementAPI] tracks, a profile per rank. And then it's doing a reduction step to combine all of that information, and essentially, what ends up so we can specify what it does was the data when it combines it. So for this metadata, who sends to who, I want that appended right, I want the full list for the times. To save time, most of the time, we essentially indicate that I would like to know the min, max and average. And so as it essentially collapses it down to these three values where instead of keeping 1000s of values, right, however many ranks you have."
+    - P6: "Yep. So there's, there's different averages, right? You're averaging different things at different steps. But yeah, so with [MeasurementAPI], we can essentially request, what data gets output? If you really need the correct data, you can, we would be able to read that into a [EnsembleAPI object]. But I don't think we've tried to read in multiple of these into the get, right, because that's essentially an additional dimension on my data."
+  - retrieving dimensions/detail
+    - P6 discusses needed to drill down for root cause
+  - perhaps the point is to do the reductions
+    - P6 "And then the computation of the average, in the error bars that that data would end up essentially in the stats frame. Right? Right. So for this plot, I am no longer looking, I start with the individual runs. But for this plot, I'm no longer looking at the individual run. So I'm looking at the data and the stats frame."
 
 ### Multi-dimensional aspect of ensembles is hard / Ensembles all the way down
   
@@ -264,6 +297,10 @@ P10: testing variations in condititions for running BenchmarkSuite (e.g. archite
   - P5 ends up with multiple objects: "Okay, let's give me please all the "group by"s of MPI ranks, so that I would retrieve like sub-[EnsembleAPI Object]. Only like one example of a [EnsembleAPI Object], but you can get more [EnsembleAPI Object] out of them, by creating sub-[EnsembleAPI Object], because of group by clauses really are similar to databases"
   - P5 "the data frame itself was only like a storage container for data. And it's hard to really read, because there's so much going on. So it's even harder to see like, if there's even behaviors that you are interested in, it's only obviously obvious that some parts take more time. And some take a lot of time. And you don't really get the view behind that."
   - P5 "But right now, I'm having like a lot of steps where I use this data to make some analysis on and all the time you like, have to handle the different [EnsembleAPI Object]  and the different objects and all your calculations again, by yourself. And they kind of get lost in a way."
+  - P6 has difficulties adding allocation information
+    - "So there's a lot of data that's, that's happening. And also they are sending different amount of data to different processes. And so And also, it's, if you were to measure each send individually, that's going to be a ton of data. So step one, I'm trying to at least record who's sending to who and how much the measuring part is probably not feasible, because you'd have to like, insert more barriers to properly measure it right, which complete completely perturbs things. These are asynchronous asynchronous calls, right. So that's a challenge to measure. But at the very least, I am trying to record which logical process pairs are communicating and how much data they're sending, then I can dump out into the metadata."
+  - P6 adds attributes to the call tree nodes separate from the performance table
+
 
 
 ### Tension with the casting of the data
@@ -278,6 +315,11 @@ P10: testing variations in condititions for running BenchmarkSuite (e.g. archite
   - P5 "So the challenge there was and still is that when we try to measure, take measurements with only one node, we have annotations that do not occur when we have like two nodes. Because a lot of MPI communication is missing, though, we even have completely missing regionals because obviously, like you don't need an all reduce with only one MPI rank. So these nodes are then missing."
   - P5 "I would fall back to like getting more insights out of the performance counters. But of course, they are completely different. If we compare like, Intel top-down metrics with AMD metrics, Performance Counters, then we have to, then we would have like different counters, and some counters are not available on AMD architectures, and some not available on Intel,"
 
+
+### Focus on operations
+  
+  - P6 discusses filtering and reductions when asked to describe [EnsembleAPI]
+    object.
 
 
 ### Influences on model
@@ -322,6 +364,8 @@ P10: testing variations in condititions for running BenchmarkSuite (e.g. archite
 - P4: "So we would like if we want to do comparative studies to inform maybe the choice of a library or compiler, we would look at multiple measurements of that. And also multiple measurements across different of these input parameters, for example, to see how the behavior and others is changing, in particular, how the performance might improve or degrade, according to that."
 - P4: "for example, they have an instrumentation solution that looks particularly at higher libraries, not so much CPU counters, and we ran into similar analysts problem there because we are dealing with multi dimensional data. And then we have to slice and cut through the data to get like a view that allows for fair comparisons."
 - P4: "So in that sense, if we are looking at studying performance, for compute optimization, for example, then we will typically try to construct an ensemble that has varying parameters, and would construct the instrumentation so that we are not capturing things that are subject to resource to too much noise or to share resources."
+- P6: "basically, the study of performance on different machines"
+- P6: "Essentially, some of the questions were, how much noise do we see in those different runs? Is there are the runs on AWS more noisy? And then also comparing the performance? So if you have essentially comparable hardware, you know, on pram, and then in the clouds, do you get the same performance?"
 
   #### Exact data is not important
 
@@ -413,11 +457,15 @@ These codes have something to do with metadata.
   - P3: "not strictly performance data, but kind of more information about the execution of the program for each of the profile."
   - P4: "So the context includes things like the compiler, libraries, build dependencies, the actual hardware that things are being run on."
   - P5: "For me, it's only like, we have basically only like nodes to access and row ID of, where the node is, this is all we have in the data frame itself, we need some metadata in order to make good selection of specific nodes that we are interested in. That's the only way I'm using metadata right now."
+  - P6: It's what you can form groups by "So you're, you're grabbing, you're looking for machine one and this number of processors, right to to form a little group that you are now averaging and computing you error bars on. Right, and then you grab another one, right? And then you do the same thing for machine two."
+  - P6: "you have an entry in your metadata that records all of the all the things you know about that run."
+  - P6: "So what we put in the [EnsembleAPI Object] is up to us."
 
 		
 ### Metadata is hazy.
 
   - P5 "this might also be really specific to [PhysicsAPI] and that it is a black box. But we get a lot of meta metadata. But it's really like, it's really hard to get an understanding out of that."
+  - P6 when trying to figure out how to store allocation information as a list
 
 
 ### Metadata is not (the) data.
@@ -442,11 +490,16 @@ These codes have something to do with metadata.
 ### Metadata as a reminder for analysis
 - P8 
 
+
 ### Metadata is not really used (even if it is)
 
   - P5 "Then in the background data is used to find all the nodes I'm asking for and the profiles, which was some specific metadata. But honestly, like, right now, I'm only using it to query for stuff, which I know its there but I'm not really using it to explore the application in a way that I know you could use metadata for."
   - P5 "For me, it's only like, we have basically only like nodes to access and row ID of, where the node is, this is all we have in the data frame itself, we need some metadata in order to make good selection of specific nodes that we are interested in. That's the only way I'm using metadata right now. "
 
+
+### Metadata can be used for further drilling down
+
+- P6 suggests looking into timestamsp and allocations
 
 
 - Definition of metadata:
@@ -494,8 +547,12 @@ Can’t recollect the exact columns that cause the issue
 
 ### Dimensions are added by overplotting.
 
-### Dimensions are added by duplciation.
+- P6 puts multiple liens in one chart
+
+### Dimensions are added by duplication.
+
 - P1 describing Task 2 across architectures
+- P6 doing separate plots for comm and comp
 
 ### Concretizing the Data Model when Drawing
 
@@ -516,6 +573,7 @@ Can’t recollect the exact columns that cause the issue
 - P2
 - P4 (implied through language)
 - P5 (implied by 'scaling study') but not explicit... more focused on tree
+- P6 (implied through chart)
 
   ### misses metadata
 
@@ -558,6 +616,7 @@ Can’t recollect the exact columns that cause the issue
   ### requires perf data and metadata
 
     - P4 (implied thorugh language)
+    - P6 (implied through language/similar chart)
 
   ### requires perf data on multiple objects
 
@@ -586,9 +645,13 @@ Can’t recollect the exact columns that cause the issue
 
   ### requires the call tree
 
+<<<<<<< HEAD
     - P3, P4, P5
 	
 ### If I want to find out which function called another function, what portion of the data would be most important for that? 
+=======
+    - P3, P4, P5, P6
+>>>>>>> main
 
 - P3: Call tree, “we have a very basic implementation of queries.”
 
@@ -599,6 +662,7 @@ Can’t recollect the exact columns that cause the issue
     - P2 (on clarification)
     - P4
     - P5
+    - P6
   
   ### draws a table
 
@@ -639,6 +703,8 @@ Can’t recollect the exact columns that cause the issue
 
   ### Balanced node-link diagrams are trees, accept no substitutions
 
+    - P6 until needing to add data
+
   ### Dangers of test dataset ([BenchmarkSuite])
 
 - does not seem to understand nodes are functions instead of applications
@@ -671,6 +737,10 @@ Drawing Anxiety/Test Anxiety
   ### Desire for context
 
     - P4: "I think there's this care the assumptions that you have to do in how you are setting up the measurements for your sample."
+    - P6: "so for example, so I guess I was trying to describe CPU versus GPU. And I basically kept saying, This stays the same. This, you would have, you would have your computation much lower for the GPU, right. Which then means that the communication happens a lot more frequently. And I know that, and I can reason about it, but it is, I do not yet know how to represent that in ticket, the frequency of something occurring, right. So technically, I should be able to, just by that knowledge, right, I could divide this time by 10. Knowing that that's what happens, right? And then the total time would be less, right. But what I'm interested in as the person, you know, how frequently the communication happens, and the proportion of time it's taking. And actually, I liked that it would be the same. It wouldn't be the same notionally, except if you are communicating 10 times as often in the amount of data hasn't changed, right, the rest, the rest has not changed. You're creating more contention. And I don't yet know how to think about it in those terms."
+    - P6: "So it's sort of like, you know, I will measure the communication time, just like I did on the CPUs, and I will get fairly similar graphs, they will probably go up a little because of the contention. But it's going to be difficult for me to draw that conclusion, just from the data. It's only because I know that's right. So I don't know, that that's clearly. I guess that's what I don't know, it's like you would have that data, right. But arriving at that conclusion, it's not clear to me that we have the means to arrive at that conclusion just from the data or you still need the human that understands that there is more traffic on the network, of course it's slower. "
+
+
 
 ## Performance
 ## Strong scaling study
@@ -713,3 +783,4 @@ Drawing Anxiety/Test Anxiety
     - Has difficulty describing the tree, “So, you know, function name, where you have a routine name or something like that, and then you have your timing data, and you have that for every level in the tree basically...I don’t think I’ve ever thought about it quite like that.”
     - In low exclusive/high inclusive question, P8 refers to the tree but also calls it a hierarchy
         * “Right, that that really does come all down to the tree. And, you know, we see that quite frequently. Um, but yeah, that that, that all comes down to the hierarchy.”
+=======
