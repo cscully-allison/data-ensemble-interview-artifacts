@@ -566,6 +566,31 @@ Can’t recollect the exact columns that cause the issue
 “for each of the test cases, we have our metadata annotations here, which shows well just, a bunch of things like well, okay, of course, the time it was recorded, all the metadata, like the number of threads that we use, the test case name, and other stuff, like compilers, and whatnot. And also, basically the global performance metric that we're interested in, ultimately, which is like, time for instrumentation call, and also, the total runtime after benchmark again… compiler, system”
 
 
+- Definition of metadata:
+    * P8: “I consider made meta data to be I guess, sort of what I would call the basic characteristics of the problem."
+        - YES: architecture, system name, OS. NO: total memory usage, memory usage per MPI rank, total number of dofs, etc. POSSIBLY: total overall execution time
+    * P3: " we have information like, who who ran the program, how long, how long the program ran, when the launch date was, all that kind of information. So not strictly performance data, but kind of more information about the execution of the program for each of the profile”
+gives examples of metadata: launch date, user
+    * P2: when a job was ran, what system it was ran on, the compiler, compiler optimizations
+    
+    
+- P5: Metadata used to answer queries, but not considered part of the data
+    * "“Um, well right now it's kind of, detached in ways, the metadata is only really used to like. . . you can look into the metadata. And then you can query by it... But honestly, like, right now, I'm only using it to query for stuff, which I know its there but I'm not really using it to explore the application in a way that I know you could use metadata for."
+
+    
+- P8: complains about pulling out the metadata "in a useful way", i.e., as ints/floats, not as strings
+    * KT: Is the metadata in a separate dataframe that they don’t know exists?
+    * “So so, you know, by my Python skills are can be iffy, at best. So, you know, like I said, some of these things may, absolutely, it may be easy to get out of the object, and I just don't know how to do it. One of the things that I will say has been a challenge has been or can be metadata. I don't you know, and maybe all of the metadata really is wrapped up in the in the [Programmatic Profile Analysis Software A]  object”
+    * “this is made a little difficult in Python, since it's not a typed language, but you know, when I pull out a number, I don't want it to be a string”
+Can’t recollect the exact columns that cause the issue
+
+- P8: Hard to know ahead of time what metadata you will find interesting
+    * “But you know, the the thing with the metadata is, it's very hard to predict what you're going to want to look at, you know, so when you when you go through the code, you just kind of throw a bunch of stuff in there, here. Here's, here are all the things that I think might be interesting, right? Start Time, stop time, cluster name, architecture, you know, all of these kinds of things that you're like, Okay, well, when I go to sit down and analyze this data, these are the things that I might actually be interested in. But it never fails. When you do that, that you're gonna come across something that well, why didn't I put that in there? Right? Or can I infer that from what I did put in there? And sometimes, yes, sometimes no.”
+    
+- P9: as a side note!! Says metadata
+“for each of the test cases, we have our metadata annotations here, which shows well just, a bunch of things like well, okay, of course, the time it was recorded, all the metadata, like the number of threads that we use, the test case name, and other stuff, like compilers, and whatnot. And also, basically the global performance metric that we're interested in, ultimately, which is like, time for instrumentation call, and also, the total runtime after benchmark again… compiler, system”
+
+
 ## Drawing
 
 ### Directionality
@@ -688,6 +713,7 @@ Can’t recollect the exact columns that cause the issue
 
   ### requires the call tree
 
+
     - P3, P4, P5, P6
 	
 ### If I want to find out which function called another function, what portion of the data would be most important for that? 
@@ -781,6 +807,7 @@ Drawing Anxiety/Test Anxiety
     - P4: "I think there's this care the assumptions that you have to do in how you are setting up the measurements for your sample."
     - P6: "so for example, so I guess I was trying to describe CPU versus GPU. And I basically kept saying, This stays the same. This, you would have, you would have your computation much lower for the GPU, right. Which then means that the communication happens a lot more frequently. And I know that, and I can reason about it, but it is, I do not yet know how to represent that in ticket, the frequency of something occurring, right. So technically, I should be able to, just by that knowledge, right, I could divide this time by 10. Knowing that that's what happens, right? And then the total time would be less, right. But what I'm interested in as the person, you know, how frequently the communication happens, and the proportion of time it's taking. And actually, I liked that it would be the same. It wouldn't be the same notionally, except if you are communicating 10 times as often in the amount of data hasn't changed, right, the rest, the rest has not changed. You're creating more contention. And I don't yet know how to think about it in those terms."
     - P6: "So it's sort of like, you know, I will measure the communication time, just like I did on the CPUs, and I will get fairly similar graphs, they will probably go up a little because of the contention. But it's going to be difficult for me to draw that conclusion, just from the data. It's only because I know that's right. So I don't know, that that's clearly. I guess that's what I don't know, it's like you would have that data, right. But arriving at that conclusion, it's not clear to me that we have the means to arrive at that conclusion just from the data or you still need the human that understands that there is more traffic on the network, of course it's slower. "
+
 
 ## Performance
 ## Strong scaling study
