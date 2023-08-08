@@ -46,12 +46,12 @@ for now let's put everything here.
   - Hazy / Flexible
     - P4: "I tend to be very flexible and fuzzy in the definition there, because my experience has just said, it doesn't even make too much sense to constrain it so so much."
     - P4: "So there's a few different structures to data, but I think this is two things that I've commonly seen."
-    - P7: "nd because it allows a lot of flexibility. And so exactly, what you want to do depends a lot on the specifics of the past. The specific data that you have stuff like that,"
-  - Multidim
+    - P7: "and because it allows a lot of flexibility. And so exactly, what you want to do depends a lot on the specifics of the past. The specific data that you have stuff like that,"
+  - Multidimensional
     - P4: "But it's basically a multi dimensional space of, of parameters to care about."
     - P4: "I think it makes sense to look what is kind of distributed across the MPI ranks. And typically, we have some application domains. So this might be a volume or space."
     - P9: "So it's like, like not too ensemble-y, I would say, with only like two dimensions."
-    - P9: thinks in terms of IVs "So I think the ensemble part of this is that we're recording this thing for, well, looking at our benchmark for three different test cases and a bunch of different threads. So yeah, it's only like two dimensions. In this case, it's over three, if you consider that we're doing this over a period of time. So we're looking at data in the past and tell us developing now."
+    - P9: thinks in terms of IVs (independent variables) "So I think the ensemble part of this is that we're recording this thing for, well, looking at our benchmark for three different test cases and a bunch of different threads. So yeah, it's only like two dimensions. In this case, it's over three, if you consider that we're doing this over a period of time. So we're looking at data in the past and tell us developing now."
     - P10 implied by the number of factors listed
   - Outcome not the data
     - P6 draws outcome plots
@@ -151,16 +151,19 @@ something appeared in one but was later forgotten.
     - Stats:
       - Drawn/implied (variance)
       - Spoken later on prompting
-  - P7
+  - P7 [drawing](https://github.com/cscully-allison/data-ensemble-interview-artifacts/blob/main/P7/Scanned%20from%20a%20Xerox%20Multifunction%20Printer.pdf)
     - Performance data
       - Spoken
+      - Drawn
     - Call tree
       - Spoken
       - Drawn
     - Metadata
       - Spoken
+      - Drawn
     - Stats
       - Spoken
+      - Drawn
   - P8
     - Perf
       - Spoken/alluded to with timing data
