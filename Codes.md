@@ -31,6 +31,7 @@ for now let's put everything here.
     - P9: Multiple tests "So we're basically running through a few different test cases, every test the speed of the annotation instrumentation library,"
     - P9: "it runs through a few different test cases. So specifically, there's one test case where we're testing the [MeasurementAPI] instrumentation calls without any measurements. And then two measurement configurations. One is aggregation, which would basically give you a, well, a profile that you normally get out of applications that we look at where we aggregating things, [unintelligible] over time, and one is a trace. So we're recording every beginning and reaching event. Okay, so these are the three test cases. And then we're testing that gun across a bunch of numbers of threads actually, sort of get only like single process runs, because we're looking only at the local [MeasurementAPI] instrumentation time, but over different numbers of threads."
     - P9 "So once you have that you can run this experiment for different numbers of ranks, obviously, you're getting separate data sets for each of these experiments."
+    - P10 "So out of the [BenchmarkSuite], we're wanting to run the kernels across different variants. And then the variants will be run across different architectures such as GPU. We might be running it with different versions of [BenchmarkSuite], and understanding the performance of [BenchmarkSuite]. You could be using different compilers in the [BenchmarkSuite] and understanding compiler benefits or performance benefits. Let's see. And then I guess within that as well, we have different tunings that exists within the variants that might change the performance as well."
   - Examples of different things to collect
     - P4: "for the performance data, we are basically dealing with different programs, executions, and there's different these programs are instrumented and they typically collect different performance counters, these might be exposed to the CPU, these can be software counters that are kind of made up just for the purpose of a special investigation into some performance question"
       - Also: "And typically the applications we are working with, and they will be implemented this way, they do have a few parameters of themselves."
@@ -41,6 +42,7 @@ for now let's put everything here.
     - P7 "So you have performance data where you have which is indexed on both your profile ID and your nodes, that contains your actual metrics, the data, so time memory usage, stuff like that. There's the metadata frame, which is only indexed on profile ID. And that just contains information again, like compiler, problem size, the things that can differentiate the runs. And then there is also a statistics frame, which is the stores the results of many aggregate statistics operations on performance data. And that is also indexed on the nodes."
     - P8 "And typically, what comes out is, you know, you have, you can get various things depending on what options you ask for when you run the code. But, you know, typically, it consists of something like a minimum time, a max time and an average time."
     - P9 "And one thing that's pretty useful is we have like the details, exact amount of times. So for each of the test cases, we have our metadata annotations here, which shows well just, a bunch of things like well, okay, of course, the time it was recorded, all the metadata, like the number of threads that we use, the test case name, and other stuff, like compilers, and whatnot."
+    - P10 draws the metadata first as a list of columns/things to collect
   - Hazy / Flexible
     - P4: "I tend to be very flexible and fuzzy in the definition there, because my experience has just said, it doesn't even make too much sense to constrain it so so much."
     - P4: "So there's a few different structures to data, but I think this is two things that I've commonly seen."
@@ -50,6 +52,7 @@ for now let's put everything here.
     - P4: "I think it makes sense to look what is kind of distributed across the MPI ranks. And typically, we have some application domains. So this might be a volume or space."
     - P9: "So it's like, like not too ensemble-y, I would say, with only like two dimensions."
     - P9: thinks in terms of IVs "So I think the ensemble part of this is that we're recording this thing for, well, looking at our benchmark for three different test cases and a bunch of different threads. So yeah, it's only like two dimensions. In this case, it's over three, if you consider that we're doing this over a period of time. So we're looking at data in the past and tell us developing now."
+    - P10 implied by the number of factors listed
   - Outcome not the data
     - P6 draws outcome plots
     - P8 "And, you know, and I want to be able to infer something about the collection of runs, right? And not just, you know, it might be nice to look at one individual, but really, this is this is really more about the ensemble than it is any single individual."
@@ -183,11 +186,27 @@ something appeared in one but was later forgotten.
       - Drawn (x-axis after having stated time as a metadata dimension)
     - Stats
       - Never
+  - P10
+    - Perf
+      - Alluded to/implied initially
+      - Drawn as lists of data columns too
+    - Call Tree
+      - Not initially spoken
+      - Not initially drawn
+      - Appears for Task 3
+    - Metadata
+      - Alluded to/implied initally
+      - Drawn as abstract list of column names
+      - Actually drawn twice
+    - Stats
+      - Not initially spoken
+      - Not initially drawn
 
 
 #### Describing application instead of performance data
   
   - P6
+  - P10 regarding the project, eventually gets into the data.
 
 ## What pieces of the data do people recall initially?
 
@@ -314,6 +333,8 @@ P10: testing variations in condititions for running BenchmarkSuite (e.g. archite
     - P7: "Yeah, so the most important is definitely the performance data. That's your actual stuff, you have to analyze."
     - P8: "the timing data is, is is very general, right, you can do a whole lot of things with that, depending on what you're trying to, you know, get out of the ensemble, right all kinds of different things,"
     - P10: "But it's really the tunings that we're after to understand how they're performing."
+      - This is specifically an attribute/column of the run that they care about
+      - "So that's really helping us understand, you know, where were we running, it's giving us an idea of where we are running, and then what optimizations we might have done to the kernel."
     - P7: "In terms of the statistics, and metadata. They're important, depends what you want. So if you really want to get a sense of how things change within parameters, your performance data, or your metadata are probably a bit more important. If you're more interested in just how things perform on average, or, again, on statistical operations based on performance data, then your statistics will be more important than that data just depends on what you want to analyze."
 
   #### Feature maturity
@@ -348,6 +369,8 @@ P10: testing variations in condititions for running BenchmarkSuite (e.g. archite
     - P8 calculates dataset-level things like timing/cycle and memory/rank.
     - P9 does multiple line charts across the dimensions not already on an axis
     - P9 "And it would then go and aggregate this across MPI ranks in case you're having an MPI program. So the thing that you're getting out in the end is like minimum, maximum, average and total time per region across MPI ranks. So, that's your final metric." 
+    - P10 "So let's do this first single kernel."
+      - also "I do it for a single kernel. Let's see. And I guess in terms of the. . . lets see what I do a single variant, and tuning? I guess you could make this multiple variants and turnings as well."
   - unclear if on purpose
     - P8 draws a single call tree already collapsed across all profiles (similar to DatasetAPI)
   - retrieving dimensions/detail
@@ -368,12 +391,16 @@ P10: testing variations in condititions for running BenchmarkSuite (e.g. archite
   - P6 adds attributes to the call tree nodes separate from the performance table
   - P7 pretty much trying to do all graph database stuff "So this is where it gets tricky with the nodes, because the performance data is a little hard to wrap your head around with the traditional graph database model. I know there are ways to do it, but I don't, I'm not that familiar with graph databases. That's exactly that's how it works."
   - P7 gets fuzzy parts of the model wrong "But you might have, this column might map to -- I don't know why I wrote "perf data" there. Node, that would be nodes. Say "A", your metrics. And then at the end, you might have your ID, your profile ID."
+  - P10 on cross-product filter of tuning and variants "But the idea being that we have the tuning and the variant captured within our [EnsembleAPI]  object. Right now, we've been capturing the metadata, or the variant into the metadata. But I think there's this further to this further, more fine grained specification that we're trying to get after where we're putting tuning also into the metadata. So that we can then filter, you know, basically create sub-[EnsembleAPI] that are based on the variant and the tuning together."
+  - P10 "it's easy to be able to select or parameterize across the variants. And then right now you basically get all all available tunings for that variant, but it is not the same set of tunings for each variant. And so we really do need, we need the unique, you know, combinations, that is the cross product of those two. "
+
 
 ### Tension with the casting of the data
   
   - P4 is anti-tree, P5 is pro-tree
   - P5 "the data frame itself was only like a storage container for data. And it's hard to really read, because there's so much going on. So it's even harder to see like, if there's even behaviors that you are interested in, it's only obviously obvious that some parts take more time. And some take a lot of time. And you don't really get the view behind that."
   - P7 on what's missing "And that's traces, time series. They're extremely important, especially once you start getting to more state of the art applications, which are a lot of those, again, have to do with the workflow type model, which is very time series dependent."
+  - P10 "So the tuning right now is, is in our data, it's actually stored right now on our graph."
 
 
 ### Differences between ensemble makes things hard
@@ -387,6 +414,7 @@ P10: testing variations in condititions for running BenchmarkSuite (e.g. archite
   
   - P6 discusses filtering and reductions when asked to describe [EnsembleAPI]
     object.
+  - P10 "But the idea being that we have the tuning and the variant captured within our [EnsembleAPI]  object. Right now, we've been capturing the metadata, or the variant into the metadata. But I think there's this further to this further, more fine grained specification that we're trying to get after where we're putting tuning also into the metadata. So that we can then filter , you know, basically create sub-[EnsembleAPI] that are based on the variant and the tuning together."
 
 
 ### Influences on model
@@ -552,6 +580,7 @@ These codes have something to do with metadata.
   - P7: "There's the metadata frame, which is only indexed on profile ID. And that just contains information again, like compiler, problem size, the things that can differentiate the runs."
   - P8: "And so usually what I'm really interested in seeing is something like average time divided by something that's in the metadata, right? So average time per, in this case cycle, or example or something like that, right? There's could be average time per unknown, for example, right? For total number of unknowns, and the problem that we're solving, so that that's usually it usually is average time, but it's not solely average time, it usually has some, you know, usually usually has another component that's buried in the metadata that you know, we're dividing out or something like that."
   - P8 "So I consider made meta data to be I guess, sort of what I would call the basic characteristics of the problem. So these are things like, like I said, architecture may be system name that you ran on a os may be, but then those are all kind of. They're useful for things like plots and useful for organizing your data, but maybe not very useful for analysis"
+  - P10 lists well-known columns specifically as metadata, but has other possible metadata like variants and tunings separated and not explicitly categorized
 
 		
 ### Metadata is hazy.
@@ -722,7 +751,8 @@ Can’t recollect the exact columns that cause the issue
 - P6 (implied through chart)
 - P7
 - P8 (metadata stated, perf data implied), also draws a plot of the results
-- P9 (implied, mentions metadata fields and time) 
+- P9 (implied, mentions metadata fields and time)
+- P10 (after adding another field ot the metadata list)
 
   ### misses metadata
 
@@ -732,6 +762,12 @@ Can’t recollect the exact columns that cause the issue
 
     - P4
     - P5
+
+  ### draws a new plot
+
+    - P10
+
+
 ### Comparing two architectures
 
 - Participants use runtime metric to determine "better" but need additional data for why
@@ -798,7 +834,7 @@ Can’t recollect the exact columns that cause the issue
   ### requires the call tree
 
 
-    - P3, P4, P5, P6, P8, P9
+    - P3, P4, P5, P6, P8, P9, P10
 	
 ### If I want to find out which function called another function, what portion of the data would be most important for that? 
 
@@ -815,6 +851,7 @@ Can’t recollect the exact columns that cause the issue
     - P7
     - P8
     - P9
+    - P10
   
   ### draws a table
 
@@ -865,6 +902,7 @@ Can’t recollect the exact columns that cause the issue
 	- P1, P2
 		- P2 "ut when I think nodes, I would think, like more like application, so there's like, an app here, the app here, and then when you run these applications, you know, you get, say, like for these two applications, there's ya know time for them."
 	- P3 exhibits this to some extent though they are aware of the call tree
+    - P10 lists variants/tunings separately from metadata during drawing
 
   ### Describing indices / database terms
   
@@ -896,6 +934,7 @@ Drawing Anxiety/Test Anxiety
     - P6: "so for example, so I guess I was trying to describe CPU versus GPU. And I basically kept saying, This stays the same. This, you would have, you would have your computation much lower for the GPU, right. Which then means that the communication happens a lot more frequently. And I know that, and I can reason about it, but it is, I do not yet know how to represent that in ticket, the frequency of something occurring, right. So technically, I should be able to, just by that knowledge, right, I could divide this time by 10. Knowing that that's what happens, right? And then the total time would be less, right. But what I'm interested in as the person, you know, how frequently the communication happens, and the proportion of time it's taking. And actually, I liked that it would be the same. It wouldn't be the same notionally, except if you are communicating 10 times as often in the amount of data hasn't changed, right, the rest, the rest has not changed. You're creating more contention. And I don't yet know how to think about it in those terms."
     - P6: "So it's sort of like, you know, I will measure the communication time, just like I did on the CPUs, and I will get fairly similar graphs, they will probably go up a little because of the contention. But it's going to be difficult for me to draw that conclusion, just from the data. It's only because I know that's right. So I don't know, that that's clearly. I guess that's what I don't know, it's like you would have that data, right. But arriving at that conclusion, it's not clear to me that we have the means to arrive at that conclusion just from the data or you still need the human that understands that there is more traffic on the network, of course it's slower. "
     - P8: "Because you know, for example, rank zero, is almost always going to be slightly higher, or maybe consistently, then all the other ranks depending on what's going on, you know, MPI wise, and all kinds of things. So, but that was one that that for sure, was missing, that we needed. . ."
+    - P10 " don't know. So [BenchmarkSuite] is the different kernels and [BenchmarkSuite] are being contributed by various people within the code teams. And I'm not sure if it's on the code, the person who is contributing the kernel to implement the different tunings, or if they just implement, you know, one version of their kernel. And then one of the maintainers of the [BenchmarkSuite] team is what implements the different tunings. Im not understood, I'm not sure yet how those two interplay. So I don't know that piece."
 
 
 ## Performance
