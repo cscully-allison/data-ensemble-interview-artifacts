@@ -261,7 +261,6 @@ P10: testing variations in condititions for running BenchmarkSuite (e.g. archite
     * Draws graph for communication time and a graph for computation time
     
     
-  
 - Need the context of the runs, the metadata
     - includes the variables of the application, the metrics related to the architecture, execution environment
     - P4: “we have to capture the context so that we describe the context to the extent that we can run do the comparisons. So the context includes things like the compiler, libraries, build dependencies, the actual hardware that things are being run on.”
@@ -549,7 +548,7 @@ across a bunch of numbers of threads actually, sort of get only like single proc
 KT: P6 trying to recall actual results, or at least draw similar graphs to what they have seen. Grounding their choices in prior knowledge.
     - P5 also trying to recall performance metrics
  
-- Looking for common core, something to orient the data around
+- Looking for common core, something to orient the data around (see [Presence / Commonality](#presence-/-commonality))
     - P4: “there needs to be some common core, because like, the example would be structured about something that has some commonality, and then you will do perturbations to the input parameters or the execution environment like this, there's really no limit to what you could consider that”
     - P1: looking for consistency to orient the mental model of runs, “Because that's a very, like, throughout all the different kinds of data that I work with, there's always nodes.”
 
