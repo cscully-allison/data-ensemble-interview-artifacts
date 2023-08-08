@@ -1,0 +1,6 @@
+# 08-07-2023
+
+Ok everything is roughly coded now and they need to be organized into big themes but there are a lot of interesting insights here worth investigating in detail. From the notes I took last Friday and the codes I have come up with today we are starting to coalesce around several big thrusts of interest. Arranged in no particular order:
+1.  Metadata - There is a tension between the utility of metadata, both implied and expressed by participants and the general idea that it's not necessary to the analysis/not what we are analyzing. An additional idea of interest is the haziness of metadata. In some instances its a grab bag of whatever a analyst may want to investigate; data post-it notes. Its metrics measured at the performance level and also the runtime contexts which may affect those metrics. It's domain specific configurations and not.
+2. What is a part of data - We originally chose the term "part" for our interview because the word dimension is overloaded and leading. However we found that although people's choices of data parts can fit into fairly standard categories, they varied significantly in their granularity and specificity. 
+3. Data mental model - We have so much about this but not sure
