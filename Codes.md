@@ -517,7 +517,7 @@ These codes have something to do with metadata.
   - P8: States that domian specific configurations are not performance metadata
     - "You know, usually when you create and this is why it's not really meta data, that that kind of thing that's more of a you know, you create your mesh and when you create your when you define the problem . . ."
   - P8: "So average time per, in this case cycle, or example or something like that, right? There's could be average time per unknown, for example, right?"
-  - P8: "So I consider made meta data to be I guess, sort of what I would call the basic characteristics of the problem."
+  - P8: "So I consider made metadata to be I guess, sort of what I would call the basic characteristics of the problem."
 
   #### Specific Metadata Examples
   - P3: "information like, who who ran the program, how long, how long the program ran, when the launch date was, all that kind of information."
