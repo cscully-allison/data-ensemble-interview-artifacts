@@ -774,7 +774,7 @@ Can’t recollect the exact columns that cause the issue
 
 - P3
 
-#### Uses elipses to indicate more columns
+#### Uses ellipses to indicate more columns
 
 - P7
 
@@ -785,7 +785,7 @@ Can’t recollect the exact columns that cause the issue
 
 ### Dimensions are added by overplotting.
 
-- P6 puts multiple liens in one chart
+- P6 puts multiple lines in one chart
 - P9 puts multiple lines in charts
 
 ### Dimensions are added by duplication.
@@ -826,7 +826,7 @@ Can’t recollect the exact columns that cause the issue
 - P7
 - P8 (metadata stated, perf data implied), also draws a plot of the results
 - P9 (implied, mentions metadata fields and time)
-- P10 (after adding another field ot the metadata list)
+- P10 (after adding another field to the metadata list)
 
   ### misses metadata
 
@@ -852,16 +852,16 @@ Can’t recollect the exact columns that cause the issue
     - P4: metrics also need to be comparable. “But it's not always completely possible, because sometimes we don't have the same performance counters. So that is maybe one problem to keep in mind. But considering we have similar performance counters, that we can collect from the systems, then, like, I think the key is that we have the same metrics that we can collect, and then do the runtime analysis.”
     - P3: says to "columnar join" on similar parts of performance data table.
         * "But I think it's called a columnar join. So use parts of the performance data table to kind of make that differences and compare it within the performance data table."
-    - P1: also columanr join
+    - P1: also columnar join
     - P10: use Speedup to compare, which is CPU time divided by GPU time
 
 - Side-by-side
     - P2: side by side tables
     - P1: columnar join (side-by-side tables-esque)
-    - P9: sibe by side graphs
+    - P9: side by side graphs
     
     
-- Paticipants use the metadata to differentiate between the architectures
+- Participants use the metadata to differentiate between the architectures
     * P7: "Kind of the same: “you'd have two systems, they'd be differentiated by, again, this metadata stuff.”
     
 
@@ -874,7 +874,7 @@ Can’t recollect the exact columns that cause the issue
 
   ### requires perf data and metadata
 
-    - P4 (implied thorugh language)
+    - P4 (implied through language)
     - P6 (implied through language/similar chart)
     - P7
     - P8 (also notes similarities with Task 1)
@@ -950,7 +950,7 @@ Can’t recollect the exact columns that cause the issue
 - Draws the dataset in terms of the tool/software/app
     - P1 draws MeasurementAPI files and EnsembleAPI table, no trees (but also, A1 did not provide a relationship between A,B, and C
     
-- Paricipants consider other data structures
+- Participants consider other data structures
     - P3: Um, so it doesn't have to be like a table. It can be any data structure,
         - R1: However you want to represent it. 
         - P3: Okay. Um, I think I'll just use a table then its probably the . . . I think this was just the easiest approach.
@@ -978,7 +978,7 @@ Can’t recollect the exact columns that cause the issue
     - P10 uses performance data and metadata to determine time per kernel metric, plot ranks vs time with multiple lines showing different variant and tuning
     - P2 states metadata and performance data, then adds statistics as an afterthought
         * “Because you know, in the metadata, this is where we're kind of, you're kind of mapping the like, the information that you use to kind of run the job.”
-    - P1 uses EnsembleAPI to load multiple profiels with differing numbers of threads
+    - P1 uses EnsembleAPI to load multiple profiles with differing numbers of threads
 
 - P3: only looks at performance data table.
 
@@ -1003,7 +1003,7 @@ Can’t recollect the exact columns that cause the issue
     * “And then for each of the processes, we might be capturing multiple fields of data. And sometimes this data could have a hierarchy of itself. But for most of the data that we are working with, we don't really capture that hierarchy, it's kind of condensed into something that is relatively flat…So flattening the data, in many cases make things a lot easier to work with.”
 
 
-- P8: calls tree a hiearchy but does not state the relationship between the nodes or indicate why it's a hierarchy
+- P8: calls tree a hierarchy but does not state the relationship between the nodes or indicate why it's a hierarchy
 
 ### Difficulty in concisely/accurately describing the tree
 
@@ -1024,7 +1024,7 @@ Can’t recollect the exact columns that cause the issue
 
 - does not seem to understand nodes are functions instead of applications
 	- P1, P2
-		- P2 "ut when I think nodes, I would think, like more like application, so there's like, an app here, the app here, and then when you run these applications, you know, you get, say, like for these two applications, there's ya know time for them."
+		- P2 "But when I think nodes, I would think, like more like application, so there's like, an app here, the app here, and then when you run these applications, you know, you get, say, like for these two applications, there's ya know time for them."
 	- P3 exhibits this to some extent though they are aware of the call tree
   - P10 lists variants/tunings separately from metadata during drawing
   - P10 "And based on the set of kernels that we're running in [BenchmarkSuite] are the type of kernel that we're running in [BenchmarkSuite]. You might have tuning or sorry, you might have default tuning and some, not in others, you might get the library that's being run, but not in others. So it's very, I guess we haven't yet figured out or uncovered, which tunings exist for what types of kernels?"
@@ -1055,7 +1055,7 @@ Can’t recollect the exact columns that cause the issue
 
 #### Appropriate Data for X and Y Axes
   - P6: y = metric/dependent variable "And on the y axis, it's time."
-  - P6: X = metadata/indpendent variable "So on the x axes, I put the number of processes here, or you can think number of nodes, essentially, resources, right."
+  - P6: X = metadata/independent variable "So on the x axes, I put the number of processes here, or you can think number of nodes, essentially, resources, right."
 
 #### Appropriate Visualizations for Ensemble Data
 
