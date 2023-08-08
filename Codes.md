@@ -620,17 +620,28 @@ Can’t recollect the exact columns that cause the issue
 
 #### Uses ellipses to indicate more rows
 
-- P1, P2
+- P1, P2, P4, P7, P8, P9
 
 #### Uses etc to indicate more columns
 
 - P1
-- 
+
+### Uses arrows to indicate more columns
+
+- P3
+
+#### Uses elipses to indicate more columns
+
+- P7
+
 ### Dimensions are added by stacking.
+
+- P9 
 
 ### Dimensions are added by overplotting.
 
 - P6 puts multiple liens in one chart
+- P9 puts multiple lines in charts
 
 ### Dimensions are added by duplication.
 
@@ -738,6 +749,7 @@ Can’t recollect the exact columns that cause the issue
 
 - P3: Call tree, “we have a very basic implementation of queries.”
 
+
   ## ABC Tree
 
   ### draws some form of tree
@@ -746,6 +758,10 @@ Can’t recollect the exact columns that cause the issue
     - P4
     - P5
     - P6
+    - P7
+    - P8
+    - P9
+    - P10
   
   ### draws a table
 
