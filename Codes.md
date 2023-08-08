@@ -261,10 +261,7 @@ P10: testing variations in condititions for running BenchmarkSuite (e.g. archite
     * Draws graph for communication time and a graph for computation time
     
     
-- When initially describing the data, P7 includes the call tree/graph but then does not draw it or include it as a main part.
-    * “So with  [EnsembleAPI Object], the general premise is you'll have a collection of profiles presenting different runs of a piece of software. And those runs can be differentiated by almost any parameter, problem size compiler.”
-    * “you load everything up into a single Python based data model, which consists of a graph or "call tree" or "call graph," whichever one your tool is actually collecting.”
-    
+  
 - Need the context of the runs, the metadata
     - includes the variables of the application, the metrics related to the architecture, execution environment
     - P4: “we have to capture the context so that we describe the context to the extent that we can run do the comparisons. So the context includes things like the compiler, libraries, build dependencies, the actual hardware that things are being run on.”
@@ -277,7 +274,7 @@ P10: testing variations in condititions for running BenchmarkSuite (e.g. archite
 - Importance of data elements relates to parts they are “touching” for development of performance application
     - P2: “So the stats functions, statistical functions that I've developed for the Thicket project, primarily perform operations on the performance data, so you know, time, front and latency like I had mentioned earlier. So that's one of the reasons I see it as a an important since I do most of my work on it.”
         * Yet they didn't initially state the statistical table or functions as part of the data?
-    - P1: “I order it [the parts of the ensemble] because that's kind of like the when I'm developing the significance of what what I'm interacting with the most, it's probably in that order.”
+    - P1: “I order it \[the parts of the ensemble\] because that's kind of like the when I'm developing the significance of what what I'm interacting with the most, it's probably in that order.”
 
 ### The Data Hierarchy
 
