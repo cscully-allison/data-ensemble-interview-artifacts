@@ -386,7 +386,7 @@ for now let's put everything here.
 
 ### Multidimensional Data Produces Unique Struggles in Holding a Mental Model
 
-#### Participants dropped or reduced dimensions of the data. (Connor: Second pass)
+#### Participants dropped or reduced dimensions of the data.
     
   - by accident
     - P6 "Right, so each data point in here is basically so this is one run rate. And then the error bars? Well, no, that's not a one run, it's an average of the runs. And the error bars are also the average for the different runs right?"
