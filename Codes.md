@@ -51,14 +51,14 @@ for now let's put everything here.
   - Hazy / Flexible
     - P4: "I tend to be very flexible and fuzzy in the definition there, because my experience has just said, it doesn't even make too much sense to constrain it so so much."
     - P4: "So there's a few different structures to data, but I think this is two things that I've commonly seen."
-    - P7: "nd because it allows a lot of flexibility. And so exactly, what you want to do depends a lot on the specifics of the past. The specific data that you have stuff like that,"
-  
-  - Multidim
+    - P7: "and because it allows a lot of flexibility. And so exactly, what you want to do depends a lot on the specifics of the past. The specific data that you have stuff like that,"
+    
+  - Multidimensional
     - P4: "But it's basically a multi dimensional space of, of parameters to care about."
     - P4: "I think it makes sense to look what is kind of distributed across the MPI ranks. And typically, we have some application domains. So this might be a volume or space."
     - P4: Refers to enemsble as relationships between instrumented parts of code
     - P9: "So it's like, like not too ensemble-y, I would say, with only like two dimensions."
-    - P9: thinks in terms of IVs "So I think the ensemble part of this is that we're recording this thing for, well, looking at our benchmark for three different test cases and a bunch of different threads. So yeah, it's only like two dimensions. In this case, it's over three, if you consider that we're doing this over a period of time. So we're looking at data in the past and tell us developing now."
+    - P9: thinks in terms of IVs (independent variables) "So I think the ensemble part of this is that we're recording this thing for, well, looking at our benchmark for three different test cases and a bunch of different threads. So yeah, it's only like two dimensions. In this case, it's over three, if you consider that we're doing this over a period of time. So we're looking at data in the past and tell us developing now."
     - P10 implied by the number of factors listed
  
   - Outcome not the data
@@ -179,7 +179,7 @@ for now let's put everything here.
       - Unique Data Description
         - P6 described a different dataset. P6 described a multiphysics program run, with several computation phases and communication phases. Their main parts of data is the communication because it’s the source of the noise (did not describe data structures or the format of the data). The dataset is a Strong Scaling Study
           * Draws graph for communication time and a graph for computation time
-  - P7
+  - P7 [drawing](https://github.com/cscully-allison/data-ensemble-interview-artifacts/blob/main/P7/Scanned%20from%20a%20Xerox%20Multifunction%20Printer.pdf)
     - Performance data
       - Spoken
         - On Importance: "Yeah, so the most important is definitely the performance data."
@@ -189,13 +189,16 @@ for now let's put everything here.
       - Drawn
     - Metadata
       - Spoken
+      - Drawn
     - Stats
       - Spoken
+      - Drawn
     - (KATY: Can you explain this a bit to me? I thought P7 included the call graph in their initial drawing.)
     * Call tree/call graph (not described as a "main part" of the data, not drawn)
     * When initially describing the data, P7 includes the call tree/graph but then does not draw it or include it as a main part.
         * “So with  [EnsembleAPI Object], the general premise is you'll have a collection of profiles presenting different runs of a piece of software. And those runs can be differentiated by almost any parameter, problem size compiler.”
         * “you load everything up into a single Python based data model, which consists of a graph or "call tree" or "call graph," whichever one your tool is actually collecting.”
+
   - P8
     - Perf
       - Spoken/alluded to with timing data
@@ -411,21 +414,21 @@ for now let's put everything here.
 
 #### Data model is tool-dependent
 
-  - P1: "Does it matter in the way I think about it, because I think about it in a [EnsembleAPI] way versus like, a [MeasurementAPI] way or like, it's, I get to choose in what way I want to look at it."
-  - P1: "And then, so does it matter whether I look at this through [EnsembleAPI] lens or [DatasetAPI] lens, or yeah, so. . ."
-  - P1: (In refrence to drawing) "On the left, I just called that "profile one dot [MeasurementAPI]." Because that's how you think about it kind of."
-  - P2: "Um, so I mean, there's kind of two parts, there's one part where, when it's well before. . . do you mean, like, when it's like, what the [MeasurementAPI] files are once it's actually loaded into a [EnsembleAPI] with that with our like, what we kind of look at?"
-  - P2 talks about [MeasurementAPI] format as messay while pandas format is easier to read/work with, see block starting with "Yeah, I don't I'll describe"
-  - P5 (Implying data will come from an annotation-based tool like [MeasurementAPI]) ". . .now we can also look into dependencies between these **annotated regions**."
-  - P8 - "Okay, so, so, yeah, the way I think about the staff that and this has been this has really been driven by the tools that I use, it's very hierarchical, right?"
-  - P7 - 'their data model' "Again, this is all synthetic, this is the second piece of their data model. We can just do it this way. Then down here."
-  - P7 "So this implementation depends a lot on the specific tool you're looking at."
-  - P8 "Yeah, I can, it's, it's, it's? Well, I mean, I say I can't, that's, I don't think I've ever thought about it quite like that. It's a kind of think, if I can, can relate this to something that the only thing I can think of is is the, you know, the particular tool that I use to generate the data, right, which is, which is [Lab]'s [[DatasetAPI]] tool, and it generates this, this, it's not what you would think of, in when you think of tree, right?"
-  - P8 draws something that looks lke output of [DatasetAPI] 
-  - P8: "Okay, so, so, yeah, the way I think about the staff that and this has been this has really been driven by the tools that I use, it's very hierarchical, right?"
-  - P8: (equates routine with annotation because [MeasurementAPI]) "whatever routine or whatever annotation, the code developer has added to the code. . . to describe what's being timed"
-  - P9 describes interactions from [DataExplorationGUI] "And you can look at this in more detail, if you just like hover over this thing, and have your little extra box essentially, is part where you have like, time per call, or no, total time."
-  - P9 "in [DataExplorationGUI], I mean, you can click this your first load of thing, it shows you your top region entry, like many. And if you click in there, you can basically go down to any specific hierarchy level, or Yeah, that's the level that you're interested in."
+   - P1: "Does it matter in the way I think about it, because I think about it in a [EnsembleAPI] way versus like, a [MeasurementAPI] way or like, it's, I get to choose in what way I want to look at it."
+   - P1: "And then, so does it matter whether I look at this through [EnsembleAPI] lens or [DatasetAPI] lens, or yeah, so. . ."
+   - P1: (In reference to drawing) "On the left, I just called that "profile one dot [MeasurementAPI]." Because that's how you think about it kind of."
+   - P2: "Um, so I mean, there's kind of two parts, there's one part where, when it's well before. . . do you mean, like, when it's like, what the [MeasurementAPI] files are once it's actually loaded into a [EnsembleAPI] with that with our like, what we kind of look at?"
+   - P2 talks about [MeasurementAPI] format as messy while pandas format is easier to read/work with, see block starting with "Yeah, I don't I'll describe"
+   - P5 (Implying data will come from an annotation-based tool like [MeasurementAPI]) ". . .now we can also look into dependencies between these **annotated regions**."
+   - P8 - "Okay, so, so, yeah, the way I think about the staff that and this has been this has really been driven by the tools that I use, it's very hierarchical, right?"
+   - P7 - 'their data model' "Again, this is all synthetic, this is the second piece of their data model. We can just do it this way. Then down here."
+   - P7 "So this implementation depends a lot on the specific tool you're looking at."
+   - P8 "Yeah, I can, it's, it's, it's? Well, I mean, I say I can't, that's, I don't think I've ever thought about it quite like that. It's a kind of think, if I can, can relate this to something that the only thing I can think of is is the, you know, the particular tool that I use to generate the data, right, which is, which is [Lab]'s [[DatasetAPI]] tool, and it generates this, this, it's not what you would think of, in when you think of tree, right?"
+   - P8 draws something that looks like output of [DatasetAPI] 
+   - P8: "Okay, so, so, yeah, the way I think about the staff that and this has been this has really been driven by the tools that I use, it's very hierarchical, right?"
+   - P8: (equates routine with annotation because [MeasurementAPI]) "whatever routine or whatever annotation, the code developer has added to the code. . . to describe what's being timed"
+   - P9 describes interactions from [DataExplorationGUI] "And you can look at this in more detail, if you just like hover over this thing, and have your little extra box essentially, is part where you have like, time per call, or no, total time."
+   - P9 "in [DataExplorationGUI], I mean, you can click this your first load of thing, it shows you your top region entry, like many. And if you click in there, you can basically go down to any specific hierarchy level, or Yeah, that's the level that you're interested in."
 
 #### Data sourcing is part of the model
 
@@ -452,8 +455,9 @@ for now let's put everything here.
   - P7 "Yeah, those are examples. Exactly what it is depends on the application."
 
 #### Consistency/Commonality (Katy please let me know what you think of these)
-  - P1: looking for consistency to orient the mental model of runs, “Because that's a very, like, throughout all the different kinds of data that I work with, there's always nodes.”
-  - P4: “there needs to be some common core, because like, the example would be structured about something that has some commonality, and then you will do perturbations to the input parameters or the execution environment like this, there's really no limit to what you could consider that”
+  - Looking for common core, something to orient the data around (see [Presence / Commonality](#presence-/-commonality))
+    - P4: “there needs to be some common core, because like, the example would be structured about something that has some commonality, and then you will do perturbations to the input parameters or the execution environment like this, there's really no limit to what you could consider that”
+    - P1: looking for consistency to orient the mental model of runs, “Because that's a very, like, throughout all the different kinds of data that I work with, there's always nodes.”
      
 #### Data is described based on how it is stored
 
@@ -517,10 +521,6 @@ for now let's put everything here.
   - P1: (In reference to architecture comparison task): "So that's, that's not in this table"
   - P2: (In reference to architecture comparison task) "Can I ammend my picture real quick? Sorry, I just realized something."
 
-
-### What factors lead to remembering dimensions/aspects of the data? (TODO: Merge up with other influences on model)
-
-  - Looking for common core, something to orient the data around
 
 
 
@@ -603,12 +603,12 @@ for now let's put everything here.
   - P6: "So what we put in the [EnsembleAPI Object] is up to us."
   - P6: "What comes from the metadata is which of the runs were on machine one, right."
   - P7: "There's the metadata frame, which is only indexed on profile ID. And that just contains information again, like compiler, problem size, the things that can differentiate the runs."
-  - P8: States that domian specific configurations are not performance metadata
+  - P8: States that domain specific configurations are not performance metadata
     - "You know, usually when you create and this is why it's not really meta data, that that kind of thing that's more of a you know, you create your mesh and when you create your when you define the problem . . ."
   - P8: "So average time per, in this case cycle, or example or something like that, right? There's could be average time per unknown, for example, right?"
   - P8: "So I consider made metadata to be I guess, sort of what I would call the basic characteristics of the problem."
   - P8: "And so usually what I'm really interested in seeing is something like average time divided by something that's in the metadata, right? So average time per, in this case cycle, or example or something like that, right? There's could be average time per unknown, for example, right? For total number of unknowns, and the problem that we're solving, so that that's usually it usually is average time, but it's not solely average time, it usually has some, you know, usually usually has another component that's buried in the metadata that you know, we're dividing out or something like that."
-  - P8 "So I consider made meta data to be I guess, sort of what I would call the basic characteristics of the problem. So these are things like, like I said, architecture may be system name that you ran on a os may be, but then those are all kind of. They're useful for things like plots and useful for organizing your data, but maybe not very useful for analysis"
+  - P8 "So I consider made meta data to be I guess, sort of what I would call the basic characteristics of the problem. So these are things like, like I said, architecture may be system name that you ran on a OS may be, but then those are all kind of. They're useful for things like plots and useful for organizing your data, but maybe not very useful for analysis"
   - P10 lists well-known columns specifically as metadata, but has other possible metadata like variants and tunings separated and not explicitly categorized
 
 #### Specific Metadata Examples
@@ -654,7 +654,7 @@ for now let's put everything here.
 ### Metadata not explicitly stated but implied
 
   - P1 alludes to knowledge about profiles but not where it lives: " Your profile one would be corresponding to the data set from the run with two CPUs and then profile two correspond to the run with four CPUs"
-  - P2 does Task 1 with metadata explicity but in Task 2 does architectuer as separate [EnsembleAPI] objects rather than metadata
+  - P2 does Task 1 with metadata explicitly but in Task 2 does architecture as separate [EnsembleAPI] objects rather than metadata
   - P9: "the main thing that we're looking at is performance over time"
 
 ### Metadata as a reminder for analysis
@@ -662,15 +662,15 @@ for now let's put everything here.
   - P8 "But you know, the the thing with the metadata is, it's very hard to predict what you're going to want to look at, you know, so when you when you go through the code, you just kind of throw a bunch of stuff in there, here. Here's, here are all the things that I think might be interesting, right?"
     - Also: "kay, well, when I go to sit down and analyze this data, these are the things that I might actually be interested in. But it never fails. When you do that, that you're gonna come across something that well, why didn't I put that in there? Right? Or can I infer that from what I did put in there? And sometimes, yes, sometimes no."
 
-### Assumed Availabiltiy of Metadata
+### Assumed Availability of Metadata
   - P6: "And presumably, I should be able to figure out and this is going to be different on all the machines. So I haven't gotten there yet. But I should be able to figure out a mapping from the actual node IDs to the logical MPI ranks. And I should be able to on a per machine basis, figure out how many hops things are away in the actual network"
   - P6: "So on the x axes, I put the number of processes here, or you can think number of nodes, essentially, resources, right."
 
 ### Metadata is not really used (even if it is)
   - P5 "Then in the background data is used to find all the nodes I'm asking for and the profiles, which was some specific metadata. But honestly, like, right now, I'm only using it to query for stuff, which I know its there but I'm not really using it to explore the application in a way that I know you could use metadata for."
   - P5 "For me, it's only like, we have basically only like nodes to access and row ID of, where the node is, this is all we have in the data frame itself, we need some metadata in order to make good selection of specific nodes that we are interested in. That's the only way I'm using metadata right now. "
-  - P8: [Metadata is not useful except for all these cases where im organizaing my data by metadata]
-    - "Yeah. So I consider made meta data to be I guess, sort of what I would call the basic characteristics of the problem. So these are things like, like I said, architecture may be system name that you ran on a os may be, but then those are all kind of. They're useful for things like plots and useful for organizing your data, but maybe not very useful for analysis, you know, things that are more interesting for analysis is total memory usage or memory usage per MPI rank, or total number of dofs [degrees of freedom] or or number of dofs per MPI rank, you know, number of elements per MPI rank, or zones, you know, maybe, maybe things like, you know, material composition, that that's really not what I would consider metadata, I guess that that's really something different. You know, total, total execution time, for example, not not broken down, you know, in the tree, but just total overall execution time, I could see that being metadata. That thing, things like that."
+  - P8: [Metadata is not useful except for all these cases where I'm organizing my data by metadata]
+    - "Yeah. So I consider made meta data to be I guess, sort of what I would call the basic characteristics of the problem. So these are things like, like I said, architecture may be system name that you ran on a OS may be, but then those are all kind of. They're useful for things like plots and useful for organizing your data, but maybe not very useful for analysis, you know, things that are more interesting for analysis is total memory usage or memory usage per MPI rank, or total number of dofs [degrees of freedom] or or number of dofs per MPI rank, you know, number of elements per MPI rank, or zones, you know, maybe, maybe things like, you know, material composition, that that's really not what I would consider metadata, I guess that that's really something different. You know, total, total execution time, for example, not not broken down, you know, in the tree, but just total overall execution time, I could see that being metadata. That thing, things like that."
 
 ### Metadata is Useful
   - P4: "But in certain sense, we always need some basis that we share so that we can do a useful comparison"
@@ -745,36 +745,146 @@ for now let's put everything here.
       
   - P9: as a side note!! Says metadata
   “for each of the test cases, we have our metadata annotations here, which shows well just, a bunch of things like well, okay, of course, the time it was recorded, all the metadata, like the number of threads that we use, the test case name, and other stuff, like compilers, and whatnot. And also, basically the global performance metric that we're interested in, ultimately, which is like, time for instrumentation call, and also, the total runtime after benchmark again… compiler, system”
+like, time for instrumentation call, and also, the total runtime after benchmark again… compiler, system”
+
 
 ## Drawing
 
-  - These codes are concerning observations and interesting details about the drawings people produced
 
-### Directionality
+### Directionality (Connor: Is this 
 
-  - (Categorical Metadata -> Horizontal) P1 - "columnar join that we've talked about, but like, so instead of, in the previous case, where you're talking about different different amounts of CPUs, we tend to look at different architectures in a column going horizontally, you could do the same thing."
+- (Categorical Metadata -> Horizontal) P1 - "columnar join that we've talked about, but like, so instead of, in the previous case, where you're talking about different different amounts of CPUs, we tend to look at different architectures in a column going horizontally, you could do the same thing."
 
-### Scale is implied
+### Values & Indices
+
+  #### No values
+   
+    - In table/list
+      - P1, P3, P8, P10
+    - In plot
+      - P6, P9
+
+  #### Example values
+
+    - P2, P4, P5, P7
+
+  #### Indices
+
+    - P1, P2, P3, P5, P7
 
 ### Indicators of scale
 
-#### Uses ellipses to indicate more rows
+  #### Uses ellipses to indicate more rows/columns
 
-  - P1, P2, P7
-  - P8 (more columns)
-  - P9
+    - Rows
+      - P1, P2, P7
+    - Columns
+      - P3, P4, P9
+    - More Tree
+      - P3
+    - More profiles
+      - P4
 
 #### Uses etc to indicate more columns
 
-  - P1 
+    - P1, P3
 
-#### Uses arrows to indicate more columns
+  #### Uses arrows to indicate more columns
 
-  - P3
+    - P3
 
-#### Uses elipses to indicate more columns
+  #### Distribution indicator
 
- - P7
+    - confidence envelope
+      - P6 
+
+
+### Abstractions & Components
+
+  We first discuss the overlal depiction. Then we go into how individual
+depictions were presented, including additions to the structure that some
+participants used, like depictions of the input.
+
+  #### Main Approach
+
+    Tables were the most prevalent, sometimes with the tree/graph and
+sometimes without. There were also more tree-centered value organizations. Two
+participants drew line charts representing the data. One participant listed
+what attributes went in each structure without making plain any structure
+themselves.
+
+    - Just Tables
+      - P1, P2
+    - Tables & Tree
+      - P3, P5, P7
+    - Tree w/ values
+      - P4, P8
+    - Line charts
+      - P6, P9
+    - Attribute lists
+      - P10
+
+
+  #### Tables
+
+    - Spreadsheet style
+      - Relations not shown
+        - P9
+      - Relations implied by index
+        - P1, P2, P3
+      - Relations implied by arrows
+        - P2, P3
+    - Rhomboidal Table that seems to have an implied time component
+      - P4
+
+  #### Tree / Graph
+
+    - Indented
+      - P3, P4, P5, P8
+    - Node-link diagram
+      - P7
+    - With values
+      - plus table
+        - P3, P4
+      - plus lists of values
+        - P8
+    - indication links exist
+      - P10
+
+  #### Lists of attributes
+      
+    - P10
+
+
+  #### Drawing of HPC system
+
+    - P4
+
+  #### Drawing of raw input files
+
+    - P2, P4, P7
+
+  #### Drawing of outcome plot
+
+    - Small multiples
+      - P6, P9
+    - Single line chart
+      - P9
+    - Multi-line chart
+      - P6
+
+
+### Connections between tables / structures
+
+  - Implied by index
+    - P1, P2
+  - Implied by arrows/lines
+    - P2, P3, P5
+  - Implied by alignment
+    - P4
+
+
+### Drawing Dimensions
 
 #### Dimensions are added by stacking.
 
@@ -792,9 +902,14 @@ for now let's put everything here.
   - P6 doing separate plots for comm and comp
   - P9 doing multiple plots per thread, per benchmark etc
 
-#### Dimensions specified
+#### Exact Dimensions specified
 
-  - P9 gives tree dimensions in width and depth
+  - P9 gives tree dimensions in width and depth (verbally)
+
+#### Dimensions shown on axis
+
+  - P4's rhomboidal table
+
 
 ### Concretizing the Data Model when Drawing
 
@@ -810,10 +925,6 @@ for now let's put everything here.
   - P7: "I'll even even double line here to separate the index and the rest of it, don't know why I drew an arrow there."
   - P10: (In response to question where graph is in initial drawing) "I guess I would call it different, right. So the well, yeah, so the performance data is per kernel. Right? So. And then the graph is obviously all of its all aware of all kernels. Not the performance data, but it's just aware of, you know, who do I Who did I call next, who called me?"
 
-#### Using example Data
-  - P7
-
-
 ## Controls
 
 Codes and themes centered around the analysis based/task oriented questions
@@ -826,8 +937,6 @@ Codes and themes centered around the analysis based/task oriented questions
       - P2 states metadata and performance data, then adds statistics as an afterthought
           * “Because you know, in the metadata, this is where we're kind of, you're kind of mapping the like, the information that you use to kind of run the job.”
       - P1 uses EnsembleAPI to load multiple profiels with differing numbers of threads
-
-  - P3: only looks at performance data table.
 
   - Participants implicitly describe the metadata but do not explicitly state "metadata" until prompted.
       - P8: KT: Says they need to use metadata (“for example, maybe from, you know, the individual runs in the ensemble… something like cycles…but also certainly things like world size, right? For an MPI problem, number of processors, number of cores, or maybe number of nodes, right?”), then draws a line graph
@@ -857,9 +966,33 @@ Codes and themes centered around the analysis based/task oriented questions
   - P4
   - P5
 
-### draws a new plot
+  - Participants use runtime metric to determine "better" but need additional data for why
+      - P5 likes performance counters to help with the why (behind the runtime)
+      
+  - Participants need some similarity before comparison (e.g. similar architecture, same code run in different settings, only changing amount of threads but keeping other vars constant) 
+      - P4: “But in certain sense, we always need some basis that we share so that we can do a useful comparison.”
+      - P4: metrics also need to be comparable. “But it's not always completely possible, because sometimes we don't have the same performance counters. So that is maybe one problem to keep in mind. But considering we have similar performance counters, that we can collect from the systems, then, like, I think the key is that we have the same metrics that we can collect, and then do the runtime analysis.”
+      - P3: says to "columnar join" on similar parts of performance data table.
+          * "But I think it's called a columnar join. So use parts of the performance data table to kind of make that differences and compare it within the performance data table."
+      - P1: also columnar join
+      - P10: use Speedup to compare, which is CPU time divided by GPU time
 
-  - P10
+  - Side-by-side
+      - P2: side by side tables
+      - P1: columnar join (side-by-side tables-esque)
+      - P9: side by side graphs
+      
+      
+  - Participants use the metadata to differentiate between the architectures
+      * P7: "Kind of the same: “you'd have two systems, they'd be differentiated by, again, this metadata stuff.”
+      
+
+  - Participants say comparing two architectures is similar to strong scaling study
+      * P8: says program will look similar to the strong scaling study
+          * “It is basically going to look exactly like the last, the last response, right? The average time maybe divided by number of cycles, right? And you’ll have how many nodes or cores, whatever your interest added in there, and strong scaling plot of that, which I drew for the last one.”
+      * P9: change fields but again, compare graphs side by side
+
+    - P10
 
 
 ## Comparing two architectures
@@ -940,11 +1073,6 @@ Codes and themes centered around the analysis based/task oriented questions
   - P9
   - P10
 
-### draws a table
-
-  - P3 (though clarifies they are related and says it doesn't have to be a
-    table)
-
 ### casts the questions into the data they work with
 
   - P2
@@ -966,6 +1094,9 @@ Codes and themes centered around the analysis based/task oriented questions
       - P3: Um, so it doesn't have to be like a table. It can be any data structure,
           - R1: However you want to represent it. 
           - P3: Okay. Um, I think I'll just use a table then its probably the . . . I think this was just the easiest approach.
+          
+    - P3 (though clarifies they are related and says it doesn't have to be a
+      table)
 
 
 ### Visualizing and Identifying patterns in ensemble data
@@ -998,8 +1129,6 @@ Codes and themes centered around the analysis based/task oriented questions
 
   - P4: Uses "call graph", "call tree", and "call stack" yet understands the nested nature of the call tree and placing the timing data/profiling data onto the tree?
       * “And then for each of the processes, we might be capturing multiple fields of data. And sometimes this data could have a hierarchy of itself. But for most of the data that we are working with, we don't really capture that hierarchy, it's kind of condensed into something that is relatively flat…So flattening the data, in many cases make things a lot easier to work with.”
-
-
   - P8: calls tree a hiearchy but does not state the relationship between the nodes or indicate why it's a hierarchy
 
 ### Difficulty in concisely/accurately describing the tree
