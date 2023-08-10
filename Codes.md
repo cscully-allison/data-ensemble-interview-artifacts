@@ -764,49 +764,166 @@ Can’t recollect the exact columns that cause the issue
 
 ## Drawing
 
-### Directionality
+
+### Directionality (Connor: Is this 
+
 - (Categorical Metadata -> Horizontal) P1 - "columnar join that we've talked about, but like, so instead of, in the previous case, where you're talking about different different amounts of CPUs, we tend to look at different architectures in a column going horizontally, you could do the same thing."
-### Scale is implied
+
+### Values & Indices
+
+  #### No values
+   
+    - In table/list
+      - P1, P3, P8, P10
+    - In plot
+      - P6, P9
+
+  #### Example values
+
+    - P2, P4, P5, P7
+
+  #### Indices
+
+    - P1, P2, P3, P5, P7
 
 ### Indicators of scale
 
-  #### Uses ellipses to indicate more rows
+  #### Uses ellipses to indicate more rows/columns
 
-  - P1, P2, P7
-  - P8 (more columns)
-  - P9
+    - Rows
+      - P1, P2, P7
+    - Columns
+      - P3, P4, P9
+    - More Tree
+      - P3
+    - More profiles
+      - P4
 
   #### Uses etc to indicate more columns
 
-  - P1
+    - P1, P3
 
-  ### Uses arrows to indicate more columns
+  #### Uses arrows to indicate more columns
 
-  - P3
+    - P3
 
-#### Uses ellipses to indicate more columns
+  #### Distribution indicator
 
-  - P7
+    - confidence envelope
+      - P6 
 
-### Dimensions are added by stacking.
+
+### Abstractions & Components
+
+  We first discuss the overlal depiction. Then we go into how individual
+depictions were presented, including additions to the structure that some
+participants used, like depictions of the input.
+
+  #### Main Approach
+
+    Tables were the most prevalent, sometimes with the tree/graph and
+sometimes without. There were also more tree-centered value organizations. Two
+participants drew line charts representing the data. One participant listed
+what attributes went in each structure without making plain any structure
+themselves.
+
+    - Just Tables
+      - P1, P2
+    - Tables & Tree
+      - P3, P5, P7
+    - Tree w/ values
+      - P4, P8
+    - Line charts
+      - P6, P9
+    - Attribute lists
+      - P10
+
+
+  #### Tables
+
+    - Spreadsheet style
+      - Relations not shown
+        - P9
+      - Relations implied by index
+        - P1, P2, P3
+      - Relations implied by arrows
+        - P2, P3
+    - Rhomboidal Table that seems to have an implied time component
+      - P4
+
+  #### Tree / Graph
+
+    - Indented
+      - P3, P4, P5, P8
+    - Node-link diagram
+      - P7
+    - With values
+      - plus table
+        - P3, P4
+      - plus lists of values
+        - P8
+    - indication links exist
+      - P10
+
+  #### Lists of attributes
+      
+    - P10
+
+
+  #### Drawing of HPC system
+
+    - P4
+
+  #### Drawing of raw input files
+
+    - P2, P4, P7
+
+  #### Drawing of outcome plot
+
+    - Small multiples
+      - P6, P9
+    - Single line chart
+      - P9
+    - Multi-line chart
+      - P6
+
+
+### Connections between tables / structures
+
+  - Implied by index
+    - P1, P2
+  - Implied by arrows/lines
+    - P2, P3, P5
+  - Implied by alignment
+    - P4
+
+
+### Drawing Dimensions
+
+#### Dimensions are added by stacking.
 
 - P9 (stacks charts to show metadata variance)
 - P7 draws stack 
 
-### Dimensions are added by overplotting.
+#### Dimensions are added by overplotting.
 
 - P6 puts multiple lines in one chart
 - P9 puts multiple lines in charts
 
-### Dimensions are added by duplication.
+#### Dimensions are added by duplication.
 
 - P1 describing Task 2 across architectures
 - P6 doing separate plots for comm and comp
 - P9 doing multiple plots per thread, per benchmark etc
 
-### Dimensions specified
+#### Exact Dimensions specified
 
-- P9 gives tree dimensions in width and depth
+- P9 gives tree dimensions in width and depth (verbally)
+
+#### Dimensions shown on axis
+
+- P4's rhomboidal table
+
 
 ### Concretizing the Data Model when Drawing
 
@@ -820,8 +937,6 @@ Can’t recollect the exact columns that cause the issue
 - P7: "I'll even even double line here to separate the index and the rest of it, don't know why I drew an arrow there."
 - P10: (In response to question where graph is in initial drawing) "I guess I would call it different, right. So the well, yeah, so the performance data is per kernel. Right? So. And then the graph is obviously all of its all aware of all kernels. Not the performance data, but it's just aware of, you know, who do I Who did I call next, who called me?"
 
-#### Using example Data
-- P7 -
 
 ## Controls
 
