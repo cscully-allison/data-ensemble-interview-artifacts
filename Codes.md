@@ -597,10 +597,10 @@ for now let's put everything here.
 
 #### Specific Metadata Examples
 
-    - P3: "information like, who who ran the program, how long, how long the program ran, when the launch date was, all that kind of information."
-    - P7: "And that just contains information again, like compiler, problem size, the things that can differentiate the runs"
-    - P8: ". . .things like world size, right? For an MPI problem, number of number of processors, number of cores, or maybe number of nodes, right"
-    - P9: "the time it was recorded, all the metadata, like the number of threads that we use, the test case name, and other stuff, like compilers, and whatnot"
+  - P3: "information like, who who ran the program, how long, how long the program ran, when the launch date was, all that kind of information."
+  - P7: "And that just contains information again, like compiler, problem size, the things that can differentiate the runs"
+  - P8: ". . .things like world size, right? For an MPI problem, number of number of processors, number of cores, or maybe number of nodes, right"
+  - P9: "the time it was recorded, all the metadata, like the number of threads that we use, the test case name, and other stuff, like compilers, and whatnot"
     
 
       
@@ -736,7 +736,7 @@ for now let's put everything here.
 
 ### Directionality
 
-    - (Categorical Metadata -> Horizontal) P1 - "columnar join that we've talked about, but like, so instead of, in the previous case, where you're talking about different different amounts of CPUs, we tend to look at different architectures in a column going horizontally, you could do the same thing."
+  - (Categorical Metadata -> Horizontal) P1 - "columnar join that we've talked about, but like, so instead of, in the previous case, where you're talking about different different amounts of CPUs, we tend to look at different architectures in a column going horizontally, you could do the same thing."
 
 ### Scale is implied
 
