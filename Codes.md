@@ -155,19 +155,19 @@ for now let's put everything here.
       - includes the variables of the application, the metrics related to the architecture, execution environment
         - P4: “we have to capture the context so that we describe the context to the extent that we can run do the comparisons. So the context includes things like the compiler, libraries, build dependencies, the actual hardware that things are being run on.”
   - P5:
-  - Performance data:
-    - Spoken implied by "counters" and "timestamps"
-    - Drawn
-  - Call tree:
-    - Spoken implied by "regions", and mention of "nodes"
-    - Drawn
-  - Metadata:
-    - spoken implied by 'compilers'
-    - Not drawn
-  - Stats:
-    - Not spoken
-    - Made refrences to derived statistics as part of analysis
-    - Drawn
+    - Performance data:
+      - Spoken implied by "counters" and "timestamps"
+      - Drawn
+    - Call tree:
+      - Spoken implied by "regions", and mention of "nodes"
+      - Drawn
+    - Metadata:
+      - spoken implied by 'compilers'
+      - Not drawn
+    - Stats:
+      - Not spoken
+      - Made refrences to derived statistics as part of analysis
+      - Drawn
   - P6:
     - Performance data:
       - Spoken/implied
