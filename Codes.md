@@ -886,24 +886,24 @@ themselves.
   - P7: "I'll even even double line here to separate the index and the rest of it, don't know why I drew an arrow there."
   - P10: (In response to question where graph is in initial drawing) "I guess I would call it different, right. So the well, yeah, so the performance data is per kernel. Right? So. And then the graph is obviously all of its all aware of all kernels. Not the performance data, but it's just aware of, you know, who do I Who did I call next, who called me?"
 
-### Standard Visualizations Evoked  
+### Standard visualizations referenced 
 
-  #### Visualizing and Identifying patterns in ensemble data
-    - P1: " And then the more profiles you have, you just be able to visualize more of that. Those patterns happening as you have no more to more data points to kind of extrapolate?"
+#### Visualizing and Identifying patterns in ensemble data
+  - P1: " And then the more profiles you have, you just be able to visualize more of that. Those patterns happening as you have no more to more data points to kind of extrapolate?"
 
 
-  #### Appropriate Data for X and Y Axes (I think there is more evidence of this)
-    - P6: y = metric/dependent variable "And on the y axis, it's time."
-    - P6: X = metadata/indpendent variable "So on the x axes, I put the number of processes here, or you can think number of nodes, essentially, resources, right."
+#### Appropriate Data for X and Y Axes (I think there is more evidence of this)
+  - P6: y = metric/dependent variable "And on the y axis, it's time."
+  - P6: X = metadata/indpendent variable "So on the x axes, I put the number of processes here, or you can think number of nodes, essentially, resources, right."
 
-  #### Appropriate Visualizations for Ensemble Data
+#### Appropriate Visualizations for Ensemble Data
 
-    - P2: "So like performance data table, multiple profiles, you can look at, like, say, a box plot. So kind of a variation."
-    - P6 Frames their discussion of the data solely with visualizations; using line charts with error bars. Their model is primarily based around analysis and visualizations.
-    - P7: "Box and Whisker is a common one that I've seen for also, I've seen them, the line plots with like shaded region on either side, indicate kind of how it varies between runs, if they just depends on what you want to do with it."
-    - P7: "If so, that would be if you want to more statistical if you wanted it in other ways mean, some of the things that were useful is of course, plotting. So have your, your MPI ranks on the x axis time on the right. If you just had one run at each MPI rank, each MPI scale, you'd probably just do a line plot"
-    - P9: Describes ideal analysis conditions in the context of a stacked area chart visualization
-      - "And then will you get your own little curve, which looks like sort of this and hopefully more like this?"
+  - P2: "So like performance data table, multiple profiles, you can look at, like, say, a box plot. So kind of a variation."
+  - P6 Frames their discussion of the data solely with visualizations; using line charts with error bars. Their model is primarily based around analysis and visualizations.
+  - P7: "Box and Whisker is a common one that I've seen for also, I've seen them, the line plots with like shaded region on either side, indicate kind of how it varies between runs, if they just depends on what you want to do with it."
+  - P7: "If so, that would be if you want to more statistical if you wanted it in other ways mean, some of the things that were useful is of course, plotting. So have your, your MPI ranks on the x axis time on the right. If you just had one run at each MPI rank, each MPI scale, you'd probably just do a line plot"
+  - P9: Describes ideal analysis conditions in the context of a stacked area chart visualization
+    - "And then will you get your own little curve, which looks like sort of this and hopefully more like this?"
 
 
 
