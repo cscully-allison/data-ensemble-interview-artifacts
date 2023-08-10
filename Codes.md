@@ -35,6 +35,7 @@ for now let's put everything here.
     - P9: "it runs through a few different test cases. So specifically, there's one test case where we're testing the \[MeasurementAPI] instrumentation calls without any measurements. And then two measurement configurations. One is aggregation, which would basically give you a, well, a profile that you normally get out of applications that we look at where we aggregating things, \[unintelligible] over time, and one is a trace. So we're recording every beginning and reaching event. Okay, so these are the three test cases. And then we're testing that gun across a bunch of numbers of threads actually, sort of get only like single process runs, because we're looking only at the local \[MeasurementAPI] instrumentation time, but over different numbers of threads."
     - P9 "So once you have that you can run this experiment for different numbers of ranks, obviously, you're getting separate data sets for each of these experiments."
     - P10 "So out of the \[BenchmarkSuite], we're wanting to run the kernels across different variants. And then the variants will be run across different architectures such as GPU. We might be running it with different versions of \[BenchmarkSuite], and understanding the performance of \[BenchmarkSuite]. You could be using different compilers in the \[BenchmarkSuite] and understanding compiler benefits or performance benefits. Let's see. And then I guess within that as well, we have different tunings that exists within the variants that might change the performance as well."
+  
   - Examples of different things to collect
     - P4: "for the performance data, we are basically dealing with different programs, executions, and there's different these programs are instrumented and they typically collect different performance counters, these might be exposed to the CPU, these can be software counters that are kind of made up just for the purpose of a special investigation into some performance question"
       - Also: "And typically the applications we are working with, and they will be implemented this way, they do have a few parameters of themselves."
@@ -46,10 +47,12 @@ for now let's put everything here.
     - P8 "And typically, what comes out is, you know, you have, you can get various things depending on what options you ask for when you run the code. But, you know, typically, it consists of something like a minimum time, a max time and an average time."
     - P9 "And one thing that's pretty useful is we have like the details, exact amount of times. So for each of the test cases, we have our metadata annotations here, which shows well just, a bunch of things like well, okay, of course, the time it was recorded, all the metadata, like the number of threads that we use, the test case name, and other stuff, like compilers, and whatnot."
     - P10 draws the metadata first as a list of columns/things to collect
+
   - Hazy / Flexible
     - P4: "I tend to be very flexible and fuzzy in the definition there, because my experience has just said, it doesn't even make too much sense to constrain it so so much."
     - P4: "So there's a few different structures to data, but I think this is two things that I've commonly seen."
     - P7: "nd because it allows a lot of flexibility. And so exactly, what you want to do depends a lot on the specifics of the past. The specific data that you have stuff like that,"
+  
   - Multidim
     - P4: "But it's basically a multi dimensional space of, of parameters to care about."
     - P4: "I think it makes sense to look what is kind of distributed across the MPI ranks. And typically, we have some application domains. So this might be a volume or space."
@@ -57,13 +60,22 @@ for now let's put everything here.
     - P9: "So it's like, like not too ensemble-y, I would say, with only like two dimensions."
     - P9: thinks in terms of IVs "So I think the ensemble part of this is that we're recording this thing for, well, looking at our benchmark for three different test cases and a bunch of different threads. So yeah, it's only like two dimensions. In this case, it's over three, if you consider that we're doing this over a period of time. So we're looking at data in the past and tell us developing now."
     - P10 implied by the number of factors listed
+ 
   - Outcome not the data
     - P6 draws outcome plots
     - P8 "And, you know, and I want to be able to infer something about the collection of runs, right? And not just, you know, it might be nice to look at one individual, but really, this is this is really more about the ensemble than it is any single individual."
     - P8: ensemble is performance timing data from multiple runs of physics simulation
+ 
+  - A process
+    - P6 discusses filtering and reductions when asked to describe [EnsembleAPI]
+    object.
+    - P10 "But the idea being that we have the tuning and the variant captured within our [EnsembleAPI]  object. Right now, we've been capturing the metadata, or the variant into the metadata. But I think there's this further to this further, more fine grained specification that we're trying to get after where we're putting tuning also into the metadata. So that we can then filter , you know, basically create sub-[EnsembleAPI] that are based on the variant and the tuning together."
+
   - Supports multiple studies
     - P8 "Yeah, my Python is pretty, pretty awful. But it does show the kind of, at least for me, and and the kind of workflows that I, in particular want to do with \[EnsembleAPI] with which these are the scaling workflows, right? Weak scaling, strong scaling, throughput studies, right? "
 
+    
+  
 ### Pieces of the EnsembleAPI were forgotten.
 
   - For each participant and each EnsembleAPI piece, list when, if ever, the
@@ -249,7 +261,7 @@ for now let's put everything here.
   - P8 "it is this hierarchical grouping of elements, right, that, that starts with a straight line that goes all the way down from top to bottom, right. And then you have the hierarchy that comes off the side. I mean, you can collapse, you know, the hierarchies in various points. So that that's, that's really what I think of when I think of this data, and that sort of hierarchical description."
 
 
-### Ensemble data structure pieces are linked meaningfully
+#### Ensemble data structure pieces are linked meaningfully
   -  P1 ". Your profile one would be corresponding to the data set from the run with two CPUs and then profile two correspond to the run with four CPUs, and then you'd see in your times, well, you should see that the time for profile one is gonna be higher than the time for profile two, because it had more CPUs"
   - P2 "Obviously, they kind of affect each other, like, in some kind of formats, because, you know, certain metadata like compilier optimization, things like that will directly affect the values 
   - in the performance data table."
@@ -308,33 +320,46 @@ for now let's put everything here.
   - by accident
     - P6 "Right, so each data point in here is basically so this is one run rate. And then the error bars? Well, no, that's not a one run, it's an average of the runs. And the error bars are also the average for the different runs right?"
     - P7 "Yeah. So essentially, problems are essentially problem scale in terms of the system size, like MPI ranks to be a good proxy for that. Versus you said, time, so a lot of that data you care about, start with start off with performance data. So you'd have in this case, in fact, you probably have another index. So besides these two are the third we're gonna be . . . no, number of MPI ranks not just each rank, my bad, that's slightly confusing."
-  - on purpose (TODO: Disambiguate -- part of process or laziness etc)
-    - P2 describes how the Stats table is in some sense for this purpose
-    - P4 "But like, in principle, there's a full spectrum of aggregated data that is kind of profiling a region and just preserving some characteristics that are kind of accumulated over time."
-    - P4 "So like this happens on multiple rings, or in multiple processes. So there might be multiple values attached to that. And then for each of the processes, we might be capturing multiple fields of data. And sometimes this data could have a hierarchy of itself. But for most of the data that we are working with, we don't really capture that hierarchy, it's kind of condensed into something that is relatively flat."
-    - P4 "So, I mean, I think that the data is hierarchical, is often an artifact, how we are designing systems, and they just tend to be hierarchical, because it's manageable."
-    - P4: "So we are using this collapse view because we can still kind of for for a particular call, say like we added a second cog function, we can look at the stack, and then we can aggregate around that, but like, we're doing this mostly because we have to, because we can't afford to, to store like this at the exact granularity that we have in most cases."
-    - P5 talking about the stats table.
-    - P6 groups comm versus comp "Essentially, fairly quickly, we kind of grouped computation by type where computation was one type"
-    - P6 averages/variances across equivalent runs (noise)
-    - P6: "So obviously, you start by looking at the whole thing, right? The entire entirety of the runtime. And then, you know, you start throwing away things that may be irrelevant like IO, you can you can drop IO at different rates, so maybe you shouldn't really consider it as part of your just pure performance study and right."
-    - P6: "basically, [MeasurementAPI] tracks, a profile per rank. And then it's doing a reduction step to combine all of that information, and essentially, what ends up so we can specify what it does was the data when it combines it. So for this metadata, who sends to who, I want that appended right, I want the full list for the times. To save time, most of the time, we essentially indicate that I would like to know the min, max and average. And so as it essentially collapses it down to these three values where instead of keeping 1000s of values, right, however many ranks you have."
-    - P6: "Yep. So there's, there's different averages, right? You're averaging different things at different steps. But yeah, so with [MeasurementAPI], we can essentially request, what data gets output? If you really need the correct data, you can, we would be able to read that into a [EnsembleAPI object]. But I don't think we've tried to read in multiple of these into the get, right, because that's essentially an additional dimension on my data."
-    - P7: "And right now, we're just doing basic averaging."
-    - P7: "here's a little hard to map it one, one, because, yeah, the multi indexing is a bit different from what you'd normally do in a graph database. In general, normally, in a graph database, you'd have. . . main here, I'm just going to say we have a single profile to get rid of the profile ID to main"
-    - P8: "And so, you know, you run it on many processors, right. So you have a lot of ranks there. And so you get, you know, every rank is going to give you a different time. And these are all, you know, collected and aggregated. And so what you get at these aggregate times, and so you do you get a minimum time for the section of code a max time for the section of code and an average time."
-    - P8 calculates dataset-level things like timing/cycle and memory/rank.
-    - P9 does multiple line charts across the dimensions not already on an axis
-    - P9 "And it would then go and aggregate this across MPI ranks in case you're having an MPI program. So the thing that you're getting out in the end is like minimum, maximum, average and total time per region across MPI ranks. So, that's your final metric." 
-    - P10 "So let's do this first single kernel."
+  
+  - on purpose 
+
+    - part of analysis process
+      - P2 describes how the Stats table is in some sense for this purpose
+      - P5 talking about the stats table.
+      - P6 groups comm versus comp "Essentially, fairly quickly, we kind of grouped computation by type where computation was one type"
+      - P6 averages/variances across equivalent runs (noise)
+      - P6: "So obviously, you start by looking at the whole thing, right? The entire entirety of the runtime. And then, you know, you start throwing away things that may be irrelevant like IO, you can you can drop IO at different rates, so maybe you shouldn't really consider it as part of your just pure performance study and right."
+      - P6: "basically, [MeasurementAPI] tracks, a profile per rank. And then it's doing a reduction step to combine all of that information, and essentially, what ends up so we can specify what it does was the data when it combines it. So for this metadata, who sends to who, I want that appended right, I want the full list for the times."
+      - P8: "And so, you know, you run it on many processors, right. So you have a lot of ranks there. And so you get, you know, every rank is going to give you a different time. And these are all, you know, collected and aggregated. And so what you get at these aggregate times, and so you do you get a minimum time for the section of code a max time for the section of code and an average time."
+      - P8 calculates dataset-level things like timing/cycle and memory/rank.
+      - P9 does multiple line charts across the dimensions not already on an axis
+      - P9 "And it would then go and aggregate this across MPI ranks in case you're having an MPI program. So the thing that you're getting out in the end is like minimum, maximum, average and total time per region across MPI ranks. So, that's your final metric." 
+  
+    - perhaps the point is to do the reductions
+      - P6 "And then the computation of the average, in the error bars that that data would end up essentially in the stats frame. Right? Right. So for this plot, I am no longer looking, I start with the individual runs. But for this plot, I'm no longer looking at the individual run. So I'm looking at the data and the stats frame."
+    
+    - retrieving dimensions/detail
+      - P6 discusses needed to drill down for root cause
+  
+    - to simplify the dataset (in general)
+      - P4 "But like, in principle, there's a full spectrum of aggregated data that is kind of profiling a region and just preserving some characteristics that are kind of accumulated over time."
+      - P4 "So like this happens on multiple rings, or in multiple processes. So there might be multiple values attached to that. And then for each of the processes, we might be capturing multiple fields of data. And sometimes this data could have a hierarchy of itself. But for most of the data that we are working with, we don't really capture that hierarchy, it's kind of condensed into something that is relatively flat."
+      - P4 "So, I mean, I think that the data is hierarchical, is often an artifact, how we are designing systems, and they just tend to be hierarchical, because it's manageable."
+      - P7: "And right now, we're just doing basic averaging."
+      - P7: "here's a little hard to map it one, one, because, yeah, the multi indexing is a bit different from what you'd normally do in a graph database. In general, normally, in a graph database, you'd have. . . main here, I'm just going to say we have a single profile to get rid of the profile ID to main"
+      - P10 "So let's do this first single kernel."
       - also "I do it for a single kernel. Let's see. And I guess in terms of the. . . lets see what I do a single variant, and tuning? I guess you could make this multiple variants and turnings as well."
+  
+    - practical/technological reasons
+      - P4: "So we are using this collapse view because we can still kind of for for a particular call, say like we added a second cog function, we can look at the stack, and then we can aggregate around that, but like, we're doing this mostly because we have to, because we can't afford to, to store like this at the exact granularity that we have in most cases."
+      - P6: "To save time, most of the time, we essentially indicate that I would like to know the min, max and average. And so as it essentially collapses it down to these three values where instead of keeping 1000s of values, right, however many ranks you have."
+      - P6: "Yep. So there's, there's different averages, right? You're averaging different things at different steps. But yeah, so with [MeasurementAPI], we can essentially request, what data gets output? If you really need the correct data, you can, we would be able to read that into a [EnsembleAPI object]. But I don't think we've tried to read in multiple of these into the get, right, because that's essentially an additional dimension on my data." 
+
   - unclear if on purpose
     - P8 draws a single call tree already collapsed across all profiles (similar to DatasetAPI)
-  - retrieving dimensions/detail
-    - P6 discusses needed to drill down for root cause
-  - perhaps the point is to do the reductions
-    - P6 "And then the computation of the average, in the error bars that that data would end up essentially in the stats frame. Right? Right. So for this plot, I am no longer looking, I start with the individual runs. But for this plot, I'm no longer looking at the individual run. So I'm looking at the data and the stats frame."
-  - P6: "So you're, you're grabbing, you're looking for machine one and this number of processors, right to to form a little group that you are now averaging and computing you error bars on"
+ 
+
+
 
 #### Multi-dimensional aspect of ensembles is hard / Ensembles all the way down
     
@@ -362,22 +387,10 @@ for now let's put everything here.
   - P7 on what's missing "And that's traces, time series. They're extremely important, especially once you start getting to more state of the art applications, which are a lot of those, again, have to do with the workflow type model, which is very time series dependent."
   - P10 "So the tuning right now is, is in our data, it's actually stored right now on our graph."
 
+#### Problems Constructing a Data Model
 
-#### Differences within ensemble makes things hard (TODO: Maybe merge into THicket API Problems -> "problems in constructing a data model")
-
-  - P4 speaks extensively about comparison basis
-  - P5 "So the challenge there was and still is that when we try to measure, take measurements with only one node, we have annotations that do not occur when we have like two nodes. Because a lot of MPI communication is missing, though, we even have completely missing regionals because obviously, like you don't need an all reduce with only one MPI rank. So these nodes are then missing."
-  - P5 "I would fall back to like getting more insights out of the performance counters. But of course, they are completely different. If we compare like, Intel top-down metrics with AMD metrics, Performance Counters, then we have to, then we would have like different counters, and some counters are not available on AMD architectures, and some not available on Intel,"
-
-
-#### Focus on operations (TODO: Could go with grouping; ^above in deifinion of ensemble)
-  - P6 discusses filtering and reductions when asked to describe [EnsembleAPI]
-    object.
-  - P10 "But the idea being that we have the tuning and the variant captured within our [EnsembleAPI]  object. Right now, we've been capturing the metadata, or the variant into the metadata. But I think there's this further to this further, more fine grained specification that we're trying to get after where we're putting tuning also into the metadata. So that we can then filter , you know, basically create sub-[EnsembleAPI] that are based on the variant and the tuning together."
-
-#### Problems Adapting Complex Data Into a Rigid Structure
-
-  - Handling Missing Data
+  - Diffculties in comparing datasets
+    - P4 speaks extensively about comparison basis
     - P5: "So the challenge there was and still is that when we try to measure, take measurements with only one node, we have annotations that do not occur when we have like two nodes. Because a lot of MPI communication is missing, though, we even have completely missing regionals"
   - Analysis Workflows
     - Automated Analysis
@@ -387,10 +400,11 @@ for now let's put everything here.
       - P8: "And my, I guess my bigger challenge has been constructing useful workflows from the [EnsembleAPI] object."
   - Need for further dimesions
     - P7: "And that's traces, time series. They're extremely important, especially once you start getting to more state of the art applications, which are a lot of those, again, have to do with the workflow type model, which is very time series dependent."
-  - Metadata Representation and Access
-  - P8: "One of the things that I will say has been a challenge has been or can be metadata. I don't you know, and maybe all of the metadata really is wrapped up in the in the [EnsembleAPI] object."
-  - P8: "But but getting metadata out of the [EnsembleAPI] object in a useful way sometimes has has been a challenge"
-  - P10: "So I think the piece that we're working through right now is how to capture how I guess where to properly put what [MeasurementAPI] calls these attributes into our [EnsembleAPI] object."
+  - Availability of Data/Metadata
+    - P5 "I would fall back to like getting more insights out of the performance counters. But of course, they are completely different. If we compare like, Intel top-down metrics with AMD metrics, Performance Counters, then we have to, then we would have like different counters, and some counters are not available on AMD architectures, and some not available on Intel,"
+    - P8: "One of the things that I will say has been a challenge has been or can be metadata. I don't you know, and maybe all of the metadata really is wrapped up in the in the [EnsembleAPI] object."
+    - P8: "But but getting metadata out of the [EnsembleAPI] object in a useful way sometimes has has been a challenge"
+    - P10: "So I think the piece that we're working through right now is how to capture how I guess where to properly put what [MeasurementAPI] calls these attributes into our [EnsembleAPI] object. 
 
 
 ### Influences on the mental model
@@ -437,6 +451,10 @@ for now let's put everything here.
   - P4 draws the domain, speaks extensively about the application and ties to it throughout
   - P7 "Yeah, those are examples. Exactly what it is depends on the application."
 
+#### Consistency/Commonality (Katy please let me know what you think of these)
+  - P1: looking for consistency to orient the mental model of runs, “Because that's a very, like, throughout all the different kinds of data that I work with, there's always nodes.”
+  - P4: “there needs to be some common core, because like, the example would be structured about something that has some commonality, and then you will do perturbations to the input parameters or the execution environment like this, there's really no limit to what you could consider that”
+     
 #### Data is described based on how it is stored
 
   - P2: "we just take ensembles of data and load them into pandas data frames, and then using those pandas data data frame, perform analysis on that data."
@@ -453,9 +471,11 @@ for now let's put everything here.
   - P4: "So we would like if we want to do comparative studies to inform maybe the choice of a library or compiler, we would look at multiple measurements of that. And also multiple measurements across different of these input parameters, for example, to see how the behavior and others is changing, in particular, how the performance might improve or degrade, according to that."
   - P4: "for example, they have an instrumentation solution that looks particularly at higher libraries, not so much CPU counters, and we ran into similar analysts problem there because we are dealing with multi dimensional data. And then we have to slice and cut through the data to get like a view that allows for fair comparisons."
   - P4: "So in that sense, if we are looking at studying performance, for compute optimization, for example, then we will typically try to construct an ensemble that has varying parameters, and would construct the instrumentation so that we are not capturing things that are subject to resource to too much noise or to share resources."
+  - P5 also trying to recall performance metrics
   - P6: "basically, the study of performance on different machines"
   - P6: "Essentially, some of the questions were, how much noise do we see in those different runs? Is there are the runs on AWS more noisy? And then also comparing the performance? So if you have essentially comparable hardware, you know, on pram, and then in the clouds, do you get the same performance?"
-
+  - P6 evokes model by trying to recall actual results, or at least draw similar graphs to what they have seen. Grounding their choices in prior knowledge.
+  
 #### Goal Oriented Data Descriptions
 
   - P9: "One is aggregation, which would basically give you a, well, a profile that you normally get out of applications that we look at where we aggregating things . . . And then we're testing that run
@@ -468,15 +488,20 @@ for now let's put everything here.
 
   Maybe bundle some of these following ones v:
 
-#### Exact data is not important 
+#### Tensions with Exact Data and Mental Models
+  - Exact Data is not Important
+    - P1: "so the data I work with, it's sort of arbitrary as a developer"
+    - P1: "the columns themselves are kind of arbitrary"
+    - P1: "And then third, probably the profiles. That's the data itself, but it's kind of less important because we have that represented as like an inner index. So it's kind of like, subsequent to the nodes, I guess, in the visualization in my head. So that's where I kind of like, put things even though thinking about is kind of counterintuitive, because without the profiles, you wouldn't have any data."
+    - P7: "Again, any parameter really."
+  - Use of exact data values and units as part of model
+    - P7: "And it could be 1200, 1200 and clang, gcc. And that's the last part of this, is the general, all of this, is the [EnsembleAPI Object]"
+    - P7: " . . . we have a single profile to get rid of the profile ID to main, and it would have say, time 50, cache misses, 3, that's one node."
+    - P9: "And you want to know what's going on there, essentially. Right. So let's make it five and 20. It's not the numbers, obviously."
 
-  - P1: "so the data I work with, it's sort of arbitrary as a developer"
-  - P1: "the columns themselves are kind of arbitrary"
-  - P1: "And then third, probably the profiles. That's the data itself, but it's kind of less important because we have that represented as like an inner index. So it's kind of like, subsequent to the nodes, I guess, in the visualization in my head. So that's where I kind of like, put things even though thinking about is kind of counterintuitive, because without the profiles, you wouldn't have any data."
-  - P7: "Again, any parameter really."
 
 #### Structure is not important, it's just about access
-  
+
   - P9 when pressed about [MeasurementAPI]'s output structure
     - "Well, [MeasurementAPI] to some extent, I mean, kind of can produce a whole range of data sets, right? So it can go from simple profiles like this one to full on."
     - "You're looking at a directory full of [MeasurementAPI] files."
@@ -486,11 +511,6 @@ for now let's put everything here.
 
   - P7 "I like connecting it to the [Data Movement Tool] example, as a more practical example. Say the raw data represents all the data we have, for a particular run or a particular consumer in our workflow, we could then run that workflow multiple times, maybe slightly different parameters, get all these profiles for that one consumer, and then pass on this data model and analyze it that way. Using things like one thing that we I'm honestly, currently intending to use, is the query language to strip off all the application specific stuff and just focus on our [Data Movement Tool]."
 
-#### People use exact data values (and units) (somewhat rare but not entirely)
-
-  - P7: "And it could be 1200, 1200 and clang, gcc. And that's the last part of this, is the general, all of this, is the [EnsembleAPI Object]"
-  - P7: " . . . we have a single profile to get rid of the profile ID to main, and it would have say, time 50, cache misses, 3, that's one node."
-  - P9: "And you want to know what's going on there, essentially. Right. So let's make it five and 20. It's not the numbers, obviously."
 
 #### Analysis Task Influences Mental Model or Awareness of Parts
 
@@ -500,12 +520,8 @@ for now let's put everything here.
 
 ### What factors lead to remembering dimensions/aspects of the data? (TODO: Merge up with other influences on model)
 
-  KT: P6 trying to recall actual results, or at least draw similar graphs to what they have seen. Grounding their choices in prior knowledge.
-      - P5 also trying to recall performance metrics
-  
   - Looking for common core, something to orient the data around
-      - P4: “there needs to be some common core, because like, the example would be structured about something that has some commonality, and then you will do perturbations to the input parameters or the execution environment like this, there's really no limit to what you could consider that”
-      - P1: looking for consistency to orient the mental model of runs, “Because that's a very, like, throughout all the different kinds of data that I work with, there's always nodes.”
+
 
 
 ## What is a "part" of the Ensemble?
