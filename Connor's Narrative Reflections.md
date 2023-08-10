@@ -22,7 +22,7 @@ Outside of observations we need clear proscriptive advice to readers. Some which
 
 Broad:
 
-- Ensembles are multi-dimensional, context-dependant datasets, that are difficult to track  [cite needed] < are we this citation? does this exist? is this our thesis?
+- Ensembles are multi-dimensional, context-dependant datasets, that are difficult to track ([cite needed] < are we this citation? does this exist? is this our thesis?) so we need to understand them better (but why the CHI community? lizards are complex but CHI doesn't need to understand them better)
 
 - There exists prior work in CHI examining data mental models, however it does not examine mental models of a large complex dataset [Data Elephants]
 
