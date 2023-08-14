@@ -122,29 +122,29 @@ G. N/A
 
 #### P6
 
-A.
-B.
-C.
+A. Explicit Perf, Implicit Meta
+B. Implicit Meta
+C. Implicit Meta, Implicit Perf, Implicit Stats
 D.
-  i.
-  ii.
-  iii.
-E.
-F.
-G.
+  i. Implicit Perf, Implicit Meta
+  ii. (Alludes to D.i)
+  iii. Implicit Tree, Implicit Perf
+E. N/A
+F. N/A
+G. Explicit Meta, Explicit Tree, Implicit Stats, Implicit Perf, Explicit Links
 
 #### P5
 
-A.
-B.
-C.
+A. Implicit Perf, Implicit Meta
+B. N/A
+C. Explicit Perf, Explicit Stats, Explicit Links, Explicit Tree, Implicit Meta
 D.
-  i.
-  ii.
-  iii.
-E.
-F.
-G.
+  i. Explicit Tree, Implicit Meta, Implicit Perf
+  ii. Implicit Perf, Implciit Meta
+  iii. Explicit Tree, Explicit Perf
+E. (Other issues discussed)
+F. N/A
+G. Explicit Metadata
 
 #### P4
 
