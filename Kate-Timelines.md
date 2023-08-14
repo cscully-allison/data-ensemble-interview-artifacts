@@ -75,7 +75,7 @@ D.
   i. Explicit Meta, Explicit Perf
   ii. Explicit Meta, Explicit Perf
   iii. Explicit Tree
-E. Explicit Metadata, Late Explicit Tree, Implicit Links
+E. Explicit Meta, Late Explicit Tree, Implicit Links
 F. N/A
 G. N/A
 
@@ -95,3 +95,106 @@ G. Implicit Perf, Implicit Tree, Implicit Meta
 
 
 #### P8
+
+A. Explciit Perf, Implicit Meta
+B. Implicit Perf, Explicit Meta
+C. Explicit Tree, Implicit Perf, Implicit Links
+D. 
+  i. Explicit Tree, Implicit Perf, Explicit Meta
+  ii. (Alludes to D.i)
+  iii. Explicit Tree
+E. Explicit Meta
+F. N/A
+G. N/A
+
+#### P7
+
+A. Implicit Perf, Implicit Meta, Explicit Tree, Explicit Links, Explicit Perf, Explict Meta, Explciit Stats
+B. Explicit Perf, Explicit Stats, Explicit Meta
+C. Explicit Tree, Explicit Perf, Explicit Stats, Explicit Meta, Explicit Links
+D.
+  i. Explicit Perf, Explicit Meta, Explicit Stats
+  ii. (Alludes to D.i)
+  iii. Explicit Tree, Explicit Perf
+E. (Other issues discussed)
+F. Explicit Tree, Explicit Links, Explicit Perf 
+G. N/A
+
+#### P6
+
+A.
+B.
+C.
+D.
+  i.
+  ii.
+  iii.
+E.
+F.
+G.
+
+#### P5
+
+A.
+B.
+C.
+D.
+  i.
+  ii.
+  iii.
+E.
+F.
+G.
+
+#### P4
+
+A.
+B.
+C.
+D.
+  i.
+  ii.
+  iii.
+E.
+F.
+G.
+
+#### P3
+
+A.
+B.
+C.
+D.
+  i.
+  ii.
+  iii.
+E.
+F.
+G.
+
+#### P2
+
+A.
+B.
+C.
+D.
+  i.
+  ii.
+  iii.
+E.
+F.
+G.
+
+#### P1
+
+A.
+B.
+C.
+D.
+  i.
+  ii.
+  iii.
+E.
+F.
+G.
+
