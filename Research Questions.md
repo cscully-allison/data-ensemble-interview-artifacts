@@ -1,7 +1,19 @@
 
-### Initial questions
+### Revised/ More Focused Questions
+1. How well do people remember the aspects of a heterogenous data structure, with a given form?
+	- Our datastructure has an agreed upon form
+	- We expect that people who designed the datastructure would remember the datastructure
+2. What factors lead to remembering dimensions/aspects of the data?
+	- What portions of an ensemble dataset are more relevant/less relevant to analysis/general use of the data?
+	- How do people conceive of Metadata?
+		- Generally? In relation to the main Dataset?
+3. Given a set datastructure how diverse are the mental models of it.
 
+
+### Initial questions
 From Kate:
+-  How well do people remember the aspects of a heterogenous data structure, with a given form?
+	- Our datastructure has an agreed upon form
 -   What factors lead to remembering dimensions/aspects of the data?
 -   What elements of a data mental model are there, perhaps those we don't typically think of as part of data typologies? (e.g., causality between parts of the data)
 	-   Related: How do people connect multi-typology data?
@@ -16,14 +28,11 @@ From Katy:
 
 ### Emergent Questions
 
-- How do people conceive of Metadata?
-	- Generally?
-	- In relation to the main Dataset?
 - What are the weaknesses/boundaries in the Thicket Data structure's ability to capture performance ensemble data?
-- What portions of an ensemble dataset are more relevant/less relevant to analysis/general use of the data?
 - How diverse are the understandings of the dataset structure even among a group working on a data structure?
 - Can we draw conclusions about software development project management?
 	- Is it important that developers understand the data they are working with from a more value-oriented perspective
 	- API Design research
 		- Software engineering and data
 		- ICSE . . .
+
