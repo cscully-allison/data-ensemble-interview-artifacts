@@ -8,10 +8,10 @@ Um, all right, cool. Um, yeah. Lunch after this. So might as well just dive in. 
 
  So I'm just gonna start off with a simple question. What project do you or did you work on that uses ensembles up performed?
 
-Speaker 1  4:28  
+P10  4:28  
 I'm involved in PAVE. [unintelligible] that's a bunch of different use cases.
 
-Speaker 3  4:40  
+A1  4:40  
 And do you have a specific one that's most recent in your mind or that you'd like to talk about? Because we're gonna ask you some more questions about this specific data that you're working with? And you just need to
 
 P10  4:53  
@@ -20,47 +20,47 @@ So it's with the [BenchmarkSuite].
 A1  4:56  
 Okay, cool. Perfect. Um, can you describe that that project for me a little bit more detail.
 
-Speaker 1  5:05  
+P10  5:05  
 So, [BenchmarkSuite] is an open source collection or suite of loop based kernels that are talking about big HPC simulation codes. Use the [BenchmarkSuite] as a [unintelligible]
 
 A1  5:26  
 [unintelligable]
 
-Speaker 1  5:26  
+P10  5:26  
 it is used as a complement to the [BenchmarkSuite] code base to understand the performance of our [BenchmarkSuite] kernels. That is what the [BenchmarkSuite] suite is used for.
 
-Speaker 3  5:43  
+A1  5:43  
 Alright, um, can you please describe a typical data ensemble that would come out of the [BenchmarkSuite]? What looks like any characteristics of that data? Great.
 
-Speaker 1  5:54  
+P10  5:54  
 So out of the [BenchmarkSuite], we're wanting to run the kernels across different variants. And then the variants will be run across different architectures such as GPU. We might be running it with different versions of [BenchmarkSuite], and understanding the performance of [BenchmarkSuite]. You could be using different compilers in the [BenchmarkSuite] and understanding compiler benefits or performance benefits. Let's see. And then I guess within that as well, we have different tunings that exists within the variants that might change the performance as well.
 
-Unknown Speaker  6:39  
+A1  6:39  
 Um, can you define variant and tuning for me? 
 
 P10  6:42  
 Um, so how I think about variant tuning is just a different implementation of the kernel. And so, so the variant we have defined as like sequential, open MP, we have CUDA. And so that's kind of the, I guess, the abstraction layer, I guess, maybe it's the target architecture, where we're running the variant is the way to think about it. And then within each variants, you have different tunings that you can run. And the tuning is really defining how the kernel has been compiled, if you will. So you might have a tuning that's default. So that's our base kernel implementation, we might have a tuning that is called a library. And so that's using maybe a particular tuning within the or maybe a specific variant, sorry, those are all overused terms. The library is a specific implementation of the kernel that is being used. But it's just a way for us to define what how the kernel has been implemented to understand you know, what optimizations we might have put into that kernel.
 
-Speaker 3  7:54  
+A1  7:54  
 A lot of parts that data discussed here. Are there any that are more important to you, that you think are more important than other parts of the data?
 
 P10  8:09  
 So I think we're really interested in the tunings. I think the, you know, the variant helps us identify one kind of level of specificity. But it's really the tunings that we're after to understand how they're performing. And really, it's the combination of the variant and the tuning that we're after. So that's really helping us understand, you know, where were we running, it's giving us an idea of where we are running, and then what optimizations we might have done to the kernel.
 
-Speaker 3  8:44  
+A1  8:44  
 It for my first part of like, talk questions are over and now you are gonna draw. Yeah, please use crayons. That's why I bring in crayons. Yeah, pretty, I use some of them for notes, but mostly, they're brand new. Yeah. Um, so what I'm going to have you do is see if you can sketch out a like the entirety of the dataset that you just described to me. And using any sort of metaphors or abstractions you like, just to give me a good idea of sort of what what it looks like what are the main parts of it
 
-Unknown Speaker  9:31  
+P10  9:31  
 [unintelligible]
 
-Speaker 3  9:31  
+A1  9:31  
 Mean? Whatever you think is is important to describe the dataset so
 
 P10  9:46  
 So we have our variance. Your camera guys do this remotely. With great difficulty So statuses are doing very well
 
 A5  10:07  
-don't forget the blur if there's a blur oh my god is it I can't I can't tell you that are my connections bad?
+don't forget the blur [overlapping speech]
 
 A1  10:15  
 No it's probably really yeah there's a yeah probably yeah I got some color on the background there we go looks nice now play apply thanks so you'll see darker which was brighter. You see okay
@@ -96,15 +96,15 @@ Okay, sorry, I missed that. What's the last header there at the bottom of the da
 A1  13:45  
 Cool. And is this something that you're proud of the dataset? Okay, good. Fantastic. Then I'm going to ask you sort of task specific questions that you're going to use this drawing for that, where I'm just going to kind of query about how you'll use this data to do something. So first and foremost, let's imagine that we're doing a strong sale scaling study. And we're just looking at like to see how the number of MPI threads relates to the runtime of a single function. What what portions of the data what I use here to determine that to figure that out?
 
-Speaker 1  14:29  
+P10  14:29  
 [unintelligible] too, so I guess that would be another field in the metadata is the number of ranks down here. So assuming we had that I would take this one as well as the the this time per kernel metric and plot those two, and I guess the other. . . let's see. . . as you're doing it per a, for a kernel at a time? Okay, so I guess if we did as you know, a single graph here, right with the ranks and the time, then each of the lines that go like this can be a different variant and tuning
 
 
-Speaker 3  15:15  
+A1  15:15  
 Is the graph is per anything or products? 
 
 P10  15:25  
-[unintelligible response] 
+[unintelligible] 
 
 A1  15:28  
 All right. Next next little task. And there's lots of paper here too, if you do want to expand, you don't have to. But if I want to compare the runtime differences between a code base run on one architecture versus one run on another architecture, what parts of the data would I use?
@@ -167,13 +167,14 @@ Speaker 3  21:02
 Okay, so I see you, I don't I don't need to ask you about the metadata, you have a good grasp on that. Is there any aspect of the data that you don't think is properly captured by the [EnsembleAPI] objects?
 
 Speaker 1  21:33  
-So I think the piece that we're working through right now is how to capture how I guess where to properly put what [MeasurementAPI] calls these attributes into our [EnsembleAPI] object. So from the [BenchmarkSuite] standpoint, I think the attributes that we've been thinking about is the tuning is one of them, maybe the variant as another. Um, and then I think the other one that we've been talking about is the preference which gets into obviously another project of compiler. And I don't know, I don't fully have a grasp on what the definition that [Performance Software] has for attributes. But the idea being that we have the tuning and the variant captured within our [EnsembleAPI]  object. Right now, we've been capturing the metadata, or the variant into the metadata. But I think there's this further to this further, more fine grained specification that we're trying to get after where we're putting tuning also into the metadata. So that we can then filter or, you know, basically create sub-[Programmatic Performance Analysis Data Structures]  that are based on the variant and the tuning together. Because obviously, right now, we just have the variants as the factor that we're kind of filtering on. But we have many tunings within the variant that we're trying to tease out
+So I think the piece that we're working through right now is how to capture how I guess where to properly put what [MeasurementAPI] calls these attributes into our [EnsembleAPI] object. So from the [BenchmarkSuite] standpoint, I think the attributes that we've been thinking about is the tuning is one of them, maybe the variant as another. Um, and then I think the other one that we've been talking about is the preference which gets into obviously another project of compiler. And I don't know, I don't fully have a grasp on what the definition that [Performance Software] has for attributes. But the idea being that we have the tuning and the variant captured within our [EnsembleAPI]  object. 
 
+Right now, we've been capturing the metadata, or the variant into the metadata. But I think there's this further to this further, more fine grained specification that we're trying to get after where we're putting tuning also into the metadata. So that we can then filter or, you know, basically create sub-[EnsembleAPI]  that are based on the variant and the tuning together. Because obviously, right now, we just have the variants as the factor that we're kind of filtering on. But we have many tunings within the variant that we're trying to tease out
 
-Speaker 3  23:14  
+A1  23:14  
 But does it already kind of exist in the metadata, is that correct? Or the [. . ]. or do you think captured at all? By the [EnsembleAPI] object?
 
-Speaker 1  23:28  
+P10  23:28  
 Well, we do right now. Well, right. Right, right now is. So we do have a notion, so we are capturing the variant? I think that's already implemented. So the variant is already in the attribute, or sorry, the variant is already in the metadata. The piece that we don't have yet to tuned or pieced out is the tuning related kernels. 
 
 A1  23:57  
@@ -182,16 +183,14 @@ Where does that exist in the raw dataset?
 P10  24:03  
  So the tuning right now is, is in our data, it's actually stored right now on our graph.
 
-Speaker 1  24:11  
+P10  24:11  
 Nodes, I guess, graph, um, I don't know I use, I guess it's stored in the graph nodes. So actually, the tuning the different tunings under the particular variants are stored as individual nodes. So they're independent, we get, you know, reporting of all of this performance data per node. But then it's all embedded together. And based on the set of kernels that we're running in [BenchmarkSuite] are the type of kernel that we're running in [BenchmarkSuite]. You might have tuning or sorry, you might have default tuning and some, not in others, you might get the library that's being run, but not in others. So it's very, I guess we haven't yet figured out or uncovered, which tunings exist for what types of kernels?
 
-
-Speaker 3  25:14  
+A1  25:14  
 Is that programmatic at all? Is the tuning something that exists in the program? Or is it just something that has to be annotated specifically by the user?
 
-Speaker 1  25:26  
+P10  25:26  
 So that's still unclear to me? I don't know. So [BenchmarkSuite] is the different kernels and [BenchmarkSuite] are being contributed by various people within the code teams. And I'm not sure if it's on the code, the person who is contributing the kernel to implement the different tunings, or if they just implement, you know, one version of their kernel. And then one of the maintainers of the [BenchmarkSuite] team is what implements the different tunings. Im not understood, I'm not sure yet how those two interplay. So I don't know that piece. Any further questions about this?
-
 
 A5  26:11  
 Um, so it sounds like part of the problem might be that the cross products right now are not very discoverable. Is that?
