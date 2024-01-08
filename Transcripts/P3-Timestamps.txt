@@ -1,0 +1,205 @@
+R1  0:00  
+I guess I remind me to record by remember this time.
+
+P3  0:06  
+It's nice to put a face to the name. I've been hearing where we're cool. You too. I'm ready whenever you are.
+
+R1  0:15  
+Yeah. Great mute, then. Cool. And I'll try and make this reasonably fast for you. Because I know that you are defending your thesis tomorrow. I just found out so
+
+P3  0:26  
+fine. I've been kind of going over the same concept over and over again. So I think I'll be fine. With the different. Yeah.
+
+R1  0:34  
+Good. Yeah. Usually, yeah, like the day before. You've already practiced enough such. Yeah. All right. Um, so then did you get a chance to read the document that I attached to the email that I sent to you earlier?
+
+P3  0:46  
+I did read it.
+
+R1  0:47  
+Okay. Yeah. All right. It's just, it's just like consent information. I'm gonna go over some of it over here, just to make sure that you get all the important bullet points. And then I'm just going to ask you for a verbal consent at the end to participate in the research. So that sounds good. Yep. Sounds good. Cool. All right. So first, I want to start you off, start off by thanking you a lot, Vanessa, for agreeing to participate in this research, it really means a lot to us. And, you know, I appreciate that your time is very valuable. So thank you so much. So the purpose of this study is just sort of to explore how professional data users and full developers think about ensembles of data, what aspects of said data are important. And you know what you're not this information will help us design better visualizations and tools or analysts, you know, kind of like we're doing with finger right now. This study, it's just a one on one interview, mainly and then like Kate said, she's here to take notes and occasionally time chime in. And overall, we expect that's probably just gonna take about 30 minutes. I'm going to ask you a series of prompts regarding how you think about the performance at work with and I will also ask you to draw this data. And by the way, did you or do you have a tablet or a Okay, cool. Nice. Last time, I should mention, we were able to get a screenshare to work. Do you have Skype on your resume on your tablet there?
+
+P3  2:27  
+I do yeah.
+
+R1  2:28  
+Okay, if you if you do Would you mind just like re popping back into this event coming back in for like the screenshare should I
+
+P3  2:37  
+still keep this or like I try to join well from two sides or just from the iPads fine.
+
+R1  2:45  
+You can you can close this out and just join from the iPad is fine. Okay, gotcha
+
+P3  2:49  
+season art. Cool. Thanks, Vanessa Sure.
+
+R1  4:13  
+Welcome back, Vanessa, can you hear me okay? Yeah, I can hear you. Fine. Cool. Perfect. All right, then. Your share screen for later. Okay. So now as we go through the as I go through these these questions that I'm going to ask you, I just want to emphasize that there are no right or wrong answers. So don't stress about that. It's just we want to hear your opinion and your thoughts on these things.
+
+P3  4:41  
+Sounds good. All right.
+
+R1  4:44  
+And then just a few final notes. So first, I want to make an audio and video recording of this interview, as you know are recorded and keep a copy of the drawings that you produce. And all of this data will be anonymized and transcribed and only the research staff will have access to With the original recordings, and finally, you may choose to leave are in the interview at any time. And this decision won't affect your relationship with the the interview team or anyone else associated with us. Gotcha. Cool. All right. And so do you consent to participate in this? project with us? Yes, I do. Thank you for. Okay, so let me start off with a kind of a basic demographic question here is, so what what project do you work on that uses ensembles of data?
+
+P3  5:34  
+I work on a project called ticket, which is sorry, which is in collaboration with the Lawrence Livermore National Lab? And essentially, we have an ensemble of performance data. Okay, and
+
+R1  5:55  
+can you describe that project in just a little bit more detail?
+
+P3  5:58  
+Yes. So we're the part of the project just to build a performance data license tool. And this tool is based and coded in Python. And we allow multi runs multiple run performance data, which is basically multiple profiles to be stored into an object. And then that object has different components, like tables and call graph. And through that we allow exploratory data analysis of the performance data. Okay,
+
+R1  6:33  
+thank you. And can you describe this data ensemble for me? More more detailed the data.
+
+P3  6:45  
+Okay. Do you want to know the kind of the structure of the data the way it's stored?
+
+R1  6:51  
+Yeah, absolutely kind of anything that you think is important to help me understand the data.
+
+P3  6:57  
+Okay. So, like I said, that data is stored in what we call a ticket object. And it has three components. So the first one is the performance data, this is stored in a multi index form. And the two indexes, the two indices we use are, is the are the nodes, which are the basically the function calls that happened when a when a program is run. And the second one is a profile hash. So essentially, we're distinguishing each profile that we're reading into that object with hash with a unique hash for each profile. And then there's a second component, which is the metadata. That's a just simple table. And it's going to the first table, which is the performance data table with with that profile hash that we just talked about. So it's like a foreign key for for that table. And within that metadata table, we have information like, who who ran the program, how long, how long the program ran, when the launch date was all that kind of information. So not strictly performance data, but kind of more information about the execution of the program for each of the profile. And the third component is the aggregate statistics statistics table. And this is connected to the first table that we talked about, which is the performance data with respect to the nodes, which again is the list of function calls. And for the aggregates, the sticks table, it's essentially an empty table, where we can take in the columns from the performance data table, and perform statistics calculations on them and store them into the aggregate statistics table. And one thing that's important to note is that the statistics and the performance data table they also have a call graph component to it. So they have a tree component to it. And these two represent the nodes and the relationship between the nodes. Perfect,
+
+R1  9:17  
+all right. And you did you present these in a very particular way, starting with data and then moving over to metadata and stats. Is there any particular reason that you chose to order in that way and then to the tree list?
+
+P3  9:32  
+Um, yes, because it also it also I also chose it to do that way because performance data is acts as sort of the main table, if you look at it from a relational database management system, our relational database management model. So the performance data is the mean data with multiple index and it's connected to to the two of these other tables through two of its indices from the Malta index. And personally, I've worked mainly with metadata table. So that's why it took precedence compared to the statistics table. So I'm guessing if somebody from my team has worked on the statistics table, more would probably introduce the performance data, and then how the aggregate statistics table is connected to that. And then once we talk about the entire table, I bring the CO culture because that's a functionality we're still working on. And making sure like changes can be propagated to that data structure. So it's still a work in progress compared to the tools.
+
+R1  10:49  
+So thank you so much. Right now we're, we get to the interactive part. If I could get you to share your screen for me. And whatever drawing program you're using,
+
+P3  11:04  
+Kay should be able to see that ability
+
+R1  11:11  
+to see and am I on face down? All right, now you're fine.
+
+P3  11:19  
+Okay, let me try to change that.
+
+R1  11:34  
+Oh, no, my Zoom is not happy.
+
+P3  11:36  
+I think it was not yours. Okay, I think you're still gonna see your face. And that's okay.
+
+R1  11:44  
+That's no, it's totally fine. It's totally fine. All right. So let's go. Alright, so for this bit right here, I'm just going to ask you, if you could, please, like sketch out the entirety of the data stored in this data set that you just described to me. Okay.
+
+P3  12:02  
+So just like an example of what it looks like, right.
+
+P3  12:18  
+By the way, are we talking about the entire like three components that I talked about?
+
+R1  12:23  
+Yes, everything to do with this with this data set?
+
+P3  13:15  
+Don't have to think out loud?
+
+R1  13:18  
+Oh, yes. If you could think out loud while you're doing it'd be very helpful. Sorry, I should have told you to do that my bad.
+
+P3  13:27  
+Okay, so essentially, this is what I just mentioned, which is performance data. And like, you can see this has a multi index of data highlighted right here, these are the indices. And so for example, in this specific case, we have base CUDA, which is the function call or what we call nodes. And for each node, we can have multiple profiles. So for our, I can say this two profiles can have the same function call or notes. So these are the ones I've highlighted. So these, this is the note and then these are the two profiles that are associated with it. And information in here could be problem size, block size, things like that. Basically performance metrics that can be stored here in the rest of the columns. So that's how the performance data table looks like. Then the then this is primarily what I've been working on. Just a minute data table, and is just a simple table. The index is just profiles and for relating to the performance data directly this would expand on the age profiles that are present and this would consist meta data. So, values in this could be launched it user who started the program things like that basically and you can get highlights the index you can see the relationship between these is through the profiles the profile hash then we can look at the statistics table which would be which would be initiated as an empty table with just the nodes and then a column that's called the name column. And so, the notes column will have let's say for this example base Kuta and then it will also have type which is function and the name will be simply just consists the name of the
+
+P3  16:34  
+node and this will be empty and again this will relate back to performance data within notes again highlighting the index for this table and essentially there is a component like I said, which is shared by these two tables, which is the core graph our call tree and we can assume that base CUDA it's not good we can just assume for this case as good as the main parent and then can have multiple other nodes children notes
+
+P3  17:45  
+sorry, okay, I will label this. And again, this is shared by the performance data table and the statistics table. So, this is how initially, the data structures inside the socket will look like to get object would look like. And for the for the statistics table, you can additionally do things like calculate
+
+P3  18:21  
+collate the mean, or calculate the median of certain values. So, let's say problem size of the from the performance data, and then you can append it back to the table. So, you can do
+
+P3  18:42  
+mean size. So, this is basically a kind of an overview of the different data structures and to get
+
+R1  18:57  
+perfect, I love the different colors. Thank you.
+
+P3  19:01  
+Yeah, my handwriting is not the best, but this helps.
+
+R1  19:03  
+It's pretty good. That's pretty good. All right. So, then I'm going to ask you some some questions about things that you might do with this data. And to start off with, I'm just going to ask, so if I wanted to say, relate how changing the number of CPUs that I allocate relates to the runtime of a single function, what portions of the data would I use?
+
+P3  19:32  
+Um, I would think you would use the the performance data table
+
+R1  19:49  
+all right, cool. So just the performance data table you're thinking would be sufficient for that. Yes. Okay. So how about if I want Want to compare the runtime differences between a code base run on like LC and a code base run on AWS?
+
+P3  20:09  
+I think it would still be the performance data table. I know that part of my team members are like coworkers, they're working on something that allows for that comparison. I'm not completely sure. But I think it's called a columnar join. So use parts of the performance data table to kind of make that differences and compare it within the performance data table. Gotcha.
+
+R1  20:40  
+All right. And last question I have along these lines is if I want to find out which function called another function, what portion of the data would be most important for that,
+
+P3  20:51  
+I think the call tree would be quite helpful, I know that we've developed a kind of a, we already have this Tree Structure and we have a very basic implementation of queries. So this this tool is actually an extension to hagit, which is another performance analyzer is to. And so we've implemented just a small part of the query. So you should be able to see kind of what are the children of the some of the function calls? And I think that's how you can find out okay, which functions are being called within member functions? Cool. Perfect. Thank you, sir.
+
+R1  21:36  
+All right. And I've got, I've got another drawing question for for you, if you want to just like scroll down and give yourself some space. Okay. Perfect. All right. And this one, it's gonna be a lot more a lot more basic than the other one. So I'm just going to ask you to imagine a profile, we're gonna be drawing a profile of just it's a simple program with three functions. They're called A, B, and C. Okay, and each of these functions has a time associated with it. Function a took 30 seconds. Okay. function B took five seconds.
+
+P3  22:18  
+You're fine. Is it five seconds?
+
+R1  22:21  
+Yeah, five seconds. Okay. And function C took 100 seconds. All right, perfect. And if I could just get you to draw out this data for me and again, and feel free to use any abstractions or metaphors you'd like to describe it?
+
+P3  22:40  
+Um, are they like, just separate independent functions?
+
+R1  22:46  
+Since this is a profile, they are probably related to each other. Okay. Yeah, I could, I guess I'll tell you just to illustrate maybe a little bit more give a little bit more detail. Let's say that a call is both B and C.
+
+P3  23:08  
+Um, so it doesn't have to be like a table. It can be any data structure,
+
+R1  23:13  
+however you want to represent it. Okay.
+
+P3  23:16  
+Um, I think I'll just use a table then pretty property.
+
+P3  23:26  
+And as you can see this.
+
+P3  23:51  
+I think this was just the easiest approach.
+
+R1  23:56  
+Yeah, it seems seems seems pretty logical and summarizes the data quite well. All right. And then I think that that's, that's it. That's all the questions I have for you. Perfect. Awesome. And do you have any questions for me before we close this out today?
+
+P3  24:15  
+I'm not really just that. Am I supposed to send this to you?
+
+R1  24:21  
+Yes. If you would, please send that to me via email. That'd be great. Or slack, whichever you prefer.
+
+P3  24:26  
+Okay, I'll just send up your slack if that's okay. That's totally fine. That's great. For me, yeah. Totally appreciate it.
+
+R1  24:38  
+Yeah, so me and Kate are gonna hang out here for a sec. So you're free to go whenever you like and get back to you know, practicing your talk. Yeah, good luck. Congratulations, on all that's coming.
+
+P3  24:50  
+Thank you. I appreciate it. Also, thank you, Connor for the skew. Oh, God, I think I did decent in the in the interview I had so Should I appreciate it?
+
+R1  25:01  
+Good. I'm glad to hear it. Ya know is my pleasure right? Sequels it's fairly easy to pick up but it helps out the local guidance.
+
+P3  25:08  
+I'm glad Yeah, all right. Take care of both of you have a good day
+
+R1  25:17  
+no one in a way. Yeah.
+
+Transcribed by https://otter.ai
