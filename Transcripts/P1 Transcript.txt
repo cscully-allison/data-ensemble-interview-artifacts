@@ -43,7 +43,7 @@ A1 3:30
 And could you just describe, at a high level, what [EnsembleAPI] is exactly as a project in your own words?
 
 P1 3:40
-Okay. Yeah. So [EnsembleAPI] is a tool for ensembling performance data. Purposely multiple profiles of data as in comparison to hatchet, where it may be only or usually is only one profile? 
+Okay. Yeah. So [EnsembleAPI] is a tool for ensemble performance data. Purposely multiple profiles of data as in comparison to [DatasetAPI], where it may be only or usually is only one profile? 
 
 So the emphasis of [EnsembleAPI] is the bringing multiple different data sources together in a coherent way.
 
@@ -53,7 +53,7 @@ All right. So then now if I could get us to move over to the data real quick, ca
 P1 4:30
 Yeah, so the data I work with, it's sort of arbitrary as a developer, because a lot of times I don't really care about like, the specifics. 
 
-It is most of the time, like performance data of, say like physics run or like, well, [PhysicsAPI]'s. Like one example or like some [BenchmarkSuite] run where you have like time as a column, maybe exclusive time, inclusive time. And then different like ... Well, hatchet nodes is functions, so different. For each different of the functions that you run the algorithms that you run, you have those different times and you might have GPU metrics throughput. All sorts of different performance metrics is it's a majority of the data I work with.
+It is most of the time, like performance data of, say like physics run or like, well, [PhysicsAPI]'s. Like one example or like some [BenchmarkSuite] run where you have like time as a column, maybe exclusive time, inclusive time. And then different like ... Well, [DatasetAPI] nodes is functions, so different. For each different of the functions that you run the algorithms that you run, you have those different times and you might have GPU metrics throughout. All sorts of different performance metrics is it's a majority of the data I work with.
 
 A1 5:24
 All right, and following up from that, could you list sort of the main parts of this data and order them? And like, how important they are to you?
@@ -163,7 +163,7 @@ the joys of digital drawing so much.
 P1 19:21
 I need my tablet. Okay, yeah, this work? Nice. 
 
-Yeah, so I kind of, I literally just copy paste that same data frame twice. But now, visually, I can kind of delete the indexes from the second one. Since we don't need, since we can just match those up with some sort of like join like a SQL join thing since our for the nodes and profiles that match up. And then bring those columns over to the first one. And, and sort of weld them together. However, you want to look at that. And then along the top, you get a new kind of column header for AWS and, and Livermore computing machines. 
+Yeah, so I kind of, I literally just copy paste that same data frame twice. But now, visually, I can kind of delete the indexes from the second one. Since we don't need, since we can just match those up with some sort of like join like a SQL join thing since our for the nodes and profiles that match up. And then bring those columns over to the first one. And, and sort of weld them together. However, you want to look at that. And then along the top, you get a new kind of column header for AWS and, and [Lab] computing machines. 
 
 So yeah. And I skipped over how they are joined together, but I don't know if that's important or not.
 
@@ -210,7 +210,7 @@ A1 23:53
 No, please do take your time.
 
 P1 24:11
-Yeah, sure. Yeah, that's I think that's reasonable. Oh, can I have my let's see if it focus. On the left, I just called that "profile one dot Cali." Because that's how you think about it kind of. And then once you have that representation, it's becomes a frame a frame of data. Perfect. But yeah, doesn't seem like it's not becoming blurry. So
+Yeah, sure. Yeah, that's I think that's reasonable. Oh, can I have my let's see if it focus. On the left, I just called that "profile one [MeasurementAPI Extension]." Because that's how you think about it kind of. And then once you have that representation, it's becomes a frame a frame of data. Perfect. But yeah, doesn't seem like it's not becoming blurry. So
 
 A1 24:15
 no, it's good enough. I can definitely read it. So okay, cool. All right. Well, that was actually the the last question I have. For this little interview. Are you able to export that image and just just send it along to me or email? Yes.

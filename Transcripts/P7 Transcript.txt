@@ -196,7 +196,7 @@ But speed. Pandas is notoriously slow for a lot of data. Because pure Python. Th
 
 [P7 discusses the weaknesses of alternative Performance Analysis Software]
 
-To me, I'll actually just say, Alright, here's my data. I can do these operations. If I if I can't do something, grab a data frame. It's pandas that's really helpful. Being able to actually explore the data without the hassle of [Alternative Performance Analysis Software]. But I do think the current choice of tooling will eventually become a problem. We'll have to do that again. That's why a lot of these tools also use like databases on the back end and stuff something much faster.
+To me, I'll actually just say, Alright, here's my data. I can do these operations. If I if I can't do something, grab a data frame. It's pandas that's really helpful. Bng able to actually explore the data without the hassle of [Alternative Performance Analysis Software]. But I do think the current choice of tooling will eventually become a problem. We'll have to do that again. That's why a lot of these tools also use like databases on the back end and stuff something much faster.
 
 Even if you don't deal with the graph as a database, all of this is like this is literally a relational database. These are just the statistics about data forms. It's a relational database. I don't care what we're call, it's a relational database. It's SQL essentially.
 

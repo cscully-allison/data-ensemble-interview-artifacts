@@ -9,7 +9,7 @@ Um, all right, cool. Um, yeah. Lunch after this. So might as well just dive in. 
  So I'm just gonna start off with a simple question. What project do you or did you work on that uses ensembles up performed?
 
 P10  4:28  
-I'm involved in PAVE. [unintelligible] that's a bunch of different use cases.
+I'm involved in [LAB Research Group]. [unintelligible] that's a bunch of different use cases.
 
 A1  4:40  
 And do you have a specific one that's most recent in your mind or that you'd like to talk about? Because we're gonna ask you some more questions about this specific data that you're working with? And you just need to
@@ -84,7 +84,7 @@ Speaker 1  11:36
 There's others block x, for all the different tunings, just as examples, and then from this, I guess the performance data that we are getting from this would be you know, time and the region's time for kernel. Exclusive. Right, we are seeing performance data like what does he do bytes per rep. Flops per rep, which have been manually counted from my understanding. And then you know, you've got your standard, other metrics that we can collect on the CPU.
 
 P10  12:29  
-Let's see see that CPU metrics. We've also got GPU metrics through [Performance Software] instances and video. I think he might have maybe AMD, I think [P10] told me that's done. And then if we've got all the metadata also in here, right, so we've talked about compiler versions. I've talked about the [BenchmarkSuite] version. Architecture and thinking of. . . architecture. Architecture fields as well. 
+Let's see see that CPU metrics. We've also got GPU metrics through [Performance Software] instances and video. I think he might have maybe AMD, I think [P9] told me that's done. And then if we've got all the metadata also in here, right, so we've talked about compiler versions. I've talked about the [BenchmarkSuite] version. Architecture and thinking of. . . architecture. Architecture fields as well. 
 
 
 A1  13:33  

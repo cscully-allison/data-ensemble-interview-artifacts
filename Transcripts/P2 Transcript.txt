@@ -51,7 +51,7 @@ A1 4:44
 Perfect. And then if I could get you to describe real quickly, sort of in your data ensemble in general, like what the data looks like?
 
 P2 4:54
-Um, so I mean, there's kind of two parts, there's one part where, when it's well before. . . do you mean, like, when it's like, what the [MeasurementAPI]files are once it's actually loaded into a ticket with that with our like, what we kind of look at?
+Um, so I mean, there's kind of two parts, there's one part where, when it's well before. . . do you mean, like, when it's like, what the [MeasurementAPI]files are once it's actually loaded into a [EnsembleAPI] with that with our like, what we kind of look at?
 
 A1 4:59
 Um, I think all is totally fine. Okay, you want to talk about if you want to talk about all that, that'd be great. 

@@ -17,7 +17,7 @@ P3  0:46
 I did read it.
 
 R1  0:47  
-Okay. Yeah. All right. It's just, it's just like consent information. I'm gonna go over some of it over here, just to make sure that you get all the important bullet points. And then I'm just going to ask you for a verbal consent at the end to participate in the research. So that sounds good. Yep. Sounds good. Cool. All right. So first, I want to start you off, start off by thanking you a lot, Vanessa, for agreeing to participate in this research, it really means a lot to us. And, you know, I appreciate that your time is very valuable. So thank you so much. So the purpose of this study is just sort of to explore how professional data users and full developers think about ensembles of data, what aspects of said data are important. And you know what you're not this information will help us design better visualizations and tools or analysts, you know, kind of like we're doing with finger right now. This study, it's just a one on one interview, mainly and then like Kate said, she's here to take notes and occasionally time chime in. And overall, we expect that's probably just gonna take about 30 minutes. I'm going to ask you a series of prompts regarding how you think about the performance at work with and I will also ask you to draw this data. And by the way, did you or do you have a tablet or a Okay, cool. Nice. Last time, I should mention, we were able to get a screenshare to work. Do you have Skype on your resume on your tablet there?
+Okay. Yeah. All right. It's just, it's just like consent information. I'm gonna go over some of it over here, just to make sure that you get all the important bullet points. And then I'm just going to ask you for a verbal consent at the end to participate in the research. So that sounds good. Yep. Sounds good. Cool. All right. So first, I want to start you off, start off by thanking you a lot, [P3], for agreeing to participate in this research, it really means a lot to us. And, you know, I appreciate that your time is very valuable. So thank you so much. So the purpose of this study is just sort of to explore how professional data users and full developers think about ensembles of data, what aspects of said data are important. And you know what you're not this information will help us design better visualizations and tools or analysts, you know, kind of like we're doing with finger right now. This study, it's just a one on one interview, mainly and then like [A5] said, she's here to take notes and occasionally time chime in. And overall, we expect that's probably just gonna take about 30 minutes. I'm going to ask you a series of prompts regarding how you think about the performance at work with and I will also ask you to draw this data. And by the way, did you or do you have a tablet or a Okay, cool. Nice. Last time, I should mention, we were able to get a screenshare to work. Do you have Skype on your resume on your tablet there?
 
 P3  2:27  
 I do yeah.
@@ -32,10 +32,10 @@ R1  2:45
 You can you can close this out and just join from the iPad is fine. Okay, gotcha
 
 P3  2:49  
-season art. Cool. Thanks, Vanessa Sure.
+season art. Cool. Thanks, [P3] Sure.
 
 R1  4:13  
-Welcome back, Vanessa, can you hear me okay? Yeah, I can hear you. Fine. Cool. Perfect. All right, then. Your share screen for later. Okay. So now as we go through the as I go through these these questions that I'm going to ask you, I just want to emphasize that there are no right or wrong answers. So don't stress about that. It's just we want to hear your opinion and your thoughts on these things.
+Welcome back, [P3], can you hear me okay? Yeah, I can hear you. Fine. Cool. Perfect. All right, then. Your share screen for later. Okay. So now as we go through the as I go through these these questions that I'm going to ask you, I just want to emphasize that there are no right or wrong answers. So don't stress about that. It's just we want to hear your opinion and your thoughts on these things.
 
 P3  4:41  
 Sounds good. All right.
@@ -44,7 +44,7 @@ R1  4:44
 And then just a few final notes. So first, I want to make an audio and video recording of this interview, as you know are recorded and keep a copy of the drawings that you produce. And all of this data will be anonymized and transcribed and only the research staff will have access to With the original recordings, and finally, you may choose to leave are in the interview at any time. And this decision won't affect your relationship with the the interview team or anyone else associated with us. Gotcha. Cool. All right. And so do you consent to participate in this? project with us? Yes, I do. Thank you for. Okay, so let me start off with a kind of a basic demographic question here is, so what what project do you work on that uses ensembles of data?
 
 P3  5:34  
-I work on a project called ticket, which is sorry, which is in collaboration with the Lawrence Livermore National Lab? And essentially, we have an ensemble of performance data. Okay, and
+I work on a project called ticket, which is sorry, which is in collaboration with the [Lab]? And essentially, we have an ensemble of performance data. Okay, and
 
 R1  5:55  
 can you describe that project in just a little bit more detail?
@@ -188,10 +188,10 @@ P3  24:26
 Okay, I'll just send up your slack if that's okay. That's totally fine. That's great. For me, yeah. Totally appreciate it.
 
 R1  24:38  
-Yeah, so me and Kate are gonna hang out here for a sec. So you're free to go whenever you like and get back to you know, practicing your talk. Yeah, good luck. Congratulations, on all that's coming.
+Yeah, so me and [A5] are gonna hang out here for a sec. So you're free to go whenever you like and get back to you know, practicing your talk. Yeah, good luck. Congratulations, on all that's coming.
 
 P3  24:50  
-Thank you. I appreciate it. Also, thank you, Connor for the skew. Oh, God, I think I did decent in the in the interview I had so Should I appreciate it?
+Thank you. I appreciate it. Also, thank you, [A1] for the skew. Oh, God, I think I did decent in the in the interview I had so Should I appreciate it?
 
 R1  25:01  
 Good. I'm glad to hear it. Ya know is my pleasure right? Sequels it's fairly easy to pick up but it helps out the local guidance.

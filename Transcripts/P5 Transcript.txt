@@ -8,13 +8,13 @@ A1  1:07
 Okay. As part of that, would you describe yourself as more of a tool developer or like a data user?
 
 P5  1:17  
-Right now, actually, kind of it's really similar to me right now, because like [EnsembleAPI] itself was really new. And there's too many features that need to be developed, like tested and like, be like, I'm what also very first users that actually tries to make an analysis for that. So it kind of like intervenes a lot for me personally. But I think, like, for my role, specifically, I should be ready to go with secret itself and then only use that most tool user. So yes, right, run out some of those. Does that make sense?
+Right now, actually, kind of it's really similar to me right now, because like [EnsembleAPI] itself was really new. And there's too many features that need to be developed, like tested and like, be like, I'm one of the very first users that actually tries to make an analysis for that. So it kind of like intervenes a lot for me personally. But I think, like, for my role, specifically, I should be ready to go with [EnsembleAPI] itself and then only use that. Mostly a tool user. Does that make sense?
 
 A1  1:54  
 And just for the record, the project that you're talking about is [EnsembleAPI]. Yeah. Okay. All right, then you just described a dataset to me that sort of the the compilers, the comparison compilers, right? Could you list out the main parts of that dataset, to me in order of importance to you, like which parts are most important?
 
 P5  2:24  
-So right now, we only have information about the runtime or specific regions that are annotated with [MeasurementAPI], because we only have like a black box where the mouse provides us with some executable, but we don't have any further insights into that. So we can only take what they give us, basically, we don't have a free choice of tools for that. So right now, the binaries that we have, is only capable of recording like timestamps, or like, time it took for specific annotated region. So that's all I'm working with right now. 
+So right now, we only have information about the runtime or specific regions that are annotated with [MeasurementAPI], because we only have like a black box where collaborators provides us with some executable, but we don't have any further insights into that. So we can only take what they give us, basically, we don't have a free choice of tools for that. So right now, the binaries that we have, is only capable of recording like timestamps, or like, time it took for specific annotated region. So that's all I'm working with right now. 
 
 But in the future, and we are trying right now to make come up with like, future ideas for the [PhysicsAPI] team, what kind of features I should embed into the binary, more related to performance counters, so that we can get more not only like make a suggestion for the compiler, but also get more insights into why a specific compiler is preferred and in some way and why is the runtime [unintelligible] for example, because less cache misses or like all these available PAPI performance counters, if we can find some more knowledge
 
@@ -36,7 +36,7 @@ A1  4:51
 Yeah, yes, from from that second from that second circle down should be told him and I mean, I guess if you don't mind, we can use a couple of different pieces of paper. So for the first question, I'm just gonna have you sketch out the entirety of the data that's stored by this dataset that you described. Like, all the all the bits of it sort of what you think it looks like, you know, use any abstractions or metaphors, you'd like to describe this data and how it may be related to each other.
 
 P5  5:26  
-So basically, we have to kind of like use, like, one of them is like a simple table of the dataset. And helpful, but like, we have information about the regional center, so let's say it's a node, then we have. Yeah, so I'm trying to kind of like get into the gist of like, the data frame and stats frames that we have available. If we compare different runs of an application, we have the same name for the node or the annotated region. And then we have like, profiles. So there's just a column a header table, and then we have our metrics like. Yeah. Min. Max. And mean. I can also send you a picture of all of that afterwards, if you want. Yes.
+So basically, we have to kind of like use, like, one of them is like a simple table of the dataset. And helpful, but like, we have information about the region in the center, so let's say it's a node, then we have. Yeah, so I'm trying to kind of like get into the gist of like, the data frame and stats frames that we have available. If we compare different runs of an application, we have the same name for the node or the annotated region. And then we have like, profiles. So there's just a column a header table, and then we have our metrics like. Yeah. Min. Max. And mean. I can also send you a picture of all of that afterwards, if you want. Yes.
 
 Just yeah, basically, the column header. And then for example, we have, let's say, we have a main entry point to the application. And then we have five runs, like, let's say, two runs, we have like profile, let's say PID one and PID two. They have different measurements. For so we have, for example, two runs, and they are kind of like measure the main node the main entry point. And then we have this kind of data. And we also have for main set, okay, for the first dataset . . . is it ok if I put another one below?
 
@@ -58,8 +58,10 @@ So even if we have some annotated regions that are like, Okay, I'm calculating s
 
 And if I may add to that, like, I'd say, this is the raw dataset, this first part, but what we can also do is like, we can aggregate it into a stats frame into a statistical data frame, where we are-- and this is more interesting for the tree view, I think, in many ways, and because we can aggregate of all the profiles that we have available for each node, so that we can get like a mean of all our metrics, for example, and then combined from profile runs, which might be many in many cases, and like not really good to handle. And we also want to make different measurements, with different runs. Because of course, conditions in HPC can vary a lot, depending on node placement, or noisy neighbors, or whatever. It's also a good idea to have multiple rounds in order to model anything, basically, this also helps us in a way that we can take, like 10 rounds, and then we would have two profiles, we would generate a stats frame for that have like an aggregated or statistical relevant view on the data that we have.
 
+A1 11:45
 Can you draw how that that stats frame maybe related to this table that you just drew for me? Or a tree or whatever? I mean, how it relates to any of it Yeah.
 
+P5 11:55
 This is more like an intermediate view onto the data. I'm really bad with drawing and let's try to come up as we go.
 
 A1  12:06  
@@ -72,7 +74,7 @@ So let's say we are interested in the mean of the mean. But we have similar amou
 
 And then this helps to this really helps with visualization, again, was a tree. Right, but I feel like so if you're wanting to have this kind of chart, I can also like, afterwards, make it new and send you a picture of that.
 
-Unknown Speaker  13:58 
+A1  13:58 
 Yeah, absolutely. If you want to do that, I would love both actually, whatever. So that you feel like you express yourself sufficient.
 
 P5  14:04  
@@ -82,7 +84,7 @@ A1  14:08
 Alright, cool. So then I have a couple of quick questions for you then about kind of tasks that you might undertake with with this data with this data set. So if if say, this dataset that you drew has, like the the number of nodes that that each like profile was run on, and that changed per profile. So you have like two and then four and then eight, you're basically doing like a scaling study. What portions of the data would you use for for coming up with that analysis?
 
 P5  14:43  
-Well, that's actually a challenge I already had. Because for one scenario, for example, I'd like to do kind of like a strong scaling study, strong scaling scenario. So the challenge there was and still is that when we try to measure, take measurements with only one node, we have annotations that do not occur when we have like two nodes. Because a lot of MPI communication is missing, though, we even have completely missing regionals because obviously, like you don't need an all reduce with only one MPI rank. So these nodes are then missing. And so there's actually our challenge.
+Well, that's actually a challenge I already had. Because for one scenario, for example, I'd like to do kind of like a strong scaling study, strong scaling scenario. So the challenge there was and still is that when we try to measure, take measurements with only one node, we have annotations that do not occur when we have like two nodes. Because a lot of MPI communication is missing, though, we even have completely missing regions because obviously, like you don't need an all reduce with only one MPI rank. So these nodes are then missing. And so there's actually our challenge.
 
 And I think there are some bugs but we are working on that because we have to, like merge the tree you get like when you create your ensemble dataset, where you simply put in all the data, or the profiles, and also [MeasurementAPI] files in my, my work specifically. Put it all in there. And then afterwards, you can query on your whole dataset in where, in a way, where you can be like, Okay, let's give me please all the group bys of MPI ranks, so that I would retrieve like sub-[EnsembleAPI Object]. 
 
@@ -150,7 +152,7 @@ P5  29:12
 Yeah, that's so Yeah, maybe? Yeah, yes.
 
 A1  29:19  
-Yeah. Okay. Cool. Perfect. There. Is there nothing else that you have that you think isn't captured by the Ticket object? That's basically your main.
+Yeah. Okay. Cool. Perfect. There. Is there nothing else that you have that you think isn't captured by the [EnsembleAPI] object? That's basically your main.
 
 P5  29:30  
 Yeah. Okay. So that's that. I think it's all in there.

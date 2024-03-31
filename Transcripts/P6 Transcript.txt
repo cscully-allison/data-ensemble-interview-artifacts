@@ -149,7 +149,7 @@ A5  24:50
 Yeah, I think I got it. Okay, and the storage facility that you're talking about, this is the what is what do you mean by storage facility?
 
 P6  25:01  
-So we have a data frame that stores the runs, the individual runs, right and the order reduction, and its affiliated. So the 10 runs, will be, you'll have entries for each of the functions right in the goal tree. The order reduction mechanism is essentially the same call tree. But now a different table that doesn't have 10 runs Instead, lets me add columns of you know, variance mean, blah, blah, blah. Okay, so it's one entry per node in a cult tree, as opposed to n.
+So we have a data frame that stores the runs, the individual runs, right and the order reduction, and its affiliated. So the 10 runs, will be, you'll have entries for each of the functions right in the goal tree. The order reduction mechanism is essentially the same call tree. But now a different table that doesn't have 10 runs Instead, lets me add columns of you know, variance mean, blah, blah, blah. Okay, so it's one entry per node in a call tree, as opposed to n.
 
 A5  25:44  
 Okay, and what about the metadata,
